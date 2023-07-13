@@ -30,7 +30,7 @@
             ],
             "scripts": [
             
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js","src/assets/alert.js"
             ]
           },
           "configurations": {
@@ -98,5 +98,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "88433e4b-d802-42e6-ba0f-c15bcf555c11"
   }
 }

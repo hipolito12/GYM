@@ -1,0 +1,13 @@
+
+/*@font-face {
+    font-family: "take";
+    src: url("../assets/Fonts/Take cover.ttf");
+}
+*/
+
+.navbar-brand  
+{
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+font-size: 45px !important;
+letter-spacing: 12px;
+}
