@@ -1,86 +1,162 @@
-
 @font-face {
-    font-family: "Gimme";
-    src: url("../../../assets/Fonts/Gimme Danger.ttf");
+	font-family: "Gimme";
+	src: url("../../../assets/Fonts/Gimme Danger.ttf");
 }
 
 
 
-.carousel > .carousel-inner > .carousel-item > img{
- 
-    height:570px;
-    object-fit: fill;
+.carousel>.carousel-inner>.carousel-item>img {
+
+	height: 100vh !important;
 }
 
-#Filosofia_bullet_points  
-{
-    /*background-color: rgba(48, 48, 48, 0.918);*/
-    padding-bottom: 0.9em;
+
+.carousel-item {
+	position: relative;
 }
-#Filosofia_bullet_points > h2
-{
-    font-family: "Gimme";
-    font-weight: "bold";
-    font-size: 40px;
-    letter-spacing: 3px;
-    color:rgb(221, 243, 19);
-   padding-top: 0.9em ;
-   padding-bottom: 0.4em;
+
+.carousel-caption {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.carousel-item:hover .carousel-caption {
+	opacity: 1;
+	color: #e5e5e5;
+}
+
+.carousel-item:hover .carousel-caption h5:first-child {
+	margin-top: 4em;
+}
+
+.carousel-item:hover .carousel-caption h5 {
+	font-family: "Gimme";
+	font-weight: "bold";
+	font-size: 33px;
+	letter-spacing: 3px;
+	color: rgb(221, 243, 19);
+	margin-top: 0.2em;
+	padding-bottom: 2em;
 
 }
-#Filosofia_bullet_points > h3{
-    font-family: "Gimme";
-    font-weight: "900";
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: black;
+#Filosofia_bullet_points {
+	padding-bottom: 0.9em;
+}
+
+#Filosofia_bullet_points>h2 {
+	font-family: 'Anton', sans-serif;
+	font-family: 'Lalezar', cursive;
+	font-weight: "bold";
+	font-size: 60px;
+	letter-spacing: 3px;
+	color: rgb(221, 243, 19);
+	padding-top: 0.9em;
+}
+
+#Filosofia_bullet_points>h3 {
+	font-weight: "900";
+	font-size: 12px;
+	letter-spacing: 3px;
+	color: rgb(151, 134, 134);
 
 }
+
 /*acordiones de fiosofia*/
-#Filosofia_bullet_points  section{
-    margin-bottom: 1em;
+#Filosofia_bullet_points section {
+	margin-bottom: 1em;
 }
-.box-title
-{
-    font-family: Impact, Haettenschweiler;
-    font-weight: "bold";
-    font-size: 15px;
-    color:rgb(0, 0, 0);
+
+
+#fraseMotivacional {
+	color: rgb(255, 255, 255);
+}
+
+#fraseMotivacional>img {
+	height: 50vh !important;
+}
+
+
+
+
+
+
+/*Codigo Externo*/
+
+/*boton*/
+
+.button-36 {
+	background-image: linear-gradient(to right top, #fdee62, #f6f052, #eef240, #e4f42b, #d9f701);
+	border-radius: 8px;
+	border-style: none;
+	box-sizing: border-box;
+	color: #FFFFFF;
+	cursor: pointer;
+	flex-shrink: 0;
+	font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	font-size: 16px;
+	font-weight: 500;
+	height: 3rem;
+	padding: 0 1.6rem;
+	text-align: center;
+	text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+	transition: all .5s;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+}
+
+.button-36:hover {
+	box-shadow: rgba(233, 67, 26, 0.5) 0 1px 30px;
+	transition-duration: .1s;
+}
+
+@media (min-width: 768px) {
+	.button-36 {
+		padding: 0 2.6rem;
+	}
+}
+
+/*Fin boton*/
+
+.box-title {
+	font-family: Impact, Haettenschweiler;
+	font-weight: "bold";
+	font-size: 15px;
+	color: rgb(0, 0, 0);
 }
 
 .accordion input {
 	display: none;
 }
+
 .box {
 	position: relative;
 	background: rgb(167, 35, 35);
-    height: 64px;
-    transition: all .15s ease-in-out;
+	height: 64px;
+	transition: all .15s ease-in-out;
 }
+
 .box::before {
-    content: '';
-    position: absolute;
-    display: block;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-    box-shadow: 0 -1px 0 #e5e5e5,0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
+	content: '';
+	position: absolute;
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	pointer-events: none;
+	box-shadow: 0 -1px 0 #e5e5e5, 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
 }
-header.box {
-	background: #00BCD4;
-	z-index: 100;
-	cursor: initial;
-	box-shadow: 0 -1px 0 #e5e5e5,0 0 2px -2px rgba(0,0,0,.12),0 2px 4px -4px rgba(0,0,0,.24);
-}
-header .box-title {
-	margin: 0;
-	font-weight: normal;
-	font-size: 16pt;
-	color: white;
-	cursor: initial;
-}
+
 .box-title {
 	width: calc(100% - 40px);
 	height: 64px;
@@ -88,15 +164,22 @@ header .box-title {
 	padding: 0 20px;
 	display: inline-block;
 	cursor: pointer;
-	-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
+
 .box-content {
 	width: calc(100% - 40px);
 	padding: 30px 20px;
 	font-size: 11pt;
-	color: rgba(0,0,0,.54);
+	color: rgba(0, 0, 0, .54);
 	display: none;
 }
+
 .box-close {
 	position: absolute;
 	height: 64px;
@@ -106,22 +189,27 @@ header .box-title {
 	cursor: pointer;
 	display: none;
 }
-input:checked + .box {
+
+input:checked+.box {
 	height: auto;
 	margin: 16px 0;
-    box-shadow: 0 0 6px rgba(0,0,0,.16),0 6px 12px rgba(0,0,0,.32);
+	box-shadow: 0 0 6px rgba(0, 0, 0, .16), 0 6px 12px rgba(0, 0, 0, .32);
 }
-input:checked + .box .box-title {
-	border-bottom: 1px solid rgba(0,0,0,.18);
+
+input:checked+.box .box-title {
+	border-bottom: 1px solid rgba(0, 0, 0, .18);
 }
-input:checked + .box .box-content,
-input:checked + .box .box-close {
+
+input:checked+.box .box-content,
+input:checked+.box .box-close {
 	display: inline-block;
 }
+
 .arrows section .box-title {
 	padding-left: 44px;
 	width: calc(100% - 64px);
 }
+
 .arrows section .box-title:before {
 	position: absolute;
 	display: block;
@@ -130,15 +218,11 @@ input:checked + .box .box-close {
 	left: 20px;
 	top: -2px;
 	transition: transform .15s ease-in-out;
-	color: rgba(0,0,0,.54);
+	color: rgba(0, 0, 0, .54);
 }
-input:checked + section.box .box-title:before {
+
+input:checked+section.box .box-title:before {
 	transform: rotate(90deg);
 }
+
 /* FIN acordiones de fiosofia*/
-
-
-#fraseMotivacional  
-{
-    color :red;
-}
