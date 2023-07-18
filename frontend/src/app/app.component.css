@@ -12,7 +12,15 @@ font-size: 30px !important;
 letter-spacing: 12px;
 }
 
+i{
+font-size: 30px;
+}
 
+i:hover{
+color: #000000;
+font-weight: bolder;
+border-radius: 15px;
+}
 
 
 

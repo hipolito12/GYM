@@ -81,12 +81,112 @@
 }
 
 #fraseMotivacional>img {
-	height: 50vh !important;
+	height: 50vh
+	
+}
+
+/*carrousel profes */
+.carouselExampleControls{
+    padding:1%;
+}
+.card > img:hover{
+transform: scale(1.03);
+border-radius: 12px;
+cursor: pointer;
+}
+
+.card-body
+{
+	background-color: #707070;
+
+}
+.card .card-body:hover  
+{
+	background-color: #b8b8b8;
+	cursor: pointer;
+
 }
 
 
 
-
+.content {
+	position: relative;
+	width: 90%;
+	max-width: 400px;
+	margin: auto;
+	border-radius: 10px;
+	overflow: hidden;
+  }
+  
+  .content .content-overlay {
+	background: rgba(0,0,0,0.7);
+	position: absolute;
+	height: 99%;
+	width: 100%;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	opacity: 0;
+	-webkit-transition: all 0.4s ease-in-out 0s;
+	-moz-transition: all 0.4s ease-in-out 0s;
+	transition: all 0.4s ease-in-out 0s;
+  }
+  
+  .content:hover .content-overlay{
+	opacity: 1;
+  }
+  
+  .content-image{
+	width: 100%;
+  }
+  
+  .content-details {
+	position: absolute;
+	text-align: center;
+	padding-left: 1em;
+	padding-right: 1em;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	opacity: 0;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	-webkit-transition: all 0.3s ease-in-out 0s;
+	-moz-transition: all 0.3s ease-in-out 0s;
+	transition: all 0.3s ease-in-out 0s;
+  }
+  
+  .content:hover .content-details{
+	top: 50%;
+	left: 50%;
+	opacity: 1;
+  }
+  
+  .content-details h3{
+	color: #fff;
+	font-weight: 500;
+	letter-spacing: 0.15em;
+	margin-bottom: 0.5em;
+	text-transform: uppercase;
+  }
+  
+  .content-details p{
+	color: #fff;
+	font-size: 0.8em;
+  }
+  
+  .fadeIn-bottom{
+	top: 80%;
+  }
+  
+  .fadeIn-left{
+	left: 20%;
+  }
+  .fadeIn-right{
+	left: 80%;
+  }
 
 
 /*Codigo Externo*/
@@ -226,3 +326,4 @@ input:checked+section.box .box-title:before {
 }
 
 /* FIN acordiones de fiosofia*/
+
