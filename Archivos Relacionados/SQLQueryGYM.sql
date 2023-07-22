@@ -1,0 +1,349 @@
+USE [master]
+GO
+/****** Object:  Database [GYM]    Script Date: 21/7/2023 19:15:22 ******/
+CREATE DATABASE [GYM]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'GYM', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\GYM.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'GYM_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\GYM_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [GYM] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [GYM].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [GYM] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [GYM] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [GYM] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [GYM] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [GYM] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [GYM] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [GYM] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [GYM] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [GYM] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [GYM] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [GYM] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [GYM] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [GYM] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [GYM] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [GYM] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [GYM] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [GYM] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [GYM] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [GYM] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [GYM] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [GYM] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [GYM] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [GYM] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [GYM] SET  MULTI_USER 
+GO
+ALTER DATABASE [GYM] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [GYM] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [GYM] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [GYM] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [GYM] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [GYM] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+ALTER DATABASE [GYM] SET QUERY_STORE = OFF
+GO
+USE [GYM]
+GO
+/****** Object:  Table [dbo].[Actividad]    Script Date: 21/7/2023 19:15:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Actividad](
+	[ActividadID] [int] IDENTITY(1,1) NOT NULL,
+	[IdRutinafk] [int] NOT NULL,
+	[nombeActividad] [varchar](50) NOT NULL,
+	[turno] [varchar](20) NULL,
+	[HsActividadSemanales] [decimal](2, 0) NOT NULL,
+ CONSTRAINT [PK_Actividad] PRIMARY KEY CLUSTERED 
+(
+	[ActividadID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Asistencia]    Script Date: 21/7/2023 19:15:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Asistencia](
+	[NroAsistencia] [bigint] IDENTITY(1,1) NOT NULL,
+	[DNIfk] [bigint] NOT NULL,
+	[FechaHoraIngreso] [timestamp] NULL,
+ CONSTRAINT [PK_Asistencia] PRIMARY KEY CLUSTERED 
+(
+	[NroAsistencia] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Cuota]    Script Date: 21/7/2023 19:15:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Cuota](
+	[CodCuota] [bigint] IDENTITY(1,1) NOT NULL,
+	[DNIfk] [bigint] NOT NULL,
+	[fechaPago] [datetime] NOT NULL,
+	[percio] [money] NOT NULL,
+ CONSTRAINT [PK_Cuota] PRIMARY KEY CLUSTERED 
+(
+	[CodCuota] ASC,
+	[DNIfk] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Persona]    Script Date: 21/7/2023 19:15:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Persona](
+	[dni] [bigint] NOT NULL,
+	[IdRolfk] [int] NOT NULL,
+	[rutinasPerFK] [int] NULL,
+	[NombreCompleto] [varchar](50) NOT NULL,
+	[sexo] [varchar](10) NOT NULL,
+	[telefono] [nchar](30) NOT NULL,
+	[email] [varchar](50) NOT NULL,
+	[Direccion] [varchar](50) NOT NULL,
+	[estado] [bit] NOT NULL,
+ CONSTRAINT [PK_Persona] PRIMARY KEY CLUSTERED 
+(
+	[dni] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PersonaAcargoActividad]    Script Date: 21/7/2023 19:15:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PersonaAcargoActividad](
+	[dniPersonaAcargo] [bigint] NOT NULL,
+	[IdActividadfk] [int] NOT NULL,
+ CONSTRAINT [PK_PersonaAcargoActividad_1] PRIMARY KEY CLUSTERED 
+(
+	[dniPersonaAcargo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Post]    Script Date: 21/7/2023 19:15:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Post](
+	[PostId] [int] IDENTITY(1,1) NOT NULL,
+	[DniPersonaAutor] [bigint] NOT NULL,
+	[tipoPostfk] [int] NOT NULL,
+	[Titulo] [varchar](50) NOT NULL,
+	[cuerpo] [varchar](5000) NOT NULL,
+	[imagenes] [varchar](1500) NULL,
+ CONSTRAINT [PK_Post] PRIMARY KEY CLUSTERED 
+(
+	[PostId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Rol]    Script Date: 21/7/2023 19:15:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Rol](
+	[IdRol] [int] IDENTITY(1,1) NOT NULL,
+	[NombreRol] [varchar](50) NOT NULL,
+	[DescripcionRol] [varchar](50) NULL,
+ CONSTRAINT [PK_Rol] PRIMARY KEY CLUSTERED 
+(
+	[IdRol] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[RutinaGenerica]    Script Date: 21/7/2023 19:15:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[RutinaGenerica](
+	[IdRutinaGen] [int] IDENTITY(1,1) NOT NULL,
+	[IdActividadfk] [int] NOT NULL,
+	[descripcionRutina] [varchar](4000) NOT NULL,
+	[Imagenes] [varchar](1500) NULL,
+	[TipoRutinfk] [int] NULL,
+ CONSTRAINT [PK_RutinaGenerica] PRIMARY KEY CLUSTERED 
+(
+	[IdRutinaGen] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[RutinaPersonalizada]    Script Date: 21/7/2023 19:15:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[RutinaPersonalizada](
+	[IdRutinaPersonalizada] [int] IDENTITY(1,1) NOT NULL,
+	[IdActividadesfk] [int] NOT NULL,
+	[TipoRutinafk] [int] NOT NULL,
+	[PersonaIdFK] [bigint] NOT NULL,
+	[DescripcionRutina] [varchar](4000) NOT NULL,
+	[imagenes] [varchar](1500) NULL,
+ CONSTRAINT [PK_RutinaPersonalizada] PRIMARY KEY CLUSTERED 
+(
+	[IdRutinaPersonalizada] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TipoPost]    Script Date: 21/7/2023 19:15:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TipoPost](
+	[TipoId] [int] IDENTITY(1,1) NOT NULL,
+	[NombreTipo] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_TipoPost] PRIMARY KEY CLUSTERED 
+(
+	[TipoId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TipoRutina]    Script Date: 21/7/2023 19:15:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TipoRutina](
+	[IdTipoRutina] [int] IDENTITY(1,1) NOT NULL,
+	[NombreTipo] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_TipoRutina] PRIMARY KEY CLUSTERED 
+(
+	[IdTipoRutina] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Venta]    Script Date: 21/7/2023 19:15:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Venta](
+	[CodVenta] [bigint] IDENTITY(1,1) NOT NULL,
+	[TrabajadorID] [bigint] NOT NULL,
+	[nombreProducto] [varchar](50) NOT NULL,
+	[precio] [money] NOT NULL,
+	[cantidad] [int] NOT NULL,
+ CONSTRAINT [PK_Venta] PRIMARY KEY CLUSTERED 
+(
+	[CodVenta] ASC,
+	[TrabajadorID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Asistencia]  WITH CHECK ADD  CONSTRAINT [FK_Persona_Asistencia] FOREIGN KEY([DNIfk])
+REFERENCES [dbo].[Persona] ([dni])
+GO
+ALTER TABLE [dbo].[Asistencia] CHECK CONSTRAINT [FK_Persona_Asistencia]
+GO
+ALTER TABLE [dbo].[Cuota]  WITH CHECK ADD  CONSTRAINT [FK_Cuota_Persona] FOREIGN KEY([DNIfk])
+REFERENCES [dbo].[Persona] ([dni])
+GO
+ALTER TABLE [dbo].[Cuota] CHECK CONSTRAINT [FK_Cuota_Persona]
+GO
+ALTER TABLE [dbo].[Persona]  WITH CHECK ADD  CONSTRAINT [FK_Persona_Rol] FOREIGN KEY([IdRolfk])
+REFERENCES [dbo].[Rol] ([IdRol])
+GO
+ALTER TABLE [dbo].[Persona] CHECK CONSTRAINT [FK_Persona_Rol]
+GO
+ALTER TABLE [dbo].[PersonaAcargoActividad]  WITH CHECK ADD  CONSTRAINT [FK_PersonaAcargoActividad_Actividad] FOREIGN KEY([IdActividadfk])
+REFERENCES [dbo].[Actividad] ([ActividadID])
+GO
+ALTER TABLE [dbo].[PersonaAcargoActividad] CHECK CONSTRAINT [FK_PersonaAcargoActividad_Actividad]
+GO
+ALTER TABLE [dbo].[PersonaAcargoActividad]  WITH CHECK ADD  CONSTRAINT [FK_PersonaAcargoActividad_Persona] FOREIGN KEY([dniPersonaAcargo])
+REFERENCES [dbo].[Persona] ([dni])
+GO
+ALTER TABLE [dbo].[PersonaAcargoActividad] CHECK CONSTRAINT [FK_PersonaAcargoActividad_Persona]
+GO
+ALTER TABLE [dbo].[Post]  WITH CHECK ADD  CONSTRAINT [FK_Post_Persona] FOREIGN KEY([DniPersonaAutor])
+REFERENCES [dbo].[Persona] ([dni])
+GO
+ALTER TABLE [dbo].[Post] CHECK CONSTRAINT [FK_Post_Persona]
+GO
+ALTER TABLE [dbo].[Post]  WITH CHECK ADD  CONSTRAINT [FK_Post_TipoPost] FOREIGN KEY([tipoPostfk])
+REFERENCES [dbo].[TipoPost] ([TipoId])
+GO
+ALTER TABLE [dbo].[Post] CHECK CONSTRAINT [FK_Post_TipoPost]
+GO
+ALTER TABLE [dbo].[RutinaGenerica]  WITH CHECK ADD  CONSTRAINT [FK_RutinaGenerica_Actividad] FOREIGN KEY([IdActividadfk])
+REFERENCES [dbo].[Actividad] ([ActividadID])
+GO
+ALTER TABLE [dbo].[RutinaGenerica] CHECK CONSTRAINT [FK_RutinaGenerica_Actividad]
+GO
+ALTER TABLE [dbo].[RutinaGenerica]  WITH CHECK ADD  CONSTRAINT [FK_RutinaGenerica_TipoRutina] FOREIGN KEY([TipoRutinfk])
+REFERENCES [dbo].[TipoRutina] ([IdTipoRutina])
+GO
+ALTER TABLE [dbo].[RutinaGenerica] CHECK CONSTRAINT [FK_RutinaGenerica_TipoRutina]
+GO
+ALTER TABLE [dbo].[RutinaPersonalizada]  WITH CHECK ADD  CONSTRAINT [FK_RutinaPersonalizada_Actividad] FOREIGN KEY([IdActividadesfk])
+REFERENCES [dbo].[Actividad] ([ActividadID])
+GO
+ALTER TABLE [dbo].[RutinaPersonalizada] CHECK CONSTRAINT [FK_RutinaPersonalizada_Actividad]
+GO
+ALTER TABLE [dbo].[RutinaPersonalizada]  WITH CHECK ADD  CONSTRAINT [FK_RutinaPersonalizada_Persona] FOREIGN KEY([PersonaIdFK])
+REFERENCES [dbo].[Persona] ([dni])
+GO
+ALTER TABLE [dbo].[RutinaPersonalizada] CHECK CONSTRAINT [FK_RutinaPersonalizada_Persona]
+GO
+ALTER TABLE [dbo].[RutinaPersonalizada]  WITH CHECK ADD  CONSTRAINT [FK_RutinaPersonalizada_TipoRutina] FOREIGN KEY([TipoRutinafk])
+REFERENCES [dbo].[TipoRutina] ([IdTipoRutina])
+GO
+ALTER TABLE [dbo].[RutinaPersonalizada] CHECK CONSTRAINT [FK_RutinaPersonalizada_TipoRutina]
+GO
+ALTER TABLE [dbo].[Venta]  WITH CHECK ADD  CONSTRAINT [FK_Venta_Persona-TRabajador] FOREIGN KEY([TrabajadorID])
+REFERENCES [dbo].[Persona] ([dni])
+GO
+ALTER TABLE [dbo].[Venta] CHECK CONSTRAINT [FK_Venta_Persona-TRabajador]
+GO
+USE [master]
+GO
+ALTER DATABASE [GYM] SET  READ_WRITE 
+GO
