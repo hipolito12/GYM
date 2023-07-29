@@ -30,7 +30,8 @@
             ],
             "scripts": [
             
-              "node_modules/bootstrap/dist/js/bootstrap.min.js","src/assets/alert.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/alert.js"
             ]
           },
           "configurations": {

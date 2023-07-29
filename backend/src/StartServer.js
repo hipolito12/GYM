@@ -1,7 +1,15 @@
-const express = require("express");
-const app = express();
+const express =require('express')  
+const cors=require('cors')
+const logIn = require('./routes/logIn') 
 
-app.use(express.json());
+const app = express()
 
-//inicio Server de desarrollo
-app.listen(3000);
+/*middleware*/ 
+app.use(express.json())
+app.use(express.text())
+app.use(cors())
+
+/*rutas*/ 
+app.use(logIn)
+/*servidor*/ 
+app.listen(3000)

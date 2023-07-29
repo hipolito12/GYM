@@ -1,0 +1,137 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model Actividad {
+  ActividadID            Int                      @id(map: "PK_Actividad") @default(autoincrement())
+  IdRutinafk             Int
+  nombeActividad         String                   @db.VarChar(50)
+  turno                  String?                  @db.VarChar(20)
+  HsActividadSemanales   Decimal                  @db.Decimal(2, 0)
+  PersonaAcargoActividad PersonaAcargoActividad[]
+  RutinaGenerica         RutinaGenerica[]
+  RutinaPersonalizada    RutinaPersonalizada[]
+}
+
+model Asistencia {
+  NroIngreso       BigInt   @id(map: "PK_Asistencia") @default(autoincrement())
+  DNIfk            BigInt
+  FechaHoraIngresa DateTime @db.DateTime
+  Persona          Persona  @relation(fields: [DNIfk], references: [dni], onUpdate: NoAction, map: "FK_Asistencia_Persona")
+}
+
+model Cuota {
+  CodCuota  BigInt   @default(autoincrement())
+  DNIfk     BigInt
+  fechaPago DateTime @db.DateTime
+  percio    Float    @db.Money
+  Persona   Persona  @relation(fields: [DNIfk], references: [dni], onUpdate: NoAction, map: "FK_Cuota_Persona")
+
+  @@id([CodCuota, DNIfk], map: "PK_Cuota")
+}
+
+model Persona {
+  dni                    BigInt                  @id(map: "PK_Persona")
+  IdRolfk                Int
+  rutinasPerFK           Int?
+  NombreCompleto         String                  @db.VarChar(50)
+  sexo                   String                  @db.VarChar(10)
+  telefono               String                  @db.NChar(30)
+  email                  String                  @db.VarChar(50)
+  Direccion              String                  @db.VarChar(50)
+  estado                 Boolean
+  Contrase_a             String?                 @map("Contraseña") @db.VarChar(200)
+  Asistencia             Asistencia[]
+  Cuota                  Cuota[]
+  Rol                    Rol                     @relation(fields: [IdRolfk], references: [IdRol], onUpdate: NoAction, map: "FK_Persona_Rol")
+  PersonaAcargoActividad PersonaAcargoActividad?
+  Post                   Post[]
+  RutinaPersonalizada    RutinaPersonalizada[]
+  Venta                  Venta[]
+}
+
+model PersonaAcargoActividad {
+  dniPersonaAcargo BigInt    @id(map: "PK_PersonaAcargoActividad_1")
+  IdActividadfk    Int
+  Actividad        Actividad @relation(fields: [IdActividadfk], references: [ActividadID], onUpdate: NoAction, map: "FK_PersonaAcargoActividad_Actividad")
+  Persona          Persona   @relation(fields: [dniPersonaAcargo], references: [dni], onUpdate: NoAction, map: "FK_PersonaAcargoActividad_Persona")
+}
+
+model Post {
+  PostId          Int      @id(map: "PK_Post") @default(autoincrement())
+  DniPersonaAutor BigInt
+  tipoPostfk      Int
+  Titulo          String   @db.VarChar(50)
+  cuerpo          String   @db.VarChar(5000)
+  imagenes        String?  @db.VarChar(1500)
+  Persona         Persona  @relation(fields: [DniPersonaAutor], references: [dni], onUpdate: NoAction, map: "FK_Post_Persona")
+  TipoPost        TipoPost @relation(fields: [tipoPostfk], references: [TipoId], onUpdate: NoAction, map: "FK_Post_TipoPost")
+}
+
+model Rol {
+  IdRol          Int       @id(map: "PK_Rol") @default(autoincrement())
+  NombreRol      String    @db.VarChar(50)
+  DescripcionRol String?   @db.VarChar(50)
+  Persona        Persona[]
+}
+
+model RutinaGenerica {
+  IdRutinaGen       Int         @id(map: "PK_RutinaGenerica") @default(autoincrement())
+  IdActividadfk     Int
+  descripcionRutina String      @db.VarChar(4000)
+  Imagenes          String?     @db.VarChar(1500)
+  TipoRutinfk       Int?
+  Actividad         Actividad   @relation(fields: [IdActividadfk], references: [ActividadID], onUpdate: NoAction, map: "FK_RutinaGenerica_Actividad")
+  TipoRutina        TipoRutina? @relation(fields: [TipoRutinfk], references: [IdTipoRutina], onDelete: NoAction, onUpdate: NoAction, map: "FK_RutinaGenerica_TipoRutina")
+}
+
+model RutinaPersonalizada {
+  IdRutinaPersonalizada Int        @id(map: "PK_RutinaPersonalizada") @default(autoincrement())
+  IdActividadesfk       Int
+  TipoRutinafk          Int
+  PersonaIdFK           BigInt
+  DescripcionRutina     String     @db.VarChar(4000)
+  imagenes              String?    @db.VarChar(1500)
+  Actividad             Actividad  @relation(fields: [IdActividadesfk], references: [ActividadID], onUpdate: NoAction, map: "FK_RutinaPersonalizada_Actividad")
+  Persona               Persona    @relation(fields: [PersonaIdFK], references: [dni], onUpdate: NoAction, map: "FK_RutinaPersonalizada_Persona")
+  TipoRutina            TipoRutina @relation(fields: [TipoRutinafk], references: [IdTipoRutina], onUpdate: NoAction, map: "FK_RutinaPersonalizada_TipoRutina")
+}
+
+model sysdiagrams {
+  name         String @db.NVarChar(128)
+  principal_id Int
+  diagram_id   Int    @id(map: "PK__sysdiagr__C2B05B618DF63782") @default(autoincrement())
+  version      Int?
+  definition   Bytes?
+
+  @@unique([principal_id, name], map: "UK_principal_name")
+}
+
+model TipoPost {
+  TipoId     Int    @id(map: "PK_TipoPost") @default(autoincrement())
+  NombreTipo String @db.VarChar(50)
+  Post       Post[]
+}
+
+model TipoRutina {
+  IdTipoRutina        Int                   @id(map: "PK_TipoRutina") @default(autoincrement())
+  NombreTipo          String                @db.VarChar(50)
+  RutinaGenerica      RutinaGenerica[]
+  RutinaPersonalizada RutinaPersonalizada[]
+}
+
+model Venta {
+  CodVenta       BigInt  @default(autoincrement())
+  TrabajadorID   BigInt
+  nombreProducto String  @db.VarChar(50)
+  precio         Float   @db.Money
+  cantidad       Int
+  Persona        Persona @relation(fields: [TrabajadorID], references: [dni], onUpdate: NoAction, map: "FK_Venta_Persona-TRabajador")
+
+  @@id([CodVenta, TrabajadorID], map: "PK_Venta")
+}
