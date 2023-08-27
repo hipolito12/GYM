@@ -1,29 +1,17 @@
-<section class="blog-section">
-  <div class="container">
-    <h2 class="section-title">Nuestro Blog</h2>
-    <div class="row">
-      <div
-        class="col-md-4 mb-4"
-        *ngFor="let article of articles"
-      >
-        <div class="card">
-          <img
-            [src]="article.imageUrl"
-            alt="{{ article.title }}"
-            class="card-img-top"
-          />
-          <div class="card-body">
-            <h3 class="card-title">{{ article.title }}</h3>
-            <p class="card-text">{{ article.excerpt }}</p>
-            <a
-              [routerLink]="['./blog', article.id]"
-              class="btn btn-primary"
-            >
-              Leer más
-            </a>
-          </div>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Nuestro Blog</h2>
+  <div class="row justify-content-center ">
+    <div class="col-md-8 " *ngFor="let post of blogPosts">
+      <div class="card mb-4">
+        <img src="{{ post.image }}" class="card-img-top" alt="Imagen del post">
+        <div class="card-body">
+          <h5 class="card-title">
+             <a href="['#', post.id]">{{ post.title }}</a></h5>
+          <p class="card-text">{{ post.subtitle }}</p>
+          <p class="card-text"><small class="text-muted">{{ post.date }}</small></p>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
+<app-footer></app-footer>
