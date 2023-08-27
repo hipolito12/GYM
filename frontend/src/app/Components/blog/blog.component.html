@@ -1,0 +1,29 @@
+<section class="blog-section">
+  <div class="container">
+    <h2 class="section-title">Nuestro Blog</h2>
+    <div class="row">
+      <div
+        class="col-md-4 mb-4"
+        *ngFor="let article of articles"
+      >
+        <div class="card">
+          <img
+            [src]="article.imageUrl"
+            alt="{{ article.title }}"
+            class="card-img-top"
+          />
+          <div class="card-body">
+            <h3 class="card-title">{{ article.title }}</h3>
+            <p class="card-text">{{ article.excerpt }}</p>
+            <a
+              [routerLink]="['./blog', article.id]"
+              class="btn btn-primary"
+            >
+              Leer más
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
