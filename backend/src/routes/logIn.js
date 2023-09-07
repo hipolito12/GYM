@@ -12,10 +12,10 @@ router.get("/", (req, res) => {
 });
 
 //ingresar
-router.post("/logIn", async (req, res) => {
+router.post("/login", async (req, res) => {
   // const { dni, password } = req.body;
   let user = req.body;
-  console.log(user);
+ 
   user = parser(user);
   user = JSON.parse(user);
   //verifico nulo y vacio
@@ -37,9 +37,9 @@ router.post("/logIn", async (req, res) => {
   if ((result = null)) {
     res.status(406).json({ message: "Usuario o contraseña incorrectos" });
   }
-
+  console.log(user);
   const token = await jwt.sign({ _id: user.dni }, "keyregistro");
-  res.status(200).json({ token });
+  res.json({ "token": "pepe" });
 });
 
 //regisrarse
@@ -80,6 +80,14 @@ router.post("/Signup", async (req, res) => {
   const token = await jwt.sign({ _id: NuevoUsario.dni }, "keyregistro");
   res.status(200).json({ token });
 });
+
+
+router.post("/test", (req, res) => {
+  console.log("qqqqqqqqq");
+  res.json({"pepe":"aaaaaaa"});
+});
+
+
 
 async function VerificoToken(res, req, next) {
   try {
