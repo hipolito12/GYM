@@ -11,7 +11,13 @@ export class LoginService {
 
   Ingresar(user:any)
   {
-   return  this.http.post("http://localhost:3000/api/login",user)
+   return  this.http.post<any>("http://localhost:3000/api/login",user)
     
+  }
+
+
+  Registrar(NewUser:any)
+  {
+    return this.http.post<any>("http://localhost:3000/api/Signup",NewUser)
   }
 }

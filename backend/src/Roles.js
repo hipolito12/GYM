@@ -7,7 +7,7 @@ const Roles =
 }
 const Estados =
 {
-    Permitido:0,
-    NoPermitido:1
+    Permitido:true,
+    NoPermitido:false
 }
 module.exports = {Roles : Roles, Estados : Estados};

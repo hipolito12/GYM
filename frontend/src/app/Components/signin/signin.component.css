@@ -15,7 +15,7 @@
     flex-direction: column;
     overflow: hidden;
     width: 50rem;
-    height: 30rem;
+    height: 33rem;
     backdrop-filter: blur(1rem);
     margin-right: 20rem;
 
@@ -35,7 +35,7 @@
 .content h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-font-weight: bolder;    
+     font-weight: bolder;    
 }
 .content i {
     font-size: 2rem;

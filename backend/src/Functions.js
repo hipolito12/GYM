@@ -3,6 +3,6 @@ function parser(elements) {
     return typeof value === "bigint" ? value.toString() : value;
     
   });
-  return json;
+  return  json;
 }
 module.exports.parser = parser ;
