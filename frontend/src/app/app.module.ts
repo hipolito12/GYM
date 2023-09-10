@@ -11,6 +11,9 @@ import { SigninComponent } from './Components/signin/signin.component';
 import { NosotrosComponent } from './Components/nosotros/nosotros.component';
 import { UbicacionesComponent } from './Components/ubicaciones/ubicaciones.component';
 import { BlogComponent } from './Components/blog/blog.component';
+import { UserComponent } from './Components/user/user.component';
+import { NavbarComponent } from './Components/navbar/navbar.component';
+import { AuthGuard } from './auth.guard';
   
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { BlogComponent } from './Components/blog/blog.component';
     SigninComponent,
     NosotrosComponent,
     UbicacionesComponent,
-    BlogComponent
+    BlogComponent,
+    UserComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,8 @@ import { BlogComponent } from './Components/blog/blog.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

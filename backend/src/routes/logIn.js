@@ -19,51 +19,64 @@ router.post("/login", async (req, res) => {
   user = JSON.parse(user);
 
   //verifico nulo y vacio
-  if (user.dni === null || user.password === null) {
-    return res.status(401).send("Unauhtorized Request");
-  }
-  const Element = await prisma.persona.findFirstOrThrow({
-    where: { dni: user.dni, Contrase_a: user.password },
-  });
-  let result = JSON.parse(parser(Element));
-
-  //si no existe el usuario
-  if (result == null) {
+  if (user.dni === null || user.contrasena === null) {
     return res.status(401).send("Unauhtorized Request");
   }
 
-  const token = await jwt.sign({ _id: user.dni }, "keyregistro");
+  try {
+    
+    const Element = await prisma.persona.findFirstOrThrow({
+      where: { dni: user.dni },
+    });
+    let result = JSON.parse(parser(Element));
 
-  return res.status(200).json({
-    token: token,
-    rol: result.IdRolfk,
-  });
+    //si no existe el usuario y si coinciden las contraseñas
+    if (result == null || result.Contrase_a != user.contrasena) {
+      return res.status(401).send("Unauhtorized Request");
+    }
+
+    const token = await jwt.sign({ _id: result.dni }, "keyregistro");
+   
+    return res.status(200).json({
+      token: token,
+      rol: result.IdRolfk,
+    });
+  } catch (e) {console.log(e.message)}
+  
 });
 
 //regisrarse
 router.post("/Signup", async (req, res) => {
-  const { dni, Contrase_a, nombre,apellido, telefono, email,sexo, direccion } = req.body;
-   
+  const {
+    dni,
+    Contrase_a,
+    nombre,
+    apellido,
+    telefono,
+    email,
+    sexo,
+    direccion,
+  } = req.body;
 
   //verifico nulo y vacio
   if (
     dni === null ||
-    Contrase_a=== null ||
+    Contrase_a === null ||
     telefono === null ||
     email === null ||
-    direccion === null  )
-  {
+    direccion === null
+  ) {
     return res.status(401).send("Unauhtorized Request");
   }
-   console.log( Contrase_a);
+  console.log(Contrase_a);
   const NuevoUsario = await prisma.persona.create({
     data: {
       dni: dni,
-      Contrase_a : Contrase_a,
+      Contrase_a: Contrase_a,
       NombreCompleto: `${nombre}  ${apellido}`,
       telefono: telefono,
       email: email,
-      sexo: sexo, 
+      sexo: sexo,
       IdRolfk: Roles.usuario,
       Direccion: direccion,
       estado: Estados.Permitido,

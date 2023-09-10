@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit,Renderer2, ViewChild } from '@angular/core';
 import { LoginService } from '../../Services/login.service';
 import { Router } from '@angular/router';
+import { ActualizaDatosService } from '../../Services/actualiza-datos.service';
 
 @Component({
   selector: 'app-login',
@@ -12,38 +13,56 @@ export class LoginComponent implements OnInit {
     dni: '',
     contrasena: '',
   };
+@ViewChild('toast') toast !: ElementRef
 
- 
-  constructor(private loginService: LoginService, private rout: Router) {}
+
+  constructor(
+    private loginService: LoginService,
+    private rout: Router,
+    private Actualiza: ActualizaDatosService,
+    private render: Renderer2
+  ) {}
   ngOnInit() {}
 
-  Redireccionar(rol:number) 
-  {
-    switch (rol) 
-    {
+    
+
+  Redireccionar(rol: number) {
+    switch (rol) {
       case 0:
         this.rout.navigate(['admin']);
         break;
       case 1:
-        this.rout.navigate(['profesor']);
+        this.rout.navigate(['user']);
         break;
       case 2:
-        this.rout.navigate(['alumno']);
         break;
-     
     }
   }
   Ingresar() {
     this.loginService.Ingresar(this.user).subscribe(
       (res) => {
-        console.log(res);
         localStorage.setItem('token', res.token);
-        this.Redireccionar(res.IdRolfk);
+        this.Redireccionar(res.rol);
       },
-      (err) => console.log(JSON.stringify(err))
+      (err) => {console.log(JSON.stringify(err)) ;
+        let toast= this.toast.nativeElement
+        toast.innerHTML="El usuario o la contraseña no son validos";}
     );
   }
+  ValdaLogin() {
+    const regex = new RegExp(
+      /^(?=.*[A-Z])(?=.*[@#$!%^&*()_+{}\[\]:;<>,.?~\\-]).{8,}$/
+    );
+    if (!regex.test(this.user.contrasena) || this.user.contrasena=='' || this.user.dni=='') {
+      
+   let toast= this.toast.nativeElement;
 
+    toast.innerHTML="El usuario o la contraseña no son validos";
+    
+      return false;
 
- 
+    } else {
+      return this.Ingresar();
+    }
+  }
 }

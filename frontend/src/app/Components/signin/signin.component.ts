@@ -1,4 +1,4 @@
-import { Component ,OnInit} from '@angular/core';
+import { Component ,ElementRef,OnInit, ViewChild} from '@angular/core';
 import { LoginService } from '../../Services/login.service';
 import { Router } from '@angular/router';
 @Component({
@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
+   @ViewChild('toast') toast !: ElementRef
 
   RepetirContrasena:string='';
   NewUser = 
@@ -43,7 +44,13 @@ export class SigninComponent implements OnInit {
 
   VerificaContrasena()
   {
-    if(this.NewUser.Contrase_a != this.RepetirContrasena)
+    const regex = new RegExp( /^(?=.*[A-Z])(?=.*[@#$!%^&*()_+{}\[\]:;<>,.?~\\-]).{8,}$/);
+    if (!regex.test(this.NewUser.Contrase_a) )
+    {
+      let toast= this.toast.nativeElement;
+
+      toast.innerHTML="Contrasena no cumple con los requisitos ";    }
+    else if(this.NewUser.Contrase_a != this.RepetirContrasena)
     {
       alert("Las contraseñas no coinciden");
       
@@ -58,11 +65,13 @@ export class SigninComponent implements OnInit {
   {
     this.loginService.Registrar(this.NewUser).subscribe(
       (res) => {
-        console.log(res);
+        ;
         localStorage.setItem('token', res.token);
         this.Redireccionar(res.IdRolfk);
       },
-      (err) => console.log(JSON.stringify(err))
+      (err) => {console.log(JSON.stringify(err))
+        let toast= this.toast.nativeElement
+        toast.innerHTML="El usuario o la contraseña no son validos"}
     );
   }
 
