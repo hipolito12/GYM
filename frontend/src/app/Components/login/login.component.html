@@ -1,13 +1,30 @@
-<div class="contenedor">
+<div class="contenedor container-fluid bg-dark">
     <div class="card">
         <div class="top-row "> <i class="fa-solid fa-circle-user"></i></div>
         <div class="content"> 
             <h1>Login <i class="fa-solid fa-lock"></i></h1>
+            <form (submit)="ValdaLogin()">
+            <p>DNI</p> <input type="text" [(ngModel)]="user.dni" class="text" name="dni" minlength="8" required="">
+            <p class="my-3">Contraseña</p> <input type="password" [(ngModel)]="user.contrasena" name="contrasena" class="text"  required="" > 
+            <button class="button" >Empezar</button>
+            
+            <div class="toast" id="passwordToast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                  <strong class="mr-auto">Mensaje</strong>
+                  <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="toast-body">
+                  La contraseña no cumple con los requisitos.
+                </div>
+              </div>
+              <div  #toast id="toast">
 
-            <p>Usuario</p> <input type="text" class="text" name="" id="">
-            <p class="my-3">Contraseña</p> <input type="password" class="text" name="" id=""> 
-            <button class="button ">Empezar</button>
+              </div>
             <p class="my-3">¿No tienes cuenta? <a routerLink="/signin">Registrate</a></p>
+            </form>
+
         </div>
 
     </div>
