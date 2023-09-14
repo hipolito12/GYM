@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'ubicaciones', component: UbicacionesComponent},
   {path: 'blog' , component: BlogComponent},
   {path: 'user', component: UserComponent, canActivate:[AuthGuard]},
-  {path: 'blog' , component: RutinasComponent},
+  {path: 'rutinas' , component: RutinasComponent},
 ];
 
 @NgModule({
