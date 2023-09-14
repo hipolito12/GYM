@@ -1,34 +1,34 @@
 ### obtener todos los characters
-GET http://localhost:3000/api/characters
+GET http://localhost:3000/api/rols
 
 ### obtener un character
-GET http://localhost:3000/api/characters/a02b91bc-3769-4221-beb1-d7a3aeba7dad
+GET http://localhost:3000/api/rols/a02b91bc-3769-4221-beb1-d7a3aeba7dad
 
 ### crear un nuevo character
-POST http://localhost:3000/api/characters
+POST http://localhost:3000/api/rols
 Content-Type: application/json
 
 {
-    "name": "Juan Pérez",
+    "name": "Cliente",
     "description": "Cliente regular"
 }
 
 ### modificar un character (PUT - recurso completo e idempotente)
-PUT http://localhost:3000/api/characters/a02b91bc-3769-4221-beb1-d7a3aeba7dad
+PUT http://localhost:3000/api/rols/a02b91bc-3769-4221-beb1-d7a3aeba7dad
 Content-Type: application/json
 
 {
-    "name": "Claudio López",
-    "description": "Cliente irregular"
+    "name": "Empleado",
+    "description": "Empleado irregular"
 }
 
 ### modificar un character (PATCH - recurso parcial)
-PATCH http://localhost:3000/api/characters/a02b91bc-3769-4221-beb1-d7a3aeba7dad
+PATCH http://localhost:3000/api/rols/a02b91bc-3769-4221-beb1-d7a3aeba7dad
 Content-Type: application/json
 
 {
-    "name": "Claudio González",
+    "name": "Cliente exclusivo",
 }
 
 ### borrar un character 
-DELETE http://localhost:3000/api/characters/a02b91bc-3769-4221-beb1-d7a3aeba7dad
+DELETE http://localhost:3000/api/rols/a02b91bc-3769-4221-beb1-d7a3aeba7dad
