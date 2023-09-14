@@ -1,13 +1,32 @@
 <!--en construccion -->
-<div class="container mt-5">
-  <h1>Rutinas</h1>
-  <div class="btn-group mt-3">
-    <button class="btn btn-primary">Agregar Rutina</button>
-    <button class="btn btn-success" >Ver Rutinas</button>
+<div class="container border border-secondary rounded-lg mt-4 p-0 h-100 my-4">
+  <div class="container-fluid bg-primary text-white py-3">
+    <h1 class="text-center">Rutinas GYM GENERICO</h1>
+    <div class="row">
+      <div class="col-6">
+        <button class="btn btn-secondary">+ Nueva</button>
+      </div>
+      <div class="col-6 text-right">
+        <!-- Campo de búsqueda y botón OK -->
+        <div class="input-group">
+          <input type="text" class="form-control  " placeholder="Buscar...">
+          <div class="input-group-append ">
+            <button class="btn btn-primary" type="button">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="input-group mt-3">
+    <select class="custom-select" id="selectRegistros">
+      <option value="10">10 registros</option>
+      <option value="20">20 registros</option>
+      <option value="50">50 registros</option>
+      <option value="100">100 registros</option>
+    </select>
   </div>
 </div>
-
-
 
 <app-footer> </app-footer>
 
