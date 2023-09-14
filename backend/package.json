@@ -9,7 +9,7 @@
   },
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "StartServer.js",
   "scripts": {
     "dev": "nodemon src/StartServer.js"
   },

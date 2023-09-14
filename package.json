@@ -1,0 +1,9 @@
+{
+	"dependencies": {
+		"cors": "^2.8.5"
+	},
+	"devDependencies": {
+		"@types/cors": "^2.8.14",
+		"@types/express": "^4.17.17"
+	}
+}
