@@ -14,6 +14,7 @@ import { BlogComponent } from './Components/blog/blog.component';
 import { UserComponent } from './Components/user/user.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { AuthGuard } from './auth.guard';
+import { RutinasComponent } from './Components/rutinas/rutinas.component';
   
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AuthGuard } from './auth.guard';
     UbicacionesComponent,
     BlogComponent,
     UserComponent,
-    NavbarComponent
+    NavbarComponent,
+    RutinasComponent
   ],
   imports: [
     BrowserModule,
