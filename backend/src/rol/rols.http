@@ -9,8 +9,8 @@ POST http://localhost:3000/api/rols
 Content-Type: application/json
 
 {
-    "name": "Cliente",
-    "description": "Cliente regular"
+    "name": "Client",
+    "description": "Regular client"
 }
 
 ### modificar un character (PUT - recurso completo e idempotente)
@@ -18,8 +18,8 @@ PUT http://localhost:3000/api/rols/a02b91bc-3769-4221-beb1-d7a3aeba7dad
 Content-Type: application/json
 
 {
-    "name": "Empleado",
-    "description": "Empleado irregular"
+    "name": "Employee",
+    "description": "Irregular employee"
 }
 
 ### modificar un character (PATCH - recurso parcial)
@@ -27,7 +27,7 @@ PATCH http://localhost:3000/api/rols/a02b91bc-3769-4221-beb1-d7a3aeba7dad
 Content-Type: application/json
 
 {
-    "name": "Cliente exclusivo",
+    "name": "Exclusive client",
 }
 
 ### borrar un character 

@@ -3,7 +3,7 @@ import { Rol } from "./rol.entity.js";
 
 const rols = [
     new Rol (
-        'Cliente',
+        'Client',
         'Person that uses the service',
         'a02b91bc-3769-4221-beb1-d7a3aeba7dad'
     ),

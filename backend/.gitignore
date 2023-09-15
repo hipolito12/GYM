@@ -1,4 +1,29 @@
-node_modules
-# Keep environment variables out of version control
+#
+coverage
+
+# Keep environment variables out of version control, 
 .env
-node_modules
+
+#dependency directory
+**/node_modules 
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# ignore built ts files
+dist/**/*
+
+# vscode
+#.vscode/*
+!.vscode/settings.json
+!tasks
+launch
+extensions
+*.code-snippets
+
+# local history for vscode
+.history/
+
+# built vscode extensions
+*.vsix
