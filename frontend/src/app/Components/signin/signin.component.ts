@@ -45,6 +45,7 @@ export class SigninComponent implements OnInit {
   VerificaContrasena()
   {
     const regex = new RegExp( /^(?=.*[A-Z])(?=.*[@#$!%^&*()_+{}\[\]:;<>,.?~\\-]).{8,}$/);
+    
     if (!regex.test(this.NewUser.Contrase_a) )
     {
       let toast= this.toast.nativeElement;

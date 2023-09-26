@@ -1,6 +1,6 @@
 const express =require('express')  
 const cors=require('cors')
-const logIn = require('./routes/logIn') 
+//const logIn = require('./routes/auth') 
 
 const app = express()
 
@@ -11,7 +11,7 @@ app.use(express.text())
 
 
 /*rutas*/ 
-app.use('/api', require('./routes/logIn'));
+app.use('/api', require('./routes/auth.js'));
 
 /*servidor*/ 
 app.listen(3000)
