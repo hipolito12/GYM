@@ -16,7 +16,7 @@ const loginModel = async (user) => {
 const SignupModel = async (body) => {
   const {
     dni,
-    Contrase_a,
+    contrase_a,
     nombre,
     apellido,
     telefono,
@@ -28,7 +28,7 @@ const SignupModel = async (body) => {
   let NuevoUsario = await prisma.persona.create({
     data: {
       dni: dni,
-      Contrase_a: Contrase_a,
+      contrase_a: Contrase_a,
       NombreCompleto: `${nombre}  ${apellido}`,
       telefono: telefono,
       email: email,

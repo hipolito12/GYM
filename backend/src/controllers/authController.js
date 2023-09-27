@@ -19,10 +19,10 @@ const LogInUser = async (req, res) => {
     const Element = await loginModel(user.dni);
 
     let result = JSON.parse(parser(Element));
-
+   
     //si no existe el usuario y si coinciden las contraseñas
-    if (result == null || result.Contrase_a != user.contrasena) {
-      return res.status(401).send("Unauhtorized Request");
+    if (result == null || result.contrase_a != user.contrasena) {
+      return res.status(401).send("Unauhtorized Requesttt");
     }
 
     const token = await jwt.sign({ _id: result.dni }, "keyregistro");
@@ -39,7 +39,7 @@ const LogInUser = async (req, res) => {
 const Signup = async (req, res) => {
   const {
     dni,
-    Contrase_a,
+    contrase_a,
     nombre,
     apellido,
     telefono,
@@ -53,7 +53,7 @@ const Signup = async (req, res) => {
     //verifico nulo y vacio
     if (
       dni === ''| null        ||
-      Contrase_a ===''| null  ||
+      contrase_a ===''| null  ||
       telefono === ''| null   ||
       email === ''| null      ||
       direccion ===''| null   ||
