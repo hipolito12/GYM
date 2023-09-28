@@ -2,7 +2,7 @@ import  express  from 'express'
 import { Request, Response, NextFunction } from "express"
 import { PrismaClient } from '@prisma/client'
 const { parser_login } = require("../Functions.js");
-const { Rols_login , States_login } = require("../Roles.js");
+const { Rols_login , States_login } = require("../Rols.js");
 const jwt = require("jsonwebtoken");
 
 const prisma = new PrismaClient();

@@ -9,6 +9,5 @@ router.post('/ActualizaDatos',ActualizarDatos);
  
 router.post('/ListarRutinas',ListarRutinas); 
 
-router.Post('/DetalleRutina',ListarRutina);
 
 module.exports = router;

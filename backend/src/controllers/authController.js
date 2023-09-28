@@ -1,6 +1,6 @@
 
 const { parser } = require("../Functions.js");
-const { Roles, Estados } = require("../Roles.js");
+const { Roles, Estados } = require("../Rols.js");
 const { loginModel , SignupModel} = require("../model/authModel.js");
 const jwt = require("jsonwebtoken");
 

@@ -1,5 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
-const { Roles, Estados } = require("../Roles.js");
+const { Roles, Estados } = require("../Rols.js");
 const prisma = new PrismaClient();
 
 const loginModel = async (user) => {

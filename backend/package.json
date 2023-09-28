@@ -1,18 +1,17 @@
 {
   "dependencies": {
-    "@prisma/client": "^5.0.0",
+    "@prisma/client": "^5.3.1",
     "cores": "^0.8.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.1",
+    "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0"
   },
   "name": "backend",
   "version": "1.0.0",
-  "type": "module",
   "main": "StartServer.js",
   "scripts": {
-    "dev": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/StartServer.js\""
+    "dev": "nodemon src/StartServer.js"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +21,7 @@
     "@types/cors": "^2.8.14",
     "@types/express": "^4.17.17",
     "nodemon": "^3.0.1",
-    "prisma": "^5.0.0",
+    "prisma": "^5.3.1",
     "tsc-watch": "^6.0.4"
   }
 }

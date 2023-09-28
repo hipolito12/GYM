@@ -1,4 +1,4 @@
-function parser(elements: any) {
+function parser(elements) {
   const json = JSON.stringify(elements, (key, value) => {
     return typeof value === "bigint" ? value.toString() : value;
     
