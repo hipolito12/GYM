@@ -84,4 +84,4 @@ const Signup = async (req, res) => {
 
 
 
-module.exports = { LogInUser, Signup, VerificoToken };
+module.exports = { LogInUser, Signup};

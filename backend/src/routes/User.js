@@ -9,7 +9,7 @@ router.post('/ActualizaDatos',VerificoToken,ActualizarDatos);
  
 router.post('/ListarRutinas',VerificoToken,ListarRutinas); 
 
-router.Post('/DetalleRutina',VerificoToken,ListarRutina);
+router.post('/DetalleRutina',VerificoToken,ListarRutina);
 
 
 
