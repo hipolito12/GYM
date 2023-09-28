@@ -1,5 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
-const { Roles, Estados } = require("../Rols.js");
+const { Rols, States } = require("../Rols.js");
 const prisma = new PrismaClient();
 
 const loginModel = async (user) => {
@@ -7,37 +7,53 @@ const loginModel = async (user) => {
     let element = prisma.persona.findFirstOrThrow({
       where: { dni: user.dni },
     });
+    
     return element;
   } catch (err) {
     console.log(` Error en capa de datos: ${err.message}`);
   }
 };
 
+
+
+
+
+
+
+
 const SignupModel = async (body) => {
   const {
     dni,
-    contrase_a,
-    nombre,
-    apellido,
+    password =body.Contrase_a,
+    nombre= `${body.nombre} ${body.apellido}`,
     telefono,
     email,
     sexo,
     direccion,
   } = body;
-
-  let NuevoUsario = await prisma.persona.create({
-    data: {
-      dni: dni,
-      contrase_a: Contrase_a,
-      NombreCompleto: `${nombre}  ${apellido}`,
-      telefono: telefono,
-      email: email,
-      sexo: sexo,
-      IdRolfk: Roles.usuario,
-      Direccion: direccion,
-      estado: Estados.Permitido,
-    },
-  });
+  console.log(body);
+  try {
+    let element = await prisma.persona.create({
+      data: {
+        dni: Number.parseInt( dni),
+        password: password,
+        NombreCompleto: nombre,
+        telefono: telefono,
+        email: email,
+        sexo: sexo,
+        direccion: direccion,
+        IdRolfk: Rols.usuario,
+        estado:States.Permitido,
+      },
+    });
+    console.log("dwewew"+element);
+    return element;
+  } catch (err) {
+    console.log(` Error en capa de datos: ${err.message}`);
+  
 };
+}
 
-module.exports = { loginModel, SignupModel };
+
+module.exports = { loginModel, SignupModel }
+

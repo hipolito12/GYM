@@ -13,6 +13,14 @@ import { UbicacionesComponent } from './Components/ubicaciones/ubicaciones.compo
 import { BlogComponent } from './Components/blog/blog.component';
 import { UserComponent } from './Components/user/user.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule } from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import { PagosComponent } from './Components/pagos/pagos.component';
+import { RutinasComponent } from './Components/rutinas/rutinas.component';
 import { AuthGuard } from './auth.guard';
   
 @NgModule({
@@ -26,7 +34,9 @@ import { AuthGuard } from './auth.guard';
     UbicacionesComponent,
     BlogComponent,
     UserComponent,
-    NavbarComponent
+    NavbarComponent,
+    PagosComponent,
+    RutinasComponent
   ],
   imports: [
     BrowserModule,
@@ -39,8 +49,6 @@ import { AuthGuard } from './auth.guard';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
-    
-    
   ],
 
   providers: [AuthGuard],

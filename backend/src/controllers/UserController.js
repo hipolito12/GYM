@@ -21,7 +21,7 @@ const ListarRutinas = async (req, res) =>
     
 }
 
-const ListarRutina = async (req, res) => 
+const ListarDetalleRutina = async (req, res) => 
 {
     
 }
@@ -48,4 +48,4 @@ async function VerificoToken(res, req, next) {
       return res.status(401).send( `Error verificar Token ${e.message}`);
     }
   }
-module.exports = { ProximoPago, ActualizarDatos, ListarRutinas, ListarRutina ,VerificoToken}
+module.exports = { ProximoPago, ActualizarDatos, ListarRutinas, ListarDetalleRutina ,VerificoToken}

@@ -1,7 +1,6 @@
 
 const { parser } = require("../Functions.js");
-const { Roles, Estados } = require("../Rols.js");
-const { loginModel , SignupModel} = require("../model/authModel.js");
+const { loginModel , SignupModel} = require('../model/authModel.js')
 const jwt = require("jsonwebtoken");
 
 const LogInUser = async (req, res) => {
@@ -19,9 +18,9 @@ const LogInUser = async (req, res) => {
     const Element = await loginModel(user.dni);
 
     let result = JSON.parse(parser(Element));
-   
+  
     //si no existe el usuario y si coinciden las contraseñas
-    if (result == null || result.contrase_a != user.contrasena) {
+    if (result == null || result.password != user.contrasena) {
       return res.status(401).send("Unauhtorized Requesttt");
     }
 
@@ -42,7 +41,7 @@ const LogInUser = async (req, res) => {
 const Signup = async (req, res) => {
   const {
     dni,
-    contrase_a,
+    password,
     nombre,
     apellido,
     telefono,
@@ -56,7 +55,7 @@ const Signup = async (req, res) => {
     //verifico nulo y vacio
     if (
       dni === ''| null        ||
-      contrase_a ===''| null  ||
+      password ===''| null  ||
       telefono === ''| null   ||
       email === ''| null      ||
       direccion ===''| null   ||

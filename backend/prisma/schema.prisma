@@ -43,7 +43,7 @@ model persona {
   IdRolfk                Int
   RutinasFK              Int?
   email                  String                   @db.VarChar(255)
-  contrase_a             String                   @map("contraseña") @db.VarChar(32)
+  password               String                   @db.VarChar(32)
   NombreCompleto         String                   @db.VarChar(100)
   sexo                   String                   @db.VarChar(10)
   telefono               String                   @db.VarChar(45)
