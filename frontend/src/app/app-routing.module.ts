@@ -9,7 +9,6 @@ import { UbicacionesComponent } from './Components/ubicaciones/ubicaciones.compo
 import { BlogComponent } from './Components/blog/blog.component';
 import { UserComponent } from './Components/user/user.component';
 import { AuthGuard } from './auth.guard';
-import { RutinasComponent } from './Components/rutinas/rutinas.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -17,6 +16,7 @@ const routes: Routes = [
   {path: 'nosotros', component: NosotrosComponent},
   {path: 'ubicaciones', component: UbicacionesComponent},
   {path: 'blog' , component: BlogComponent},
+  {path: 'pagos' , component: PagosComponent},
   {path: 'user', component: UserComponent, canActivate:[AuthGuard]},
   {path: 'rutinas' , component: RutinasComponent},
 ];

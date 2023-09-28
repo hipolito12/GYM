@@ -41,7 +41,10 @@ export class LoginComponent implements OnInit {
   Ingresar() {
     this.loginService.Ingresar(this.user).subscribe(
       (res) => {
+        console.log(res.token);
         localStorage.setItem('token', res.token);
+        localStorage.setItem('nombre', res.nombre);
+        console.log(res.nombre);
         this.Redireccionar(res.rol);
       },
       (err) => {console.log(JSON.stringify(err)) ;
