@@ -14,7 +14,17 @@ import { BlogComponent } from './Components/blog/blog.component';
 import { UserComponent } from './Components/user/user.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { AuthGuard } from './auth.guard';
-  
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { PagosComponent } from './Components/pagos/pagos.component';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,13 +36,22 @@ import { AuthGuard } from './auth.guard';
     UbicacionesComponent,
     BlogComponent,
     UserComponent,
-    NavbarComponent
+    NavbarComponent,
+    PagosComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatListModule ,
+    MatIconModule,
+    MatButtonModule,
+    MatToolbarModule,
+    
+    
   ],
 
   providers: [AuthGuard],

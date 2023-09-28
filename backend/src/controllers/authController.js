@@ -1,4 +1,4 @@
-const express = require("express");
+
 const { parser } = require("../Functions.js");
 const { Roles, Estados } = require("../Roles.js");
 const { loginModel , SignupModel} = require("../model/authModel.js");
@@ -25,16 +25,19 @@ const LogInUser = async (req, res) => {
       return res.status(401).send("Unauhtorized Requesttt");
     }
 
-    const token = await jwt.sign({ _id: result.dni }, "keyregistro");
+    const token = await jwt.sign({ _id: result.dni }, "keyUsuario");
 
     return res.status(200).json({
       token: token,
       rol: result.IdRolfk,
+      nombre: result.NombreCompleto
     });
   } catch (e) {
     console.log(` Error en login controller: ${e.message}`);
   }
 };
+
+
 
 const Signup = async (req, res) => {
   const {
@@ -66,7 +69,7 @@ const Signup = async (req, res) => {
     const NuevoUsario = SignupModel(req.body);
   
     if (dni != null && dni != undefined) {
-      const token = await jwt.sign({ _id: dni }, "keyregistro");
+      const token = await jwt.sign({ _id: dni }, "keyUsuario");
       return res.status(200).json({ token: token, rol: Roles.usuario });
     }
     else {console.log("no se pudo registrar")}

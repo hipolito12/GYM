@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="sideUserNav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <p class="mx-auto fs-3 mt-2">Bienvenido {{this.nombre}}</p>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sideUserNav mode="push" style="width: 20%">
+    <mat-nav-list class="text-center fs-3">
+      <a mat-list-item routerLink="/pagos">Pagos</a>
+      <a mat-list-item routerLink="">Rutinas</a>
+      <a mat-list-item routerLink="/user">Perfil</a>
+      <a mat-list-item class="p-4" routerLink="/user">Inscripcion</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh !important">
+      <div>
+
+        <h1>El precio es : </h1>
+        <h2>proximo pago : </h2>
+
+      </div>
+      
+  
+</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<router-outlet></router-outlet>
