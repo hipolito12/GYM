@@ -9,6 +9,9 @@ import { UbicacionesComponent } from './Components/ubicaciones/ubicaciones.compo
 import { BlogComponent } from './Components/blog/blog.component';
 import { UserComponent } from './Components/user/user.component';
 import { AuthGuard } from './auth.guard';
+import { PagosComponent } from './Components/pagos/pagos.component';
+import { RutinasComponent } from './Components/rutinas/rutinas.component';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },

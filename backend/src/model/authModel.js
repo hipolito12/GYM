@@ -1,5 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
-const { Roles, Estados } = require("../Rols.js");
+const { Rols, States } = require("../Rols.js");
 const prisma = new PrismaClient();
 
 const loginModel = async (user) => {
@@ -28,14 +28,14 @@ const SignupModel = async (body) => {
   let NuevoUsario = await prisma.persona.create({
     data: {
       dni: dni,
-      contrase_a: Contrase_a,
+      contrase_a: contrase_a, 
       NombreCompleto: `${nombre}  ${apellido}`,
       telefono: telefono,
       email: email,
       sexo: sexo,
-      IdRolfk: Roles.usuario,
+      IdRolfk: Rols.usuario,
       Direccion: direccion,
-      estado: Estados.Permitido,
+      estado: States.Permitido,
     },
   });
 };
