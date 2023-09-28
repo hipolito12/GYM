@@ -1,21 +1,40 @@
 <!--en construccion -->
 <div class="container border border-secondary rounded-lg mt-4 p-0 h-100 my-4">
-  <div class="container-fluid bg-primary text-white py-3">
+  <div class="container-fluid bg-dark text-white py-3">
     <h1 class="text-center">Rutinas GYM GENERICO</h1>
     <div class="row">
       <div class="col-6">
-        <button class="btn btn-secondary">+ Nueva</button>
+        <button class="btn btn-secondary" (click)="mostrarFormulario()">+ Nueva</button>
       </div>
       <div class="col-6 text-right">
         <!-- Campo de búsqueda y botón OK -->
         <div class="input-group">
           <input type="text" class="form-control  " placeholder="Buscar...">
           <div class="input-group-append ">
-            <button class="btn btn-primary" type="button">OK</button>
+            <button class="btn btn-dark" type="button">OK</button>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div *ngIf="mostrarForm" id="formularioNuevo">
+    <form>
+      <!-- Selector de tipo de rutina -->
+      <div class="form-group">
+        <label for="tipoRutina">Selecciona el tipo de rutina:</label>
+        <div class="form-check">
+          <input type="radio" class="form-check-input" id="rutinaPersonalizada" name="tipoRutina" value="personalizada">
+          <label class="form-check-label" for="rutinaPersonalizada">Rutina Personalizada</label>
+        </div>
+        <div class="form-check">
+          <input type="radio" class="form-check-input" id="rutinaGenerica" name="tipoRutina" value="generica">
+          <label class="form-check-label" for="rutinaGenerica">Rutina Genérica</label>
+        </div>
+      </div>
+
+      <!-- Otros campos del formulario -->
+      <!-- ... -->
+    </form>
   </div>
 
     <div class="input-group mt-3">
