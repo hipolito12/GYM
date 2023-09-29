@@ -31,7 +31,6 @@ const SignupModel = async (body) => {
     sexo,
     direccion,
   } = body;
-  console.log("body"+body);
   try {
     let element = await prisma.persona.create({
       data: {
@@ -46,7 +45,6 @@ const SignupModel = async (body) => {
         estado:States.Permitido,
       },
     });
-    console.log("dwewew"+element);
     return element;
   } catch (err) {
     console.log(` Error en capa de datos: ${err.message}`);
