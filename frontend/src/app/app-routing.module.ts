@@ -11,6 +11,9 @@ import { UserComponent } from './Components/user/user.component';
 import { RutinasComponent } from './Components/rutinas/rutinas.component';
 import { PagosComponent } from './Components/pagos/pagos.component';
 import { AuthGuard } from './auth.guard';
+import { PagosComponent } from './Components/pagos/pagos.component';
+import { RutinasComponent } from './Components/rutinas/rutinas.component';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },

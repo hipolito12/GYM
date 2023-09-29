@@ -22,7 +22,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import { PagosComponent } from './Components/pagos/pagos.component';
 import { RutinasComponent } from './Components/rutinas/rutinas.component';
 import { AuthGuard } from './auth.guard';
-import{TokenInterceptorService} from './Services/token-interceptor.service'
+  
 @NgModule({
   declarations: [
     AppComponent,

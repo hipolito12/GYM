@@ -31,26 +31,20 @@ const SignupModel = async (body) => {
     sexo,
     direccion,
   } = body;
-  console.log(body);
-  try {
-    let element = await prisma.persona.create({
-      data: {
-        dni: Number.parseInt( dni),
-        password: password,
-        NombreCompleto: nombre,
-        telefono: telefono,
-        email: email,
-        sexo: sexo,
-        direccion: direccion,
-        IdRolfk: Rols.usuario,
-        estado:States.Permitido,
-      },
-    });
-    
-    return element;
-  } catch (err) {
-    console.log(` Error en capa de datos: ${err.message}`);
-  
+
+  let NuevoUsario = await prisma.persona.create({
+    data: {
+      dni: dni,
+      contrase_a: Contrase_a,
+      NombreCompleto: `${nombre}  ${apellido}`,
+      telefono: telefono,
+      email: email,
+      sexo: sexo,
+      IdRolfk: Roles.usuario,
+      Direccion: direccion,
+      estado: Estados.Permitido,
+    },
+  });
 };
 }
 
