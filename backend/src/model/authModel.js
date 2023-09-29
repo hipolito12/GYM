@@ -46,7 +46,7 @@ const SignupModel = async (body) => {
         estado:States.Permitido,
       },
     });
-    console.log("dwewew"+element);
+    
     return element;
   } catch (err) {
     console.log(` Error en capa de datos: ${err.message}`);

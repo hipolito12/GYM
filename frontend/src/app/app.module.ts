@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -22,7 +22,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import { PagosComponent } from './Components/pagos/pagos.component';
 import { RutinasComponent } from './Components/rutinas/rutinas.component';
 import { AuthGuard } from './auth.guard';
-  
+import{TokenInterceptorService} from './Services/token-interceptor.service'
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +51,10 @@ import { AuthGuard } from './auth.guard';
     MatToolbarModule,
   ],
 
-  providers: [AuthGuard],
+  providers: [AuthGuard,
+  {provide: HTTP_INTERCEPTORS,
+  useClass:TokenInterceptorService,
+multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
