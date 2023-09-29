@@ -46,7 +46,7 @@ const SignupModel = async (body) => {
     },
   });
 };
-}
+
 
 
 module.exports = { loginModel, SignupModel }
