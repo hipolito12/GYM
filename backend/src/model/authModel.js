@@ -31,7 +31,7 @@ const SignupModel = async (body) => {
     sexo,
     direccion,
   } = body;
-  console.log(body);
+  console.log("body"+body);
   try {
     let element = await prisma.persona.create({
       data: {

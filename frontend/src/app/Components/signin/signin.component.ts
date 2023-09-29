@@ -33,10 +33,10 @@ export class SigninComponent implements OnInit {
         this.rout.navigate(['admin']);
         break;
       case 1:
-        this.rout.navigate(['profesor']);
+        this.rout.navigate(['user']);
         break;
       case 2:
-        this.rout.navigate(['alumno']);
+        this.rout.navigate(['profesor']);
         break;
      
     }
