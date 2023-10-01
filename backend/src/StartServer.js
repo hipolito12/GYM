@@ -13,6 +13,7 @@ app.use(express.text())
 /*rutas*/ 
 app.use('/api', require('./routes/auth.js'));
 app.use('/api', require('./routes/User.js'));
+app.use('/api',require('./routes/rutinas.js'));
 
 
 /*servidor*/ 

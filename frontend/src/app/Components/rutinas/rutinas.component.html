@@ -4,12 +4,11 @@
     <h1 class="text-center">Rutinas GYM GENERICO</h1>
     <div class="row">
       <div class="col-6">
-        <button class="btn btn-secondary" (click)="mostrarFormulario()">+ Nueva</button>
+        <button class="btn btn-secondary">+ Nueva</button>
       </div>
       <div class="col-6 text-right">
-        <!-- Campo de búsqueda y botón OK -->
         <div class="input-group">
-          <input type="text" class="form-control  " placeholder="Buscar...">
+          <input type="text" class="form-control" placeholder="Buscar...">
           <div class="input-group-append ">
             <button class="btn btn-dark" type="button">OK</button>
           </div>
@@ -17,25 +16,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="mostrarForm" id="formularioNuevo">
-    <form>
-      <!-- Selector de tipo de rutina -->
-      <div class="form-group">
-        <label for="tipoRutina">Selecciona el tipo de rutina:</label>
-        <div class="form-check">
-          <input type="radio" class="form-check-input" id="rutinaPersonalizada" name="tipoRutina" value="personalizada">
-          <label class="form-check-label" for="rutinaPersonalizada">Rutina Personalizada</label>
-        </div>
-        <div class="form-check">
-          <input type="radio" class="form-check-input" id="rutinaGenerica" name="tipoRutina" value="generica">
-          <label class="form-check-label" for="rutinaGenerica">Rutina Genérica</label>
-        </div>
-      </div>
 
-      <!-- Otros campos del formulario -->
-      <!-- ... -->
-    </form>
-  </div>
 
     <div class="input-group mt-3">
     <select class="custom-select" id="selectRegistros">
@@ -44,7 +25,48 @@
       <option value="50">50 registros</option>
       <option value="100">100 registros</option>
     </select>
-  </div>
+    </div>
+
+  <div class="container mt-4">
+    <!-- <div class="row">
+      <div class="col">
+        <div *ngFor="let rutina of rutinas" class="form-group">
+          <label>{{ rutina.label }}</label>
+          <input type="{{ rutina.type }}" class="form-control" [(ngModel)]="rutina.id">
+        </div>
+      </div>
+    </div> -->
+    <div class="container mt-4">
+    <div class="row">
+      <div class="col">
+        <!-- Encabezados de las columnas -->
+      <div class="form-group row">
+        <label class="col-md-3">{{ rutinas[0].label }}</label>
+        <label class="col-md-3">{{ rutinas[1].label }}</label>
+        <label class="col-md-3">{{ rutinas[2].label }}</label>
+        <label class="col-md-3">{{ rutinas[3].label }}</label>
+      </div>
+
+        <!-- Datos de ejemplo -->
+      <div *ngFor="let rutina of rutinas" class="form-group row">
+        <div class="col-md-3">
+          <input type="text" class="form-control" [(ngModel)]="rutina.id">
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" [(ngModel)]="rutina.actividad">
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" [(ngModel)]="rutina.descripcion">
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" [(ngModel)]="rutina.ejercicios">
+        </div>
+      </div>
+      </div>
+    </div>
+    </div>
+  
+
 </div>
 
 <app-footer> </app-footer>
