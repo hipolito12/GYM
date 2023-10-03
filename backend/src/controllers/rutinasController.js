@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 const getAllRutinas = async (req, res) => {
   try {
     const rutinas = await searchAllModel();
-    res.json(rutinas);
+    res.send(rutinas); //.send o .json?
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error al obtener rutinas disponibles' });

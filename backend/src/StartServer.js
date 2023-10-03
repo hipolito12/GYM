@@ -17,4 +17,4 @@ app.use('/api',require('./routes/rutinas.js'));
 
 
 /*servidor*/ 
-app.listen(3000)
+app.listen(4200)

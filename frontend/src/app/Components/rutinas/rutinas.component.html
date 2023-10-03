@@ -1,10 +1,11 @@
 <!--en construccion -->
-<div class="container border border-secondary rounded-lg mt-4 p-0 h-100 my-4">
+<div class="container border border-secondary rounded-lg mb-4 mt-4 p-0 h-100 my-4">
   <div class="container-fluid bg-dark text-white py-3">
     <h1 class="text-center">Rutinas GYM GENERICO</h1>
     <div class="row">
       <div class="col-6">
-        <button class="btn btn-secondary">+ Nueva</button>
+        <button class="btn btn-secondary" routerLink="/rutinasAdd">+ Nueva</button>
+        
       </div>
       <div class="col-6 text-right">
         <div class="input-group">
@@ -28,14 +29,6 @@
     </div>
 
   <div class="container mt-4">
-    <!-- <div class="row">
-      <div class="col">
-        <div *ngFor="let rutina of rutinas" class="form-group">
-          <label>{{ rutina.label }}</label>
-          <input type="{{ rutina.type }}" class="form-control" [(ngModel)]="rutina.id">
-        </div>
-      </div>
-    </div> -->
     <div class="container mt-4">
     <div class="row">
       <div class="col">
@@ -48,18 +41,18 @@
       </div>
 
         <!-- Datos de ejemplo -->
-      <div *ngFor="let rutina of rutinas" class="form-group row">
+      <div *ngFor ="let rutina of rutinas" class="form-group row">
         <div class="col-md-3">
-          <input type="text" class="form-control" [(ngModel)]="rutina.id">
+          {{ rutina.idRutinaGenerica }}
         </div>
         <div class="col-md-3">
-          <input type="text" class="form-control" [(ngModel)]="rutina.actividad">
+          {{rutina.ActividadFk}}
         </div>
         <div class="col-md-3">
-          <input type="text" class="form-control" [(ngModel)]="rutina.descripcion">
+          {{rutina.DescripcionRutina}}
         </div>
         <div class="col-md-3">
-          <input type="text" class="form-control" [(ngModel)]="rutina.ejercicios">
+          {{rutina.fechaActualizacion}}
         </div>
       </div>
       </div>

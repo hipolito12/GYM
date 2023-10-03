@@ -22,6 +22,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { PagosComponent } from './Components/pagos/pagos.component';
 import { RutinasComponent } from './Components/rutinas/rutinas.component';
+import { RutinasAddComponent } from './Components/rutinas-add/rutinas-add.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { RutinasComponent } from './Components/rutinas/rutinas.component';
     UserComponent,
     NavbarComponent,
     PagosComponent,
-    RutinasComponent
+    RutinasComponent,
+    RutinasAddComponent
   ],
   imports: [
     BrowserModule,

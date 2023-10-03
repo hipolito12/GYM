@@ -16,19 +16,16 @@ export class RutinasComponent implements OnInit{
     { label: 'Id Rutina', type: 'text', id: '' },
     { label: 'Actividad', type: 'text', id: '' },
     { label: 'Descripción', type: 'text', id: '' },
-    { label: 'Ejercicios', type: 'text', id: '' },
+    { label: 'Fecha Actualizacion', type: 'text', id: '' },
     // Agrega más campos según tus necesidades
   ];
   constructor(private rutinasService: RutinasService){
 
   }
   ngOnInit(){
-    this.rutinasService.getAllRutinas().subscribe(
-      res=> {
-        this.rutinas = res;
-      },
-      err=> console.error(err)
-    );
+    this.rutinasService.getAllRutinas().subscribe((data: any) => {
+      this.rutinas = data;
+    });
   }
  
 }

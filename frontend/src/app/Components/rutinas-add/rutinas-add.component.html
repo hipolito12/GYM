@@ -1,0 +1,43 @@
+<!--en construccion -->
+<div class="container border border-secondary rounded-lg mb-4 mt-4 p-0 h-100 my-4">
+  <div class="container-fluid bg-dark text-white py-3">
+    <h1 class="text-center">Rutinas GYM GENERICO</h1>
+  </div>
+  
+  <!-- Formulario -->
+<div class="container rounded-lg mt-4 py-3 px-4 my-4 ">
+  <h1 class="text-center">Nueva Rutina</h1>
+
+  <form>
+    <!-- Número de Actividad -->
+    <div class="form-group">
+      <label for="nroActividad">Actividad:</label>
+      <input type="text" class="form-control" id="nroActividad" name="nroActividad" placeholder="Ingrese el número de actividad" required>
+    </div>
+
+    <!-- Descripción -->
+    <div class="form-group">
+      <label for="descripcion">Descripción:</label>
+      <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Ingrese la descripción" required></textarea>
+    </div>
+
+    <!-- URL de Imagen -->
+    <div class="form-group">
+      <label for="imagenURL">URL de Imagen:</label>
+      <input type="url" class="form-control" id="imagenURL" name="imagenURL" placeholder="Ingrese la URL de la imagen" required>
+    </div>
+
+      <!-- Botones -->
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-primary mx-2">Guardar</button>
+      <button type="button" class="btn btn-secondary mx-2">Cancelar</button>
+    </div>
+
+  </form>
+</div>
+
+
+</div>
+
+<app-footer> </app-footer>
+
