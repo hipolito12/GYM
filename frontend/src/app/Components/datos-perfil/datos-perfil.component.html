@@ -1,0 +1,87 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="sideUserNav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sideUserNav mode="push" style="width: 20%">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/pagos">Pagos</a>
+      <a mat-list-item routerLink="/rutinas">Rutinas</a>
+      <a mat-list-item routerLink="/datos-perfil">Perfil</a>
+      <a mat-list-item routerLink="/user">Inscripcion</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh !important" class="mx-auto mt-5">
+      <main>
+        <div class="container">
+            <h1 class="mx-auto">Actualizar Datos del Perfil</h1>
+        
+            <form  method="post" (submit)="ActualizarDatos()">
+              
+        
+              <div class="row mb-3">
+                <label for="nombrecompleto" class="col-sm-2 col-form-label">Nombre Completo</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="fullname" name="nombrecompleto" [(ngModel)]="usuario.nombrecompleto">
+                </div>
+              </div>
+        
+              <div class="row mb-3">
+                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="email" [(ngModel)]="usuario.email" name="email" placeholder="">
+                </div>
+              </div>
+
+
+              
+              <div class="row mb-3">
+                <label for="telefono" class="col-sm-2 col-form-label">Telefono</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="phone" name="telefono" [(ngModel)]="usuario.telefono">
+                </div>
+            </div>
+        
+              <div class="row mb-3">
+                <label for="contraseña" class="col-sm-2 col-form-label">Contraseña Nueva</label>
+                <div class="col-sm-10">
+                  <input [(ngModel)]='usuario.contrasenanueva' type="password" class="form-control" id="password" name="contrasenanueva"  >
+                </div>
+              </div>
+        
+              <div class="row mb-3">
+                <label for="direccion" class="col-sm-2 col-form-label">Direccion</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" [(ngModel)]="usuario.direccion" id="address" name="direccion" rows="3"></textarea>
+                </div>
+              </div>
+              
+
+                
+                <div class="row mb-3">
+                    <label for="sexo" class="col-sm-2 col-form-label">Sexo</label>
+                    <div class="col-sm-10">
+                      <select class="form-select" id="gender" name="gender" [(ngModel)]="usuario.sexo" name="sexo">
+                        <option value="">Seleccionar...</option>
+                        <option value="masculino">Hombre</option>
+                        <option value="femenino">Mujer</option>
+                      </select>
+                    </div>
+                  </div>
+
+        
+              <button  type="submit"  id="BotonEnviar">Actualizar</button>
+            </form>
+        
+          </div>
+        
+      </main>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<router-outlet></router-outlet>

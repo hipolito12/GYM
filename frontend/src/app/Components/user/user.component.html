@@ -1,25 +1,59 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button mat-icon-button (click)="sideUserNav.toggle();"><mat-icon>menu</mat-icon></button>
-    <p class="mx-auto fs-3 mt-2" >Gestion de usuario</p>
+    <button mat-icon-button (click)="sideUserNav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <p class="mx-auto fs-3 mt-2">Bienvenido {{ this.nombre }}</p>
   </mat-toolbar-row>
 </mat-toolbar>
 
-
 <mat-sidenav-container>
-  <mat-sidenav #sideUserNav mode="side" style="width: 20%;">
-    <mat-nav-list class="text-center " >
-      <a mat-list-item class="p-4"  routerLink="/pagos">Cuota</a>
-      <a mat-list-item class="p-4" routerLink="">Rutinas</a>
-      <a mat-list-item class="p-4" routerLink="/user">Perfil</a>
-      <a mat-list-item class="p-4" routerLink="/user">Inscripcion</a>
-
+  <mat-sidenav #sideUserNav mode="push" style="width: 20%">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/pagos">Pagos</a>
+      <a mat-list-item routerLink="/rutinas">Rutinas</a>
+      <a mat-list-item routerLink="/datos-perfil">Perfil</a>
+      <a mat-list-item routerLink="/user">Inscripcion</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
+
+    <div style="height: 88vh !important" class="mx-auto mt-5">
+      <p class="mx-auto text-center">¡selecciona uno para concer mas!</p>
+      <mat-card>
+        <mat-card-header>
+          <mat-form-field>
+            <input matInput (keyup)="Filterchange($event)"placeholder="Filtro">
+          </mat-form-field>
+        </mat-card-header>
+          <mat-card-content>
+     <table mat-table  matSort  [dataSource]="dataSource">
+          
+      <!-- Columnas -->
+      <ng-container    matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
+        <th    mat-sort-header mat-header-cell *matHeaderCellDef> {{column}} </th>
+        <td  mat-cell *matCellDef="let element"  (click)="editcustomer(element. ActividadId)"> {{element[column]}} </td>
+        
+      </ng-container>
+
     
-    <div style="height: 88vh !important" >
-    <router-outlet></router-outlet> </div>
-   
+      
+      <!-- Fila de encabezado y filas de datos -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      
+
+
+    </table>
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+
+  </mat-card-footer>
+</mat-card>
+ 
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+<router-outlet></router-outlet>

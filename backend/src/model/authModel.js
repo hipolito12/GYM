@@ -2,12 +2,12 @@ const { PrismaClient } = require("@prisma/client");
 const { Rols, States } = require("../Rols.js");
 const prisma = new PrismaClient();
 
-const loginModel = async (user) => {
+const loginModel = async (dni) => {
   try {
-    let element = prisma.persona.findFirstOrThrow({
-      where: { dni: user.dni },
+    let element = await prisma.persona.findFirst({
+      where: { dni:Number.parseInt(dni)  },
     });
-    
+    console.log(element);
     return element;
   } catch (err) {
     console.log(` Error en capa de datos: ${err.message}`);

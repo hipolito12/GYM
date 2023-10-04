@@ -1,0 +1,18 @@
+
+
+#image{
+    
+    object-fit: cover;
+    cursor: pointer;
+}
+
+
+.layout {
+   width: 1366px;
+   height: 768px;
+ 
+   display: grid;
+   grid-template-rows: repeat(auto-fit, 240px);
+   grid-template-columns: repeat(auto-fit, 240px);
+   gap: 15px 12px;
+ }

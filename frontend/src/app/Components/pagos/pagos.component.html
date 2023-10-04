@@ -1,4 +1,4 @@
-<!-- <mat-toolbar color="primary">
+ <mat-toolbar color="primary">
   <mat-toolbar-row>
     <button mat-icon-button (click)="sideUserNav.toggle()">
       <mat-icon>menu</mat-icon>
@@ -9,24 +9,24 @@
 
 <mat-sidenav-container>
   <mat-sidenav #sideUserNav mode="push" style="width: 20%">
-    <mat-nav-list class="text-center fs-3">
+    <mat-nav-list >
       <a mat-list-item routerLink="/pagos">Pagos</a>
-      <a mat-list-item routerLink="">Rutinas</a>
-      <a mat-list-item routerLink="/user">Perfil</a>
-      <a mat-list-item class="p-4" routerLink="/user">Inscripcion</a>
+      <a mat-list-item routerLink="/rutinas">Rutinas</a>
+      <a mat-list-item routerLink="/datos-perfil">Perfil</a>
+      <a mat-list-item  routerLink="/user">Inscripcion</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div style="height: 88vh !important">
-      <div>
+    <div style="height: 88vh !important" class="mx-auto mt-5" >
+      <div id="infoPago" >
 
-        <h1>El precio es : </h1>
-        <h2>proximo pago : </h2>
-
+        <h1 id="precio" class="fw-semibold">El precio es : {{this. precio}} </h1>
+        <h2  id="fecha"> <strong>proximo pago : {{this.fecha}} </strong></h2>
+           
       </div>
-      
+      <a id="medioPagos"  href="#" class="mt-5">Conoce nuestros medios de pago</a>
   
 </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
-<router-outlet></router-outlet> -->
+<router-outlet></router-outlet> 

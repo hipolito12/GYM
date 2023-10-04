@@ -11,6 +11,7 @@ import { UserComponent } from './Components/user/user.component';
 import { AuthGuard } from './auth.guard';
 import { PagosComponent } from './Components/pagos/pagos.component';
 import { RutinasComponent } from './Components/rutinas/rutinas.component';
+import { DatosPerfilComponent } from './Components/datos-perfil/datos-perfil.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'pagos' , component: PagosComponent},
   {path: 'user', component: UserComponent, canActivate:[AuthGuard]},
   {path: 'rutinas' , component: RutinasComponent},
+  {path: 'datos-perfil' , component: DatosPerfilComponent},
 ];
 
 @NgModule({

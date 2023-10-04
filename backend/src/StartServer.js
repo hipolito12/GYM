@@ -9,11 +9,10 @@ app.use(cors({origin: ['http://localhost:4200' , 'http://localhost:3000']}))
 app.use(express.json())
 app.use(express.text())
 
-
 /*rutas*/ 
 app.use('/api', require('./routes/auth.js'));
 app.use('/api', require('./routes/User.js'));
-
+app.use('/api', require('./routes/Blog.js'));
 
 /*servidor*/ 
 app.listen(3000)

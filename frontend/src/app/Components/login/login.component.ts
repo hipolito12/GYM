@@ -42,12 +42,14 @@ export class LoginComponent implements OnInit {
     this.loginService.Ingresar(this.user).subscribe(
       (res) => {
         console.log(res.token);
+        console.log(res.contrasena);
         localStorage.setItem('token', res.token);
         localStorage.setItem('nombre', res.nombre);
         console.log(res.nombre);
         this.Redireccionar(res.rol);
       },
       (err) => {console.log(JSON.stringify(err)) ;
+        
         let toast= this.toast.nativeElement
         toast.innerHTML="El usuario o la contraseña no son validos";}
     );

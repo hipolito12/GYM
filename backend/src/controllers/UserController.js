@@ -1,23 +1,65 @@
-const { ObtenerPago } = require("../model/UserModel.js");
+const {
+  ObtenerPago,
+  ActualizarDatosModel,
+  ObtenerPersona,
+  ObtenerActividades,
+  ObtenerDetalleActividades
+} = require("../model/UserModel.js");
 const jwt = require("jsonwebtoken");
+const { check, body } = require("express-validator");
 const ProximoPago = async (req, res) => {
   try {
-    console.log( JSON.stringify (ObtenerPago(req.body)) );
-    //return res.status(200).json({ pago: ObtenerPago(req.userId) });
-
+    let respuesta = await ObtenerPago(req.userId);
+    console.log(respuesta);
+    return res.status(200).json({ respuesta });
   } catch (e) {
     console.log(e.message);
   }
 };
 
-const ActualizarDatos = async (req, res) => {};
+const ActualizarDatos = async (req, res) => {
+  try {
+    let usuario = await ObtenerPersona(req.userId);
 
-const ListarRutinas = async (req, res) => {};
+    // await validarCampos(req.body.datos, usuario);
 
-const ListarDetalleRutina = async (req, res) => {};
+    ActualizarDatosModel(req.userId, req.body.datos);
 
+    return res.status(200).json({ message: "ActualizarDatos" });
+  } catch (e) {
+    return res
+      .status(401)
+      .json({ message: e.message + " error al actualizar datos" });
+  }
+};
 
+const ListarActividades = async (req, res) => {
+  try {
+    let respuesta = await ObtenerActividades();
 
+    return res.status(200).json(respuesta);
+  } catch (e) {
+    console.log(e.message);
+    return res
+      .status(401)
+      .json({ message: e.message + " error al listar rutinas" });
+  }
+};
+
+const DetalleActividad = async (req, res) =>
+ {
+    try
+    {
+      let actividad = await ObtenerDetalleActividades(req.body.idActividad);
+      
+      return res.status(200).json(actividad);
+    }
+    catch(e)
+    {
+      console.log(e.message);
+      return res.status(401).json({ message: e.message + " error al Buscar actividades" });
+    }
+ };
 
 async function VerificoToken(req, res, next) {
   try {
@@ -30,22 +72,44 @@ async function VerificoToken(req, res, next) {
     }
 
     const payload = await jwt.verify(token, "keyUsuario");
+
     if (!payload) {
       return res.status(403).send("Unauhtorized Request");
     }
     req.userId = payload._id;
-    
     next();
   } catch (e) {
-    
     console.log(e.message);
   }
 }
+/*async function validarCampos(datosActualizacion, datosExistentes) {
+  console.log("aca")
+  body('datosActualizacion.email',)
+  .isEmail()
+  .custom(async value => {
+
+    if (value!==datosExistentes.email) {
+      // Will use the below as the error message
+      throw new Error('A user already exists with this e-mail address');
+    }
+  });
+
+ /*  check("datosActualizacion.email")
+    .isEmail()
+    .normalizeEmail()
+    .bail()
+    .custom(async (value) => {
+      if (value === datosExistentes.email) {
+        throw new Error("El email ya está en uso.");
+      }
+    });
+
+} */
 
 module.exports = {
   ProximoPago,
   ActualizarDatos,
-  ListarRutinas,
-  ListarDetalleRutina,
+  ListarActividades,
+  DetalleActividad,
   VerificoToken,
 };

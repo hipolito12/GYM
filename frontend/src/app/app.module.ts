@@ -23,7 +23,15 @@ import { PagosComponent } from './Components/pagos/pagos.component';
 import { RutinasComponent } from './Components/rutinas/rutinas.component';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './Services/token-interceptor.service';
-  
+import { DatosPerfilComponent } from './Components/datos-perfil/datos-perfil.component';
+import{MatTableModule} from '@angular/material/table';
+import{MatSortModule} from '@angular/material/sort';
+import{MatPaginatorModule} from '@angular/material/paginator';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {NgxPaginationModule} from 'ngx-pagination'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +45,8 @@ import { TokenInterceptorService } from './Services/token-interceptor.service';
     UserComponent,
     NavbarComponent,
     PagosComponent,
-    RutinasComponent
+    RutinasComponent,
+    DatosPerfilComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +59,17 @@ import { TokenInterceptorService } from './Services/token-interceptor.service';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    NgxPaginationModule
+
+
+    
+
   ],
 
   providers: [AuthGuard,

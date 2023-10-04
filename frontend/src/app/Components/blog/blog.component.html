@@ -1,17 +1,50 @@
-<div class="container mt-5">
-  <h2 class="text-center mb-4">Nuestro Blog</h2>
+<div class="container-fluid  bg-black" id="fullwidth"  >
+  <h2 class="text-center mb-4 fs-1 text-white pt-5">Nuestro Blog</h2>
+   
   <div class="row justify-content-center ">
-    <div class="col-md-8 " *ngFor="let post of blogPosts">
-      <div class="card mb-4">
-        <img src="{{ post.image }}" class="card-img-top" alt="Imagen del post">
-        <div class="card-body">
-          <h5 class="card-title">
-             <a href="['#', post.id]">{{ post.title }}</a></h5>
-          <p class="card-text">{{ post.subtitle }}</p>
-          <p class="card-text"><small class="text-muted">{{ post.date }}</small></p>
+    <div class="col-md-8">
+      <div class="input-group mb-3" >
+        <select class="form-control fs-5" id="exampleFormControlSelect1" (change)="saveOption($event.target )" >
+          <option default >Seleccione una Opcion</option>
+          <option *ngFor="let tipo of this.TipoPost" value="{{tipo.TipoId}}"   >{{tipo.NombreTIpo}}</option>
+
+          
+        </select >
+        <div class="input-group-append">
+          <button class="btn btn-outline-success p-3" type="button" (click)="Filter()" >Buscar</button>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col"*ngFor="let post of this.blogData | paginate: { itemsPerPage:2 , currentPage: p }">
+      <div class="card"  >
+        <img   (click)=" GoToPost(post.idPost)" src="{{ post.imagen }}" class="card-img-top" id="image" alt="...">
+        <div class="card-body">
+          <h5 class="card-title fs-4 text-center fw-bold" >{{ post.Titulo }}</h5>
+          <p class="card-text  "><strong >Autor:{{post.persona.NombreCompleto}}</strong> <strong style="float: right"> <i>{{this.parsearFecha(post.fecha)}} </i> </strong> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <pagination-controls class="fs-5 text-center p-2"  (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente" [responsive]="true" ></pagination-controls>
 </div>
-<app-footer></app-footer>
+
+
+<!-- <div class="row justify-content-center ">
+   
+    <div class="col-md-8 "  *ngFor="let post of this.blogData">
+      <div class="card mb-4" id="post">
+        <img id="image"  (click)=" GoToPost(post.idPost)" src="{{ post.imagen }}" class="card-img-top" alt="Imagen del post">
+        <div class="card-body">
+          <h5 id="titulo" class="card-title fs-2">{{ post.Titulo }}</h5>
+          <p class="card-text"><small class="text-muted">{{this.parsearFecha(post.fecha)}}</small></p>
+        </div>
+      </div>
+
+    </div>
+
+  </div> -->
+

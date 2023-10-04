@@ -9,11 +9,13 @@ datasource db {
 
 model actividad {
   ActividadId            Int                      @id
-  IdrutinaFk             Int
+  IdrutinaFk             Int?
   NombreActividad        String                   @db.VarChar(45)
   Turno                  String                   @db.VarChar(45)
-  HsActividadSemanal     String                   @db.VarChar(45)
+  Hora_Inicio            String                   @map("Hora Inicio") @db.VarChar(45)
   activa                 Boolean                  @default(true)
+  Hora_Fin               String                   @map("Hora Fin") @db.VarChar(45)
+  Descripcion            String?                  @db.VarChar(5000)
   personaacargoactividad personaacargoactividad[]
   rutinagenerica         rutinagenerica[]
   rutinapersonalizada    rutinapersonalizada[]
@@ -39,20 +41,20 @@ model cuota {
 }
 
 model persona {
-  dni                    Float                    @id
+  dni                    Float                   @id
   IdRolfk                Int
   RutinasFK              Int?
-  email                  String                   @db.VarChar(255)
-  password               String                   @db.VarChar(32)
-  NombreCompleto         String                   @db.VarChar(100)
-  sexo                   String                   @db.VarChar(10)
-  telefono               String                   @db.VarChar(45)
-  direccion              String                   @db.VarChar(90)
-  estado                 Boolean
+  email                  String                  @db.VarChar(255)
+  password               String                  @db.VarChar(32)
+  NombreCompleto         String                  @db.VarChar(100)
+  sexo                   String                  @db.VarChar(10)
+  telefono               String                  @db.VarChar(45)
+  direccion              String                  @db.VarChar(90)
+  estado                 Boolean                 @default(true)
   asistencia             asistencia[]
   cuota                  cuota[]
-  rol                    rol                      @relation(fields: [IdRolfk], references: [idrol], map: "persona-rol")
-  personaacargoactividad personaacargoactividad[]
+  rol                    rol                     @relation(fields: [IdRolfk], references: [idrol], map: "persona-rol")
+  personaacargoactividad personaacargoactividad?
   post                   post[]
   rutinapersonalizada    rutinapersonalizada[]
   venta                  venta[]
@@ -61,24 +63,25 @@ model persona {
 }
 
 model personaacargoactividad {
-  DniPersonaAcargo Float
+  DniPersonaAcargo Float     @id
   IdActividadFk    Int
   actividad        actividad @relation(fields: [IdActividadFk], references: [ActividadId], map: "actividad-PesonaAcargo")
   persona          persona   @relation(fields: [DniPersonaAcargo], references: [dni], map: "persona-PersonAcargo")
 
-  @@id([DniPersonaAcargo, IdActividadFk])
   @@index([IdActividadFk], map: "actividad-PesonaAcargo_idx")
 }
 
 model post {
-  idPost     Int      @id @default(autoincrement())
+  idPost     Int       @id @default(autoincrement())
   DniAutor   Float
   TipoPostFk Int
-  Titulo     String   @db.VarChar(45)
-  Cuerpo     Json
-  visible    Boolean  @default(true)
-  persona    persona  @relation(fields: [DniAutor], references: [dni], map: "post-autor")
-  tipopost   tipopost @relation(fields: [TipoPostFk], references: [TipoId], map: "post-tipo")
+  Titulo     String    @db.VarChar(80)
+  Cuerpo     String    @db.Text
+  visible    Boolean   @default(true)
+  imagen     String?   @db.VarChar(1000)
+  fecha      DateTime? @db.Date
+  persona    persona   @relation(fields: [DniAutor], references: [dni], map: "post-autor")
+  tipopost   tipopost  @relation(fields: [TipoPostFk], references: [TipoId], map: "post-tipo")
 
   @@index([DniAutor], map: "post-autor_idx")
   @@index([TipoPostFk], map: "post-tipo_idx")
