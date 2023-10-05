@@ -31,6 +31,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {NgxPaginationModule} from 'ngx-pagination'
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { MisRutinasComponent } from './Components/mis-rutinas/mis-rutinas.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,8 @@ import {NgxPaginationModule} from 'ngx-pagination'
     NavbarComponent,
     PagosComponent,
     RutinasComponent,
-    DatosPerfilComponent
+    DatosPerfilComponent,
+    MisRutinasComponent
   ],
   imports: [
     BrowserModule,
@@ -65,11 +69,10 @@ import {NgxPaginationModule} from 'ngx-pagination'
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    NgxPaginationModule
-
-
+    NgxPaginationModule,
+    MatTabsModule,
+    MatExpansionModule,
     
-
   ],
 
   providers: [AuthGuard,

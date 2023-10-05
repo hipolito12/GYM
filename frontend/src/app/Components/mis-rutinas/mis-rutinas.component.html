@@ -1,0 +1,85 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sideUserNav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <p class="mx-auto fs-3 mt-2">Bienvenido {{this.nombre}}</p>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sideUserNav mode="push" style="width: 20%">
+      <mat-nav-list >
+        <a mat-list-item routerLink="/pagos">Pagos</a>
+        <a mat-list-item routerLink="/misRutinas">Mis Rutinas</a>
+        <a mat-list-item routerLink="/datos-perfil">Perfil</a>
+        <a mat-list-item  routerLink="/user">Inscripcion</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+
+        
+      <!-- Inicio tabs -->
+      <mat-tab-group>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <i class="bi bi-book-half fs-2"></i>
+            Rutinas
+          </ng-template>
+          <!-- contenido Tabs -->
+          <div class="container" style="overflow: scroll; height: 100vh; ">
+          <mat-accordion class="example-headers-align" >
+            <mat-expansion-panel class="mt-2 "  *ngFor="let r of this.RutinasGenericas">
+              <mat-expansion-panel-header style="background-color: rgb(250, 225, 82);">
+                <mat-panel-title>
+                  <h4 class="fw-bold">rutina para {{r.tiporutina.NombreTipo}} </h4>
+                </mat-panel-title>
+                <mat-panel-description  class="fw-bolder fs-5 text-center ">
+                    Obtener mas informacion 
+                    <mat-icon class="fs-4">add_circle</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              
+              <p class="justify-content-center">{{r.DescripcionRutina}}</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+
+          <!-- Fin  Tabs -->
+        </mat-tab>
+      
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <i class="bi bi-bookmark-check-fill fs-2"></i>
+            Mis Rutinas
+          </ng-template>
+           <!-- contenido Tabs -->
+           <div class="container  "  style="overflow: scroll; height: 100vh;">
+            <mat-accordion class="example-headers-align" >
+              <mat-expansion-panel class="mt-2 "  *ngFor="let r of this.RutinasPersonalizadas">
+                <mat-expansion-panel-header style="background-color: rgb(250, 225, 82);" >
+                  <mat-panel-title>
+                    <h4 class="fw-bold">rutina para {{r.tiporutina.NombreTipo}} </h4>
+                  </mat-panel-title>
+                  <mat-panel-description  class="fw-bolder fs-5 text-center ">
+                      Obtener mas informacion 
+                      <mat-icon class="fs-4">add_circle</mat-icon>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                
+                <p class="justify-content-center">{{r.DescripcionRutina}}</p>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+          <!-- Fin contenido Tabs -->
+
+
+
+        </mat-tab>
+      
+        
+      </mat-tab-group>
+    <!--  Fin Tabs -->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <router-outlet></router-outlet> 

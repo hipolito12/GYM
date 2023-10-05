@@ -15,19 +15,24 @@ model actividad {
   Hora_Inicio            String                   @map("Hora Inicio") @db.VarChar(45)
   activa                 Boolean                  @default(true)
   Hora_Fin               String                   @map("Hora Fin") @db.VarChar(45)
-  Descripcion            String?                  @db.VarChar(5000)
+  Descripcion            String                   @db.VarChar(5000)
+  Cupo                   Int
+  asistencia             asistencia[]
   personaacargoactividad personaacargoactividad[]
   rutinagenerica         rutinagenerica[]
   rutinapersonalizada    rutinapersonalizada[]
 }
 
 model asistencia {
-  NroAsistencia Int      @id @default(autoincrement())
+  NroAsistencia Int        @id @default(autoincrement())
   DniFK         Float
-  HoraIngreso   DateTime @db.Timestamp(6)
-  persona       persona  @relation(fields: [DniFK], references: [dni], onDelete: NoAction, onUpdate: NoAction, map: "asistencia-persona")
+  HoraIngreso   DateTime   @db.Timestamp(6)
+  ActividadFK   Int?
+  actividad     actividad? @relation(fields: [ActividadFK], references: [ActividadId], onDelete: NoAction, onUpdate: NoAction, map: "asistencia-actividad")
+  persona       persona    @relation(fields: [DniFK], references: [dni], onDelete: NoAction, onUpdate: NoAction, map: "asistencia-persona")
 
   @@index([DniFK], map: "asistencia-persona_idx")
+  @@index([ActividadFK], map: "asistencia-Actividad_idx")
 }
 
 model cuota {
@@ -77,9 +82,9 @@ model post {
   TipoPostFk Int
   Titulo     String    @db.VarChar(80)
   Cuerpo     String    @db.Text
-  visible    Boolean   @default(true)
   imagen     String?   @db.VarChar(1000)
   fecha      DateTime? @db.Date
+  visible    Boolean   @default(true)
   persona    persona   @relation(fields: [DniAutor], references: [dni], map: "post-autor")
   tipopost   tipopost  @relation(fields: [TipoPostFk], references: [TipoId], map: "post-tipo")
 

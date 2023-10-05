@@ -13,6 +13,7 @@ app.use(express.text())
 app.use('/api', require('./routes/auth.js'));
 app.use('/api', require('./routes/User.js'));
 app.use('/api', require('./routes/Blog.js'));
+app.use('/api', require('./routes/MisRutinas.js'));
 
 /*servidor*/ 
 app.listen(3000)
