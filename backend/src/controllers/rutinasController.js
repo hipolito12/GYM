@@ -1,12 +1,12 @@
-const { PrismaClient } = require('@prisma/client');
+
 const { searchAllModel} = require("../model/rutinasModel.js");
-const prisma = new PrismaClient();
+
 
 // Obtener todas las rutinas disponibles
 const getAllRutinas = async (req, res) => {
   try {
     const rutinas = await searchAllModel();
-    res.send(rutinas); //.send o .json?
+    return res.status(200) .json(rutinas);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error al obtener rutinas disponibles' });

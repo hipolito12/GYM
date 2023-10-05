@@ -7,11 +7,10 @@ import { Router} from '@angular/router';
   providedIn: 'root'
 })
 export class RutinasService {
-    API_URI= 'http://localhost:4200/'
     constructor(private http: HttpClient) { }
 
-    getAllRutinas(){
-      return this.http.get<any[]>('${this.API_URI}rutinas');
+    getAllRutinas():Observable<any>{
+      return this.http.get('http://localhost:3000/api/all'); //????? como va la ruta
     }
     /* getRutinaById(id: string){
       return this.http.get('${this.API_URI}/rutinas/${id}');

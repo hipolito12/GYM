@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -15,14 +15,17 @@ import { UserComponent } from './Components/user/user.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { AuthGuard } from './auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule } from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from "@angular/material/toolbar";
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { PagosComponent } from './Components/pagos/pagos.component';
 import { RutinasComponent } from './Components/rutinas/rutinas.component';
 import { RutinasAddComponent } from './Components/rutinas-add/rutinas-add.component';
+import { RolComponent } from './Components/rol/rol.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import { RutinasAddComponent } from './Components/rutinas-add/rutinas-add.compon
     NavbarComponent,
     PagosComponent,
     RutinasComponent,
-    RutinasAddComponent
+    RutinasAddComponent,
+    RolComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,15 +51,15 @@ import { RutinasAddComponent } from './Components/rutinas-add/rutinas-add.compon
     HttpClientModule,
     BrowserAnimationsModule,
     MatSidenavModule,
-    MatListModule ,
+    MatListModule,
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
-    
-    
+    NgxPaginationModule,
+    MatInputModule,
   ],
 
   providers: [AuthGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

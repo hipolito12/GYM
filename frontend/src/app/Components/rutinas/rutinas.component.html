@@ -32,21 +32,14 @@
     <div class="container mt-4">
     <div class="row">
       <div class="col">
-        <!-- Encabezados de las columnas -->
-      <div class="form-group row">
-        <label class="col-md-3">{{ rutinas[0].label }}</label>
-        <label class="col-md-3">{{ rutinas[1].label }}</label>
-        <label class="col-md-3">{{ rutinas[2].label }}</label>
-        <label class="col-md-3">{{ rutinas[3].label }}</label>
-      </div>
 
-        <!-- Datos de ejemplo -->
+        
       <div *ngFor ="let rutina of rutinas" class="form-group row">
         <div class="col-md-3">
-          {{ rutina.idRutinaGenerica }}
+          {{ rutina.tiporutina.NombreTipo }}
         </div>
         <div class="col-md-3">
-          {{rutina.ActividadFk}}
+          {{rutina.actividad.NombreActividad}}
         </div>
         <div class="col-md-3">
           {{rutina.DescripcionRutina}}

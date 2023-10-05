@@ -12,18 +12,20 @@ import { AuthGuard } from './auth.guard';
 import { PagosComponent } from './Components/pagos/pagos.component';
 import { RutinasComponent } from './Components/rutinas/rutinas.component';
 import { RutinasAddComponent } from './Components/rutinas-add/rutinas-add.component';
+import { RolComponent } from './Components/rol/rol.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  {path: 'signin', component: SigninComponent},
-  {path: 'nosotros', component: NosotrosComponent},
-  {path: 'ubicaciones', component: UbicacionesComponent},
-  {path: 'blog' , component: BlogComponent},
-  {path: 'pagos' , component: PagosComponent},
-  {path: 'user', component: UserComponent, canActivate:[AuthGuard]},
-  {path: 'rutinas' , component: RutinasComponent},
-  {path: 'rutinasAdd', component: RutinasAddComponent}
+  { path: 'signin', component: SigninComponent },
+  { path: 'nosotros', component: NosotrosComponent },
+  { path: 'ubicaciones', component: UbicacionesComponent },
+  { path: 'blog', component: BlogComponent },
+  { path: 'pagos', component: PagosComponent },
+  { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+  { path: 'rutinas', component: RutinasComponent },
+  { path: 'rutinasAdd', component: RutinasAddComponent },
+  { path: 'roles', component: RolComponent },
 ];
 
 @NgModule({
