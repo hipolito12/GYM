@@ -26,6 +26,11 @@ import { RutinasAddComponent } from './Components/rutinas-add/rutinas-add.compon
 import { RolComponent } from './Components/rol/rol.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -57,6 +62,11 @@ import { MatInputModule } from '@angular/material/input';
     MatToolbarModule,
     NgxPaginationModule,
     MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTabsModule,
+    MatSelectModule,
   ],
 
   providers: [AuthGuard],

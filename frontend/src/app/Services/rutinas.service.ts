@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Router} from '@angular/router';
-
+import { Router } from '@angular/router';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RutinasService {
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-    getAllRutinas():Observable<any>{
-      return this.http.get('http://localhost:3000/api/all'); //????? como va la ruta
-    }
-    /* getRutinaById(id: string){
+  getAllRutinas(): Observable<any> {
+    return this.http.get('http://localhost:3000/api/AllRutinas');
+  }
+
+  getAllActividades(): Observable<any> {
+    return this.http.get('http://localhost:3000/api/AllActividades');
+  }
+
+  /* getRutinaById(id: string){
       return this.http.get('${this.API_URI}/rutinas/${id}');
     }
 
@@ -20,4 +24,3 @@ export class RutinasService {
       return this.http.delete('${this.API_URI}/rutinas/${id}');
     } */
 }
-

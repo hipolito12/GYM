@@ -10,10 +10,21 @@
 
   <form>
     <!-- Número de Actividad -->
+ 
+  <!--<div class="form-group">    
+  <label for="actividad">Actividad:</label>
+  <mat-select class="form-control" id="actividad" name="actividad" required>
+    <mat-option *ngFor="let actividad of actividades" [value]="actividad.ActividadId">
+      {{ actividad.NombreActividad }}
+    </mat-option>
+  </mat-select>
+</div> -->
     <div class="form-group">
       <label for="nroActividad">Actividad:</label>
       <input type="text" class="form-control" id="nroActividad" name="nroActividad" placeholder="Ingrese el número de actividad" required>
     </div>
+   
+
 
     <!-- Descripción -->
     <div class="form-group">
@@ -23,14 +34,21 @@
 
     <!-- URL de Imagen -->
     <div class="form-group">
-      <label for="imagenURL">URL de Imagen:</label>
-      <input type="url" class="form-control" id="imagenURL" name="imagenURL" placeholder="Ingrese la URL de la imagen" required>
+      <label for="imagenURL">URL de Imagen (opcional):</label>
+      <input type="url" class="form-control" id="imagenURL" name="imagenURL" placeholder="Ingrese la URL de la imagen">
     </div>
+
+        <!-- Tipo de Rutina -->
+    <div class="form-group">
+      <label for="tipoRutina">Tipo de Rutina:</label>
+      <input type="text" class="form-control" id="tipoRutina" name="tipoRutina" placeholder="Ingrese el tipo de rutina" required>
+    </div>
+
 
       <!-- Botones -->
     <div class="text-center mt-4">
       <button type="submit" class="btn btn-primary mx-2">Guardar</button>
-      <button type="button" class="btn btn-secondary mx-2">Cancelar</button>
+      <button type="button" class="btn btn-secondary mx-2" routerLink="/rutinas">Cancelar</button>
     </div>
 
   </form>

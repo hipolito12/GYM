@@ -2,13 +2,14 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-const searchAllModel = async () => {
+const searchAllRutinesModel = async () => {
   try {
     const rutinas = await prisma.rutinagenerica.findMany({
       select: {
         DescripcionRutina: true,
         actividad: { select: { NombreActividad: true } },
         tiporutina: { select: { NombreTipo: true } },
+        fechaActualizacion: true,
       },
     });
     console.log(rutinas);
@@ -18,4 +19,18 @@ const searchAllModel = async () => {
   }
 };
 
-module.exports = { searchAllModel };
+const searchAllActividadesModel = async () => {
+  try {
+    const actividades = await prisma.actividad.findMany({
+      select: {
+        ActividadId: true,
+        NombreActividad: true,
+      },
+    });
+    return actividades;
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = { searchAllRutinesModel, searchAllActividadesModel };

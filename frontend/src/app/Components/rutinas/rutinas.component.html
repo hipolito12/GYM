@@ -1,59 +1,48 @@
-<!--en construccion -->
 <div class="container border border-secondary rounded-lg mb-4 mt-4 p-0 h-100 my-4">
-  <div class="container-fluid bg-dark text-white py-3">
+  <div class="container-fluid bg-dark text-white py-3 ">
     <h1 class="text-center">Rutinas GYM GENERICO</h1>
     <div class="row">
       <div class="col-6">
         <button class="btn btn-secondary" routerLink="/rutinasAdd">+ Nueva</button>
-        
       </div>
       <div class="col-6 text-right">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Buscar...">
-          <div class="input-group-append ">
+          <div class="input-group-append">
             <button class="btn btn-dark" type="button">OK</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-
-    <div class="input-group mt-3">
-    <select class="custom-select" id="selectRegistros">
-      <option value="10">10 registros</option>
-      <option value="20">20 registros</option>
-      <option value="50">50 registros</option>
-      <option value="100">100 registros</option>
-    </select>
-    </div>
-
-  <div class="container mt-4">
-    <div class="container mt-4">
-    <div class="row">
-      <div class="col">
-
-        
-      <div *ngFor ="let rutina of rutinas" class="form-group row">
-        <div class="col-md-3">
-          {{ rutina.tiporutina.NombreTipo }}
-        </div>
-        <div class="col-md-3">
-          {{rutina.actividad.NombreActividad}}
-        </div>
-        <div class="col-md-3">
-          {{rutina.DescripcionRutina}}
-        </div>
-        <div class="col-md-3">
-          {{rutina.fechaActualizacion}}
-        </div>
-      </div>
-      </div>
-    </div>
-    </div>
   
-
+<div class="container mt-4">
+    <div class="table-responsive"> <!-- Agregar esta clase para hacer la tabla responsive -->
+      <table class="table table-bordered table-striped"> <!-- Agregar clases de tabla Bootstrap -->
+        <thead>
+          <tr>
+            <th>Tipo de Rutina</th>
+            <th>Actividad</th>
+            <th>Descripción</th>
+            <th>Fecha de Actualización</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rutina of rutinas">
+            <td>{{ rutina.tiporutina.NombreTipo }}</td>
+            <td>{{ rutina.actividad.NombreActividad }}</td>
+            <td>{{ rutina.DescripcionRutina }}</td>
+            <td>{{ rutina.fechaActualizacion }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
-<app-footer> </app-footer>
+
+<app-footer></app-footer>
+
+
+
 
