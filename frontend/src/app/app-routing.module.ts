@@ -13,6 +13,7 @@ import { PagosComponent } from './Components/pagos/pagos.component';
 import { RutinasComponent } from './Components/rutinas/rutinas.component';
 import { DatosPerfilComponent } from './Components/datos-perfil/datos-perfil.component';
 import { MisRutinasComponent } from './Components/mis-rutinas/mis-rutinas.component';
+import { IMCComponent } from './Components/imc/imc.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -25,6 +26,8 @@ const routes: Routes = [
   {path: 'rutinas' , component: RutinasComponent},
   {path: 'datos-perfil' , component: DatosPerfilComponent},
   {path:'misRutinas',component:MisRutinasComponent},
+  {path:'imc',component:IMCComponent,canActivate:[AuthGuard]},
+
 
 ];
 

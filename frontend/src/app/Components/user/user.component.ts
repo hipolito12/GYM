@@ -3,7 +3,7 @@ import { UserService } from '../../Services/user.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import Swal from 'sweetalert2'
+import Swal, { SweetAlertIcon } from 'sweetalert2';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -17,51 +17,79 @@ export class UserComponent implements OnInit {
   Actividades: any;
   public nombre: string = localStorage.getItem('nombre')!;
   dataSource: any;
-
-  @ViewChild(MatPaginator) paginatior!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  ngOnInit() {}
+  public mensaje: string | undefined;
+  estado: SweetAlertIcon | undefined;
   displayedColumns: string[] = [
     'NombreActividad',
     'Turno',
     'Hora_Inicio',
     'Hora_Fin',
-  
-  
   ];
-  displayedColumns2: string[] = [
-   
-     'ActividadId'
-  
-  
-  ];
+  displayedColumns2: string[] = ['ActividadId'];
+  @ViewChild(MatPaginator) paginatior!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
-  async editcustomer(id:any){
-      console.log(id)
+  ngOnInit() {}
 
-     await this.service.DetalleActividad(localStorage.getItem('token'),id).subscribe(
-        (res)=>{
+
+  async editcustomer(id: any) {
+    await this.service
+      .DetalleActividad(localStorage.getItem('token'), id)
+      .subscribe(
+        (res) => {
           Swal.fire({
-          title: `Conoce mas de la actividad de ${res.NombreActividad} `,
-          backdrop: true,
-          html: `<p class='text-center'>${res.Descripcion}</p>`,
-          icon: 'question',
-          confirmButtonText: 'Aceptar'
-        })}
-        ,
-        (err)=>{}
-      )
-    
+            title: `Conce mas sobre tu actividad: ${res.NombreActividad}`,
+            html: `<p style=' justify-content: center;'>${res.Descripcion}</p>`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#fedd2d',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Inscribirme!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                `Te esperamos a las ${res.Hora_Inicio} para ${res.NombreActividad}`,
+                'No faltess💪🏻',
+                'success'
+              )
+
+                this.service.AnotarseActividad(localStorage.getItem('token')!,res.ActividadId).subscribe
+                (
+                  (res)=>
+                  {
+                   
+                  },
+                  (err)=>
+                  {
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Oops... Ocurrio un error',
+                      text: 'No Hay Mas Cupos',
+                      footer: '<a href="">¿el error persiste? Comunicate a 0800-0800-0800-0800</a>'
+                    })
+                    
+                  }
+                )
+
+            }
+          })
+        
+        },
+        (err) => {}
+      );
   }
- 
+
+
+
+
+
   ListarActividades() {
     this.service.ListarActividades(localStorage.getItem('token')).subscribe(
       (res) => {
         // let pepe: any = [{NombreActividad:"Boxeo",Turno:"tarde",Hora_Inicio:"14:00",Hora_Fin:"16:00"}]
 
         this.aux = transformarArreglo(res);
-        console.log(this.aux);
+        
         this.dataSource = new MatTableDataSource(this.aux);
         this.dataSource.paginator = this.paginatior;
         this.dataSource.sort = this.sort;
@@ -98,4 +126,3 @@ type Entrada = {
 function transformarArreglo(arreglo: Entrada[]): Actividad[] {
   return arreglo.map((entrada) => entrada.actividad);
 }
-

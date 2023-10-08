@@ -32,4 +32,8 @@ export class UserService {
     return this.http.post<any>("http://localhost:3000/api/DetalleActividad",{token,idActividad})
   }
 
+  AnotarseActividad(token:string,idActividad:any):Observable<any>{
+    return this.http.post("http://localhost:3000/api/ReservarCupo",{token,idActividad})
+  }
+
 }

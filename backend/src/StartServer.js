@@ -14,6 +14,7 @@ app.use('/api', require('./routes/auth.js'));
 app.use('/api', require('./routes/User.js'));
 app.use('/api', require('./routes/Blog.js'));
 app.use('/api', require('./routes/MisRutinas.js'));
+app.use('/api', require('./routes/imc.js'));
 
 /*servidor*/ 
 app.listen(3000)

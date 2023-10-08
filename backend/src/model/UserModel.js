@@ -93,12 +93,13 @@ const ObtenerDetalleActividades = async (id) =>
       select:
       {
         NombreActividad: true,
-        
+        Hora_Inicio: true,
         Descripcion:true,
+        ActividadId:true,
         
       }
     });
-    console.log(element);
+    
     return element;
   }
   catch(e)
@@ -108,4 +109,48 @@ const ObtenerDetalleActividades = async (id) =>
   }
 }
 
-module.exports = { ObtenerPago, ActualizarDatosModel, ObtenerPersona, ObtenerActividades ,ObtenerDetalleActividades};
+
+const BuscaCupo =async(idActividad)=>
+{
+  try{
+    let cupo = await prisma.actividad.findFirst({
+      where: { ActividadId: idActividad},
+      select:{Cupo:true}
+    })
+    
+    return cupo
+    
+  }
+  catch(e){console.log(e)
+  return e.message}
+}
+
+const  ActualizarCupoActividad= async (persona,cupo,actividad) => 
+{ let NuevoCupo=cupo-1
+  try{
+    await prisma.asistencia.create({
+      data:
+      {DniFK:persona,
+        ActividadFK:actividad, 
+      }
+    })
+
+   await  prisma.actividad.update({
+      where:{ActividadId:actividad},
+      data:{Cupo:NuevoCupo}
+    })
+
+  }
+  catch(e)
+  {
+      console.log(e.message)
+      return e.message
+  }
+
+
+
+
+
+}
+
+module.exports = {ActualizarCupoActividad ,BuscaCupo,ObtenerPago, ActualizarDatosModel, ObtenerPersona, ObtenerActividades ,ObtenerDetalleActividades};

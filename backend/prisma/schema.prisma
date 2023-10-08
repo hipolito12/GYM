@@ -9,7 +9,6 @@ datasource db {
 
 model actividad {
   ActividadId            Int                      @id
-  IdrutinaFk             Int?
   NombreActividad        String                   @db.VarChar(45)
   Turno                  String                   @db.VarChar(45)
   Hora_Inicio            String                   @map("Hora Inicio") @db.VarChar(45)
@@ -26,8 +25,8 @@ model actividad {
 model asistencia {
   NroAsistencia Int        @id @default(autoincrement())
   DniFK         Float
-  HoraIngreso   DateTime   @db.Timestamp(6)
   ActividadFK   Int?
+  DiaAsistencia DateTime?  @db.Timestamp(4)
   actividad     actividad? @relation(fields: [ActividadFK], references: [ActividadId], onDelete: NoAction, onUpdate: NoAction, map: "asistencia-actividad")
   persona       persona    @relation(fields: [DniFK], references: [dni], onDelete: NoAction, onUpdate: NoAction, map: "asistencia-persona")
 
@@ -102,10 +101,9 @@ model rol {
 model rutinagenerica {
   idRutinaGenerica   Int        @id @default(autoincrement())
   ActividadFk        Int
-  DescripcionRutina  String     @db.VarChar(45)
-  Imagenes           String?    @db.VarChar(5000)
+  DescripcionRutina  String     @db.VarChar(3000)
+  Imagenes           String?    @db.VarChar(2000)
   TipoRutinaFk       Int
-  estado             Boolean?   @default(true)
   fechaActualizacion String?    @db.VarChar(45)
   activa             Boolean?   @default(true)
   actividad          actividad  @relation(fields: [ActividadFk], references: [ActividadId], map: "rutinaGenerica-actividad")
@@ -122,7 +120,6 @@ model rutinapersonalizada {
   PersonaDniFk          Float
   DescripcionRutina     String     @db.VarChar(5000)
   Imagenes              String?    @db.VarChar(1000)
-  estado                Boolean?   @default(true)
   fechaActualizacion    DateTime?  @db.DateTime(5)
   activo                Boolean?   @default(true)
   actividad             actividad  @relation(fields: [IdActividadfk], references: [ActividadId], map: "rutinaPersonalizada-Actividad")

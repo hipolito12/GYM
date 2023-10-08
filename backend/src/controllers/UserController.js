@@ -3,14 +3,15 @@ const {
   ActualizarDatosModel,
   ObtenerPersona,
   ObtenerActividades,
-  ObtenerDetalleActividades
+  ObtenerDetalleActividades,
+  BuscaCupo,ActualizarCupoActividad
 } = require("../model/UserModel.js");
 const jwt = require("jsonwebtoken");
 const { check, body } = require("express-validator");
+
 const ProximoPago = async (req, res) => {
   try {
     let respuesta = await ObtenerPago(req.userId);
-    console.log(respuesta);
     return res.status(200).json({ respuesta });
   } catch (e) {
     console.log(e.message);
@@ -36,6 +37,7 @@ const ActualizarDatos = async (req, res) => {
 const ListarActividades = async (req, res) => {
   try {
     let respuesta = await ObtenerActividades();
+  
 
     return res.status(200).json(respuesta);
   } catch (e) {
@@ -46,20 +48,32 @@ const ListarActividades = async (req, res) => {
   }
 };
 
-const DetalleActividad = async (req, res) =>
- {
-    try
-    {
-      let actividad = await ObtenerDetalleActividades(req.body.idActividad);
-      
-      return res.status(200).json(actividad);
+const DetalleActividad = async (req, res) => {
+  try {
+    let actividad = await ObtenerDetalleActividades(req.body.idActividad);
+
+    return res.status(200).json(actividad);
+  } catch (e) {
+    console.log(e.message);
+    return res
+      .status(401)
+      .json({ message: e.message + " error al Buscar actividades" });
+  }
+};
+
+const ReservarCupo = async (req, res) => {
+  try {
+    let Cupo = await BuscaCupo(req.body.idActividad);
+    if (Cupo === 0) {
+      throw new Error("NO HAY CUPO");
     }
-    catch(e)
-    {
-      console.log(e.message);
-      return res.status(401).json({ message: e.message + " error al Buscar actividades" });
-    }
- };
+    await ActualizarCupoActividad(req.userId,Cupo.Cupo,req.body.idActividad);
+    return res.status(200);
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({ message: e.message });
+  }
+};
 
 async function VerificoToken(req, res, next) {
   try {
@@ -112,4 +126,5 @@ module.exports = {
   ListarActividades,
   DetalleActividad,
   VerificoToken,
+  ReservarCupo,
 };

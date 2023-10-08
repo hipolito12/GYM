@@ -34,6 +34,9 @@ import {NgxPaginationModule} from 'ngx-pagination'
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { MisRutinasComponent } from './Components/mis-rutinas/mis-rutinas.component';
+import { IMCComponent } from './Components/imc/imc.component';
+import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +53,8 @@ import { MisRutinasComponent } from './Components/mis-rutinas/mis-rutinas.compon
     PagosComponent,
     RutinasComponent,
     DatosPerfilComponent,
-    MisRutinasComponent
+    MisRutinasComponent,
+    IMCComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +76,7 @@ import { MisRutinasComponent } from './Components/mis-rutinas/mis-rutinas.compon
     NgxPaginationModule,
     MatTabsModule,
     MatExpansionModule,
+    MatSelectModule
     
   ],
 
