@@ -13,14 +13,17 @@ const AllRols = async () => {
 
 const UpdateRol = async (object) => {
   try {
-    let elements = prisma.rol.update({
+    let elements = await prisma.rol.update({
       where: { idrol: object.id },
       data: {
         NombreRol: object.nombre,
         Descripcion: object.descripcion,
       },
     });
-  } catch (e) {}
+  } catch (e) {
+    console.log(e.message);
+    return e.message;
+  }
 };
 
 const DeleteRol = async (id) => {
@@ -34,13 +37,18 @@ const DeleteRol = async (id) => {
   }
 };
 const CreateRol = async (object) => {
-  let elements = prisma.rol.create({
-    data: {
-      NombreRol: object.nombre,
-      Descripcion: object.descripcion,
-    },
-  });
-  return elements;
+  try {
+    let elements = await prisma.rol.create({
+      data: {
+        NombreRol: object.nombre,
+        Descripcion: object.descripcion,
+      },
+    });
+    return elements;
+  } catch (e) {
+    console.log(e.message);
+    return e.message;
+  }
 };
 
 module.exports = { AllRols, UpdateRol, DeleteRol, CreateRol };

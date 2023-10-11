@@ -38,4 +38,16 @@ export class RolComponent {
       this.GetRoles();
     }
   }
+  eliminarRol(id: number) {
+    // Lógica para eliminar el rol con el ID especificado
+    this.rolService.DeleteRol(id).subscribe((data: any) => {
+      // Actualiza la lista de roles después de eliminar
+      this.GetRoles();
+    });
+  }
+
+  modificarRol(id: number) {
+    // Lógica para modificar el rol con el ID especificado
+    // Redirige a la página de modificación o muestra un formulario de modificación
+  }
 }

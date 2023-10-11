@@ -26,20 +26,13 @@
             <th>Descripción</th>
           </tr>
         </thead>
-<!--         <tbody>
-          <tr *ngFor="let rol of roles">
-            <td>{{rol.idrol}}</td>
-            <td>{{ rol.NombreRol }}</td>
-            <td>{{ rol.Descripcion }}</td>
-          </tr>
-        </tbody> -->
            <tbody>
             <tr *ngFor="let rol of roles">
               <td>{{ rol.idrol }}</td>
               <td>{{ rol.NombreRol }}</td>
               <td>{{ rol.Descripcion }}</td>
               <td>
-                <button class="btn btn-danger" >Eliminar</button>
+                <button class="btn btn-danger"(click)="eliminarRol(rol.idrol)" >Eliminar</button>
               </td>
               <td>
                 <button class="btn btn-primary">Modificar</button>

@@ -17,8 +17,8 @@ export class RolAddComponent implements OnInit {
 
   postRoles() {
     const nuevoRol = {
-      NombreRol: this.nombreRol,
-      Descripcion: this.descripcionRol,
+      nombre: this.nombreRol,
+      descripcion: this.descripcionRol,
     };
 
     this.rolService.createRol(nuevoRol).subscribe(
