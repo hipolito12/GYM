@@ -40,6 +40,7 @@ const CreateRol = async (object) => {
       Descripcion: object.descripcion,
     },
   });
+  return elements;
 };
 
 module.exports = { AllRols, UpdateRol, DeleteRol, CreateRol };

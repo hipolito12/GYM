@@ -13,6 +13,7 @@ import { PagosComponent } from './Components/pagos/pagos.component';
 import { RutinasComponent } from './Components/rutinas/rutinas.component';
 import { RutinasAddComponent } from './Components/rutinas-add/rutinas-add.component';
 import { RolComponent } from './Components/rol/rol.component';
+import { RolAddComponent } from './Components/rol-add/rol-add.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'rutinas', component: RutinasComponent },
   { path: 'rutinasAdd', component: RutinasAddComponent },
   { path: 'roles', component: RolComponent },
+  { path: 'rolesAdd', component: RolAddComponent },
 ];
 
 @NgModule({

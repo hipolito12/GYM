@@ -6,6 +6,7 @@ const searchAllRutinesModel = async () => {
   try {
     const rutinas = await prisma.rutinagenerica.findMany({
       select: {
+        idRutinaGenerica: true,
         DescripcionRutina: true,
         actividad: { select: { NombreActividad: true } },
         tiporutina: { select: { NombreTipo: true } },

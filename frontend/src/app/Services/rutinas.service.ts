@@ -15,12 +15,4 @@ export class RutinasService {
   getAllActividades(): Observable<any> {
     return this.http.get('http://localhost:3000/api/AllActividades');
   }
-
-  /* getRutinaById(id: string){
-      return this.http.get('${this.API_URI}/rutinas/${id}');
-    }
-
-    deleteRutinaById(id: string){
-      return this.http.delete('${this.API_URI}/rutinas/${id}');
-    } */
 }

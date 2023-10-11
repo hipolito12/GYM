@@ -31,6 +31,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
+import { RolAddComponent } from './Components/rol-add/rol-add.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { MatSelectModule } from '@angular/material/select';
     RutinasComponent,
     RutinasAddComponent,
     RolComponent,
+    RolAddComponent,
   ],
   imports: [
     BrowserModule,

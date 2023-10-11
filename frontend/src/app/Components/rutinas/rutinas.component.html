@@ -21,6 +21,7 @@
       <table class="table table-bordered table-striped"> <!-- Agregar clases de tabla Bootstrap -->
         <thead>
           <tr>
+            <th>Id Rutina</th>
             <th>Tipo de Rutina</th>
             <th>Actividad</th>
             <th>Descripción</th>
@@ -29,6 +30,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let rutina of rutinas">
+            <td>{{rutina.idRutinaGenerica}}</td>
             <td>{{ rutina.tiporutina.NombreTipo }}</td>
             <td>{{ rutina.actividad.NombreActividad }}</td>
             <td>{{ rutina.DescripcionRutina }}</td>

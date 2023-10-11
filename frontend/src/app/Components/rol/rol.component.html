@@ -1,11 +1,59 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Favorite food</mat-label>
-    <input matInput placeholder="Ex. Pizza" value="Sushi">
-  </mat-form-field>
+<div class="container border border-secondary rounded-lg mb-4 mt-4 p-0 h-100 my-4">
+  <div class="container-fluid bg-dark text-white py-3">
+    <h1 class="text-center">ROLES</h1>
+    <div class="row">
+      <div class="col-6">
+        <button class="btn btn-secondary" routerLink="/rolesAdd">+ Nuevo Rol</button>
+      </div>
+      <div class="col-6 text-right">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Buscar id de rol..." #filtroId (keydown.enter)="filtrarPorId()">
+          <div class="input-group-append">
+            <button class="btn btn-dark" type="button" (click)="filtrarPorId()">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<div class="container mt-4">
+    <div class="table-responsive"> <!-- Agregar esta clase para hacer la tabla responsive -->
+      <table class="table table-bordered table-striped"> <!-- Agregar clases de tabla Bootstrap -->
+        <thead>
+          <tr>
+            <th>Id </th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+<!--         <tbody>
+          <tr *ngFor="let rol of roles">
+            <td>{{rol.idrol}}</td>
+            <td>{{ rol.NombreRol }}</td>
+            <td>{{ rol.Descripcion }}</td>
+          </tr>
+        </tbody> -->
+           <tbody>
+            <tr *ngFor="let rol of roles">
+              <td>{{ rol.idrol }}</td>
+              <td>{{ rol.NombreRol }}</td>
+              <td>{{ rol.Descripcion }}</td>
+              <td>
+                <button class="btn btn-danger" >Eliminar</button>
+              </td>
+              <td>
+                <button class="btn btn-primary">Modificar</button>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-  <mat-form-field class="example-full-width">
-    <mat-label>Leave a comment</mat-label>
-    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-  </mat-form-field>
-</form>
+
+<app-footer></app-footer>
+
+
+
+

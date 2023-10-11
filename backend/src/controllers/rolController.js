@@ -17,8 +17,8 @@ const GetAllRols = async (req, res) => {
 
 const CreateRols = async (req, res) => {
   try {
-    let CreateRol = await CreateRol(req.body);
-    return res.status(200).json(CreateRol);
+    let createdRol = await CreateRol(req.body); // Cambio de nombre de variable
+    return res.status(200).json(createdRol);
   } catch (error) {
     console.log(error.message);
     return res.status(500).json({ message: error.message });
@@ -28,7 +28,7 @@ const CreateRols = async (req, res) => {
 const UpdateRols = async (req, res) => {
   try {
     let UpdateRol = await UpdateRol(req.body);
-    return res.status(200).json(UpdateRol);
+    return res.status(200).json(updatedRol);
   } catch (error) {
     console.log(error.message);
     return res.status(500).json({ message: error.message });
@@ -38,11 +38,11 @@ const UpdateRols = async (req, res) => {
 const DeleteRols = async (req, res) => {
   try {
     let DeleteRol = await DeleteRol(req.body);
-    return res.status(200).json(DeleteRol);
+    return res.status(200).json(deletedRol);
   } catch (error) {
     console.log(error.message);
     return res.status(500).json({ message: error.message });
   }
 };
 
-module.exports = { GetAllRols, CreateRols, UpdateRol, DeleteRols };
+module.exports = { GetAllRols, CreateRols, UpdateRols, DeleteRols };

@@ -23,7 +23,7 @@ const getAllActividades = async (req, res) => {
   }
 };
 
-// Obtener una rutina por ID
+/* // Obtener una rutina por ID
 const getRutinaById = async (req, res) => {
   const { id } = req.params;
   try {
@@ -38,10 +38,9 @@ const getRutinaById = async (req, res) => {
     console.error(error);
     res.status(500).json({ error: 'Error al obtener rutina' });
   }
-};
+}; */
 
 module.exports = {
   getAllRutinas,
-  getRutinaById,
   getAllActividades,
 };

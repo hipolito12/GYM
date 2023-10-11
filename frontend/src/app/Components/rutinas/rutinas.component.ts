@@ -1,4 +1,10 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Injectable,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RutinasService } from '../../Services/rutinas.service';
 import { Observable } from 'rxjs';
