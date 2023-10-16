@@ -15,4 +15,8 @@ export class RutinasService {
   getAllActividades(): Observable<any> {
     return this.http.get('http://localhost:3000/api/AllActividades');
   }
+
+  createRutina(rutina: any): Observable<any> {
+    return this.http.post('http://localhost:3000/api/createRutina', rutina);
+  }
 }

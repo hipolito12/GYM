@@ -34,4 +34,33 @@ const searchAllActividadesModel = async () => {
   }
 };
 
-module.exports = { searchAllRutinesModel, searchAllActividadesModel };
+const CreateRutina = async (object) => {
+  const fechaActual = new Date();
+  const fechaHoy =
+    fechaActual.getFullYear() +
+    '-' +
+    (fechaActual.getMonth() + 1) +
+    '-' +
+    fechaActual.getDay();
+  try {
+    let elements = await prisma.rutinagenerica.create({
+      data: {
+        TipoRutinaFk: object.tipo,
+        DescripcionRutina: object.descripcion,
+        ActividadFk: object.nroAct,
+        fechaActualizacion: fechaHoy,
+        Imagenes: object.imagen,
+      },
+    });
+    return elements;
+  } catch (e) {
+    console.log(e.message);
+    return e.message;
+  }
+};
+
+module.exports = {
+  searchAllRutinesModel,
+  searchAllActividadesModel,
+  CreateRutina,
+};

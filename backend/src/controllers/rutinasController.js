@@ -1,6 +1,7 @@
 const {
   searchAllRutinesModel,
   searchAllActividadesModel,
+  CreateRutina,
 } = require('../model/rutinasModel.js');
 
 // Obtener todas las rutinas disponibles
@@ -22,25 +23,18 @@ const getAllActividades = async (req, res) => {
     res.status(500).json({ error: 'Error al obtener actividades disponibles' });
   }
 };
-
-/* // Obtener una rutina por ID
-const getRutinaById = async (req, res) => {
-  const { id } = req.params;
+const CreateRutinas = async (req, res) => {
   try {
-    const rutina = await prisma.rutinagenerica.findUnique({
-      where: { idRutinaGenerica: parseInt(id) },
-    });
-    if (!rutina) {
-      return res.status(404).json({ error: 'Rutina no encontrada' });
-    }
-    res.json(rutina);
+    const createdRutinas = await CreateRutina(req.body);
+    return res.status(200).json(createdRutinas);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error al obtener rutina' });
+    console.log(error.message);
+    return res.status(500).json({ message: error.message });
   }
-}; */
+};
 
 module.exports = {
   getAllRutinas,
   getAllActividades,
+  CreateRutinas,
 };
