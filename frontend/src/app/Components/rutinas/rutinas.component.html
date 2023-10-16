@@ -7,9 +7,9 @@
       </div>
       <div class="col-6 text-right">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Buscar...">
+          <input type="text" class="form-control" placeholder="Buscar id rutina..." #filtroId (keydown.enter)="filtrarPorId()">
           <div class="input-group-append">
-            <button class="btn btn-dark" type="button">OK</button>
+            <button class="btn btn-dark" type="button" (click)="filtrarPorId()">OK</button>
           </div>
         </div>
       </div>

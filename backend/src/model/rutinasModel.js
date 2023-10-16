@@ -51,9 +51,11 @@ const CreateRutina = async (object) => {
     return e.message;
   }
 };
+const UpdateRutina = {};
 
 module.exports = {
   searchAllRutinesModel,
   searchAllActividadesModel,
   CreateRutina,
+  UpdateRutina,
 };

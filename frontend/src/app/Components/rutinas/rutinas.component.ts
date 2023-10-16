@@ -10,6 +10,26 @@ import { RutinasService } from '../../Services/rutinas.service';
 import { Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 
+/* interface rutina {
+  idRutina: number;
+  actividad: string;
+  descripcion: string;
+  tiporutina: number;
+} */
+interface rutina {
+  idRutinaGenerica: number;
+  tiporutina: {
+    idTipoRutina: number;
+    NombreTipo: string;
+  };
+  actividad: {
+    idActividad: number;
+    NombreActividad: string;
+  };
+  DescripcionRutina: string;
+  fechaActualizacion: string;
+}
+
 @Component({
   selector: 'app-rutinas',
   templateUrl: './rutinas.component.html',
@@ -17,6 +37,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class RutinasComponent implements OnInit {
   rutinas: any = [];
+  @ViewChild('filtroId', { static: false }) filtroId!: ElementRef;
   elementosPorPagina = 5; // Número de elementos por página
   paginaActual = 1; // Página actual
 
@@ -33,6 +54,19 @@ export class RutinasComponent implements OnInit {
   paginaAnterior() {
     if (this.paginaActual > 1) {
       this.paginaActual--;
+    }
+  }
+
+  filtrarPorId() {
+    const idFiltrado = this.filtroId.nativeElement.value;
+    if (idFiltrado) {
+      this.rutinas = this.rutinas.filter(
+        (rutina1: rutina) =>
+          rutina1.idRutinaGenerica &&
+          rutina1.idRutinaGenerica.toString() === idFiltrado
+      );
+    } else {
+      this.GetGenericas();
     }
   }
 

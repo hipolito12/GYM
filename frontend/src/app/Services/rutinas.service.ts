@@ -19,4 +19,8 @@ export class RutinasService {
   createRutina(rutina: any): Observable<any> {
     return this.http.post('http://localhost:3000/api/createRutina', rutina);
   }
+
+  updateRutina(rutina: any): Observable<any> {
+    return this.http.put('http://localhost:3000/api/updateRutina', rutina);
+  }
 }
