@@ -17,6 +17,8 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class RutinasComponent implements OnInit {
   rutinas: any = [];
+  elementosPorPagina = 5; // Número de elementos por página
+  paginaActual = 1; // Página actual
 
   constructor(private rutinasService: RutinasService) {}
 
@@ -27,5 +29,20 @@ export class RutinasComponent implements OnInit {
     this.rutinasService.getAllRutinas().subscribe((data: any) => {
       this.rutinas = data;
     });
+  }
+  paginaAnterior() {
+    if (this.paginaActual > 1) {
+      this.paginaActual--;
+    }
+  }
+
+  paginaSiguiente() {
+    const ultimoElemento = this.paginaActual * this.elementosPorPagina;
+    if (ultimoElemento < this.rutinas.length) {
+      this.paginaActual++;
+    }
+  }
+  cambiarElementosPorPagina() {
+    this.paginaActual = 1; // Reinicia la página a 1 cuando cambia el número de elementos por página
   }
 }

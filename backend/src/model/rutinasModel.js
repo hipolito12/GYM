@@ -35,20 +35,13 @@ const searchAllActividadesModel = async () => {
 };
 
 const CreateRutina = async (object) => {
-  const fechaActual = new Date();
-  const fechaHoy =
-    fechaActual.getFullYear() +
-    '-' +
-    (fechaActual.getMonth() + 1) +
-    '-' +
-    fechaActual.getDay();
   try {
     let elements = await prisma.rutinagenerica.create({
       data: {
         TipoRutinaFk: object.tipo,
         DescripcionRutina: object.descripcion,
         ActividadFk: object.nroAct,
-        fechaActualizacion: fechaHoy,
+        fechaActualizacion: object.fechaAct,
         Imagenes: object.imagen,
       },
     });

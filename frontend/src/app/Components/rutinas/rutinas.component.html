@@ -1,5 +1,5 @@
 <div class="container border border-secondary rounded-lg mb-4 mt-4 p-0 h-100 my-4">
-  <div class="container-fluid bg-dark text-white py-3 ">
+  <div class="container-fluid bg-dark text-white py-3">
     <h1 class="text-center">Rutinas GYM GENERICO</h1>
     <div class="row">
       <div class="col-6">
@@ -15,10 +15,18 @@
       </div>
     </div>
   </div>
-  
-<div class="container mt-4">
-    <div class="table-responsive"> <!-- Agregar esta clase para hacer la tabla responsive -->
-      <table class="table table-bordered table-striped"> <!-- Agregar clases de tabla Bootstrap -->
+  <div class="container py-3">
+  <label for="elementosPorPagina">Elementos por página:</label>
+  <select id="elementosPorPagina" [(ngModel)]="elementosPorPagina" (change)="cambiarElementosPorPagina()">
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <!-- Agrega más opciones según sea necesario -->
+  </select>
+</div>
+  <div class="container mt-4">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
         <thead>
           <tr>
             <th>Id Rutina</th>
@@ -29,7 +37,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let rutina of rutinas">
+          <tr *ngFor="let rutina of rutinas.slice((paginaActual - 1) * elementosPorPagina, paginaActual * elementosPorPagina)">
             <td>{{rutina.idRutinaGenerica}}</td>
             <td>{{ rutina.tiporutina.NombreTipo }}</td>
             <td>{{ rutina.actividad.NombreActividad }}</td>
@@ -40,7 +48,12 @@
       </table>
     </div>
   </div>
-</div>
+  <div class="pagination d-flex justify-content-end p-3">
+    <button (click)="paginaAnterior()" [disabled]="paginaActual === 1">Anterior</button>
+    <button (click)="paginaSiguiente()" [disabled]="paginaActual * elementosPorPagina >= rutinas.length">Siguiente</button>
+  </div>
+
+
 
 
 <app-footer></app-footer>
