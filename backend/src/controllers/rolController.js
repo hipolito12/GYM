@@ -27,7 +27,7 @@ const CreateRols = async (req, res) => {
 
 const UpdateRols = async (req, res) => {
   try {
-    let UpdateRol = await UpdateRol(req.body);
+    let updatedRol = await UpdateRol(req.body);
     return res.status(200).json(updatedRol);
   } catch (error) {
     console.log(error.message);
@@ -37,7 +37,7 @@ const UpdateRols = async (req, res) => {
 
 const DeleteRols = async (req, res) => {
   try {
-    let DeleteRol = await DeleteRol(req.body);
+    let deletedRol = await DeleteRol(req.body);
     return res.status(200).json(deletedRol);
   } catch (error) {
     console.log(error.message);

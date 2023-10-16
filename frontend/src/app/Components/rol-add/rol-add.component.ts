@@ -36,15 +36,3 @@ export class RolAddComponent implements OnInit {
     );
   }
 }
-/* nombreRol: string = '';
-  descripcionRol: string = '';
-
-  constructor(private rolService: RolService) {}
-
-  ngOnInit(): void {
-    this.postRoles();
-  }
-
-  postRoles() {
-    this.rolService.createRol(nuevoRol).subscribe((data: any) => {});
-  } */

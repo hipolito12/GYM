@@ -20,6 +20,6 @@ export class RolService {
   }
 
   DeleteRol(rol: any): Observable<any> {
-    return this.http.delete('http://localhost:3000/api/deleteRol', rol);
+    return this.http.delete('http://localhost:3000/api/deleteRol/', rol);
   }
 }
