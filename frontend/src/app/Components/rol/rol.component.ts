@@ -68,8 +68,6 @@ export class RolComponent {
 
         this.enModoEdicion = false; // Desactivar el modo de edición
         this.GetRoles(); // Actualiza la lista de roles después de guardar
-        /*         // Navegar a la página /roles
-        this.router.navigate(['/roles']); */
       });
     }
   }

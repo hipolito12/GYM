@@ -11,15 +11,18 @@ const AllRols = async () => {
   }
 };
 
-const UpdateRol = async (object) => {
+const UpdateRol = async (id, object) => {
   try {
     let elements = await prisma.rol.update({
-      where: { idrol: object.id },
+      where: {
+        idrol: id,
+      },
       data: {
         NombreRol: object.nombre,
         Descripcion: object.descripcion,
       },
     });
+    return elements;
   } catch (e) {
     console.log(e.message);
     return e.message;

@@ -27,7 +27,7 @@ const CreateRols = async (req, res) => {
 
 const UpdateRols = async (req, res) => {
   try {
-    let updatedRol = await UpdateRol(req.body);
+    let updatedRol = await UpdateRol(req.body.idrol, req.body);
     return res.status(200).json(updatedRol);
   } catch (error) {
     console.log(error.message);

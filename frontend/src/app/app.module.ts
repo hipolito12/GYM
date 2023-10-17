@@ -32,6 +32,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { RolAddComponent } from './Components/rol-add/rol-add.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { RutinasUpdateComponent } from './Components/rutinas-update/rutinas-update.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { RolAddComponent } from './Components/rol-add/rol-add.component';
     RutinasAddComponent,
     RolComponent,
     RolAddComponent,
+    RutinasUpdateComponent,
   ],
   imports: [
     BrowserModule,

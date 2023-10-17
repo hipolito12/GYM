@@ -51,7 +51,14 @@ const CreateRutina = async (object) => {
     return e.message;
   }
 };
-const UpdateRutina = {};
+const UpdateRutina = async (object) => {
+  try {
+    //return elements;
+  } catch (e) {
+    console.log(e.message);
+    return e.message;
+  }
+};
 
 module.exports = {
   searchAllRutinesModel,

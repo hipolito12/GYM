@@ -14,6 +14,7 @@ import { RutinasComponent } from './Components/rutinas/rutinas.component';
 import { RutinasAddComponent } from './Components/rutinas-add/rutinas-add.component';
 import { RolComponent } from './Components/rol/rol.component';
 import { RolAddComponent } from './Components/rol-add/rol-add.component';
+import { RutinasUpdateComponent } from './Components/rutinas-update/rutinas-update.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'rutinasAdd', component: RutinasAddComponent },
   { path: 'roles', component: RolComponent },
   { path: 'rolesAdd', component: RolAddComponent },
+  { path: 'rutinasUpdate/:id', component: RutinasUpdateComponent },
 ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-<div class="container border border-secondary rounded-lg mb-4 mt-4 p-0 h-100 my-4">
+<div class="container border border-secondary rounded-lg mb-4 mt-4 p-0  my-4">
   <div class="container-fluid bg-dark text-white py-3">
     <h1 class="text-center">Rutinas GYM GENERICO</h1>
     <div class="row">
@@ -43,7 +43,15 @@
             <td>{{ rutina.actividad.NombreActividad }}</td>
             <td>{{ rutina.DescripcionRutina }}</td>
             <td>{{ rutina.fechaActualizacion }}</td>
+              <td>
+                <div class="btn-group-vertical">
+                  <button class="btn btn-primary" (click)="capturarRutina(rutina.idRutinaGenerica)">Modificar</button>
+                  <button class="btn btn-danger" >Eliminar</button>
+                </div>
+              </td>
+            
           </tr>
+          
         </tbody>
       </table>
     </div>
