@@ -22,7 +22,7 @@ export class RutinasUpdateComponent {
     '-' +
     (this.fechaActual.getMonth() + 1) +
     '-' +
-    this.fechaActual.getDay();
+    this.fechaActual.getDate();
 
   constructor(
     private rutinasService: RutinasService,
@@ -34,9 +34,9 @@ export class RutinasUpdateComponent {
     this.route.paramMap.subscribe((params) => {
       const idRutina = params.get('id');
       if (idRutina) {
-        this.idRutina = +idRutina; // Convierte el ID en un número (si es necesario)
-        this.pageTitle = `Editar Rutina #${this.idRutina}`; // Actualiza el título de la página
-        this.cargarRutina(this.idRutina.toString());
+        this.idRutina = +idRutina;
+        this.pageTitle = `Editar Rutina #${this.idRutina}`;
+        this.cargarRutina(this.idRutina);
       }
     });
   }
@@ -59,13 +59,13 @@ export class RutinasUpdateComponent {
       }
     );
   }
-  cargarRutina(idRutina: string) {
-    /*     this.rutinasService.obtenerRutinaPorId(idRutina).subscribe((rutina: any) => {
-        // Asigna la información de la rutina a las propiedades del formulario
-        this.nroActividad = rutina.nroActividad;
-        this.descripcion = rutina.descripcion;
-        this.imagenURL = rutina.imagenURL;
-        this.tipoRutina = rutina.tipoRutina;
-      }); */
+
+  cargarRutina(idRutina: number) {
+    this.rutinasService.GetRutinaById(idRutina).subscribe((rutina: any) => {
+      this.nroActividad = rutina.actividad.ActividadId;
+      this.descripcion = rutina.DescripcionRutina;
+      this.imagenURL = rutina.Imagenes;
+      this.tipoRutina = rutina.tiporutina.idTipoRutina;
+    });
   }
 }

@@ -3,6 +3,7 @@ const {
   searchAllActividadesModel,
   CreateRutina,
   UpdateRutina,
+  searchOneRutinesModel,
 } = require('../model/rutinasModel.js');
 
 // Obtener todas las rutinas disponibles
@@ -44,9 +45,25 @@ const UpdateRutinas = async (req, res) => {
   }
 };
 
+const getRutinaById = async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    const rutina = await searchOneRutinesModel(id);
+    res.status(200).json(rutina);
+  } catch (error) {
+    console.error(error);
+    if (error.message === 'Rutina no encontrada') {
+      res.status(404).json({ error: 'Rutina no encontrada' });
+    } else {
+      res.status(500).json({ error: 'Error al obtener la rutina por ID' });
+    }
+  }
+};
+
 module.exports = {
   getAllRutinas,
   getAllActividades,
   CreateRutinas,
   UpdateRutinas,
+  getRutinaById,
 };

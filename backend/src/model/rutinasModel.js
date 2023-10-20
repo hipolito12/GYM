@@ -60,9 +60,34 @@ const UpdateRutina = async (object) => {
   }
 };
 
+const searchOneRutinesModel = async (id) => {
+  try {
+    const rutina = await prisma.rutinagenerica.findUnique({
+      where: { idRutinaGenerica: id },
+      select: {
+        idRutinaGenerica: true,
+        DescripcionRutina: true,
+        actividad: { select: { ActividadId: true } },
+        Imagenes: true,
+        tiporutina: { select: { idTipoRutina: true } },
+        fechaActualizacion: true,
+      },
+    });
+
+    if (!rutina) {
+      throw new Error('Rutina no encontrada');
+    }
+
+    return rutina;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   searchAllRutinesModel,
   searchAllActividadesModel,
   CreateRutina,
   UpdateRutina,
+  searchOneRutinesModel,
 };

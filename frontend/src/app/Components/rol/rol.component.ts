@@ -22,7 +22,7 @@ export class RolComponent {
 
   constructor(private rolService: RolService, private router: Router) {
     this.rolAEditar = {
-      idrol: 0, // Otra propiedad que desees inicializar
+      idrol: 0,
       NombreRol: '',
       Descripcion: '',
     };
@@ -57,8 +57,9 @@ export class RolComponent {
     });
   }
   modificarRol(rol: Rol) {
+    console.log(rol);
     this.enModoEdicion = true;
-    this.rolAEditar = { ...rol }; // Clonar el rol para no modificar directamente el elemento de la lista
+    this.rolAEditar = { ...rol };
   }
 
   guardarCambios() {
@@ -68,9 +69,11 @@ export class RolComponent {
 
         this.enModoEdicion = false; // Desactivar el modo de edición
         this.GetRoles(); // Actualiza la lista de roles después de guardar
+        this.rolAEditar = null;
       });
     }
   }
+
   cancelarEdicion() {
     this.enModoEdicion = false; // Desactivar el modo de edición
     this.rolAEditar = null; // Restablecer el objeto `rolAEditar`
