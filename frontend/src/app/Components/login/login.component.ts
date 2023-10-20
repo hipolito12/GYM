@@ -1,7 +1,8 @@
-import { Component, ElementRef, OnInit,Renderer2, ViewChild } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { LoginService } from '../../Services/login.service';
 import { Router } from '@angular/router';
 import { ActualizaDatosService } from '../../Services/actualiza-datos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -13,14 +14,14 @@ export class LoginComponent implements OnInit {
     dni: '',
     contrasena: '',
   };
-@ViewChild('toast') toast !: ElementRef
+
 
 
   constructor(
     private loginService: LoginService,
     private rout: Router,
     private Actualiza: ActualizaDatosService,
-    private render: Renderer2
+   
   ) {}
   ngOnInit() {}
 
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
         this.rout.navigate(['user']);
         break;
       case 2:
+        this.rout.navigate(['/profesores']);
         break;
     }
   }
@@ -46,12 +48,19 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.token);
         localStorage.setItem('nombre', res.nombre);
         console.log(res.nombre);
+        this.Actualiza.SetrolUsuario = res.rol; 
         this.Redireccionar(res.rol);
       },
       (err) => {console.log(JSON.stringify(err)) ;
         
-        let toast= this.toast.nativeElement
-        toast.innerHTML="El usuario o la contraseña no son validos";}
+        Swal.fire({
+          icon: 'error',
+          title: 'Error de servidor!, pruebe de nuevo mas tarde',
+          toast: true,
+          text: 'Pruebe de nuevo',
+          
+        })
+      }
     );
   }
   ValdaLogin() {
@@ -60,9 +69,17 @@ export class LoginComponent implements OnInit {
     );
     if (!regex.test(this.user.contrasena) || this.user.contrasena=='' || this.user.dni=='') {
       
-   let toast= this.toast.nativeElement;
+   
 
-    toast.innerHTML="El usuario o la contraseña no son validos";
+   
+
+    Swal.fire({
+      icon: 'error',
+      title: 'El usuario o la contraseña no son validos',
+      toast: true,
+      text: 'Pruebe de nuevo',
+      
+    })
     
       return false;
 

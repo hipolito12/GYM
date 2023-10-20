@@ -14,8 +14,11 @@ import { RutinasComponent } from './Components/rutinas/rutinas.component';
 import { DatosPerfilComponent } from './Components/datos-perfil/datos-perfil.component';
 import { MisRutinasComponent } from './Components/mis-rutinas/mis-rutinas.component';
 import { IMCComponent } from './Components/imc/imc.component';
+import { ProfesoresComponent } from './Components/profesores/profesores.component';
+import { VentasComponent } from './Components/ventas/ventas.component';
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home',  component: HomeComponent },
+  { path: '', redirectTo: 'home' ,pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {path: 'signin', component: SigninComponent},
   {path: 'nosotros', component: NosotrosComponent},
@@ -27,6 +30,8 @@ const routes: Routes = [
   {path: 'datos-perfil' , component: DatosPerfilComponent},
   {path:'misRutinas',component:MisRutinasComponent},
   {path:'imc',component:IMCComponent,canActivate:[AuthGuard]},
+  {path:'profesores',component:ProfesoresComponent,canActivate:[AuthGuard]},
+  {path: 'ventas', component: VentasComponent },
 
 
 ];

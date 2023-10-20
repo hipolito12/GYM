@@ -1,0 +1,24 @@
+<div class="container-fluid" style="background-color: #1A1E21;">
+    <div class="form-container" >
+    <mat-card>
+      <mat-card-content>
+        <h2 class="text-center fs-1 fw-bold"> Ingresar Venta</h2>
+        <form class="form-row" (ngSubmit)="this.registrar()">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nombre del producto" [(ngModel)]="venta.nombreDelProducto" name="NombreDelProducto" name="nombreProducto"  required >
+          </mat-form-field>
+          
+          <mat-form-field class="full-width">
+            <input matInput type="number" placeholder="Precio" [(ngModel)]="venta.precio"  name="precio"name="precio" required min="0">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput type="number" placeholder="Cantidad" [(ngModel)]="venta.cantidad"  name="cantidad" required min="0" max="30">
+          </mat-form-field>
+  
+          <button mat-raised-button color="primary" type="submit" >Enviar</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

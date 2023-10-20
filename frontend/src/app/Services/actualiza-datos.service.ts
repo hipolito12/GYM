@@ -4,13 +4,20 @@ import { Route } from '@angular/router';
   providedIn: 'root'
 })
 export class ActualizaDatosService {
-
+rol:any;
  private _User:boolean = false;
   constructor() { }
 
   get GUser(){
     return !!localStorage.getItem('token')
   }
-
+  set SetrolUsuario(rol:any)
+  {
+    this.rol = rol;
+  }
+  get getrolUsuario()
+  {
+    return this.rol;
+  }
   
 }

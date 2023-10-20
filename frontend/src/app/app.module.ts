@@ -36,6 +36,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { MisRutinasComponent } from './Components/mis-rutinas/mis-rutinas.component';
 import { IMCComponent } from './Components/imc/imc.component';
 import {MatSelectModule} from '@angular/material/select';
+import { ProfesoresComponent } from './Components/profesores/profesores.component';
+import { VentasComponent } from './Components/ventas/ventas.component';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import {MatSelectModule} from '@angular/material/select';
     RutinasComponent,
     DatosPerfilComponent,
     MisRutinasComponent,
-    IMCComponent
+    IMCComponent,
+    ProfesoresComponent,
+    VentasComponent
   ],
   imports: [
     BrowserModule,

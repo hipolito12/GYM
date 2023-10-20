@@ -77,6 +77,7 @@ const ReservarCupo = async (req, res) => {
 
 async function VerificoToken(req, res, next) {
   try {
+    console.log("aca");
     if (!req.headers.authorization) {
       return res.status(401).send("Unauhtorized Request");
     }
