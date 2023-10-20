@@ -35,13 +35,15 @@ model asistencia {
 }
 
 model cuota {
-  CodCuota  Int      @id @default(autoincrement())
-  DniFK     Float
-  FechaPago DateTime @db.Timestamp(6)
-  precio    Float
-  persona   persona  @relation(fields: [DniFK], references: [dni], map: "cuota-persona")
+  CodCuota     Int         @id @default(autoincrement())
+  DniFK        Float
+  FechaPago    DateTime    @db.Timestamp(6)
+  precioActual Int
+  persona      persona     @relation(fields: [DniFK], references: [dni], map: "cuota-persona")
+  preciocuota  preciocuota @relation(fields: [precioActual], references: [idpreciocuota], onUpdate: Restrict, map: "cuota-preciocuota")
 
   @@index([DniFK], map: "cuota-persona_idx")
+  @@index([precioActual], map: "cuota-preciocuota_idx")
 }
 
 model persona {
@@ -153,4 +155,11 @@ model venta {
   persona        persona @relation(fields: [TrabajadorIDni], references: [dni], map: "venta-persona")
 
   @@index([TrabajadorIDni], map: "venta-persona_idx")
+}
+
+model preciocuota {
+  idpreciocuota      Int       @id @default(autoincrement())
+  valor              Float
+  fechaActualizacion DateTime? @db.Timestamp(2)
+  cuota              cuota[]
 }

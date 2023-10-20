@@ -16,6 +16,7 @@ app.use('/api', require('./routes/Blog.js'));
 app.use('/api', require('./routes/MisRutinas.js'));
 app.use('/api', require('./routes/imc.js'));
 app.use('/api', require('./routes/ventas.js'));
+app.use('/api', require('./routes/pagoCuota.js'));
 
 
 /*servidor*/ 

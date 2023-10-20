@@ -1,1 +1,50 @@
-<p>profesores works!</p>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sideUserNav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <p class="mx-auto fs-3 mt-2">Bienvenido Profesor {{this.nombre}}</p>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sideUserNav mode="push" style="width: 20%">
+      <mat-nav-list >
+        <a mat-list-item routerLink="/profesores">Pago De Cuota</a>
+        <a mat-list-item routerLink="#">Rutinas</a>
+        <a mat-list-item  routerLink="#">Mi actividad</a>
+        <a mat-list-item  routerLink="#">Blog</a>
+        <a mat-list-item routerLink="/datos-perfil">Perfil</a>
+        <a mat-list-item routerLink="#">Banear usuario</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 88vh !important ;background-color: #1A1E21;" class="mx-auto  " >
+        
+        
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card mt-5">
+                        <div class="card-body">
+                            <h5 class="card-title fs-3 fw-bold text-center">Pagar una cuota </h5>
+                            <form (submit)="this.RealizarPago()">
+                                <div class="mb-3">
+                                    <label for="dni" class="form-label fs-6 ">DNI cliente</label>
+                                    <input type="text" class="form-control" id="dni" [(ngModel)]="pago.dni"  name="dni" placeholder="Ingrese su DNI" required>                                   
+                                </div>
+                                
+                                <div class="text-center"> 
+                                    <button type="submit" class="btn btn-primary p-2">Pagar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+  </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <router-outlet></router-outlet> 
