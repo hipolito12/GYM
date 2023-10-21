@@ -16,6 +16,7 @@ import { MisRutinasComponent } from './Components/mis-rutinas/mis-rutinas.compon
 import { IMCComponent } from './Components/imc/imc.component';
 import { ProfesoresComponent } from './Components/profesores/profesores.component';
 import { VentasComponent } from './Components/ventas/ventas.component';
+import { UsuarioBanComponent } from './Components/usuario-ban/usuario-ban.component';
 const routes: Routes = [
   { path: 'home',  component: HomeComponent },
   { path: '', redirectTo: 'home' ,pathMatch: 'full' },
@@ -32,6 +33,8 @@ const routes: Routes = [
   {path:'imc',component:IMCComponent,canActivate:[AuthGuard]},
   {path:'profesores',component:ProfesoresComponent,canActivate:[AuthGuard]},
   {path: 'ventas', component: VentasComponent },
+  {path: 'BanUsuario', component: UsuarioBanComponent },
+
 
 
 ];

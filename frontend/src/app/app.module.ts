@@ -38,6 +38,7 @@ import { IMCComponent } from './Components/imc/imc.component';
 import {MatSelectModule} from '@angular/material/select';
 import { ProfesoresComponent } from './Components/profesores/profesores.component';
 import { VentasComponent } from './Components/ventas/ventas.component';
+import { UsuarioBanComponent } from './Components/usuario-ban/usuario-ban.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { VentasComponent } from './Components/ventas/ventas.component';
     MisRutinasComponent,
     IMCComponent,
     ProfesoresComponent,
-    VentasComponent
+    VentasComponent,
+    UsuarioBanComponent
   ],
   imports: [
     BrowserModule,
