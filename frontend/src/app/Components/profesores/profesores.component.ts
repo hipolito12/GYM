@@ -69,7 +69,7 @@ export class ProfesoresComponent {
                   
                   this.pc.RegistrarPago(this.pago).subscribe(
                     (res)=>
-                    { console.log('a')
+                    { 
                       const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',

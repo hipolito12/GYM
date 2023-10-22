@@ -6,6 +6,7 @@ const UsuarioBaneadosModel = async () => {
     const UsuariosBaneados = await prisma.persona.findMany({
       where: {estado:false},
       select:{
+        dni:true,
         NombreCompleto:true,
         email:true,
         sexo:true,
@@ -13,7 +14,6 @@ const UsuarioBaneadosModel = async () => {
 
       }
     })
-    console.log(UsuariosBaneados);
     return UsuariosBaneados;
   } catch (e) 
   {
@@ -30,6 +30,7 @@ const UsuarioHabilitadosModel = async () => {
       const UsuariosNoBaneados  = await prisma.persona.findMany({
         where: {estado:true},
         select:{
+        dni:true,
           NombreCompleto:true,
           email:true,
           sexo:true,
@@ -37,7 +38,6 @@ const UsuarioHabilitadosModel = async () => {
   
         }
       })
-      console.log(UsuariosNoBaneados);
       return UsuariosNoBaneados;
     } catch (e) 
     {
@@ -51,11 +51,11 @@ const UsuarioHabilitadosModel = async () => {
     const BanearUsuarioModel = async (dni) => 
     {
         try {
+          console.log('asa');
         const UsuarioBaneado = await prisma.persona.update({
-          where: {dni:dni},
+          where: {dni:Number.parseInt(dni)},
           data: {estado:false}
         })
-        console.log(UsuarioBaneado);
         return UsuarioBaneado;
       } catch (e) {
         console.log(e.message);
@@ -68,10 +68,9 @@ const UsuarioHabilitadosModel = async () => {
     {
         try {
         const UsuarioBaneado = await prisma.persona.update({
-          where: {dni:dni},
+          where: {dni:Number.parseInt(dni),},
           data: {estado:true}
         })
-        console.log(UsuarioBaneado);
         return UsuarioBaneado;
       } catch (e) {
         console.log(e.message);

@@ -1,27 +1,165 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <button mat-icon-button (click)="sideUserNav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <p class="mx-auto fs-3 mt-2">Bienvenido Profesor {{this.nombre}}</p>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  
-  <mat-sidenav-container>
-    <mat-sidenav #sideUserNav mode="push" style="width: 20%">
-      <mat-nav-list >
-        <a mat-list-item routerLink="/profesores">Pago De Cuota</a>
-        <a mat-list-item routerLink="#">Rutinas</a>
-        <a mat-list-item  routerLink="#">Mi actividad</a>
-        <a mat-list-item  routerLink="#">Blog</a>
-        <a mat-list-item routerLink="/datos-perfil">Perfil</a>
-        <a mat-list-item routerLink="/BanUsuario">Banear usuario</a>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div style="height: 88vh !important ;background-color: #1A1E21;" class="mx-auto  " >
-        
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="sideUserNav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <p class="mx-auto fs-3 mt-2">Bienvenido Profesor {{ this.nombre }}</p>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sideUserNav mode="push" style="width: 20%">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/profesores">Pago De Cuota</a>
+      <a mat-list-item routerLink="#">Rutinas</a>
+      <a mat-list-item routerLink="#">Mi actividad</a>
+      <a mat-list-item routerLink="#">Blog</a>
+      <a mat-list-item routerLink="/datos-perfil">Perfil</a>
+      <a mat-list-item routerLink="/BanUsuario">Banear usuario</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh !important " class="mx-auto">
+      <div class="container-fluid">
+        <mat-tab-group>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="bi bi-person-fill-check fs-2 mx-3"></i>
+              Permitidos
+            </ng-template>
+            <!-- contenido Tabs -->
+            <div class="container">
+              <mat-card>
+                <mat-card-header>
+              <mat-form-field>
+                <input matInput (keyup)="Filterchange($event)" placeholder="Nombre Usuario" />              </mat-form-field>
+            
+                </mat-card-header>
+                <mat-card-content>
+                
+              <table matSort mat-table [dataSource]="this.dataSoirce" class="mat-elevation-z8">
+
+                
+            
+                <ng-container matColumnDef="Nombre">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> Name</th>
+                    <td mat-cell *matCellDef="let element">{{element.NombreCompleto}}</td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="Email">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> email</th>
+                    <td mat-cell *matCellDef="let element">{{element.email}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="sexo">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> sexo</th>
+                    <td mat-cell *matCellDef="let element">{{element.sexo}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Telefono">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> Phone</th>
+                    <td mat-cell *matCellDef="let element">{{element.telefono}}</td>
+                  </ng-container>
+            
+                  
+                  <ng-container matColumnDef="Acciones">
+                    <th mat-header-cell *matHeaderCellDef> Action</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-raised-button color="warn" (click)="NoPermitir(element.dni)">Desabilitar</button>
+                    </td>
+                  </ng-container>
+            
+            
+                <tr mat-header-row *matHeaderRowDef="this.Columnas"></tr>
+                <tr mat-row *matRowDef="let row;columns:this.Columnas"></tr>
+            
+            </table>
+            
+            
+          </mat-card-content>
+          <br>
+          <mat-card-footer>
+          
+              <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+          
+          </mat-card-footer>
+          </mat-card>
+            </div>
+            <!-- Fin  Tabs -->
+          </mat-tab>
+          <!-- Arranco  no Permitidos -->
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="bi bi-exclamation-octagon-fill fs-2 mx-3"></i>
+              Inhabiitados
+            </ng-template>
+            <!-- contenido Tabs -->
+            <div class="container">
+
+              <mat-card>
+                <mat-card-header>
+              <mat-form-field>
+                <input matInput (keyup)="Filterchange2($event)" placeholder="Nombre Usuario" />              </mat-form-field>
+            
+                </mat-card-header>
+                <mat-card-content>
+                
+              <table matSort mat-table [dataSource]="this.dataSource" class="mat-elevation-z8">
+
+                
+            
+                <ng-container matColumnDef="Nombre">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> Name</th>
+                    <td mat-cell *matCellDef="let element">{{element.NombreCompleto}}</td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="Email">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> email</th>
+                    <td mat-cell *matCellDef="let element">{{element.email}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="sexo">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> sexo</th>
+                    <td mat-cell *matCellDef="let element">{{element.sexo}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Telefono">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> Phone</th>
+                    <td mat-cell *matCellDef="let element">{{element.telefono}}</td>
+                  </ng-container>
+            
+                  
+                  <ng-container matColumnDef="Acciones">
+                    <th mat-header-cell *matHeaderCellDef> Action</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-raised-button color="primary" (click)="Permitir(element.dni)">Habilitar</button>
+                    </td>
+                  </ng-container>
+            
+            
+                <tr mat-header-row *matHeaderRowDef="this.Columnas"></tr>
+                <tr mat-row *matRowDef="let row;columns:this.Columnas"></tr>
+            
+            </table>
+            
+            
+          </mat-card-content>
+          <br>
+          <mat-card-footer>
+          
+              <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+          
+          </mat-card-footer>
+          </mat-card>
+
+
+
+            </div>
+            <!-- Fin contenido Tabs -->
+          </mat-tab>
+        </mat-tab-group>
       </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  <router-outlet></router-outlet> 
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<router-outlet></router-outlet>

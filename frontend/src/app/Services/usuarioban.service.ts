@@ -26,13 +26,13 @@ export class UsuariobanService {
 
   Habilitar(dni:any): Observable<any>
   {
-    return this.https.put("http://localhost:3000/api/Habilitar",dni);
+    return this.https.post("http://localhost:3000/api/Habilitar",dni);
   
   }
 
   Desabilitar(dni:any): Observable<any>
   {
-    return this.https.put("http://localhost:3000/api/Deshabilitar",dni);
+    return this.https.post("http://localhost:3000/api/Deshabilitar",dni);
   
   }
 
