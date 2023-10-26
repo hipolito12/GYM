@@ -20,6 +20,7 @@ const getAllRutinas = async (req, res) => {
 const getAllActividades = async (req, res) => {
   try {
     const actividades = await searchAllActividadesModel();
+    return res.status(200).json(actividades);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error al obtener actividades disponibles' });
@@ -37,7 +38,7 @@ const CreateRutinas = async (req, res) => {
 
 const UpdateRutinas = async (req, res) => {
   try {
-    const updatedRutinas = await UpdateRutina(req.body);
+    const updatedRutinas = await UpdateRutina(req.params.id, req.body);
     return res.status(200).json(updatedRutinas);
   } catch (error) {
     console.log(error.message);
@@ -48,8 +49,8 @@ const UpdateRutinas = async (req, res) => {
 const getRutinaById = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
-    const rutina = await searchOneRutinesModel(id);
-    res.status(200).json(rutina);
+    const rutinaID = await searchOneRutinesModel(id);
+    res.status(200).json(rutinaID);
   } catch (error) {
     console.error(error);
     if (error.message === 'Rutina no encontrada') {

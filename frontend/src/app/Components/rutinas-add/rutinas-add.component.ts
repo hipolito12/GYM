@@ -13,13 +13,6 @@ export class RutinasAddComponent implements OnInit {
   imagenURL: string = '';
   tipoRutina: string = '';
   actividades: any[] = [];
-  fechaActual = new Date();
-  fechaHoy =
-    this.fechaActual.getFullYear() +
-    '-' +
-    (this.fechaActual.getMonth() + 1) +
-    '-' +
-    this.fechaActual.getDay();
 
   constructor(private rutinasService: RutinasService, private router: Router) {}
 
@@ -38,7 +31,7 @@ export class RutinasAddComponent implements OnInit {
       descripcion: this.descripcion,
       imagen: this.imagenURL,
       tipo: this.tipoRutina,
-      fechaAct: this.fechaHoy,
+      fechaAct: new Date().toISOString().split('T')[0],
     };
 
     this.rutinasService.createRutina(nuevaRutina).subscribe(

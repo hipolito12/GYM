@@ -16,13 +16,6 @@ export class RutinasUpdateComponent {
   imagenURL: string = '';
   tipoRutina: string = '';
   actividades: any[] = [];
-  fechaActual = new Date();
-  fechaHoy =
-    this.fechaActual.getFullYear() +
-    '-' +
-    (this.fechaActual.getMonth() + 1) +
-    '-' +
-    this.fechaActual.getDate();
 
   constructor(
     private rutinasService: RutinasService,
@@ -40,24 +33,27 @@ export class RutinasUpdateComponent {
       }
     });
   }
-  UpdateRutinas() {
-    const nuevaRutina = {
+  UpdateRutinas1() {
+    const rutinaActualizada = {
+      id: this.idRutina,
       nroAct: this.nroActividad,
       descripcion: this.descripcion,
       imagen: this.imagenURL,
       tipo: this.tipoRutina,
-      fechaAct: this.fechaHoy,
+      fechaAct: new Date().toISOString().split('T')[0],
     };
+    this.rutinasService
+      .updateRutina(this.idRutina, rutinaActualizada)
+      .subscribe(
+        (data: any) => {
+          console.log('Rutina editada exitosamente', data);
 
-    this.rutinasService.updateRutina(nuevaRutina).subscribe(
-      (data: any) => {
-        console.log('Rutina editada exitosamente', data);
-        this.router.navigate(['/rutinas']);
-      },
-      (error) => {
-        console.error('Error al editar esta rutina', error);
-      }
-    );
+          this.router.navigate(['/rutinas']);
+        },
+        (error) => {
+          console.error('Error al editar esta rutina', error);
+        }
+      );
   }
 
   cargarRutina(idRutina: number) {

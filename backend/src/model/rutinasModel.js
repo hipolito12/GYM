@@ -51,9 +51,30 @@ const CreateRutina = async (object) => {
     return e.message;
   }
 };
-const UpdateRutina = async (object) => {
+const UpdateRutina = async (id, updatedData) => {
   try {
-    //return elements;
+    // Convierte id a número
+    const idRutinaGenerica = parseInt(id, 10);
+    if (isNaN(idRutinaGenerica)) {
+      // Manejo de error si no se puede convertir a número
+      throw new Error('El valor de id no es un número válido.');
+    }
+
+    const fechaActualizacion = new Date();
+    const formattedFechaActualizacion = fechaActualizacion
+      .toISOString()
+      .split('T')[0];
+    const updatedRutina = await prisma.rutinagenerica.update({
+      where: { idRutinaGenerica }, // Usar la variable idRutinaGenerica convertida
+      data: {
+        DescripcionRutina: updatedData.descripcion,
+        ActividadFk: updatedData.nroAct,
+        TipoRutinaFk: updatedData.tipo,
+        Imagenes: updatedData.imagen,
+        fechaActualizacion: formattedFechaActualizacion,
+      },
+    });
+    return updatedRutina;
   } catch (e) {
     console.log(e.message);
     return e.message;

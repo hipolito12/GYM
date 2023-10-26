@@ -20,9 +20,13 @@ export class RutinasService {
     return this.http.post('http://localhost:3000/api/createRutina', rutina);
   }
 
-  updateRutina(rutina: any): Observable<any> {
-    return this.http.put('http://localhost:3000/api/updateRutina', rutina);
+  updateRutina(idRutina: number, rutina: any): Observable<any> {
+    return this.http.put(
+      `http://localhost:3000/api/updateRutina/${idRutina}`,
+      rutina
+    );
   }
+
   GetRutinaById(idRutina: number): Observable<any> {
     return this.http.get(`http://localhost:3000/api/GetRutinaById/${idRutina}`);
   }
