@@ -4,7 +4,18 @@ const {
   CreateRutina,
   UpdateRutina,
   searchOneRutinesModel,
+  searchActiveRutinesModel,
+  updateRutinaActivaModel,
 } = require('../model/rutinasModel.js');
+
+const getActiveRutinas = async (req, res) => {
+  try {
+    const rutinas = await searchActiveRutinesModel();
+    res.json(rutinas);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al obtener las rutinas activas' });
+  }
+};
 
 // Obtener todas las rutinas disponibles
 const getAllRutinas = async (req, res) => {
@@ -61,10 +72,27 @@ const getRutinaById = async (req, res) => {
   }
 };
 
+const DeleteRutina = async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    console.log('ID recibido:', id);
+    if (isNaN(id)) {
+      return res.status(400).json({ error: 'ID de rutina no válido' });
+    }
+    const updatedRutina = await updateRutinaActivaModel(id, 0);
+    res.status(200).json(updatedRutina);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al eliminar la rutina' });
+  }
+};
+
 module.exports = {
   getAllRutinas,
   getAllActividades,
   CreateRutinas,
   UpdateRutinas,
   getRutinaById,
+  getActiveRutinas,
+  DeleteRutina,
 };

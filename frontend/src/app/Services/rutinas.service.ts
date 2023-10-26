@@ -12,6 +12,10 @@ export class RutinasService {
     return this.http.get('http://localhost:3000/api/AllRutinas');
   }
 
+  getActiveRutinas(): Observable<any> {
+    return this.http.get('http://localhost:3000/api/ActiveRutinas');
+  }
+
   getAllActividades(): Observable<any> {
     return this.http.get('http://localhost:3000/api/AllActividades');
   }
@@ -29,5 +33,12 @@ export class RutinasService {
 
   GetRutinaById(idRutina: number): Observable<any> {
     return this.http.get(`http://localhost:3000/api/GetRutinaById/${idRutina}`);
+  }
+
+  updateRutinaActiva(idRutina: number, nuevoValor: number): Observable<any> {
+    // Realiza una solicitud PUT al servidor para actualizar el campo 'activo'
+    return this.http.put(`http://localhost:3000/api/deleteRutina/${idRutina}`, {
+      activo: nuevoValor,
+    });
   }
 }

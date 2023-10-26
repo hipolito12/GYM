@@ -39,7 +39,13 @@ export class RutinasComponent implements OnInit {
   constructor(private rutinasService: RutinasService, private router: Router) {}
 
   ngOnInit(): void {
-    this.GetGenericas();
+    /*     this.GetGenericas(); */
+    this.GetActiveRutinas();
+  }
+  GetActiveRutinas() {
+    this.rutinasService.getActiveRutinas().subscribe((data: any) => {
+      this.rutinas = data;
+    });
   }
   GetGenericas() {
     this.rutinasService.getAllRutinas().subscribe((data: any) => {
@@ -61,7 +67,9 @@ export class RutinasComponent implements OnInit {
           rutina1.idRutinaGenerica.toString() === idFiltrado
       );
     } else {
-      this.GetGenericas();
+      this.GetActiveRutinas();
+
+      /*       this.GetGenericas(); */
     }
   }
 
@@ -85,31 +93,23 @@ export class RutinasComponent implements OnInit {
     this.router.navigate(['/rutinasUpdate', idRutina]);
   }
 
-  /* eliminarRutina(Rutina: rutina) {
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: '¡No podrás revertir esto!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, eliminarlo',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!',
-        }).then((result: Swal.ConfirmationResult) => {
-          if (result.isConfirmed) {
-            Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
-          }
-        });
-      }
-    });
-  } */
+  eliminarRutina(idRutina: number) {
+    const confirmar = confirm(
+      '¿Estás seguro de que deseas eliminar esta rutina?'
+    );
+
+    if (confirmar) {
+      // Realiza la solicitud para actualizar el campo 'activo' a 0
+      this.rutinasService.updateRutinaActiva(idRutina, 0).subscribe(
+        () => {
+          console.log('Rutina eliminada con éxito');
+          // Actualiza la lista de rutinas (puedes volver a llamar a GetActiveRutinas o actualizar el arreglo en memoria)
+          this.GetActiveRutinas();
+        },
+        (error) => {
+          console.error('Error al eliminar la rutina', error);
+        }
+      );
+    }
+  }
 }

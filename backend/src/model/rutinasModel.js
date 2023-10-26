@@ -2,6 +2,26 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
+const searchActiveRutinesModel = async () => {
+  try {
+    const rutinas = await prisma.rutinagenerica.findMany({
+      where: {
+        activa: true, // Filtra las rutinas con activa igual a 1 (activas)
+      },
+      select: {
+        idRutinaGenerica: true,
+        DescripcionRutina: true,
+        actividad: { select: { NombreActividad: true } },
+        tiporutina: { select: { NombreTipo: true } },
+        fechaActualizacion: true,
+      },
+    });
+    return rutinas;
+  } catch (error) {
+    throw error;
+  }
+};
+
 const searchAllRutinesModel = async () => {
   try {
     const rutinas = await prisma.rutinagenerica.findMany({
@@ -105,10 +125,26 @@ const searchOneRutinesModel = async (id) => {
   }
 };
 
+const updateRutinaActivaModel = async (id, nuevoValor) => {
+  try {
+    const rutina = await prisma.rutinagenerica.update({
+      where: { idRutinaGenerica: id },
+      data: {
+        activa: false,
+      },
+    });
+    return rutina;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   searchAllRutinesModel,
   searchAllActividadesModel,
   CreateRutina,
   UpdateRutina,
   searchOneRutinesModel,
+  searchActiveRutinesModel,
+  updateRutinaActivaModel,
 };
