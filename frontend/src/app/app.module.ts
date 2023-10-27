@@ -34,6 +34,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { RolAddComponent } from './Components/rol-add/rol-add.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { RutinasUpdateComponent } from './Components/rutinas-update/rutinas-update.component';
+import { RolUpdateComponent } from './Components/rol-update/rol-update.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { RutinasUpdateComponent } from './Components/rutinas-update/rutinas-upda
     RolComponent,
     RolAddComponent,
     RutinasUpdateComponent,
+    RolUpdateComponent,
   ],
   imports: [
     BrowserModule,

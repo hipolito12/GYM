@@ -15,8 +15,12 @@ export class RolService {
     return this.http.post('http://localhost:3000/api/createRol', rol);
   }
 
-  UpdateRol(rol: any): Observable<any> {
-    return this.http.put('http://localhost:3000/api/updateRol', rol);
+  GetRolById(id: number): Observable<any> {
+    return this.http.get('http://localhost:3000/api/getRolById/' + id);
+  }
+
+  UpdateRol(idRol: number, rol: any): Observable<any> {
+    return this.http.put(`http://localhost:3000/api/updateRol/${idRol}`, rol);
   }
 
   DeleteRol(rol: any): Observable<any> {

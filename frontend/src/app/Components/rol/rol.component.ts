@@ -21,11 +21,11 @@ export class RolComponent {
   enModoEdicion: boolean = false; // Bandera para controlar si está en modo de edición
 
   constructor(private rolService: RolService, private router: Router) {
-    this.rolAEditar = {
+    /*     this.rolAEditar = {
       idrol: 0,
       NombreRol: '',
       Descripcion: '',
-    };
+    }; */
   }
 
   ngOnInit(): void {
@@ -56,26 +56,13 @@ export class RolComponent {
       this.GetRoles();
     });
   }
-  modificarRol(rol: Rol) {
+  capturarRol(id: number) {
+    this.router.navigate(['/rolesUpdate', id]);
+  }
+  /*   modificarRol(rol: Rol) {
     console.log(rol);
-    this.enModoEdicion = true;
-    this.rolAEditar = { ...rol };
-  }
-
-  guardarCambios() {
-    if (this.rolAEditar) {
-      this.rolService.UpdateRol(this.rolAEditar).subscribe(() => {
-        // Acciones adicionales si es necesario después de guardar los cambios
-
-        this.enModoEdicion = false; // Desactivar el modo de edición
-        this.GetRoles(); // Actualiza la lista de roles después de guardar
-        this.rolAEditar = null;
-      });
-    }
-  }
-
-  cancelarEdicion() {
-    this.enModoEdicion = false; // Desactivar el modo de edición
-    this.rolAEditar = null; // Restablecer el objeto `rolAEditar`
-  }
+    this.rolService.UpdateRol(rol).subscribe((data: any) => {
+      
+    });
+  } */
 }

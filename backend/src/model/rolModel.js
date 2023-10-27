@@ -11,15 +11,29 @@ const AllRols = async () => {
   }
 };
 
+const GetOneRol = async (id) => {
+  try {
+    const roleId = parseInt(id);
+    let elements = await prisma.rol.findUnique({
+      where: { idrol: roleId },
+    });
+    return elements;
+  } catch (e) {
+    console.log(e.message);
+    return e.message;
+  }
+};
+
 const UpdateRol = async (id, object) => {
   try {
+    const roleId = parseInt(id);
     let elements = await prisma.rol.update({
       where: {
-        idrol: id,
+        idrol: roleId,
       },
       data: {
-        NombreRol: object.nombre,
-        Descripcion: object.descripcion,
+        NombreRol: object.NombreRol,
+        Descripcion: object.Descripcion,
       },
     });
     return elements;
@@ -54,4 +68,4 @@ const CreateRol = async (object) => {
   }
 };
 
-module.exports = { AllRols, UpdateRol, DeleteRol, CreateRol };
+module.exports = { AllRols, UpdateRol, DeleteRol, CreateRol, GetOneRol };

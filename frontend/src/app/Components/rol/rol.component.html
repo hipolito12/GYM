@@ -32,23 +32,13 @@
               <td>{{ rol.NombreRol }}</td>
               <td>{{ rol.Descripcion }}</td>
               <td>
-              <button class="btn btn-danger" (click)="eliminarRol(rol.idrol)">Eliminar</button>
+              <button class="btn btn-primary"  (click)="capturarRol(rol.idrol)" >Modificar</button>
 
               </td>
                 <!-- <button class="btn btn-primary">Modificar</button> -->
-              <td *ngIf="!enModoEdicion">
-                <button class="btn btn-primary" (click)="modificarRol(rol)">Modificar</button>
+              <td>
+                <button class="btn btn-danger" (click)="eliminarRol(rol.idrol)">Eliminar</button>
               </td>
-              <td *ngIf="enModoEdicion">
-                <button class="btn btn-success" (click)="guardarCambios()">Guardar</button>
-                <button class="btn btn-danger" (click)="cancelarEdicion()">Cancelar</button>
-              </td>
-            </tr>
-            <tr *ngIf="enModoEdicion">
-              <td></td> <!-- Puedes dejar esta celda vacía o eliminarla si no necesitas una columna para el ID en modo de edición -->
-              <td><input [ngModel]="rolAEditar?.NombreRol" /> <!-- Vincula el campo NombreRol -->
-              <td><input [ngModel]="rolAEditar?.Descripcion" /> <!-- Vincula el campo Descripcion -->
-              <td></td> <!-- Puedes dejar esta celda vacía o eliminarla si no necesitas columnas adicionales en modo de edición -->
             </tr>
           </tbody>
       </table>

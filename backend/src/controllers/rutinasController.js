@@ -59,7 +59,7 @@ const UpdateRutinas = async (req, res) => {
 
 const getRutinaById = async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
+    const id = Number(req.params.id);
     const rutinaID = await searchOneRutinesModel(id);
     res.status(200).json(rutinaID);
   } catch (error) {
@@ -75,7 +75,7 @@ const getRutinaById = async (req, res) => {
 const DeleteRutina = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
-    console.log('ID recibido:', id);
+
     if (isNaN(id)) {
       return res.status(400).json({ error: 'ID de rutina no válido' });
     }

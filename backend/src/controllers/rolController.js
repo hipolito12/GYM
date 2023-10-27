@@ -3,6 +3,7 @@ const {
   UpdateRol,
   DeleteRol,
   CreateRol,
+  GetOneRol,
 } = require('../model/rolModel');
 
 const GetAllRols = async (req, res) => {
@@ -27,7 +28,8 @@ const CreateRols = async (req, res) => {
 
 const UpdateRols = async (req, res) => {
   try {
-    let updatedRol = await UpdateRol(req.body.idrol, req.body);
+    const id = req.params.id;
+    let updatedRol = await UpdateRol(id, req.body);
     return res.status(200).json(updatedRol);
   } catch (error) {
     console.log(error.message);
@@ -45,4 +47,19 @@ const DeleteRols = async (req, res) => {
   }
 };
 
-module.exports = { GetAllRols, CreateRols, UpdateRols, DeleteRols };
+const getRolById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    let rol = await GetOneRol(id);
+    if (rol) {
+      return res.status(200).json(rol);
+    } else {
+      res.status(404).json({ error: 'Rol no encontrado' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al obtener el rol por ID' });
+  }
+};
+
+module.exports = { GetAllRols, CreateRols, UpdateRols, DeleteRols, getRolById };
