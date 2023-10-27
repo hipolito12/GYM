@@ -95,6 +95,7 @@ model rol {
   idrol       Int       @id @default(autoincrement())
   NombreRol   String    @db.VarChar(45)
   Descripcion String    @db.VarChar(80)
+  activa      Boolean   @default(true)
   persona     persona[]
 }
 
