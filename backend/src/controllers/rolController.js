@@ -1,9 +1,10 @@
 const {
   AllRols,
   UpdateRol,
-  DeleteRol,
+  updateRolActivoModel,
   CreateRol,
   GetOneRol,
+  searchActiveRolsModel,
 } = require('../model/rolModel');
 
 const GetAllRols = async (req, res) => {
@@ -39,11 +40,15 @@ const UpdateRols = async (req, res) => {
 
 const DeleteRols = async (req, res) => {
   try {
-    let deletedRol = await DeleteRol(req.body);
-    return res.status(200).json(deletedRol);
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ error: 'ID de rol no válido' });
+    }
+    const updatedRol = await updateRolActivoModel(id, 0);
+    res.status(200).json(updatedRol);
   } catch (error) {
-    console.log(error.message);
-    return res.status(500).json({ message: error.message });
+    console.error(error);
+    res.status(500).json({ error: 'Error al eliminar el rol' });
   }
 };
 
@@ -62,4 +67,20 @@ const getRolById = async (req, res) => {
   }
 };
 
-module.exports = { GetAllRols, CreateRols, UpdateRols, DeleteRols, getRolById };
+const getActiveRols = async (req, res) => {
+  try {
+    const roles = await searchActiveRolsModel();
+    res.json(roles);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al obtener los roles activos' });
+  }
+};
+
+module.exports = {
+  GetAllRols,
+  CreateRols,
+  UpdateRols,
+  DeleteRols,
+  getRolById,
+  getActiveRols,
+};

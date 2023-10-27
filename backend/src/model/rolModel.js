@@ -43,16 +43,20 @@ const UpdateRol = async (id, object) => {
   }
 };
 
-const DeleteRol = async (id) => {
+const updateRolActivoModel = async (id, nuevoValor) => {
   try {
-    prisma.rol.delete({
+    const rol = await prisma.rol.update({
       where: { idrol: id },
+      data: {
+        activa: false,
+      },
     });
-  } catch (e) {
-    console.log(e.message);
-    return e.message;
+    return rol;
+  } catch (error) {
+    throw error;
   }
 };
+
 const CreateRol = async (object) => {
   try {
     let elements = await prisma.rol.create({
@@ -68,4 +72,29 @@ const CreateRol = async (object) => {
   }
 };
 
-module.exports = { AllRols, UpdateRol, DeleteRol, CreateRol, GetOneRol };
+const searchActiveRolsModel = async () => {
+  try {
+    const roles = await prisma.rol.findMany({
+      where: {
+        activa: true, // Filtra las rutinas con activa igual a 1 (activas)
+      },
+      select: {
+        idrol: true,
+        NombreRol: true,
+        Descripcion: true,
+      },
+    });
+    return roles;
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = {
+  AllRols,
+  UpdateRol,
+  updateRolActivoModel,
+  CreateRol,
+  GetOneRol,
+  searchActiveRolsModel,
+};

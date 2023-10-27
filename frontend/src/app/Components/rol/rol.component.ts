@@ -29,7 +29,13 @@ export class RolComponent {
   }
 
   ngOnInit(): void {
-    this.GetRoles();
+    this.GetActiveRols();
+  }
+
+  GetActiveRols() {
+    this.rolService.getActiveRols().subscribe((data: any) => {
+      this.roles = data;
+    });
   }
 
   GetRoles() {
@@ -46,23 +52,30 @@ export class RolComponent {
         (rol) => rol.idrol.toString() === idFiltrado
       );
     } else {
-      this.GetRoles();
+      this.GetActiveRols();
     }
   }
   eliminarRol(id: number) {
-    // Lógica para eliminar el rol con el ID especificado
-    this.rolService.DeleteRol(id).subscribe((data: any) => {
-      // Actualiza la lista de roles después de eliminar
-      this.GetRoles();
-    });
+    const confirmar = confirm(
+      '¿Estás seguro de que deseas eliminar esta rutina?'
+    );
+
+    if (confirmar) {
+      // Realiza la solicitud para actualizar el campo 'activo' a 0
+      this.rolService.updateRolActiva(id, 0).subscribe(
+        () => {
+          console.log('Rol eliminado con éxito');
+          // Actualiza la lista de rutinas (puedes volver a llamar a GetActiveRutinas o actualizar el arreglo en memoria)
+          this.GetActiveRols();
+        },
+        (error) => {
+          console.error('Error al eliminar el rol', error);
+        }
+      );
+    }
   }
+
   capturarRol(id: number) {
     this.router.navigate(['/rolesUpdate', id]);
   }
-  /*   modificarRol(rol: Rol) {
-    console.log(rol);
-    this.rolService.UpdateRol(rol).subscribe((data: any) => {
-      
-    });
-  } */
 }

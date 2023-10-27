@@ -10,7 +10,9 @@ export class RolService {
   getAllRols(): Observable<any> {
     return this.http.get('http://localhost:3000/api/allRols');
   }
-
+  getActiveRols(): Observable<any> {
+    return this.http.get('http://localhost:3000/api/ActiveRols');
+  }
   createRol(rol: any): Observable<any> {
     return this.http.post('http://localhost:3000/api/createRol', rol);
   }
@@ -21,6 +23,11 @@ export class RolService {
 
   UpdateRol(idRol: number, rol: any): Observable<any> {
     return this.http.put(`http://localhost:3000/api/updateRol/${idRol}`, rol);
+  }
+  updateRolActiva(idRol: number, nuevoValor: number): Observable<any> {
+    return this.http.put(`http://localhost:3000/api/deleteRol/${idRol}`, {
+      activo: nuevoValor,
+    });
   }
 
   DeleteRol(rol: any): Observable<any> {
