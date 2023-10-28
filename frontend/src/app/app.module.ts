@@ -35,6 +35,9 @@ import { RolAddComponent } from './Components/rol-add/rol-add.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { RutinasUpdateComponent } from './Components/rutinas-update/rutinas-update.component';
 import { RolUpdateComponent } from './Components/rol-update/rol-update.component';
+import { RutinasPersoComponent } from './Components/rutinas-perso/rutinas-perso.component';
+import { RutinasPersoAddComponent } from './Components/rutinas-perso-add/rutinas-perso-add.component';
+import { RutinasPersoUpdateComponent } from './Components/rutinas-perso-update/rutinas-perso-update.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,9 @@ import { RolUpdateComponent } from './Components/rol-update/rol-update.component
     RolAddComponent,
     RutinasUpdateComponent,
     RolUpdateComponent,
+    RutinasPersoComponent,
+    RutinasPersoAddComponent,
+    RutinasPersoUpdateComponent,
   ],
   imports: [
     BrowserModule,

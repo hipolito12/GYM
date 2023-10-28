@@ -16,7 +16,9 @@ import { RolComponent } from './Components/rol/rol.component';
 import { RolAddComponent } from './Components/rol-add/rol-add.component';
 import { RutinasUpdateComponent } from './Components/rutinas-update/rutinas-update.component';
 import { RolUpdateComponent } from './Components/rol-update/rol-update.component';
-
+import { RutinasPersoComponent } from './Components/rutinas-perso/rutinas-perso.component';
+import { RutinasPersoAddComponent } from './Components/rutinas-perso-add/rutinas-perso-add.component';
+import { RutinasPersoUpdateComponent } from './Components/rutinas-perso-update/rutinas-perso-update.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -32,6 +34,9 @@ const routes: Routes = [
   { path: 'rolesAdd', component: RolAddComponent },
   { path: 'rutinasUpdate/:id', component: RutinasUpdateComponent },
   { path: 'rolesUpdate/:id', component: RolUpdateComponent },
+  { path: 'rutinasPerso', component: RutinasPersoComponent },
+  { path: 'rutinasPersoAdd', component: RutinasPersoAddComponent },
+  { path: 'rutinasPersoUpdate/:id', component: RutinasPersoUpdateComponent },
 ];
 
 @NgModule({

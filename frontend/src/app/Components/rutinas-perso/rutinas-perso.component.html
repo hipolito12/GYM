@@ -1,0 +1,75 @@
+<div class="container border border-secondary rounded-lg mb-4 mt-4 p-0  my-4">
+  <div class="container-fluid bg-dark text-white py-3">
+    <h1 class="text-center">Rutinas GYM GENERICO</h1>
+    <div class="row">
+      <div class="col-6">
+        <button class="btn btn-secondary" routerLink="/rutinasPersoAdd">+ Nueva</button>
+      </div>
+      <div class="col-6 text-right">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Buscar id rutina..." #filtroId (keydown.enter)="filtrarPorId()">
+          <div class="input-group-append">
+            <button class="btn btn-dark" type="button" (click)="filtrarPorId()">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container py-3">
+  <label for="elementosPorPagina">Elementos por página:</label>
+  <select id="elementosPorPagina" [(ngModel)]="elementosPorPagina" (change)="cambiarElementosPorPagina()">
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <!-- Agrega más opciones según sea necesario -->
+  </select>
+</div>
+  <div class="container mt-4">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Id Rutina</th>
+            <th>Tipo de Rutina</th>
+            <th>DNI Persona</th>
+            <th>Actividad</th>
+            <th>Descripción</th>
+            <th>Imagen</th>
+            <th>Fecha de Actualización</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rutina of rutinas.slice((paginaActual - 1) * elementosPorPagina, paginaActual * elementosPorPagina)">
+            <td>{{rutina.idRutinaPersonalizada}}</td>
+            <td>{{ rutina.tiporutina.NombreTipo }}</td>
+            <td>{{rutina.persona.dni}}</td>
+            <td>{{ rutina.actividad.NombreActividad }}</td>
+            <td>{{ rutina.DescripcionRutina }}</td>
+            <td>{{rutina.Imagenes}}</td>
+            <td>{{ rutina.fechaActualizacion }}</td>
+              <td>
+                <div class="btn-group-vertical">
+                  <button class="btn btn-primary" (click)="capturarRutina(rutina.idRutinaPersonalizada)">Modificar</button>
+                  <button class="btn btn-danger" (click)="eliminarRutina(rutina.idRutinaPersonalizada)">Eliminar</button>
+                </div>
+              </td>
+            
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pagination d-flex justify-content-end p-3">
+    <button (click)="paginaAnterior()" [disabled]="paginaActual === 1">Anterior</button>
+    <button (click)="paginaSiguiente()" [disabled]="paginaActual * elementosPorPagina >= rutinas.length">Siguiente</button>
+  </div>
+
+
+
+
+<app-footer></app-footer>
+
+
+
+
