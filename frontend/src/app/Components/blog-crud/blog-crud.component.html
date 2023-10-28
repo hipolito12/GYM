@@ -1,0 +1,193 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sideUserNav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <p class="mx-auto fs-3 mt-2">Bienvenido Profesor {{this.nombre}}</p>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sideUserNav mode="push" style="width: 20%">
+      <mat-nav-list >
+        <a mat-list-item routerLink="/profesores">Pago De Cuota</a>
+        <a mat-list-item routerLink="#">Rutinas</a>
+        <a mat-list-item  routerLink="#">Mi actividad</a>
+        <a mat-list-item  routerLink="/blogCRUD">Blog</a>
+        <a mat-list-item routerLink="/datos-perfil">Perfil</a>
+        <a mat-list-item routerLink="/BanUsuario">Banear usuario</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 88vh !important ;background-color: #1A1E21;" class="mx-auto  mx-5  " style="overflow-y: hidden;"    >
+        
+          <mat-tab-group>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="bi bi-file-earmark-plus-fill fs-2"></i>
+              Nuevo blog
+            </ng-template>
+            <!-- contenido Tabs -->
+            
+            <h2 class="text-center fs-2 pt-3">Crear Nuevo Blog</h2>
+            <form (submit)="CreateBlog()">
+              <!-- Campo de Título -->
+              <div class="mb-3">
+                <label for="title" class="form-label fs-4 mx-2">Title:</label>
+                <input type="text" class="form-control"   [(ngModel)]="this.blog.titulo" id="title" name="title" required>
+              </div>
+          
+              <!-- Campo de Enlace de Imagen -->
+              <div class="mb-3">
+                <label  class="form-label fs-4 mx-2">Image Link:</label>
+                <input type="text" class="form-control" id="imageLink" [(ngModel)]="this.blog.imagen" name="imageLink">
+              </div>
+        
+              <div class="mb-3">
+                <label for="blogBody" class="form-label fs-4 mx-2">Escriba el blog:</label>
+                <ckeditor [(ngModel)]="this.blog.ckeditorContent" name="blogBody"></ckeditor>
+              </div>
+        
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg">CrearPost</button>
+              </div>
+            </form>
+            <!-- Fin  Tabs -->
+          </mat-tab>
+          
+
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="bi bi-gear-fill fs-2"></i>
+              Modificar
+            </ng-template>
+             <!-- contenido Tabs -->
+             <div>
+                <table >
+                  <div class="container-fluid">
+                    <mat-card>
+                      <mat-card-header>
+                    <mat-form-field>
+                      <input matInput (keyup)="Filterchange($event)" placeholder="Titulo de blog" />              </mat-form-field>
+                  
+                      </mat-card-header>
+                      <mat-card-content>
+                      
+                    <table matSort mat-table [dataSource]="this.dataSource" class="mat-elevation-z8">
+
+                      <ng-container matColumnDef="imagen">
+                          <th mat-sort-header mat-header-cell *matHeaderCellDef> Imagen</th>
+                          <td mat-cell *matCellDef="let element" class="text-center"><img src="{{element.imagen}}" alt="" class="w-50 "></td>
+                        </ng-container>
+                  
+                        <ng-container matColumnDef="titulo">
+                          <th mat-sort-header mat-header-cell *matHeaderCellDef> Titulo</th>
+                          <td mat-cell *matCellDef="let element" class="fs-5">{{element.Titulo}}</td>
+                        </ng-container>
+                  
+                        <ng-container matColumnDef="NombreCompleto">
+                          <th mat-sort-header mat-header-cell *matHeaderCellDef> Creador </th>
+                          <td mat-cell *matCellDef="let element">{{element.persona.NombreCompleto}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Acciones">
+                          <th mat-header-cell *matHeaderCellDef> Action</th>
+                          <td mat-cell *matCellDef="let element">
+                            <button type="button" mat-raised-button  class="btn btn-primary bg-warning" (click)="abrirModal(element.idPost)"  data-bs-toggle="modal" data-bs-target="#blogFormModal">Modificar</button>
+                              <button type="button" mat-raised-button class="btn btn-primary  bg-danger" data-bs-toggle="modal" (click)="this.abrirModalEliminar(element.idPost)" data-bs-target="#Eliminar">Eliminar</button>
+                          </td>
+                        </ng-container>
+                  
+                  
+                      <tr mat-header-row *matHeaderRowDef="this.Columnas"></tr>
+                      <tr mat-row *matRowDef="let row;columns:this.Columnas"></tr>
+                  
+                  </table>
+                  
+                  
+                </mat-card-content>
+                <br>
+                <mat-card-footer>
+                
+                    <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+                
+                </mat-card-footer>
+                </mat-card>
+                  </div>
+                </table>
+             </div>
+            <!-- Fin contenido Tabs -->
+  
+  
+  
+          </mat-tab>
+
+
+          
+        
+          
+        </mat-tab-group>
+        
+        
+  </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <router-outlet></router-outlet>
+
+  
+
+  <!-- Modal Modificar -->
+  <div class="modal fade" id="blogFormModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="blogFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="blogFormModalLabel">Crear una nueva entrada de blog</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="blogTitle" class="form-label">Título del blog</label>
+              <input type="text" class="form-control" id="blogTitle"   [(ngModel)]="this.blog.titulo" name="blogTitle" placeholder="Introduce el título del blog">
+            </div>
+  
+            <div class="mb-3">
+              <label for="imageLink" class="form-label">Enlace de la imagen</label>
+              <input type="text" class="form-control" [(ngModel)]="this.blog.imagen" id="imageLink" name="imageLink" placeholder="Introduce el enlace de la imagen">
+            </div>
+  
+            <div class="mb-3">
+              <label for="blogBody" class="form-label fs-4 mx-2">Escriba el blog:</label>
+                <ckeditor [(ngModel)]="this.blog.ckeditorContent"  name="blogBody"></ckeditor>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary"  (click)="this.Modificar()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+   <!-- Modal Eliminar -->
+   <div class="modal fade" id="Eliminar"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="blogFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="blogFormModalLabel">Crear una nueva entrada de blog</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h1 class="fw-bolder ">¿ Deseas eliminar este post?</h1>    
+          <h4>Podras recuperar el post en la seccion de 'eliminados'</h4>    
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary"  data-bs-dismiss="modal" (click)="this.eliminar()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>

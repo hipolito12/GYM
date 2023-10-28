@@ -17,6 +17,7 @@ import { IMCComponent } from './Components/imc/imc.component';
 import { ProfesoresComponent } from './Components/profesores/profesores.component';
 import { VentasComponent } from './Components/ventas/ventas.component';
 import { UsuarioBanComponent } from './Components/usuario-ban/usuario-ban.component';
+import { BlogCRUDComponent } from './Components/blog-crud/blog-crud.component';
 const routes: Routes = [
   { path: 'home',  component: HomeComponent },
   { path: '', redirectTo: 'home' ,pathMatch: 'full' },
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path:'profesores',component:ProfesoresComponent,canActivate:[AuthGuard]},
   {path: 'ventas', component: VentasComponent },
   {path: 'BanUsuario', component: UsuarioBanComponent },
+  {path: 'blogCRUD', component: BlogCRUDComponent },
 
 
 

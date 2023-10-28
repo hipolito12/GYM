@@ -1,7 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const ObtenerBlog = async (req, res) => {
+const ObtenerBlog = async () => {
   try {
     const blogs = await prisma.post.findMany({
       where: {
@@ -26,7 +26,7 @@ const ObtenerBlog = async (req, res) => {
 };
 
 
-const ObtenerTipoBlog = async (req, res) => 
+const ObtenerTipoBlog = async () => 
 {
     try 
     {
@@ -44,8 +44,79 @@ const ObtenerTipoBlog = async (req, res) =>
     catch(e)
     {
         console.log("error en listado de blogs"+e.message)
-       return  res.status(500).json({msg: e.message +"desde Controller "})
+       return  res.status(500).json({msg: e.message +"desde Model "})
     }
 }
 
-module.exports = { ObtenerBlog,ObtenerTipoBlog };
+const CrearBlog  = async (blogData,dni) => 
+{  try
+  {let blog = await prisma.post.create({
+    data: {
+      Titulo: blogData.titulo,
+      Cuerpo: blogData.ckeditorContent,
+      TipoPostFk: 1,
+      DniAutor: dni,
+      imagen: blogData.imagen,
+      fecha: new Date(),
+    },
+  });
+
+  }
+    catch(e)
+    {
+        console.log("error en crear blog "+e.message)
+        return  e.message
+    }
+
+}
+
+
+const ActualizarBlog  = async (blog) => 
+{
+  try
+  {
+    const {titulo,imagen,ckeditorContent, idPost} = blog
+    const result = await prisma.post.update({
+      where: {
+        idPost: idPost,
+      },
+      data: {
+        Titulo: titulo,
+        Cuerpo : ckeditorContent,
+        imagen : imagen,
+        
+      },
+    });
+    return result;
+  }
+  catch(e)
+  {
+    console.log("error en actualizar blog "+e.message)
+    return  e.message   }
+}
+
+const EliminarBlog  = async (id) => 
+{
+  try
+  {
+    const blog = await prisma.post.update({
+      where: {
+        idPost: Number.parseInt(id) ,
+      },
+      data: {
+        visible: false,
+      },
+    });
+    return blog;
+  }
+  catch(e)
+  {
+    console.log("error en eliminar blog"+e.message)
+    return e.message
+  }
+}
+
+
+
+
+module.exports = { ObtenerBlog,ObtenerTipoBlog ,CrearBlog,ActualizarBlog,EliminarBlog};

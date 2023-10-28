@@ -39,6 +39,10 @@ import {MatSelectModule} from '@angular/material/select';
 import { ProfesoresComponent } from './Components/profesores/profesores.component';
 import { VentasComponent } from './Components/ventas/ventas.component';
 import { UsuarioBanComponent } from './Components/usuario-ban/usuario-ban.component';
+import { BlogCRUDComponent } from './Components/blog-crud/blog-crud.component';
+import { CKEditorModule } from 'ng2-ckeditor';
+import { BlogControlsComponent } from './Components/blog-controls/blog-controls.component';
+
 
 
 @NgModule({
@@ -60,7 +64,9 @@ import { UsuarioBanComponent } from './Components/usuario-ban/usuario-ban.compon
     IMCComponent,
     ProfesoresComponent,
     VentasComponent,
-    UsuarioBanComponent
+    UsuarioBanComponent,
+    BlogCRUDComponent,
+    BlogControlsComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +88,8 @@ import { UsuarioBanComponent } from './Components/usuario-ban/usuario-ban.compon
     NgxPaginationModule,
     MatTabsModule,
     MatExpansionModule,
-    MatSelectModule
+    MatSelectModule,
+    CKEditorModule
     
   ],
 
