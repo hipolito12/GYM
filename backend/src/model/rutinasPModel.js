@@ -10,7 +10,7 @@ const checkDniExistModel = async (dni) => {
         dni,
       },
     });
-
+    console.log(persona);
     return persona !== null;
   } catch (error) {
     console.log(error.message);
@@ -84,7 +84,7 @@ const CreateRutina = async (object) => {
         TipoRutinaFk: object.tipo,
         PersonaDniFk: object.dni,
         DescripcionRutina: object.descripcion,
-        ActividadFk: object.nroAct,
+        IdActividadfk: object.nroAct,
         fechaActualizacion: object.fechaAct,
         Imagenes: object.imagen,
       },

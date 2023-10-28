@@ -13,7 +13,7 @@ const {
 
 // obtener rutinas para mostrar
 router.get('/AllRutinasP', getAllRutinasP);
-router.get('/AllActividades', getAllActividadesP);
+router.get('/AllActividadesP', getAllActividadesP);
 router.post('/createRutinaP', CreateRutinasP);
 router.put('/updateRutinaP/:id', UpdateRutinasP);
 router.get('/GetRutinaByIdP/:id', getRutinaByIdP);

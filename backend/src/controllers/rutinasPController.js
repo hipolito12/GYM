@@ -11,12 +11,20 @@ const {
 
 const checkDniExist = async (req, res) => {
   try {
-    const dni = req.params.dni;
+    const dni = parseFloat(req.params.dni); // Convierte el DNI a un número
+
+    if (isNaN(dni)) {
+      //para chequear que no sea nulo
+      console.error('DNI no es un número válido:', req.params.dni);
+      throw new Error('El valor de DNI no es un número válido.');
+    }
+
     const exists = await checkDniExistModel(dni);
 
-    if (exists) {
-      res.status(200).json({ message: 'El DNI existe en la base de datos' });
+    if (exists !== null) {
+      res.status(200).json(dni);
     } else {
+      console.error('El DNI no existe en la base de datos:', dni);
       res.status(404).json({ message: 'El DNI no existe en la base de datos' });
     }
   } catch (error) {

@@ -47,7 +47,7 @@ export class RutinasPersoUpdateComponent {
         (data: any) => {
           console.log('Rutina editada exitosamente', data);
 
-          this.router.navigate(['/rutinas']);
+          this.router.navigate(['/rutinasPerso']);
         },
         (error) => {
           console.error('Error al editar esta rutina', error);

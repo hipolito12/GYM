@@ -20,18 +20,19 @@ export class RutinasPersoAddComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    /*  this.GetActividades(); */
+    this.GetActividades();
   }
-  /*   GetActividades() {
+  GetActividades() {
     this.rutinasPersoService.getAllActividadesP().subscribe((data: any) => {
       this.actividades = data;
     });
-  } */
+  }
   postRutinasP() {
     // Verifica si el DNI existe en la base de datos
     this.rutinasPersoService.checkDniExist(this.nroDni).subscribe(
       (data: any) => {
-        if (data.exists) {
+        console.log(data.exists);
+        if ((data = this.nroDni)) {
           // El DNI existe, puedes crear la rutina personalizada
           const nuevaRutina = {
             dni: this.nroDni,
@@ -41,7 +42,6 @@ export class RutinasPersoAddComponent implements OnInit {
             tipo: this.tipoRutina,
             fechaAct: new Date().toISOString().split('T')[0],
           };
-
           this.rutinasPersoService.CreateRutinasP(nuevaRutina).subscribe(
             (data: any) => {
               console.log('Rutina creada exitosamente', data);
@@ -53,7 +53,9 @@ export class RutinasPersoAddComponent implements OnInit {
           );
         } else {
           // El DNI no existe, muestra un mensaje de error
-          alert('El DNI ingresado no es válido. Debe ingresar un DNI válido.');
+          alert(
+            'El DNI ingresado no es válido. Debe ingresar un DNI válido soy ts.'
+          );
         }
       },
       (error) => {
