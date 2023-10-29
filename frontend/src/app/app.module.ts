@@ -42,6 +42,7 @@ import { UsuarioBanComponent } from './Components/usuario-ban/usuario-ban.compon
 import { BlogCRUDComponent } from './Components/blog-crud/blog-crud.component';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { BlogControlsComponent } from './Components/blog-controls/blog-controls.component';
+import { ActividadDocenteComponent } from './Components/actividad-docente/actividad-docente.component';
 
 
 
@@ -66,7 +67,8 @@ import { BlogControlsComponent } from './Components/blog-controls/blog-controls.
     VentasComponent,
     UsuarioBanComponent,
     BlogCRUDComponent,
-    BlogControlsComponent
+    BlogControlsComponent,
+    ActividadDocenteComponent
   ],
   imports: [
     BrowserModule,

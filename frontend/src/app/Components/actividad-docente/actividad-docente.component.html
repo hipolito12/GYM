@@ -1,0 +1,101 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sideUserNav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <p class="mx-auto fs-3 mt-2">Bienvenido Profesor {{this.nombre}}</p>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sideUserNav mode="push" style="width: 20%">
+      <mat-nav-list >
+        <a mat-list-item routerLink="/profesores">Pago De Cuota</a>
+        <a mat-list-item routerLink="#">Rutinas</a>
+        <a mat-list-item  routerLink="/actividadDocente">Mi actividad</a>
+        <a mat-list-item  routerLink="/blogCRUD">Blog</a>
+        <a mat-list-item routerLink="/datos-perfil">Perfil</a>
+        <a mat-list-item routerLink="/BanUsuario">Banear usuario</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 88vh !important ;background-color: #1A1E21;" class="mx-auto  overflow-hidden " >
+        <div class="container-fluid">
+            <div class="row justify-content-center align-items-center " style="height: 100vh;">
+                <div class="col-md-7">
+                    <div class="card">
+                        <div class="card-body " *ngFor="let e of this.actividad" >
+                            <h5 class="card-title fw-bold fs-3 text-center">Informacion de su clase</h5>
+                            <h6 class="card-subtitle mb-2 fw-bold fs-5 ">Actividad:{{e.NombreActividad}} </h6>
+                            <h6 class="card-subtitle mb-2 fw-bold fs-5">Turno: {{e.Turno}}</h6>
+                            <p class="card-text fs-5 ">Hora de Inicio:{{e.Hora_Inicio}} </p>
+                            <p class="card-text  fs-5 ">Hora de Fin: {{e.Hora_Fin}}</p>
+                            <p class="card-text  fs-5 ">Cupo:{{e.Cupo}} </p>
+                            <p class="card-text  fs-5 ">Descripción:
+                              <p >{{e.Descripcion}} </p>
+
+                        </div>
+                        <div class="card-footer text-muted d-flex justify-content-center">
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)=" cambiarValorInput()"  data-bs-target="#UpdateAct" >
+                            Modificar
+                          </button> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <router-outlet></router-outlet> 
+
+
+  <!-- Modal -->
+  
+  <div class="modal fade" id="UpdateAct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Editar Actividad</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="activityName" class="form-label">Nombre de Actividad</label>
+              <input type="text" class="form-control" id="activityName" placeholder="Nombre de la actividad" name="nombre" [(ngModel)]="this.modificacion.nombre">
+            </div>
+            <div class="mb-3">
+              <label for="cupo" class="form-label">Cupo</label>
+              <input type="number" class="form-control" id="cupo" placeholder="Cupo"  name="cupo" [(ngModel)]="this.modificacion.cupo">
+            </div>
+            <div class="mb-3">
+              <label for="horaInicio" class="form-label">Hora de Inicio</label>
+              <input type="time" class="form-control" id="horaInicio"  name="inicio" [(ngModel)]="this.modificacion.horaInicio">
+            </div>
+            <div class="mb-3">
+              <label for="horaFin" class="form-label">Hora de Fin</label>
+              <input type="time" class="form-control" id="horaFin"  name="fin" [(ngModel)]="this.modificacion.horafin">
+            </div>
+            <div class="mb-3">
+              <label for="descripcion" class="form-label">Descripción</label>
+              <textarea class="form-control" id="descripcion" rows="4" placeholder="Descripción"  name="descripcion" [(ngModel)]="this.modificacion.descripcion"  ></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="turno" class="form-label">Turno</label>
+              <select class="form-select" id="turno">
+                <option value="manana">Mañana</option>
+                <option value="tarde">Tarde</option>
+                <option value="noche">Noche</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  >Cerrar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="this.Actualizar()" >Guardar Cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
