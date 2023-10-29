@@ -5,6 +5,7 @@ const { ActividadDeDocente, ModificarActividadDeDocente } = require('../model/ac
 const GetActividadDocente = async (req, res) => {
 
     try {
+        
         const result = await ActividadDeDocente(req.userId);
         res.status(200).json([result])
     }
@@ -15,9 +16,11 @@ const GetActividadDocente = async (req, res) => {
 }
 
 
+
 const actulizarActividadDocente = async (req, res) => {
     try {
-        const result = await ModificarActividadDeDocente(req.body);
+        
+       const result = await ModificarActividadDeDocente(req.body);
         res.status(200).json(result)
 
     }

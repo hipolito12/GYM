@@ -1,3 +1,4 @@
+
 <mat-toolbar color="primary">
     <mat-toolbar-row>
       <button mat-icon-button (click)="sideUserNav.toggle()">
@@ -50,6 +51,8 @@
   <router-outlet></router-outlet> 
 
 
+
+  
   <!-- Modal -->
   
   <div class="modal fade" id="UpdateAct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -83,10 +86,10 @@
             </div>
             <div class="mb-3">
               <label for="turno" class="form-label">Turno</label>
-              <select class="form-select" id="turno">
-                <option value="manana">Mañana</option>
-                <option value="tarde">Tarde</option>
-                <option value="noche">Noche</option>
+              <select class="form-select" id="turno" [(ngModel)]="this.modificacion.turno" name="turno" >
+                <option value="manana" selected>Mañana</option>
+                <option  value="tarde">Tarde</option>
+                <option  value="noche">Noche</option>
               </select>
             </div>
           </form>

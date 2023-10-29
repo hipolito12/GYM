@@ -19,6 +19,7 @@ import { VentasComponent } from './Components/ventas/ventas.component';
 import { UsuarioBanComponent } from './Components/usuario-ban/usuario-ban.component';
 import { BlogCRUDComponent } from './Components/blog-crud/blog-crud.component';
 import { ActividadDocenteComponent } from './Components/actividad-docente/actividad-docente.component';
+
 const routes: Routes = [
   { path: 'home',  component: HomeComponent },
   { path: '', redirectTo: 'home' ,pathMatch: 'full' },
@@ -37,7 +38,9 @@ const routes: Routes = [
   {path: 'ventas', component: VentasComponent },
   {path: 'BanUsuario', component: UsuarioBanComponent },
   {path: 'blogCRUD', component: BlogCRUDComponent },
-  {path:'actividadDocente',component:ActividadDocenteComponent},
+  {path:'actividadDocente',component: ActividadDocenteComponent},
+  {path:'a',component:  ActividadDocenteComponent},
+
 
 
 

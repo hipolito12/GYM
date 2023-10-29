@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 export class ActividadDocenteComponent {
   public nombre: string = localStorage.getItem('nombre')!;
   actividad: any ;
+  i={ide:''}
 
   modificacion = {
     cupo: '',
@@ -25,36 +26,34 @@ export class ActividadDocenteComponent {
     private cd: ChangeDetectorRef
   ) {
     this.GetActividadDocente();
-    this.modificacion.id = this.actividad.ActividadId;
+    
   }
 
   async GetActividadDocente() {
     this.ads.getActividadDocente().subscribe(
       (res) => {
         this.actividad = res;
-        console.log(this.actividad);
+        
       },
       (err) => {
         console.log(err);
       }
     );
-    console.log(this.actividad);
+    
+    console.log(this.modificacion.id );
   }
 
-  abrirModal() {
-    this.modificacion.nombre = this.actividad.NombreActividad;
-  }
+ 
 
   async Actualizar() {
     if (
-      this.modificacion.descripcion === '' ||
-      this.modificacion.horaInicio === '' ||
-      this.modificacion.horafin === '' ||
-      this.modificacion.nombre === '' ||
-      this.modificacion.cupo === ''
+      this.modificacion.descripcion !== '' ||
+      this.modificacion.horaInicio !== '' ||
+      this.modificacion.horafin !== '' ||
+      this.modificacion.nombre !== '' ||
+      this.modificacion.cupo !== ''
      //|| this.seSolapa(this.modificacion.horaInicio,this.modificacion.horafin)===false
     ) {
-      console.log(this.modificacion);
       this.ads.ActualizarActividad(this.modificacion).subscribe(
         (res) => {
           

@@ -45,10 +45,11 @@ const ActividadDeDocente = async (dni) =>
 
 const ModificarActividadDeDocente = async (actividad) => 
 {
+    let id=Number.parseInt(actividad.id) 
     try {
         actividad= await prisma.actividad.update({
             where: {
-                ActividadId : actividad.ActividadId
+                ActividadId: id ,
             }
             ,data: {
                 NombreActividad : actividad.nombre,

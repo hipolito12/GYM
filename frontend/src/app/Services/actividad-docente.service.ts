@@ -18,6 +18,7 @@ export class ActividadDocenteService {
   }
 
   ActualizarActividad(actividad:any){
+    console.log(actividad);
     return this.http.post('http://localhost:3000/api/ActualizarDocente',actividad);
   }
 }

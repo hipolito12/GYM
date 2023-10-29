@@ -85,7 +85,7 @@ model post {
   Cuerpo     String    @db.Text
   imagen     String?   @db.VarChar(1000)
   fecha      DateTime? @db.Date
-  visible    Boolean   @default(true)
+  visible    Boolean?  @default(true)
   persona    persona   @relation(fields: [DniAutor], references: [dni], map: "post-autor")
   tipopost   tipopost  @relation(fields: [TipoPostFk], references: [TipoId], map: "post-tipo")
 
