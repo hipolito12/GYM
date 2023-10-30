@@ -1,0 +1,182 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sideUserNav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <p class="mx-auto fs-3 mt-2">Bienvenido Profesor {{this.nombre}}</p>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sideUserNav mode="push" style="width: 20%">
+      <mat-nav-list >
+        <a mat-list-item routerLink="/profesores">Pago De Cuota</a>
+        <a mat-list-item routerLink="/tipoBlog">Rutinas</a>
+        <a mat-list-item  routerLink="/actividadDocente">Mi actividad</a>
+        <a mat-list-item  routerLink="/blogCRUD">Blog</a>
+        <a mat-list-item routerLink="/datos-perfil">Perfil</a>
+        <a mat-list-item routerLink="/BanUsuario">Banear usuario</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 88vh !important ;background-color: #202020;" class="mx-auto  " >
+        
+        
+        <mat-tab-group  >
+            <mat-tab label="First"   >
+                <ng-template mat-tab-label    >
+                    <i class="bi bi-plus-circle-fill fs-3 mx-3  "></i>
+                   <p  >  Agregar</p>
+                  </ng-template>
+
+                <div class="container-fluid pt-5" style="background-color: #222222;" >
+                    <div class="row justify-content-center ">
+                        <div class="col-md-7">
+                            <div class="card verflow-hidden">
+                                <div class="card-body  o ">
+                                    <h1 class="card-title form-title">Nuevo Tipos de Post</h1>
+                                    <form (submit)="crearNuevoTipoBlog()">
+                                        <div class="mb-3">
+                                            <label for="nombreTipoPost" class="form-label">Nombre</label>
+                                            <input type="text" class="form-control" id="nombreTipoPost" [(ngModel)]="this.tipoBlog.tipo" name="tipo"  placeholder="Ingrese el nombre del tipo de post">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="descripcionTipoPost" class="form-label">Descripción </label>
+                                            <textarea class="form-control"  [(ngModel)]="this.tipoBlog.descripcion" name="descripcion"  id="descripcionTipoPost" rows="6" placeholder="Ingrese la descripción del tipo de post"></textarea>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Second">
+                <ng-template mat-tab-label>
+                    <i class="bi bi-gear-fill fs-3 mx-3"></i>
+                    Modificar
+                  </ng-template>
+
+
+                  <div class="container">
+                    <mat-card>
+                     
+                      <mat-card-content>
+                      
+                    <table matSort mat-table [dataSource]="this.dataSource" class="mat-elevation-z8">
+      
+                      
+                  
+                      <ng-container matColumnDef="Tipo">
+                          <th mat-sort-header mat-header-cell *matHeaderCellDef> Tipo</th>
+                          <td mat-cell *matCellDef="let element">{{element.NombreTIpo}}</td>
+                        </ng-container>
+                  
+                       
+      
+                
+                        <ng-container matColumnDef="Acciones" >
+                          <th mat-header-cell *matHeaderCellDef> Acciones</th>
+                          <td mat-cell *matCellDef="let element" >
+                                <!-- botones -->
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#Modificar"  (click)="AbrirLosModales(element.TipoId)">
+                                    Modificar
+                                  </button>
+                                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminar"  (click)="AbrirLosModales(element.TipoId)">
+                                    Eliminar
+                                  </button>
+                            </td>
+                        </ng-container>
+                  
+                  
+                      <tr mat-header-row *matHeaderRowDef="this.Columnas"></tr>
+                      <tr mat-row *matRowDef="let row;columns:this.Columnas"></tr>
+                  
+                  </table>
+                  
+                  
+                </mat-card-content>
+                <br>
+                <mat-card-footer>
+                
+                    <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+                
+                </mat-card-footer>
+                </mat-card>
+                  </div>
+
+
+
+            </mat-tab>
+            
+          </mat-tab-group>
+
+
+        
+  </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <router-outlet></router-outlet> 
+
+
+
+
+  <!-- Modificar -->
+<div class="modal fade" id="Modificar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modificación de Del tipo de post</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h2>Cambia</h2>
+                <form (click)=" modificar()">
+                    <div class="mb-3">
+                        <label for="nuevoNombreTipoPost" class="form-label">Nuevo Nombre del Tipo de Post</label>
+                        <input type="text" class="form-control" [(ngModel)]="this.tipoBlog.tipo" name="tipo" id="nuevoNombreTipoPost" placeholder=" nuevo nombre del tipo de post">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nuevaDescripcionTipoPost"   class="form-label">Nueva Descripción del Tipo de Post</label>
+                        <textarea class="form-control" id="nuevaDescripcionTipoPost" rows="3" name="descripcion" [(ngModel)]="this.tipoBlog.descripcion"placeholder="nueva descripción del tipo de post"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary"  data-bs-dismiss="modal"  >Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Eliminarr -->
+<div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Opciones de eliminacion</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h2>Opciones de  borrado</h2>
+                <ul>
+                    <li>borrar solo este tipo de post</li>
+                    <li>borrar este tipo de post y todos los blogs relacionados</li>
+                     <h3> estas opciones no tiene vuelta atras </h3>
+                </ul>
+
+            </div>  
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="this.elimianrTodos()" >Borrar Blogs Relacionados</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="this.eliminarUno()" >Borrar Este</button>
+            </div>
+        </div>
+    </div>
+</div>

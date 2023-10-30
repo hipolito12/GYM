@@ -134,8 +134,9 @@ model rutinapersonalizada {
 }
 
 model tipopost {
-  TipoId     Int    @id @default(autoincrement())
-  NombreTIpo String @db.VarChar(45)
+  TipoId     Int      @id @default(autoincrement())
+  NombreTIpo String   @db.VarChar(45)
+  visible    Boolean? @default(true)
   post       post[]
 }
 

@@ -19,6 +19,7 @@ app.use('/api', require('./routes/ventas.js'));
 app.use('/api', require('./routes/pagoCuota.js'));
 app.use('/api', require('./routes/UsuarioBan'));
 app.use('/api', require('./routes/actividadDocente.js'));
+app.use('/api', require('./routes/TipoBlog.js'));
 
 
 

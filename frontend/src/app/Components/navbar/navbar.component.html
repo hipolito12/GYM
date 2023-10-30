@@ -61,7 +61,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-warning fs-6" style="--bs-bg-opacity: 0.55">
     <div class="container">
-      <a class="navbar-brand mx-4 fw-bolder " href="#">GYM</a>
+      <a class="navbar-brand mx-4 fw-bolder "  routerLink="/home">GYM</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -89,7 +89,7 @@
                   </li>
                 </ul>
 
-                <ul  class="navbar-nav" *ngIf="this.Actualiza.GUser && this.Actualiza.getrolUsuario==2;">
+                <ul  class="navbar-nav" *ngIf="this.Actualiza.GUser && this.Actualiza.getrolUsuario==2 ; ">
                   <li class="nav-item">
                     <a class="nav-link" routerLink="/profesores">Menu</a>
                   </li>

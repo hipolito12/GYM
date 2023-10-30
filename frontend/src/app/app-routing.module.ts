@@ -19,6 +19,7 @@ import { VentasComponent } from './Components/ventas/ventas.component';
 import { UsuarioBanComponent } from './Components/usuario-ban/usuario-ban.component';
 import { BlogCRUDComponent } from './Components/blog-crud/blog-crud.component';
 import { ActividadDocenteComponent } from './Components/actividad-docente/actividad-docente.component';
+import { TipoBlogComponent } from './Components/tipo-blog/tipo-blog.component';
 
 const routes: Routes = [
   { path: 'home',  component: HomeComponent },
@@ -39,7 +40,7 @@ const routes: Routes = [
   {path: 'BanUsuario', component: UsuarioBanComponent },
   {path: 'blogCRUD', component: BlogCRUDComponent },
   {path:'actividadDocente',component: ActividadDocenteComponent},
-  {path:'a',component:  ActividadDocenteComponent},
+  {path: "tipoBlog",component: TipoBlogComponent },
 
 
 

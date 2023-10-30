@@ -4,7 +4,7 @@ import { Route } from '@angular/router';
   providedIn: 'root'
 })
 export class ActualizaDatosService {
-rol:any;
+public  rol:any;
  private _User:boolean = false;
   constructor() { }
 
@@ -13,10 +13,10 @@ rol:any;
   }
   set SetrolUsuario(rol:any)
   {
-    this.rol = rol;
+     this.rol = rol;
   }
   get getrolUsuario()
-  {
+  {;
     return this.rol;
   }
   
