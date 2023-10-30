@@ -38,6 +38,9 @@ import { RolUpdateComponent } from './Components/rol-update/rol-update.component
 import { RutinasPersoComponent } from './Components/rutinas-perso/rutinas-perso.component';
 import { RutinasPersoAddComponent } from './Components/rutinas-perso-add/rutinas-perso-add.component';
 import { RutinasPersoUpdateComponent } from './Components/rutinas-perso-update/rutinas-perso-update.component';
+import { ActividadComponent } from './Components/actividad/actividad.component';
+import { ActividadAddComponent } from './Components/actividad-add/actividad-add.component';
+import { ActividadUpdateComponent } from './Components/actividad-update/actividad-update.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +64,9 @@ import { RutinasPersoUpdateComponent } from './Components/rutinas-perso-update/r
     RutinasPersoComponent,
     RutinasPersoAddComponent,
     RutinasPersoUpdateComponent,
+    ActividadComponent,
+    ActividadAddComponent,
+    ActividadUpdateComponent,
   ],
   imports: [
     BrowserModule,
