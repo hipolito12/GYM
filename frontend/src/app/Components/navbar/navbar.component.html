@@ -80,7 +80,7 @@
                 <a class="nav-link" routerLink="/blog">Blog</a>
               </li>
                
-              <ul  class="navbar-nav" *ngIf="this.Actualiza.GUser && this.Actualiza.getrolUsuario==1;">
+              <ul  class="navbar-nav" *ngIf="this.Actualiza.GUser && this.rol==1;">
                 <li class="nav-item">
                   <a class="nav-link" routerLink="/user">Perfil</a>
                 </li>
@@ -89,7 +89,7 @@
                   </li>
                 </ul>
 
-                <ul  class="navbar-nav" *ngIf="this.Actualiza.GUser && this.Actualiza.getrolUsuario==2 ; ">
+                <ul  class="navbar-nav" *ngIf="this.Actualiza.GUser && this.rol==2 ; ">
                   <li class="nav-item">
                     <a class="nav-link" routerLink="/profesores">Menu</a>
                   </li>

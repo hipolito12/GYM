@@ -47,7 +47,7 @@
               <div class="mb-3">
                 <label class="form-label fs-4 mx-2">Seleccionar tipo de post a crear:</label>
                 <select class="form-control" id="selectedOption"  name="tipo" [(ngModel)]="this.blog.tipo" >
-                  <option *ngFor="let element of this.Tipos" [value]="element.TipoId" >{{element.NombreTIpo}}</option>
+                  <option  *ngFor="let element of this.Tipos" [value]="element.TipoId" >{{element.NombreTIpo}}</option>
                  
                 </select>
               </div>
@@ -166,7 +166,10 @@
               <label for="imageLink" class="form-label">Enlace de la imagen</label>
               <input type="text" class="form-control" [(ngModel)]="this.blog.imagen" id="imageLink" name="imageLink" placeholder="Introduce el enlace de la imagen">
             </div>
-  
+
+            <select class="form-control" id="selectedOption"  name="tipo" [(ngModel)]="this.blog.tipo" >
+              <option *ngFor="let element of this.Tipos" [value]="element.TipoId" >{{element.NombreTIpo}}</option>
+            </select>
             <div class="mb-3">
               <label for="blogBody" class="form-label fs-4 mx-2">Escriba el blog:</label>
                 <ckeditor [(ngModel)]="this.blog.ckeditorContent"  name="blogBody"></ckeditor>
@@ -175,7 +178,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary"  (click)="this.Modificar()">Guardar</button>
+          <button type="submit" class="btn btn-primary" (click)="this.Modificar()" data-bs-dismiss="modal" >Guardar</button>
         </div>
       </div>
     </div>

@@ -153,13 +153,14 @@ i={ide:''}
     this.blog.imagen = selected.imagen;
     this.blog.ckeditorContent = selected.Cuerpo;
     this.blog.idPost = id;
+    this.blog.tipo = selected.TipoPostFk;
     
   }
 
 
   async Modificar() 
   {
-    if (this.blog.ckeditorContent != '' || this.blog.imagen != '' || this.blog.titulo != '') {
+    if (this.blog.ckeditorContent != '' || this.blog.imagen != '' || this.blog.titulo != ''|| this.blog.tipo != '') {
       this.bs.UpdateBlog(this.blog).subscribe(
         (res) => {
           
@@ -208,6 +209,7 @@ i={ide:''}
       this.blog.titulo = '';
       this.blog.imagen = '';
       this.blog.ckeditorContent = '';
+      this.blog.tipo = '';
     }
     else {
       const Toast = Swal.mixin({

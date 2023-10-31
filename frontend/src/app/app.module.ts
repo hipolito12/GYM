@@ -44,7 +44,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { BlogControlsComponent } from './Components/blog-controls/blog-controls.component';
 import { ActividadDocenteComponent } from './Components/actividad-docente/actividad-docente.component';
 import { TipoBlogComponent } from './Components/tipo-blog/tipo-blog.component';
-
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -97,10 +97,20 @@ import { TipoBlogComponent } from './Components/tipo-blog/tipo-blog.component';
     
   ],
 
-  providers: [AuthGuard,
-  {provide: HTTP_INTERCEPTORS,
-  useClass:TokenInterceptorService,
-multi:true}],
+  providers: 
+  [
+    AuthGuard,
+  
+    {
+      provide: HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true
+  },
+
+  CookieService
+
+
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

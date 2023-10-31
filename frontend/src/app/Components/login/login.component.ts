@@ -1,7 +1,8 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { LoginService } from '../../Services/login.service';
 import { Router } from '@angular/router';
 import { ActualizaDatosService } from '../../Services/actualiza-datos.service';
+import { CookieService } from 'ngx-cookie-service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private rout: Router,
     private Actualiza: ActualizaDatosService,
+    private cookie: CookieService
    
   ) {}
   ngOnInit() {}
@@ -47,8 +49,7 @@ export class LoginComponent implements OnInit {
         console.log(res.contrasena);
         localStorage.setItem('token', res.token);
         localStorage.setItem('nombre', res.nombre);
-        console.log(res.nombre);
-        this.Actualiza.SetrolUsuario = res.rol; 
+        this.cookie.set('rol', res.rol);
         this.Redireccionar(res.rol);
       },
       (err) => {console.log(JSON.stringify(err)) ;
