@@ -1,0 +1,9 @@
+/* Agrega un borde derecho a las celdas */
+.table-bordered .table-cell {
+  border-right: 1px solid #ddd; /* Puedes ajustar el color y el grosor según tus preferencias */
+}
+
+/* Agrega un borde inferior a las filas */
+.table-bordered .table-row {
+  border-bottom: 1px solid #ddd; /* Puedes ajustar el color y el grosor según tus preferencias */
+}
