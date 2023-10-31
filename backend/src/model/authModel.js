@@ -7,18 +7,25 @@ const loginModel = async (user) => {
     let element = prisma.persona.findFirstOrThrow({
       where: { dni: user.dni },
     });
+    
     return element;
   } catch (err) {
     console.log(` Error en capa de datos: ${err.message}`);
   }
 };
 
+
+
+
+
+
+
+
 const SignupModel = async (body) => {
   const {
     dni,
-    contrase_a,
-    nombre,
-    apellido,
+    password =body.Contrase_a,
+    nombre= `${body.nombre} ${body.apellido}`,
     telefono,
     email,
     sexo,
@@ -28,16 +35,19 @@ const SignupModel = async (body) => {
   let NuevoUsario = await prisma.persona.create({
     data: {
       dni: dni,
-      contrase_a: contrase_a, 
+      contrase_a: Contrase_a,
       NombreCompleto: `${nombre}  ${apellido}`,
       telefono: telefono,
       email: email,
       sexo: sexo,
-      IdRolfk: Rols.usuario,
+      IdRolfk: Roles.usuario,
       Direccion: direccion,
-      estado: States.Permitido,
+      estado: Estados.Permitido,
     },
   });
 };
 
-module.exports = { loginModel, SignupModel };
+
+
+module.exports = { loginModel, SignupModel }
+

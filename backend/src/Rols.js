@@ -10,4 +10,4 @@ const States =
     Permitido:true,
     NoPermitido:false
 }
-module.exports = {Rols,States};
+module.exports = {Rols : Rols, States : States};

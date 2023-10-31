@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -13,7 +13,6 @@ import { UbicacionesComponent } from './Components/ubicaciones/ubicaciones.compo
 import { BlogComponent } from './Components/blog/blog.component';
 import { UserComponent } from './Components/user/user.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
-import { AuthGuard } from './auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -22,6 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { PagosComponent } from './Components/pagos/pagos.component';
 import { RutinasComponent } from './Components/rutinas/rutinas.component';
+import { AuthGuard } from './auth.guard';
+import { TokenInterceptorService } from './Services/token-interceptor.service';
 import { RutinasAddComponent } from './Components/rutinas-add/rutinas-add.component';
 import { RolComponent } from './Components/rol/rol.component';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -88,7 +89,14 @@ import { ActividadUpdateComponent } from './Components/actividad-update/activida
     MatSelectModule,
   ],
 
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
