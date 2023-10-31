@@ -34,24 +34,34 @@
               <!-- Campo de Título -->
               <div class="mb-3">
                 <label for="title" class="form-label fs-4 mx-2">Title:</label>
-                <input type="text" class="form-control"   [(ngModel)]="this.blog.titulo" id="title" name="title" required>
+                <input type="text" class="form-control" [(ngModel)]="blog.titulo" id="title" name="title" required>
               </div>
-          
+            
               <!-- Campo de Enlace de Imagen -->
               <div class="mb-3">
-                <label  class="form-label fs-4 mx-2">Image Link:</label>
-                <input type="text" class="form-control" id="imageLink" [(ngModel)]="this.blog.imagen" name="imageLink">
+                <label class="form-label fs-4 mx-2">Image Link:</label>
+                <input type="text" class="form-control" id="imageLink" [(ngModel)]="blog.imagen" name="imageLink">
               </div>
-        
+            
+              <!-- Dropdown estático -->
+              <div class="mb-3">
+                <label class="form-label fs-4 mx-2">Seleccionar tipo de post a crear:</label>
+                <select class="form-control" id="selectedOption"  name="tipo" [(ngModel)]="this.blog.tipo" >
+                  <option *ngFor="let element of this.Tipos" [value]="element.TipoId" >{{element.NombreTIpo}}</option>
+                 
+                </select>
+              </div>
+            
               <div class="mb-3">
                 <label for="blogBody" class="form-label fs-4 mx-2">Escriba el blog:</label>
-                <ckeditor [(ngModel)]="this.blog.ckeditorContent" name="blogBody"></ckeditor>
+                <ckeditor [(ngModel)]="blog.ckeditorContent" name="blogBody"></ckeditor>
               </div>
-        
+            
               <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-lg">CrearPost</button>
+                <button type="submit" class="btn btn-primary btn-lg">Crear Post</button>
               </div>
             </form>
+            
             <!-- Fin  Tabs -->
           </mat-tab>
           

@@ -17,9 +17,10 @@ export class BlogCRUDComponent implements OnInit {
     imagen: '',
     ckeditorContent: '',
     idPost: '',
+    tipo: '',
   };
   public nombre: string = localStorage.getItem('nombre')!;
-
+  Tipos: any;
   constructor(
     private bs: BlogService,
     private changeDetectorRefs: ChangeDetectorRef
@@ -27,6 +28,7 @@ export class BlogCRUDComponent implements OnInit {
 
   ngOnInit(): void {
     this.CargarTabla();
+    this.cargarTipos()
   }
   //------------------------------------------------------------------------------
   //Crear
@@ -97,6 +99,18 @@ export class BlogCRUDComponent implements OnInit {
         title: 'Error al crear el blog',
       });
     }
+  }
+
+
+  cargarTipos() {
+    this.bs.getTipoBlog().subscribe(
+      (data: any) => {
+        this.Tipos = data;
+      },
+      (error) => {
+        console.log(error.message);
+      }
+    );
   }
 
   //-----------------------------------------------------------------------------------------
