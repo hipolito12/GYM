@@ -23,7 +23,7 @@ import { PagosComponent } from './Components/pagos/pagos.component';
 import { RutinasComponent } from './Components/rutinas/rutinas.component';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './Services/token-interceptor.service';
-import { DatosPerfilComponent } from './Components/datos-perfil/datos-perfil.component';
+import { DatosPerfilComponent } from './Components/actualizar-datos-usuario/datos-perfil.component';
 import{MatTableModule} from '@angular/material/table';
 import{MatSortModule} from '@angular/material/sort';
 import{MatPaginatorModule} from '@angular/material/paginator';
@@ -45,6 +45,8 @@ import { BlogControlsComponent } from './Components/blog-controls/blog-controls.
 import { ActividadDocenteComponent } from './Components/actividad-docente/actividad-docente.component';
 import { TipoBlogComponent } from './Components/tipo-blog/tipo-blog.component';
 import { CookieService } from 'ngx-cookie-service';
+import { ActualizarDatosComponent } from './Components/actualizar-datos/actualizar-datos.component';
+import { ActualizarDatosPorfesoresComponent } from './Components/actualizar-datos-porfesores/actualizar-datos-porfesores.component';
 
 
 @NgModule({
@@ -70,7 +72,9 @@ import { CookieService } from 'ngx-cookie-service';
     BlogCRUDComponent,
     BlogControlsComponent,
     ActividadDocenteComponent,
-    TipoBlogComponent
+    TipoBlogComponent,
+    ActualizarDatosComponent,
+    ActualizarDatosPorfesoresComponent
   ],
   imports: [
     BrowserModule,

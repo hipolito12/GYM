@@ -54,7 +54,7 @@ const CrearBlog  = async (blogData,dni) =>
     data: {
       Titulo: blogData.titulo,
       Cuerpo: blogData.ckeditorContent,
-      TipoPostFk: 1,
+      TipoPostFk: blogData.tipo,
       DniAutor: dni,
       imagen: blogData.imagen,
       fecha: new Date(),
@@ -75,7 +75,7 @@ const ActualizarBlog  = async (blog) =>
 {
   try
   {
-    const {titulo,imagen,ckeditorContent, idPost} = blog
+    const {titulo,imagen,ckeditorContent, tipo,idPost} = blog
     const result = await prisma.post.update({
       where: {
         idPost: idPost,
@@ -84,6 +84,8 @@ const ActualizarBlog  = async (blog) =>
         Titulo: titulo,
         Cuerpo : ckeditorContent,
         imagen : imagen,
+        TipoPostFk:tipo,
+
         
       },
     });
@@ -115,8 +117,6 @@ const EliminarBlog  = async (id) =>
     return e.message
   }
 }
-
-
 
 
 module.exports = { ObtenerBlog,ObtenerTipoBlog ,CrearBlog,ActualizarBlog,EliminarBlog};

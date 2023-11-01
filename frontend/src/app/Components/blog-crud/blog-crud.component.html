@@ -14,7 +14,7 @@
         <a mat-list-item routerLink="#">Rutinas</a>
         <a mat-list-item  routerLink="/actividadDocente">Mi actividad</a>
         <a mat-list-item  routerLink="/blogCRUD">Blog</a>
-        <a mat-list-item routerLink="/datos-perfil">Perfil</a>
+        <a mat-list-item routerLink="/ActualizarDatosDocentes">Perfil</a>
         <a mat-list-item routerLink="/BanUsuario">Banear usuario</a>
       </mat-nav-list>
     </mat-sidenav>
@@ -31,19 +31,19 @@
             
             <h2 class="text-center fs-2 pt-3">Crear Nuevo Blog</h2>
             <form (submit)="CreateBlog()">
-              <!-- Campo de Título -->
+              
               <div class="mb-3">
                 <label for="title" class="form-label fs-4 mx-2">Title:</label>
                 <input type="text" class="form-control" [(ngModel)]="blog.titulo" id="title" name="title" required>
               </div>
             
-              <!-- Campo de Enlace de Imagen -->
+             
               <div class="mb-3">
                 <label class="form-label fs-4 mx-2">Image Link:</label>
                 <input type="text" class="form-control" id="imageLink" [(ngModel)]="blog.imagen" name="imageLink">
               </div>
             
-              <!-- Dropdown estático -->
+          
               <div class="mb-3">
                 <label class="form-label fs-4 mx-2">Seleccionar tipo de post a crear:</label>
                 <select class="form-control" id="selectedOption"  name="tipo" [(ngModel)]="this.blog.tipo" >

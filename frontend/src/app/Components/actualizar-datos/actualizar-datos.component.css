@@ -1,0 +1,20 @@
+#BotonEnviar{
+    background-color: #eec038;
+    border-color: #f7f32f;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 40%;
+}
+#BotonEnviar:hover{
+    background-color: #FFBB33; /* Cambia el color de fondo en hover */
+    border: 1px solid #FFAA00;
+}

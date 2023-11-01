@@ -1,0 +1,64 @@
+<main>
+    <div class="container">
+        <h1 class="mx-auto">Actualizar Datos del Perfil</h1>
+    
+        <form  method="post" (submit)="ActualizarDatos()">
+          
+    
+          <div class="row mb-3">
+            <label for="nombrecompleto" class="col-sm-2 col-form-label">Nombre Completo</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="fullname" name="nombrecompleto" [(ngModel)]="usuario.nombrecompleto">
+            </div>
+          </div>
+    
+          <div class="row mb-3">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="email" [(ngModel)]="usuario.email" name="email" placeholder="">
+            </div>
+          </div>
+
+
+          
+          <div class="row mb-3">
+            <label for="telefono" class="col-sm-2 col-form-label">Telefono</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="phone" name="telefono" [(ngModel)]="usuario.telefono">
+            </div>
+        </div>
+    
+          <div class="row mb-3">
+            <label for="contraseña" class="col-sm-2 col-form-label">Contraseña Nueva</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]='usuario.contrasenanueva' type="password" class="form-control" id="password" name="contrasenanueva"  >
+            </div>
+          </div>
+    
+          <div class="row mb-3">
+            <label for="direccion" class="col-sm-2 col-form-label">Direccion</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" [(ngModel)]="usuario.direccion" id="address" name="direccion" rows="3"></textarea>
+            </div>
+          </div>
+          
+
+            
+            <div class="row mb-3">
+                <label for="sexo" class="col-sm-2 col-form-label">Sexo</label>
+                <div class="col-sm-10">
+                  <select class="form-select" id="gender" name="gender" [(ngModel)]="usuario.sexo" name="sexo">
+                    <option value="">Seleccionar...</option>
+                    <option value="masculino">Hombre</option>
+                    <option value="femenino">Mujer</option>
+                  </select>
+                </div>
+              </div>
+
+    
+          <button  type="submit"  id="BotonEnviar">Actualizar</button>
+        </form>
+    
+      </div>
+    
+  </main>

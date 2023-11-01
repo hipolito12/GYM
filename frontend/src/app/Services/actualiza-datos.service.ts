@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Route } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root'
 })
 export class ActualizaDatosService {
 public  rol:any;
  private _User:boolean = false;
-  constructor() { }
+  constructor( public cookie: CookieService, 
+   ) { }
 
   get GUser(){
     return !!localStorage.getItem('token')
@@ -17,6 +19,7 @@ public  rol:any;
   }
   get getrolUsuario()
   {;
+    this.rol = Number.parseInt(this.cookie.get('rol'));
     return this.rol;
   }
   

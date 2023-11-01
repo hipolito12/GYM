@@ -11,7 +11,7 @@ import { UserComponent } from './Components/user/user.component';
 import { AuthGuard } from './auth.guard';
 import { PagosComponent } from './Components/pagos/pagos.component';
 import { RutinasComponent } from './Components/rutinas/rutinas.component';
-import { DatosPerfilComponent } from './Components/datos-perfil/datos-perfil.component';
+import { DatosPerfilComponent } from './Components/actualizar-datos-usuario/datos-perfil.component';
 import { MisRutinasComponent } from './Components/mis-rutinas/mis-rutinas.component';
 import { IMCComponent } from './Components/imc/imc.component';
 import { ProfesoresComponent } from './Components/profesores/profesores.component';
@@ -20,6 +20,7 @@ import { UsuarioBanComponent } from './Components/usuario-ban/usuario-ban.compon
 import { BlogCRUDComponent } from './Components/blog-crud/blog-crud.component';
 import { ActividadDocenteComponent } from './Components/actividad-docente/actividad-docente.component';
 import { TipoBlogComponent } from './Components/tipo-blog/tipo-blog.component';
+import { ActualizarDatosPorfesoresComponent } from './Components/actualizar-datos-porfesores/actualizar-datos-porfesores.component';
 
 const routes: Routes = [
   { path: 'home',  component: HomeComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path: 'blogCRUD', component: BlogCRUDComponent },
   {path:'actividadDocente',component: ActividadDocenteComponent},
   {path: "tipoBlog",component: TipoBlogComponent },
+  {path: 'ActualizarDatosDocentes', component: ActualizarDatosPorfesoresComponent }
 
 
 

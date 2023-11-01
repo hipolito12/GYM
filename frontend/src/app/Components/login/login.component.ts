@@ -1,10 +1,9 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef} from '@angular/core';
 import { LoginService } from '../../Services/login.service';
 import { Router } from '@angular/router';
 import { ActualizaDatosService } from '../../Services/actualiza-datos.service';
 import { CookieService } from 'ngx-cookie-service';
 import Swal from 'sweetalert2';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,8 +21,8 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private rout: Router,
     private Actualiza: ActualizaDatosService,
-    private cookie: CookieService
-   
+    private cookie: CookieService,
+    private changeDetectorRefs: ChangeDetectorRef
   ) {}
   ngOnInit() {}
 
@@ -45,8 +44,7 @@ export class LoginComponent implements OnInit {
   Ingresar() {
     this.loginService.Ingresar(this.user).subscribe(
       (res) => {
-        console.log(res.token);
-        console.log(res.contrasena);
+       
         localStorage.setItem('token', res.token);
         localStorage.setItem('nombre', res.nombre);
         this.cookie.set('rol', res.rol);
@@ -72,7 +70,6 @@ export class LoginComponent implements OnInit {
       
    
 
-   
 
     Swal.fire({
       icon: 'error',
