@@ -21,6 +21,18 @@ import { BlogCRUDComponent } from './Components/blog-crud/blog-crud.component';
 import { ActividadDocenteComponent } from './Components/actividad-docente/actividad-docente.component';
 import { TipoBlogComponent } from './Components/tipo-blog/tipo-blog.component';
 import { ActualizarDatosPorfesoresComponent } from './Components/actualizar-datos-porfesores/actualizar-datos-porfesores.component';
+import { ActividadAddComponent } from './Components/actividad-add/actividad-add.component';
+import { ActividadUpdateComponent } from './Components/actividad-update/actividad-update.component';
+import { ActividadComponent } from './Components/actividad/actividad.component';
+import { RolAddComponent } from './Components/rol-add/rol-add.component';
+import { RolUpdateComponent } from './Components/rol-update/rol-update.component';
+import { RolComponent } from './Components/rol/rol.component';
+import { RutinasAddComponent } from './Components/rutinas-add/rutinas-add.component';
+import { RutinasPersoAddComponent } from './Components/rutinas-perso-add/rutinas-perso-add.component';
+import { RutinasPersoUpdateComponent } from './Components/rutinas-perso-update/rutinas-perso-update.component';
+import { RutinasPersoComponent } from './Components/rutinas-perso/rutinas-perso.component';
+import { RutinasUpdateComponent } from './Components/rutinas-update/rutinas-update.component';
+
 
 const routes: Routes = [
   { path: 'home',  component: HomeComponent },
@@ -42,12 +54,21 @@ const routes: Routes = [
   {path: 'blogCRUD', component: BlogCRUDComponent },
   {path:'actividadDocente',component: ActividadDocenteComponent},
   {path: "tipoBlog",component: TipoBlogComponent },
-  {path: 'ActualizarDatosDocentes', component: ActualizarDatosPorfesoresComponent }
+  {path: 'ActualizarDatosDocentes', component: ActualizarDatosPorfesoresComponent },
+  { path: 'rutinasAdd', component: RutinasAddComponent },
+  { path: 'roles', component: RolComponent },
+  { path: 'rolesAdd', component: RolAddComponent },
+  { path: 'rutinasUpdate/:id', component: RutinasUpdateComponent },
+  { path: 'rolesUpdate/:id', component: RolUpdateComponent },
+  { path: 'rutinasPerso', component: RutinasPersoComponent },
+  { path: 'rutinasPersoAdd', component: RutinasPersoAddComponent },
+  { path: 'rutinasPersoUpdate/:id', component: RutinasPersoUpdateComponent },
+  { path: 'actividad', component: ActividadComponent },
+  { path: 'actividadAdd', component: ActividadAddComponent },
+  { path: 'actividadUpdate/:id', component: ActividadUpdateComponent },
+]
 
 
-
-
-];
 
 @NgModule({
   imports: [BrowserModule, RouterModule.forRoot(routes)],

@@ -30,8 +30,8 @@ model asistencia {
   actividad     actividad? @relation(fields: [ActividadFK], references: [ActividadId], onDelete: NoAction, onUpdate: NoAction, map: "asistencia-actividad")
   persona       persona    @relation(fields: [DniFK], references: [dni], onDelete: NoAction, onUpdate: NoAction, map: "asistencia-persona")
 
-  @@index([DniFK], map: "asistencia-persona_idx")
   @@index([ActividadFK], map: "asistencia-actividad_idx")
+  @@index([DniFK], map: "asistencia-persona_idx")
 }
 
 model cuota {
@@ -91,6 +91,13 @@ model post {
 
   @@index([DniAutor], map: "post-autor_idx")
   @@index([TipoPostFk], map: "post-tipo_idx")
+}
+
+model preciocuota {
+  idpreciocuota      Int       @id @default(autoincrement())
+  valor              Float
+  fechaActualizacion DateTime? @db.Timestamp(2)
+  cuota              cuota[]
 }
 
 model rol {
@@ -157,11 +164,4 @@ model venta {
   persona        persona @relation(fields: [TrabajadorIDni], references: [dni], map: "venta-persona")
 
   @@index([TrabajadorIDni], map: "venta-persona_idx")
-}
-
-model preciocuota {
-  idpreciocuota      Int       @id @default(autoincrement())
-  valor              Float
-  fechaActualizacion DateTime? @db.Timestamp(2)
-  cuota              cuota[]
 }

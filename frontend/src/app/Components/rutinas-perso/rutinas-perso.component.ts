@@ -6,13 +6,17 @@ import {
   ElementRef,
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RutinasService } from '../../Services/rutinas.service';
+import { RutinasPersoService } from 'src/app/Services/rutinas-perso.service';
 import { Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 
 interface rutina {
-  idRutinaGenerica: number;
+  idRutinaPersonalizada: number;
+  persona: {
+    dni: GLfloat;
+  };
+  Imagenes: string;
   tiporutina: {
     idTipoRutina: number;
     NombreTipo: string;
@@ -26,29 +30,31 @@ interface rutina {
 }
 
 @Component({
-  selector: 'app-rutinas',
-  templateUrl: './rutinas.component.html',
-  styleUrls: ['./rutinas.component.css'],
+  selector: 'app-rutinas-perso',
+  templateUrl: './rutinas-perso.component.html',
+  styleUrls: ['./rutinas-perso.component.css'],
 })
-export class RutinasComponent implements OnInit {
+export class RutinasPersoComponent implements OnInit {
   rutinas: any = [];
   @ViewChild('filtroId', { static: false }) filtroId!: ElementRef;
   elementosPorPagina = 5; // Número de elementos por página
   paginaActual = 1; // Página actual
 
-  constructor(private rutinasService: RutinasService, private router: Router) {}
+  constructor(
+    private rutinasPersoService: RutinasPersoService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    /*     this.GetGenericas(); */
-    this.GetActiveRutinas();
+    this.GetActiveRutinasP();
   }
-  GetActiveRutinas() {
-    this.rutinasService.getActiveRutinas().subscribe((data: any) => {
+  GetActiveRutinasP() {
+    this.rutinasPersoService.getActiveRutinasP().subscribe((data: any) => {
       this.rutinas = data;
     });
   }
-  GetGenericas() {
-    this.rutinasService.getAllRutinas().subscribe((data: any) => {
+  GetAll() {
+    this.rutinasPersoService.getAllRutinasP().subscribe((data: any) => {
       this.rutinas = data;
     });
   }
@@ -63,13 +69,11 @@ export class RutinasComponent implements OnInit {
     if (idFiltrado) {
       this.rutinas = this.rutinas.filter(
         (rutina1: rutina) =>
-          rutina1.idRutinaGenerica &&
-          rutina1.idRutinaGenerica.toString() === idFiltrado
+          rutina1.idRutinaPersonalizada &&
+          rutina1.idRutinaPersonalizada.toString() === idFiltrado
       );
     } else {
-      this.GetActiveRutinas();
-
-      /*       this.GetGenericas(); */
+      this.GetActiveRutinasP();
     }
   }
 
@@ -85,12 +89,8 @@ export class RutinasComponent implements OnInit {
 
   rutinaSeleccionada: rutina | null = null;
 
-  /*   capturarRutina(rutina: rutina) {
-    this.rutinaSeleccionada = rutina;
-  } */
-
   capturarRutina(idRutina: number) {
-    this.router.navigate(['/rutinasUpdate', idRutina]);
+    this.router.navigate(['/rutinasPersoUpdate', idRutina]);
   }
 
   eliminarRutina(idRutina: number) {
@@ -100,11 +100,11 @@ export class RutinasComponent implements OnInit {
 
     if (confirmar) {
       // Realiza la solicitud para actualizar el campo 'activo' a 0
-      this.rutinasService.updateRutinaActiva(idRutina, 0).subscribe(
+      this.rutinasPersoService.updateRutinaActivaP(idRutina, 0).subscribe(
         () => {
           console.log('Rutina eliminada con éxito');
           // Actualiza la lista de rutinas (puedes volver a llamar a GetActiveRutinas o actualizar el arreglo en memoria)
-          this.GetActiveRutinas();
+          this.GetActiveRutinasP();
         },
         (error) => {
           console.error('Error al eliminar la rutina', error);
