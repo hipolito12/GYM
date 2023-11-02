@@ -11,6 +11,46 @@ const {
   checkDniExist,
 } = require('../controllers/rutinasPController.js');
 
+/**
+ * @openapi
+ * /api/v1/rutinasP:
+ *   get:
+ *     tags:
+ *       - RutinasP
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array 
+ *                   items: 
+ *                     type: object
+ *       500:
+ *         description: FAILED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status: 
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string 
+ *                       example: "Some error message"
+ */
+
+
 // obtener rutinas para mostrar
 router.get('/AllRutinasP', getAllRutinasP);
 router.get('/AllActividadesP', getAllActividadesP);
