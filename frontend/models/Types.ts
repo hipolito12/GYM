@@ -10,6 +10,8 @@ export type Actividad = {
     Cupo: number | null;
   };
   
+
+
   // Modelo 'asistencia'
   export type Asistencia = {
     NroAsistencia: number | null;
@@ -58,6 +60,7 @@ export type Actividad = {
     visible: boolean | null;
   };
   
+  
   // Modelo 'rol'
   export type Rol = {
     idrol: number | null;
@@ -66,6 +69,7 @@ export type Actividad = {
     activa: boolean | null;
   };
   
+
   // Modelo 'rutinagenerica'
   export type RutinaGenerica = {
     idRutinaGenerica: number | null;
@@ -77,6 +81,7 @@ export type Actividad = {
     activa: boolean | null;
   };
   
+
   // Modelo 'rutinapersonalizada'
   export type RutinaPersonalizada = {
     idRutinaPersonalizada: number | null;
@@ -89,12 +94,14 @@ export type Actividad = {
     activo: boolean | null;
   };
   
+
   // Modelo 'tipopost'
   export type TipoPost = {
     TipoId: number | null;
     NombreTIpo: string | null;
     visible: boolean | null;
   };
+
   
   // Modelo 'tiporutina'
   export type TipoRutina = {
