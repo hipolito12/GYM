@@ -64,6 +64,7 @@ app.use('/api', require('./routes/actividad.js'));
 /*servidor*/ 
 app.listen(port, () => {
     console.log('Server listening on port', port);
+    console.log('Version 1 of Docs available at http://localhost:3000/api-doc');
 });
 
 

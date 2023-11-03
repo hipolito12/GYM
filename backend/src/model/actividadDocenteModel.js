@@ -36,7 +36,7 @@ const ActividadDeDocente = async (dni) =>
     }
     catch(err)
     {
-        console.log(err.message + "error en aactividad de docente model")
+        console.log(err.message + "error en actividad de docente model")
         return err.message
     }
 }
