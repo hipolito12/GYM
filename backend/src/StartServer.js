@@ -1,17 +1,48 @@
 const express = require('express');
 const cors = require('cors');
 //const logIn = require('./routes/auth')
-const { swaggerDocs: V1SwaggerDocs } = require('./v1/swagger');
+const path = require("path");
+
+
+//swagger
+// const { swaggerDocs: V1SwaggerDocs } = require('./v1/swagger');
+const swaggerUI = require("swagger-ui-express");
+const swaggerJSDoc = require("swagger-jsdoc");
+const swaggerSpec = {
+    definition: {
+        openapi: "3.0.0",
+        info: {
+            title: "GYM API",
+            version: "1.0.0"
+        },
+        servers: [
+            {
+                url: "http://localhost:3000"
+            }
+        ]
+    },
+    apis: [`${path.join(__dirname, "./routes/*.js")}`],
+
+};
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 /*middleware*/
 app.use(cors({ origin: ['http://localhost:4200', 'http://localhost:3000'] }));
 app.use(express.json());
 app.use(express.text());
+app.use(
+    "/api-doc", 
+    swaggerUI.serve, 
+    swaggerUI.setup(swaggerJSDoc(swaggerSpec))
+);
 
 
-/*rutas*/ 
+/*rutas*/
+app.get("/", (req, res) => {
+    res.send("Bienvenido a nuestra API GYM");
+  }); 
 app.use('/api', require('./routes/auth.js'));
 app.use('/api', require('./routes/User.js'));
 app.use('/api', require('./routes/Blog.js'));
@@ -25,10 +56,14 @@ app.use('/api', require('./routes/rutinasP.js'));
 app.use('/api', require('./routes/actividad.js'));
 
 /*servidor*/ 
-app.listen(3000, () => {
-    console.log('Server listening on port 3000');
-    V1SwaggerDocs(app,  3000);
+app.listen(port, () => {
+    console.log('Server listening on port', port);
 });
+
+
+app.get("/", (req, res) => {
+    res.send("Welcome to my API");
+  });
 
 
 
