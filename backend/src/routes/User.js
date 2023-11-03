@@ -6,7 +6,6 @@ const {ProximoPago, ActualizarDatos, ListarActividades, DetalleActividad,Verific
 
 router.post('/ProximoPago',VerificoToken, ProximoPago);
 
-
 router.post('/ActualizaDatos',VerificoToken,ActualizarDatos);
  
 router.post('/ListarActividades',VerificoToken,ListarActividades); 

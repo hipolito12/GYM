@@ -3,6 +3,7 @@ const router = express.Router();
 const {VerificoToken}=require("../controllers/UserController.js");
 const{getMisRutinasController,getRutinasGenericasController}= require('../controllers/MisRutinasController.js')
 
+
 router.post("/misrutinas",VerificoToken,getMisRutinasController )
 
 
