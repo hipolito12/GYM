@@ -3,7 +3,7 @@
     <h1 class="text-center">Rutinas GYM GENERICO</h1>
     <div class="row">
       <div class="col-6">
-        <button class="btn btn-secondary" routerLink="/rutinasAdd">+ Nueva</button>
+        <button class="btn btn-secondary" routerLink="/rutinasPersoAdd">+ Nueva</button>
       </div>
       <div class="col-6 text-right">
         <div class="input-group">
@@ -31,22 +31,26 @@
           <tr>
             <th>Id Rutina</th>
             <th>Tipo de Rutina</th>
+            <th>DNI Persona</th>
             <th>Actividad</th>
             <th>Descripción</th>
+            <th>Imagen</th>
             <th>Fecha de Actualización</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let rutina of rutinas.slice((paginaActual - 1) * elementosPorPagina, paginaActual * elementosPorPagina)">
-            <td>{{rutina.idRutinaGenerica}}</td>
+            <td>{{rutina.idRutinaPersonalizada}}</td>
             <td>{{ rutina.tiporutina.NombreTipo }}</td>
+            <td>{{rutina.persona.dni}}</td>
             <td>{{ rutina.actividad.NombreActividad }}</td>
             <td>{{ rutina.DescripcionRutina }}</td>
+            <td>{{rutina.Imagenes}}</td>
             <td>{{ rutina.fechaActualizacion }}</td>
               <td>
                 <div class="btn-group-vertical">
-                  <button class="btn btn-primary" (click)="capturarRutina(rutina.idRutinaGenerica)">Modificar</button>
-                  <button class="btn btn-danger" (click)="eliminarRutina(rutina.idRutinaGenerica)">Eliminar</button>
+                  <button class="btn btn-primary" (click)="capturarRutina(rutina.idRutinaPersonalizada)">Modificar</button>
+                  <button class="btn btn-danger" (click)="eliminarRutina(rutina.idRutinaPersonalizada)">Eliminar</button>
                 </div>
               </td>
             
