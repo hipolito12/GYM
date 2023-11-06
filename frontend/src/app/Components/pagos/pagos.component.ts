@@ -22,7 +22,7 @@ export class PagosComponent implements OnInit {
     this.Pagos.ProximoPago(this.token).subscribe(
       (res) => {
         console.log(res.respuesta);
-        this.precio = res.respuesta.precio
+        this.precio = res.respuesta.preciocuota.valor
         this.fecha = this.formatearFecha(this.sumarMes(res.respuesta.FechaPago))
       },
       (err) => {

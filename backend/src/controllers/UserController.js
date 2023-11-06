@@ -7,12 +7,14 @@ const {
   BuscaCupo,ActualizarCupoActividad
 } = require("../model/UserModel.js");
 const jwt = require("jsonwebtoken");
-const { check, body } = require("express-validator");
+//const { check, body } = require("express-validator");
 
 const ProximoPago = async (req, res) => {
   try {
     let respuesta = await ObtenerPago(req.userId);
+    console.log(respuesta);
     return res.status(200).json({ respuesta });
+    
   } catch (e) {
     console.log(e.message);
   }

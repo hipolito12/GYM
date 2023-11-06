@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActividadService } from '../../Services/actividad.service';
 import { Router, ActivatedRoute } from '@angular/router';
 

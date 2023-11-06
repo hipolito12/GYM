@@ -7,6 +7,15 @@ const ObtenerPago = async (dni) => {
       where: {
         DniFK: dni,
       },
+      select: {
+        FechaPago: true,
+        preciocuota:{
+          select:{
+            valor:true
+          }
+        }
+      
+      }
     });
 
     return element;

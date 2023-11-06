@@ -3,14 +3,15 @@ import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } fro
 import { LoginService } from './Services/login.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
-
+export class ProfesoresGuardGuard implements CanActivate {
   constructor(private _authService:LoginService,private _router:Router ,private cookies:CookieService){}
+
   canActivate():boolean{
-    if(this._authService.LoggedIn() && this.cookies.get('rol')==='1' )
+    if(this._authService.LoggedIn() && this.cookies.get('rol')==='2' )
     {
       return true
     }
@@ -20,7 +21,5 @@ export class AuthGuard implements CanActivate {
       return false
     }
   }
-   
-  
   
 }

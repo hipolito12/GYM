@@ -92,7 +92,7 @@ export class BlogComponent implements AfterViewInit {
     const fecha = new Date(fechaOriginal);
 
     const dia = fecha.getDate().toString().padStart(2, '0');
-    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // Sumamos 1 porque los meses van de 0 a 11
+    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // Sumamos 1 para meses 0 a 11
     const año = fecha.getFullYear().toString();
 
     return `${dia}/${mes}/${año}`;
