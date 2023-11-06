@@ -35,7 +35,7 @@ export class RutinasComponent implements OnInit {
   @ViewChild('filtroId', { static: false }) filtroId!: ElementRef;
   elementosPorPagina = 5; // Número de elementos por página
   paginaActual = 1; // Página actual
-
+    nombre:string = localStorage.getItem('nombre')!;
   constructor(private rutinasService: RutinasService, private router: Router) {}
 
   ngOnInit(): void {

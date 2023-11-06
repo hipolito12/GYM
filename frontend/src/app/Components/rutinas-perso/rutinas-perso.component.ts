@@ -39,6 +39,7 @@ export class RutinasPersoComponent implements OnInit {
   @ViewChild('filtroId', { static: false }) filtroId!: ElementRef;
   elementosPorPagina = 5; // Número de elementos por página
   paginaActual = 1; // Página actual
+  nombre:string = localStorage.getItem('nombre')!;
 
   constructor(
     private rutinasPersoService: RutinasPersoService,

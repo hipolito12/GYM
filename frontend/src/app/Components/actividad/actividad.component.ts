@@ -28,10 +28,11 @@ interface actividad {
 })
 export class ActividadComponent implements OnInit {
   actividad: any = [];
+  nombre:string = localStorage.getItem('nombre')!;
+
   @ViewChild('filtroId', { static: false }) filtroId!: ElementRef;
   elementosPorPagina = 5; // Número de elementos por página
   paginaActual = 1; // Página actual
-
   constructor(
     private actividadService: ActividadService,
     private router: Router
