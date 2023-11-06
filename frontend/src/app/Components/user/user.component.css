@@ -3,3 +3,10 @@ tr[role="row"]:hover {
     cursor: pointer;
 
 }
+
+/* tr[role="row"]:hover {
+    background-color: #FFDD77;
+    cursor: pointer;
+
+}
+ */
