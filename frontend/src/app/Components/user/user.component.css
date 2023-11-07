@@ -4,3 +4,18 @@ tr[role="row"]:hover {
 
 }
 
+@media (max-width: 600px) {
+  .mat-toolbar-row .fs-3 {
+    font-size: 1.5rem;
+  }
+}
+
+mat-card-content {
+    overflow-x: auto;
+  }
+
+  @media (max-width: 600px) {
+    .mat-toolbar-row .fs-3 {
+      font-size: 1.5rem;
+    }
+  }

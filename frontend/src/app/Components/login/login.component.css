@@ -80,6 +80,14 @@ font-weight: bolder;
 }
 
 @media (max-width:1030px) {
+    .contenedor {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: auto;
+    }
+}
+@media (max-width:1030px) {
     .container {
         flex-direction: column;
         justify-content: space-between;
