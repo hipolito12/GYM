@@ -39,7 +39,7 @@ export class SigninComponent implements OnInit {
   }
 
   VerificaContrasena() {
-    if (Object.values(this.NewUser).some((value) => value === '')) {
+    if (Object.values(this.NewUser).some((value) => value !== '')) {
       const regex = new RegExp(
         /^(?=.*[A-Z])(?=.*[@#$!%^&*()_+{}\[\]:;<>,.?~\\-]).{8,}$/
       );
@@ -62,9 +62,9 @@ export class SigninComponent implements OnInit {
   Registrar() {
     this.loginService.Registrar(this.NewUser).subscribe(
       (res) => {
+        console.log('aaaaaaaaa'+ res);
         localStorage.setItem('token', res.token);
-        this.Redireccionar(res.IdRolfk);
-      },
+        this.rout.navigate(['login']);      },
       (err) => {
         console.log(JSON.stringify(err));
         let toast = this.toast.nativeElement;

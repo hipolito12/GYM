@@ -17,7 +17,6 @@ const LogInUser = async (req, res) => {
     const Element = await loginModel(user.dni);
 
     let result = JSON.parse(parser(Element));
-  
     //si no existe el usuario y si coinciden las contraseñas
     if (result ===null || result.password != user.contrasena) {
       return res.status(401).send("Unauhtorized Requesttt");
@@ -61,7 +60,7 @@ const Signup = async (req, res) => {
       nombre === ''| null     ||
       apellido === ''| null   ||
       sexo === ''|null
-    ) {return res.status(401).send("Unauhtorized Request"); }
+    ) {return res.status(401).send("Unauhtorized Requestt"); }
    
 
     const NuevoUsario = SignupModel(req.body);
