@@ -86,3 +86,8 @@
         height: auto;
     }
 }
+@media (max-width: 576px) {
+    .card {
+      width: 100%;
+    }
+  }

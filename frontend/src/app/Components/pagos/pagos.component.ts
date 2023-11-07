@@ -22,8 +22,13 @@ export class PagosComponent implements OnInit {
     this.Pagos.ProximoPago(this.token).subscribe(
       (res) => {
         console.log(res.respuesta);
-        this.precio = res.respuesta.preciocuota.valor
-        this.fecha = this.formatearFecha(this.sumarMes(res.respuesta.FechaPago))
+        this.precio = res.respuesta.preciocuota.valor||0;
+
+        
+     
+          this.fecha = res.respuesta.FechaPago===undefined? 'realiza el primerpago  para empezar el seguimiento': this.formatearFecha(this.sumarMes(res.respuesta.FechaPago));
+
+        
       },
       (err) => {
         console.log(err.message);
@@ -53,4 +58,10 @@ export class PagosComponent implements OnInit {
     return `${diaStr}/${mesStr}/${anio}`;
   }
   
+   mesSiguiente(fecha: Date): Date {
+    const mesSiguiente = new Date(fecha);
+    mesSiguiente.setMonth(mesSiguiente.getMonth() + 1);
+    return mesSiguiente;
+  }
+
 }

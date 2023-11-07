@@ -25,7 +25,7 @@ const ActualizarDatos = async (req, res) => {
     let usuario = await ObtenerPersona(req.userId);
 
     // await validarCampos(req.body.datos, usuario);
-
+    console.log(req.body.datos);
     ActualizarDatosModel(req.userId, req.body.datos);
 
     return res.status(200).json({ message: "ActualizarDatos" });
@@ -99,6 +99,11 @@ async function VerificoToken(req, res, next) {
     console.log(e.message);
   }
 }
+
+
+
+
+
 /*async function validarCampos(datosActualizacion, datosExistentes) {
   console.log("aca")
   body('datosActualizacion.email',)

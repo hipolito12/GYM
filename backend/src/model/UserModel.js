@@ -2,6 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 const ObtenerPago = async (dni) => {
+  
   try {
     let element = await prisma.cuota.findFirstOrThrow({
       where: {
@@ -17,10 +18,13 @@ const ObtenerPago = async (dni) => {
       
       }
     });
-
-    return element;
+   
+ return element;
   } catch (e) {
     console.log(`error al buscar pago ${e.message}`);
+
+    return element={preciocuota:{valor:  (await prisma.preciocuota.findFirstOrThrow({select:{valor:true}})).valor}}
+
   }
 };
 

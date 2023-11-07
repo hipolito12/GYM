@@ -1,6 +1,7 @@
 import { Component ,ElementRef,OnInit, ViewChild} from '@angular/core';
 import { LoginService } from '../../Services/login.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -48,9 +49,14 @@ export class SigninComponent implements OnInit {
     
     if (!regex.test(this.NewUser.Contrase_a) )
     {
-      let toast= this.toast.nativeElement;
-
-      toast.innerHTML="Contrasena no cumple con los requisitos ";    }
+      Swal.fire({
+        title: 'Requisitos de la contraseña',
+        text: 'La contraseña debe tener al menos 8 caracteres, incluyendo al menos una letra mayúscula y un carácter especial (@, #, $, !, %, ^, &, *, (, ), _, +, {, >, ,, ., ?, ~, \\, -)',
+        icon: 'info',
+        confirmButtonText: 'Entendido'
+      });
+    
+    }
     else if(this.NewUser.Contrase_a != this.RepetirContrasena)
     {
       alert("Las contraseñas no coinciden");
@@ -75,5 +81,7 @@ export class SigninComponent implements OnInit {
         toast.innerHTML="El usuario o la contraseña no son validos"}
     );
   }
+
+
 
 }
