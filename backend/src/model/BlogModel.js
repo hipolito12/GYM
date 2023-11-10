@@ -31,6 +31,9 @@ const ObtenerTipoBlog = async () =>
     try 
     {
             const tipos = await prisma.tipopost.findMany({
+              where:{
+                visible:true
+            },
                 select: {
                     TipoId: true,
                     NombreTIpo: true,
@@ -54,7 +57,7 @@ const CrearBlog  = async (blogData,dni) =>
     data: {
       Titulo: blogData.titulo,
       Cuerpo: blogData.ckeditorContent,
-      TipoPostFk: blogData.tipo,
+      TipoPostFk: Number.parseInt(blogData.tipo) ,
       DniAutor: dni,
       imagen: blogData.imagen,
       fecha: new Date(),

@@ -37,7 +37,7 @@ export class VentasComponent {
       
       Toast.fire({
         icon: 'success',
-        title: 'Signed in successfully'
+        title: 'venta registrada con exito'
       })
 
     },

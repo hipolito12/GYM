@@ -18,7 +18,7 @@ const getBlogs = async (req, res) =>
 const getTipoPost = async (req, res) => 
 {
     try
-    {
+    {   
         const tipos = await ObtenerTipoBlog()
         return res.status(200).json(tipos)
     }
