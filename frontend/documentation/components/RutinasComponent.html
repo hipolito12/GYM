@@ -1,0 +1,1194 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  RutinasComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/Components/rutinas/rutinas.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-rutinas</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./rutinas.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./rutinas.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#elementosPorPagina" >elementosPorPagina</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#filtroId" >filtroId</a>
+                            </li>
+                            <li>
+                                <a href="#nombre" >nombre</a>
+                            </li>
+                            <li>
+                                <a href="#paginaActual" >paginaActual</a>
+                            </li>
+                            <li>
+                                <a href="#rutinas" >rutinas</a>
+                            </li>
+                            <li>
+                                <a href="#rutinaSeleccionada" >rutinaSeleccionada</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cambiarElementosPorPagina" >cambiarElementosPorPagina</a>
+                            </li>
+                            <li>
+                                <a href="#capturarRutina" >capturarRutina</a>
+                            </li>
+                            <li>
+                                <a href="#eliminarRutina" >eliminarRutina</a>
+                            </li>
+                            <li>
+                                <a href="#filtrarPorId" >filtrarPorId</a>
+                            </li>
+                            <li>
+                                <a href="#GetActiveRutinas" >GetActiveRutinas</a>
+                            </li>
+                            <li>
+                                <a href="#GetGenericas" >GetGenericas</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#paginaAnterior" >paginaAnterior</a>
+                            </li>
+                            <li>
+                                <a href="#paginaSiguiente" >paginaSiguiente</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(rutinasService: <a href="../injectables/RutinasService.html" target="_self">RutinasService</a>, router: Router)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/Components/rutinas/rutinas.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>rutinasService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RutinasService.html" target="_self" >RutinasService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cambiarElementosPorPagina"></a>
+                    <span class="name">
+                        <span ><b>cambiarElementosPorPagina</b></span>
+                        <a href="#cambiarElementosPorPagina"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cambiarElementosPorPagina()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="82"
+                                    class="link-to-prism">src/app/Components/rutinas/rutinas.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="capturarRutina"></a>
+                    <span class="name">
+                        <span ><b>capturarRutina</b></span>
+                        <a href="#capturarRutina"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>capturarRutina(idRutina: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="92"
+                                    class="link-to-prism">src/app/Components/rutinas/rutinas.component.ts:92</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idRutina</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eliminarRutina"></a>
+                    <span class="name">
+                        <span ><b>eliminarRutina</b></span>
+                        <a href="#eliminarRutina"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>eliminarRutina(idRutina: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="96"
+                                    class="link-to-prism">src/app/Components/rutinas/rutinas.component.ts:96</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idRutina</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtrarPorId"></a>
+                    <span class="name">
+                        <span ><b>filtrarPorId</b></span>
+                        <a href="#filtrarPorId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filtrarPorId()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="61"
+                                    class="link-to-prism">src/app/Components/rutinas/rutinas.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GetActiveRutinas"></a>
+                    <span class="name">
+                        <span ><b>GetActiveRutinas</b></span>
+                        <a href="#GetActiveRutinas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>GetActiveRutinas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/app/Components/rutinas/rutinas.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GetGenericas"></a>
+                    <span class="name">
+                        <span ><b>GetGenericas</b></span>
+                        <a href="#GetGenericas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>GetGenericas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/app/Components/rutinas/rutinas.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="41"
+                                    class="link-to-prism">src/app/Components/rutinas/rutinas.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginaAnterior"></a>
+                    <span class="name">
+                        <span ><b>paginaAnterior</b></span>
+                        <a href="#paginaAnterior"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>paginaAnterior()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="55"
+                                    class="link-to-prism">src/app/Components/rutinas/rutinas.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginaSiguiente"></a>
+                    <span class="name">
+                        <span ><b>paginaSiguiente</b></span>
+                        <a href="#paginaSiguiente"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>paginaSiguiente()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="76"
+                                    class="link-to-prism">src/app/Components/rutinas/rutinas.component.ts:76</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="elementosPorPagina"></a>
+                    <span class="name">
+                        <span ><b>elementosPorPagina</b></span>
+                        <a href="#elementosPorPagina"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>5</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/Components/rutinas/rutinas.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtroId"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>filtroId</b></span>
+                        <a href="#filtroId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;filtroId&#x27;, {static: false})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/Components/rutinas/rutinas.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nombre"></a>
+                    <span class="name">
+                        <span ><b>nombre</b></span>
+                        <a href="#nombre"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>localStorage.getItem(&#x27;nombre&#x27;)!</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/Components/rutinas/rutinas.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginaActual"></a>
+                    <span class="name">
+                        <span ><b>paginaActual</b></span>
+                        <a href="#paginaActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/Components/rutinas/rutinas.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rutinas"></a>
+                    <span class="name">
+                        <span ><b>rutinas</b></span>
+                        <a href="#rutinas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/Components/rutinas/rutinas.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rutinaSeleccionada"></a>
+                    <span class="name">
+                        <span ><b>rutinaSeleccionada</b></span>
+                        <a href="#rutinaSeleccionada"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>rutina | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/app/Components/rutinas/rutinas.component.ts:86</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  Injectable,
+  ViewChild,
+  ElementRef,
+} from &#x27;@angular/core&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { RutinasService } from &#x27;../../Services/rutinas.service&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { MatTableDataSource } from &#x27;@angular/material/table&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+
+interface rutina {
+  idRutinaGenerica: number;
+  tiporutina: {
+    idTipoRutina: number;
+    NombreTipo: string;
+  };
+  actividad: {
+    idActividad: number;
+    NombreActividad: string;
+  };
+  DescripcionRutina: string;
+  fechaActualizacion: string;
+}
+
+@Component({
+  selector: &#x27;app-rutinas&#x27;,
+  templateUrl: &#x27;./rutinas.component.html&#x27;,
+  styleUrls: [&#x27;./rutinas.component.css&#x27;],
+})
+export class RutinasComponent implements OnInit {
+  rutinas: any &#x3D; [];
+  @ViewChild(&#x27;filtroId&#x27;, { static: false }) filtroId!: ElementRef;
+  elementosPorPagina &#x3D; 5; // Número de elementos por página
+  paginaActual &#x3D; 1; // Página actual
+    nombre:string &#x3D; localStorage.getItem(&#x27;nombre&#x27;)!;
+  constructor(private rutinasService: RutinasService, private router: Router) {}
+
+  ngOnInit(): void {
+    /*     this.GetGenericas(); */
+    this.GetActiveRutinas();
+  }
+  GetActiveRutinas() {
+    this.rutinasService.getActiveRutinas().subscribe((data: any) &#x3D;&gt; {
+      this.rutinas &#x3D; data;
+    });
+  }
+  GetGenericas() {
+    this.rutinasService.getAllRutinas().subscribe((data: any) &#x3D;&gt; {
+      this.rutinas &#x3D; data;
+    });
+  }
+  paginaAnterior() {
+    if (this.paginaActual &gt; 1) {
+      this.paginaActual--;
+    }
+  }
+
+  filtrarPorId() {
+    const idFiltrado &#x3D; this.filtroId.nativeElement.value;
+    if (idFiltrado) {
+      this.rutinas &#x3D; this.rutinas.filter(
+        (rutina1: rutina) &#x3D;&gt;
+          rutina1.idRutinaGenerica &amp;&amp;
+          rutina1.idRutinaGenerica.toString() &#x3D;&#x3D;&#x3D; idFiltrado
+      );
+    } else {
+      this.GetActiveRutinas();
+
+      /*       this.GetGenericas(); */
+    }
+  }
+
+  paginaSiguiente() {
+    const ultimoElemento &#x3D; this.paginaActual * this.elementosPorPagina;
+    if (ultimoElemento &lt; this.rutinas.length) {
+      this.paginaActual++;
+    }
+  }
+  cambiarElementosPorPagina() {
+    this.paginaActual &#x3D; 1; // Reinicia la página a 1 cuando cambia el número de elementos por página
+  }
+
+  rutinaSeleccionada: rutina | null &#x3D; null;
+
+  /*   capturarRutina(rutina: rutina) {
+    this.rutinaSeleccionada &#x3D; rutina;
+  } */
+
+  capturarRutina(idRutina: number) {
+    this.router.navigate([&#x27;/rutinasUpdate&#x27;, idRutina]);
+  }
+
+  eliminarRutina(idRutina: number) {
+    const confirmar &#x3D; confirm(
+      &#x27;¿Estás seguro de que deseas eliminar esta rutina?&#x27;
+    );
+
+    if (confirmar) {
+      // Realiza la solicitud para actualizar el campo &#x27;activo&#x27; a 0
+      this.rutinasService.updateRutinaActiva(idRutina, 0).subscribe(
+        () &#x3D;&gt; {
+          console.log(&#x27;Rutina eliminada con éxito&#x27;);
+          // Actualiza la lista de rutinas (puedes volver a llamar a GetActiveRutinas o actualizar el arreglo en memoria)
+          this.GetActiveRutinas();
+        },
+        (error) &#x3D;&gt; {
+          console.error(&#x27;Error al eliminar la rutina&#x27;, error);
+        }
+      );
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container border border-secondary rounded-lg mb-4 mt-4 p-0  my-4&quot;&gt;
+  &lt;div class&#x3D;&quot;container-fluid bg-dark text-white py-3&quot;&gt;
+    &lt;h1 class&#x3D;&quot;text-center&quot;&gt;Rutinas GYM GENERICO&lt;/h1&gt;
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+      &lt;div class&#x3D;&quot;col-6&quot;&gt;
+        &lt;button class&#x3D;&quot;btn btn-secondary&quot; routerLink&#x3D;&quot;/rutinasAdd&quot;&gt;+ Nueva&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-6 text-right&quot;&gt;
+        &lt;div class&#x3D;&quot;input-group&quot;&gt;
+          &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;Buscar id rutina...&quot; #filtroId (keydown.enter)&#x3D;&quot;filtrarPorId()&quot;&gt;
+          &lt;div class&#x3D;&quot;input-group-append&quot;&gt;
+            &lt;button class&#x3D;&quot;btn btn-dark&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;filtrarPorId()&quot;&gt;OK&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;container py-3&quot;&gt;
+  &lt;label for&#x3D;&quot;elementosPorPagina&quot;&gt;Elementos por página:&lt;/label&gt;
+  &lt;select id&#x3D;&quot;elementosPorPagina&quot; [(ngModel)]&#x3D;&quot;elementosPorPagina&quot; (change)&#x3D;&quot;cambiarElementosPorPagina()&quot;&gt;
+    &lt;option value&#x3D;&quot;5&quot;&gt;5&lt;/option&gt;
+    &lt;option value&#x3D;&quot;10&quot;&gt;10&lt;/option&gt;
+    &lt;option value&#x3D;&quot;20&quot;&gt;20&lt;/option&gt;
+    &lt;!-- Agrega más opciones según sea necesario --&gt;
+  &lt;/select&gt;
+&lt;/div&gt;
+  &lt;div class&#x3D;&quot;container mt-4&quot;&gt;
+    &lt;div class&#x3D;&quot;table-responsive&quot;&gt;
+      &lt;table class&#x3D;&quot;table table-bordered table-striped&quot;&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Id Rutina&lt;/th&gt;
+            &lt;th&gt;Tipo de Rutina&lt;/th&gt;
+            &lt;th&gt;Actividad&lt;/th&gt;
+            &lt;th&gt;Descripción&lt;/th&gt;
+            &lt;th&gt;Fecha de Actualización&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          &lt;tr *ngFor&#x3D;&quot;let rutina of rutinas.slice((paginaActual - 1) * elementosPorPagina, paginaActual * elementosPorPagina)&quot;&gt;
+            &lt;td&gt;{{rutina.idRutinaGenerica}}&lt;/td&gt;
+            &lt;td&gt;{{ rutina.tiporutina.NombreTipo }}&lt;/td&gt;
+            &lt;td&gt;{{ rutina.actividad.NombreActividad }}&lt;/td&gt;
+            &lt;td&gt;{{ rutina.DescripcionRutina }}&lt;/td&gt;
+            &lt;td&gt;{{ rutina.fechaActualizacion }}&lt;/td&gt;
+              &lt;td&gt;
+                &lt;div class&#x3D;&quot;btn-group-vertical&quot;&gt;
+                  &lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;capturarRutina(rutina.idRutinaGenerica)&quot;&gt;Modificar&lt;/button&gt;
+                  &lt;button class&#x3D;&quot;btn btn-danger&quot; (click)&#x3D;&quot;eliminarRutina(rutina.idRutinaGenerica)&quot;&gt;Eliminar&lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/td&gt;
+            
+          &lt;/tr&gt;
+          
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;pagination d-flex justify-content-end p-3&quot;&gt;
+    &lt;button (click)&#x3D;&quot;paginaAnterior()&quot; [disabled]&#x3D;&quot;paginaActual &#x3D;&#x3D;&#x3D; 1&quot;&gt;Anterior&lt;/button&gt;
+    &lt;button (click)&#x3D;&quot;paginaSiguiente()&quot; [disabled]&#x3D;&quot;paginaActual * elementosPorPagina &gt;&#x3D; rutinas.length&quot;&gt;Siguiente&lt;/button&gt;
+  &lt;/div&gt;
+
+
+
+
+
+
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./rutinas.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* Agrega un borde derecho a las celdas */
+.table-bordered .table-cell {
+  border-right: 1px solid #ddd; /* Puedes ajustar el color y el grosor según tus preferencias */
+}
+
+/* Agrega un borde inferior a las filas */
+.table-bordered .table-row {
+  border-bottom: 1px solid #ddd; /* Puedes ajustar el color y el grosor según tus preferencias */
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container border border-secondary rounded-lg mb-4 mt-4 p-0  my-4">  <div class="container-fluid bg-dark text-white py-3">    <h1 class="text-center">Rutinas GYM GENERICO</h1>    <div class="row">      <div class="col-6">        <button class="btn btn-secondary" routerLink="/rutinasAdd">+ Nueva</button>      </div>      <div class="col-6 text-right">        <div class="input-group">          <input type="text" class="form-control" placeholder="Buscar id rutina..." #filtroId (keydown.enter)="filtrarPorId()">          <div class="input-group-append">            <button class="btn btn-dark" type="button" (click)="filtrarPorId()">OK</button>          </div>        </div>      </div>    </div>  </div>  <div class="container py-3">  <label for="elementosPorPagina">Elementos por página:</label>  <select id="elementosPorPagina" [(ngModel)]="elementosPorPagina" (change)="cambiarElementosPorPagina()">    <option value="5">5</option>    <option value="10">10</option>    <option value="20">20</option>    <!-- Agrega más opciones según sea necesario -->  </select></div>  <div class="container mt-4">    <div class="table-responsive">      <table class="table table-bordered table-striped">        <thead>          <tr>            <th>Id Rutina</th>            <th>Tipo de Rutina</th>            <th>Actividad</th>            <th>Descripción</th>            <th>Fecha de Actualización</th>          </tr>        </thead>        <tbody>          <tr *ngFor="let rutina of rutinas.slice((paginaActual - 1) * elementosPorPagina, paginaActual * elementosPorPagina)">            <td>{{rutina.idRutinaGenerica}}</td>            <td>{{ rutina.tiporutina.NombreTipo }}</td>            <td>{{ rutina.actividad.NombreActividad }}</td>            <td>{{ rutina.DescripcionRutina }}</td>            <td>{{ rutina.fechaActualizacion }}</td>              <td>                <div class="btn-group-vertical">                  <button class="btn btn-primary" (click)="capturarRutina(rutina.idRutinaGenerica)">Modificar</button>                  <button class="btn btn-danger" (click)="eliminarRutina(rutina.idRutinaGenerica)">Eliminar</button>                </div>              </td>                      </tr>                  </tbody>      </table>    </div>  </div>  <div class="pagination d-flex justify-content-end p-3">    <button (click)="paginaAnterior()" [disabled]="paginaActual === 1">Anterior</button>    <button (click)="paginaSiguiente()" [disabled]="paginaActual * elementosPorPagina >= rutinas.length">Siguiente</button>  </div></div>'
+    var COMPONENTS = [{'name': 'ActividadAddComponent', 'selector': 'app-actividad-add'},{'name': 'ActividadComponent', 'selector': 'app-actividad'},{'name': 'ActividadDocenteComponent', 'selector': 'app-actividad-docente'},{'name': 'ActividadUpdateComponent', 'selector': 'app-actividad-update'},{'name': 'ActualizarDatosComponent', 'selector': 'app-actualizar-datos'},{'name': 'ActualizarDatosPorfesoresComponent', 'selector': 'app-actualizar-datos-porfesores'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BlogComponent', 'selector': 'app-blog'},{'name': 'BlogControlsComponent', 'selector': 'app-blog-controls'},{'name': 'BlogCRUDComponent', 'selector': 'app-blog-crud'},{'name': 'DatosPerfilComponent', 'selector': 'app-datos-perfil'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'IMCComponent', 'selector': 'app-imc'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MisRutinasComponent', 'selector': 'app-mis-rutinas'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NosotrosComponent', 'selector': 'app-nosotros'},{'name': 'PagosComponent', 'selector': 'app-pagos'},{'name': 'ProfesoresComponent', 'selector': 'app-profesores'},{'name': 'RolAddComponent', 'selector': 'app-rol-add'},{'name': 'RolComponent', 'selector': 'app-rol'},{'name': 'RolUpdateComponent', 'selector': 'app-rol-update'},{'name': 'RutinasAddComponent', 'selector': 'app-rutinas-add'},{'name': 'RutinasComponent', 'selector': 'app-rutinas'},{'name': 'RutinasPersoAddComponent', 'selector': 'app-rutinas-perso-add'},{'name': 'RutinasPersoComponent', 'selector': 'app-rutinas-perso'},{'name': 'RutinasPersoUpdateComponent', 'selector': 'app-rutinas-perso-update'},{'name': 'RutinasUpdateComponent', 'selector': 'app-rutinas-update'},{'name': 'SigninComponent', 'selector': 'app-signin'},{'name': 'TipoBlogComponent', 'selector': 'app-tipo-blog'},{'name': 'UbicacionesComponent', 'selector': 'app-ubicaciones'},{'name': 'UserComponent', 'selector': 'app-user'},{'name': 'UsuarioBanComponent', 'selector': 'app-usuario-ban'},{'name': 'VentasComponent', 'selector': 'app-ventas'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'RutinasComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'RutinasComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
