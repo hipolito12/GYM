@@ -21,7 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { PagosComponent } from './Components/pagos/pagos.component';
 import { RutinasComponent } from './Components/rutinas/rutinas.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './Guards/auth.guard';
 import { TokenInterceptorService } from './Services/token-interceptor.service';
 import { DatosPerfilComponent } from './Components/actualizar-datos-usuario/datos-perfil.component';
 import{MatTableModule} from '@angular/material/table';
@@ -61,6 +61,7 @@ import { RutinasPersoUpdateComponent } from './Components/rutinas-perso-update/r
 import { ActividadComponent } from './Components/actividad/actividad.component';
 import { ActividadAddComponent } from './Components/actividad-add/actividad-add.component';
 import { ActividadUpdateComponent } from './Components/actividad-update/actividad-update.component';
+import { AdministradorComponent } from './Components/administrador/administrador.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { ActividadUpdateComponent } from './Components/actividad-update/activida
     ActividadComponent,
     ActividadAddComponent,
     ActividadUpdateComponent,
+    AdministradorComponent,
 
   ],
   imports: [

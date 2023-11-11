@@ -8,7 +8,7 @@ import { NosotrosComponent } from './Components/nosotros/nosotros.component';
 import { UbicacionesComponent } from './Components/ubicaciones/ubicaciones.component';
 import { BlogComponent } from './Components/blog/blog.component';
 import { UserComponent } from './Components/user/user.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './Guards/auth.guard';
 import { PagosComponent } from './Components/pagos/pagos.component';
 import { RutinasComponent } from './Components/rutinas/rutinas.component';
 import { DatosPerfilComponent } from './Components/actualizar-datos-usuario/datos-perfil.component';
@@ -32,7 +32,11 @@ import { RutinasPersoAddComponent } from './Components/rutinas-perso-add/rutinas
 import { RutinasPersoUpdateComponent } from './Components/rutinas-perso-update/rutinas-perso-update.component';
 import { RutinasPersoComponent } from './Components/rutinas-perso/rutinas-perso.component';
 import { RutinasUpdateComponent } from './Components/rutinas-update/rutinas-update.component';
-import { ProfesoresGuardGuard } from './profesores-guard.guard';
+import { ProfesoresGuardGuard } from './Guards/profesores-guard.guard';
+import { AdministradorComponent } from './Components/administrador/administrador.component';
+import { AdminGuard } from './Guards/admin.guard';
+import { UsuarioAdminGuard } from './Guards/usuario-admin.guard';
+import { ProfesAdminGuard } from './Guards/profes-admin.guard';
 const routes: Routes = [
   { path: 'home',  component: HomeComponent },
   { path: '', redirectTo: 'home' ,pathMatch: 'full' },
@@ -46,25 +50,26 @@ const routes: Routes = [
   {path: 'rutinas' , component: RutinasComponent,canActivate: [AuthGuard]},
   {path: 'datos-perfil' , component: DatosPerfilComponent},
   {path:'misRutinas',component:MisRutinasComponent,canActivate: [AuthGuard]},
-  {path:'imc',component:IMCComponent,canActivate:[AuthGuard]},
+  {path:'imc',component:IMCComponent,canActivate:[UsuarioAdminGuard]},
   {path:'profesores',component:ProfesoresComponent,canActivate:[ ProfesoresGuardGuard]},
   {path: 'ventas', component: VentasComponent, canActivate:[ ProfesoresGuardGuard] },
   {path: 'BanUsuario', component: UsuarioBanComponent,canActivate:[ ProfesoresGuardGuard] },
-  {path: 'blogCRUD', component: BlogCRUDComponent },
+  {path: 'blogCRUD', component: BlogCRUDComponent,canActivate:[ ProfesAdminGuard] },
   {path:'actividadDocente',component: ActividadDocenteComponent,canActivate:[ ProfesoresGuardGuard]},
-  {path: "tipoBlog",component: TipoBlogComponent },
-  {path: 'ActualizarDatosDocentes', component: ActualizarDatosPorfesoresComponent },
-  { path: 'rutinasAdd', component: RutinasAddComponent },
-  { path: 'roles', component: RolComponent },
-  { path: 'rolesAdd', component: RolAddComponent },
+  {path: "tipoBlog",component: TipoBlogComponent ,canActivate:[ ProfesAdminGuard]},
+  {path: 'ActualizarDatosDocentes', component: ActualizarDatosPorfesoresComponent ,canActivate:[ ProfesoresGuardGuard]},
+  { path: 'rutinasAdd', component: RutinasAddComponent ,canActivate:[ ProfesoresGuardGuard]},
+  { path: 'roles', component: RolComponent ,canActivate:[AdminGuard]},
+  { path: 'rolesAdd', component: RolAddComponent,canActivate:[AdminGuard] },  
+  { path: 'rolesUpdate/:id', component: RolUpdateComponent,canActivate:[AdminGuard]},
   { path: 'rutinasUpdate/:id', component: RutinasUpdateComponent,canActivate:[ ProfesoresGuardGuard] },
-  { path: 'rolesUpdate/:id', component: RolUpdateComponent,canActivate:[ ProfesoresGuardGuard] },
   { path: 'rutinasPerso', component: RutinasPersoComponent,canActivate:[ ProfesoresGuardGuard] },
   { path: 'rutinasPersoAdd', component: RutinasPersoAddComponent,canActivate:[ ProfesoresGuardGuard] },
   { path: 'rutinasPersoUpdate/:id', component: RutinasPersoUpdateComponent,canActivate:[ ProfesoresGuardGuard] },
-  { path: 'actividad', component: ActividadComponent,canActivate:[ ProfesoresGuardGuard] },
-  { path: 'actividadAdd', component: ActividadAddComponent,canActivate:[ ProfesoresGuardGuard] },
-  { path: 'actividadUpdate/:id', component: ActividadUpdateComponent,canActivate:[ ProfesoresGuardGuard] },
+  { path: 'actividad', component: ActividadComponent,canActivate:[ProfesAdminGuard]},
+  { path: 'actividadAdd', component: ActividadAddComponent,canActivate:[ProfesAdminGuard]},
+  { path: 'actividadUpdate/:id', component: ActividadUpdateComponent,canActivate:[ProfesAdminGuard] },
+  {path:'administrador',component:AdministradorComponent,canActivate:[AdminGuard]},
 ];
 
 @NgModule({
