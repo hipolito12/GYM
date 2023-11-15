@@ -7,10 +7,11 @@ const {
   GetActividadById,
   DeleteActividad,
 } = require('../controllers/ActividadController.js');
+const { validateCreate } = require('../validators/actividad')
 
 // obtener rutinas para mostrar
 router.get('/ActiveActividades', getAllActividades);
-router.post('/createActividad', CreateActividades);
+router.post('/createActividad', validateCreate, CreateActividades);
 router.put('/updateActividad/:id', UpdateActividades);
 router.get('/getActividadById/:id', GetActividadById);
 router.put('/deleteActividad/:id', DeleteActividad);
