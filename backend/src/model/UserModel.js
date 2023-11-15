@@ -145,6 +145,7 @@ const  ActualizarCupoActividad= async (persona,cupo,actividad) =>
       data:
       {DniFK:persona,
         ActividadFK:actividad, 
+        DiaAsistencia:new Date()
       }
     })
 

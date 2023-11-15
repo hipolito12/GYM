@@ -156,12 +156,13 @@ model tiporutina {
 }
 
 model venta {
-  CodVenta       Int     @id @default(autoincrement())
+  CodVenta       Int       @id @default(autoincrement())
   TrabajadorIDni Float
-  NombeProducto  String  @db.VarChar(45)
+  NombeProducto  String    @db.VarChar(45)
   precio         Float
   cantidad       Int
-  persona        persona @relation(fields: [TrabajadorIDni], references: [dni], map: "venta-persona")
+  FechaVenta     DateTime? @db.DateTime(0)
+  persona        persona   @relation(fields: [TrabajadorIDni], references: [dni], map: "venta-persona")
 
   @@index([TrabajadorIDni], map: "venta-persona_idx")
 }

@@ -62,6 +62,12 @@ import { ActividadComponent } from './Components/actividad/actividad.component';
 import { ActividadAddComponent } from './Components/actividad-add/actividad-add.component';
 import { ActividadUpdateComponent } from './Components/actividad-update/actividad-update.component';
 import { AdministradorComponent } from './Components/administrador/administrador.component';
+import { InformeComponent } from './Components/informe/informe.component';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
 
 @NgModule({
   declarations: [
@@ -88,7 +94,8 @@ import { AdministradorComponent } from './Components/administrador/administrador
     ActividadDocenteComponent,
     TipoBlogComponent,
     ActualizarDatosComponent,
-    ActualizarDatosPorfesoresComponent,    RutinasAddComponent,
+    ActualizarDatosPorfesoresComponent,   
+     RutinasAddComponent,
     RolComponent,
     RolAddComponent,
     RutinasUpdateComponent,
@@ -100,6 +107,7 @@ import { AdministradorComponent } from './Components/administrador/administrador
     ActividadAddComponent,
     ActividadUpdateComponent,
     AdministradorComponent,
+    InformeComponent,
 
   ],
   imports: [
@@ -123,7 +131,10 @@ import { AdministradorComponent } from './Components/administrador/administrador
     MatTabsModule,
     MatExpansionModule,
     MatSelectModule,
-    CKEditorModule
+    CKEditorModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    
     
   ],
 
