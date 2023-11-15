@@ -20,7 +20,7 @@ const creates = async (req, res) =>
 {
     try
     {  
-        const personaACargoActividad = await CreatePersonaACargoActividad(req.body,req.userId)
+        const personaACargoActividad = await CreatePersonaACargoActividad(req.body)
         return res.status(200).json(personaACargoActividad)
     }
     catch (e)
@@ -35,8 +35,7 @@ const deletes = async (req, res) =>
 {
     try
     {  
-        console.log(req.body)
-        const deletedPersonaACargo = await DeletePersonaACargoActividad(req.body.id)
+        const deletedPersonaACargo = await DeletePersonaACargoActividad(req.params.id)
         return res.status(200).json(deletedPersonaACargo)
 
     }
@@ -57,7 +56,7 @@ const updates = async (req, res) =>
 {
     try
     {
-        const updatedPersonaACargo = await UpdatePersonaACargoActividad(req.body)
+        const updatedPersonaACargo = await UpdatePersonaACargoActividad(req.params.id, req.body)
         return res.status(200).json(updatedPersonaACargo)
     }
     catch (e)

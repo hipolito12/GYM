@@ -18,10 +18,22 @@ const getPersonasACargoActividad = async () => {
 
 const CreatePersonaACargoActividad = async (object) => {
   try {
+    console.log(object);
+    console.log(object.DniPersonaAcargo);
     let elements = await prisma.personaacargoactividad.create({
       data: {
-        DniPersonaAcargo: object.persona,
-        ActividadFk: object.actividad,
+        DniPersonaAcargo: object.DniPersonaAcargo,
+        IdActividadFk: object.IdActividadFk,
+        actividad: {
+          connect: {
+            ActividadId: object.IdActividadFk,
+          }
+        },
+        persona: {
+          connect: {
+            dni: object.DniPersonaAcargo,
+          }
+        },
       },
     });
     return elements;
@@ -34,22 +46,22 @@ const CreatePersonaACargoActividad = async (object) => {
 
 const UpdatePersonaACargoActividad = async (id, updatedData) => {
   try {
-    // Convierte dni a entero
-    const DniPersonaAcargo = parseInt(id, 10);
+    // Convierte dni a float
+    const DniPersonaAcargo = parseFloat(id);
     if (isNaN(DniPersonaAcargo)) {
-      // Manejo de error si no se puede convertir a entero
+      // Manejo de error si no se puede convertir a float
       throw new Error('El valor del dni no es un número válido.');
     }
 
+    console.log(updatedData);
     
-    
-    const updatedPersonaACargoActividad = await prisma.personaacargoactividad.update({
+    const updatedPersonaACargo = await prisma.personaacargoactividad.update({
       where: { DniPersonaAcargo }, // Usar la variable DniPersonaACargo convertida
       data: {
-        IdActividadFk: updatedData.nroAct,
+        IdActividadFk: updatedData.IdActividadFk,
       },
     });
-    return updatedPersonaACargoActividad;
+    return updatedPersonaACargo;
   } catch (e) {
     console.log(e.message);
     return e.message;
@@ -82,14 +94,14 @@ const DeletePersonaACargoActividad  = async (id) =>
   {
     const DeletedPersonaacargoactividad = await prisma.personaacargoactividad.delete({
       where: {
-        DniPersonaAcargo: Number.parseFloat(id) ,
+        DniPersonaAcargo: parseFloat(id),
       },
     });
     return DeletedPersonaacargoactividad;
   }
   catch(e)
   {
-    console.log("error en eliminar la persona a cargo de la actividad"+e.message)
+    console.log("Error en eliminar la persona a cargo de la actividad"+e.message)
     return e.message
   }
 }

@@ -26,5 +26,6 @@ app.use('/api', require('./routes/rutinas.js'));
 app.use('/api', require('./routes/Roles.js'));
 app.use('/api', require('./routes/rutinasP.js'));
 app.use('/api', require('./routes/actividad.js'));
+app.use('/api', require('./routes/personaACargoActividad.js'));
 /*servidor*/
 app.listen(3000);
