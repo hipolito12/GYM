@@ -1,4 +1,4 @@
-const { query, matchedData, validationResult } = require('express-validator');
+const { validationResult } = require('express-validator');
 
 const validateResult = (req, res, next) => {
     try {

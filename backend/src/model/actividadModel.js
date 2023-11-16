@@ -82,7 +82,7 @@ const searchOneActividadModel = async (id) => {
     });
 
     if (!actividad) {
-      throw new Error('Rutina no encontrada');
+      throw new Error('Actividad no encontrada');
     }
 
     return actividad;

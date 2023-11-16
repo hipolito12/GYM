@@ -6,13 +6,13 @@ const {
   UpdateActividades,
   GetActividadById,
   DeleteActividad,
-} = require('../controllers/ActividadController.js');
-const { validateCreate } = require('../validators/actividad')
+} = require('../controllers/actividadController.js');
+const { validateCreate, validateUpdate } = require('../validators/actividad')
 
 // obtener rutinas para mostrar
 router.get('/ActiveActividades', getAllActividades);
 router.post('/createActividad', validateCreate, CreateActividades);
-router.put('/updateActividad/:id', UpdateActividades);
+router.put('/updateActividad/:id', validateUpdate, UpdateActividades);
 router.get('/getActividadById/:id', GetActividadById);
 router.put('/deleteActividad/:id', DeleteActividad);
 
