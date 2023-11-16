@@ -2,7 +2,7 @@ import Swal from 'sweetalert2';
 
 export function Alerts(type: string, title: string, text: string) {
   {
-    switch (type) {
+    switch (type.toLowerCase()) {
       case 'success':
         Swal.fire({
           icon: 'success',

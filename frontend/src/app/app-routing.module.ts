@@ -38,6 +38,7 @@ import { AdminGuard } from './Guards/admin.guard';
 import { UsuarioAdminGuard } from './Guards/usuario-admin.guard';
 import { ProfesAdminGuard } from './Guards/profes-admin.guard';
 import { InformeComponent } from './Components/informe/informe.component';
+import { UpdateCuotaComponent } from './Components/update-cuota/update-cuota.component';
 const routes: Routes = [
   { path: 'home',  component: HomeComponent },
   { path: '', redirectTo: 'home' ,pathMatch: 'full' },
@@ -71,7 +72,8 @@ const routes: Routes = [
   { path: 'actividadAdd', component: ActividadAddComponent,canActivate:[ProfesAdminGuard]},
   { path: 'actividadUpdate/:id', component: ActividadUpdateComponent,canActivate:[ProfesAdminGuard] },
   {path:'administrador',component:AdministradorComponent,canActivate:[AdminGuard]},
-  {path:'informe',component:InformeComponent}
+  {path:'informe',component:InformeComponent},
+  {path:'CuotaUpdate',component:UpdateCuotaComponent},
 ];
 
 @NgModule({

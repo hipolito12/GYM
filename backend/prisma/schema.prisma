@@ -95,7 +95,7 @@ model post {
 
 model preciocuota {
   idpreciocuota      Int       @id @default(autoincrement())
-  valor              Float
+  valor              Decimal   @db.Decimal(9, 3)
   fechaActualizacion DateTime? @db.Timestamp(2)
   cuota              cuota[]
 }
