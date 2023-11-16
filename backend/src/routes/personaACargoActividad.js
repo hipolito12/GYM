@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const{getAll, creates,  deletes, updates, getById}= require("../controllers/personaACargoActividadController");
+const { getAll, creates,  deletes, updates, getById } = require("../controllers/personaACargoActividadController");
+const { validateCreate } = require('../validators/personaACargoActividad.js') 
+
 
 router.get("/personasACargoActividad", getAll)
 router.post("/createPersonaACargoActividad", creates)

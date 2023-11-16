@@ -15,12 +15,6 @@ const loginModel = async (dni) => {
 };
 
 
-
-
-
-
-
-
 const SignupModel = async (body) => {
   const {
     dni,

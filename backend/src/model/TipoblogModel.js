@@ -29,7 +29,6 @@ const CreatetipoBlog=async(nombre)=>
     {
         const tipoBlog=await prisma.tipopost.create({
             data:{
-
                 NombreTIpo:nombre
             }
         });

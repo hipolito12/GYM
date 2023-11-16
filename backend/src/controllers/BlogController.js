@@ -56,7 +56,7 @@ const deletes = async (req, res) =>
     try
     {  
         console.log(req.body)
-        const blog = await EliminarBlog(req.body.ide)
+        const blog = await EliminarBlog(req.body.tipo)
         return res.status(200).json(blog)
 
     }

@@ -50,9 +50,9 @@ const UpdatePersonaACargoActividad = async (id, updatedData) => {
     const DniPersonaAcargo = parseFloat(id);
     if (isNaN(DniPersonaAcargo)) {
       // Manejo de error si no se puede convertir a float
-      throw new Error('El valor del dni no es un número válido.');
+      throw new Error('El valor del dni no es un número válido');
     }
-
+  
     console.log(updatedData);
     
     const updatedPersonaACargo = await prisma.personaacargoactividad.update({
@@ -61,6 +61,12 @@ const UpdatePersonaACargoActividad = async (id, updatedData) => {
         IdActividadFk: updatedData.IdActividadFk,
       },
     });
+
+    if (!updatedPersonaACargo) {
+      throw new Error('Persona a cargo no encontrada');
+    }
+
+
     return updatedPersonaACargo;
   } catch (e) {
     console.log(e.message);
@@ -97,12 +103,16 @@ const DeletePersonaACargoActividad  = async (id) =>
         DniPersonaAcargo: parseFloat(id),
       },
     });
+
+    if (!DeletedPersonaacargoactividad) {
+      throw new Error('Persona a cargo no encontrada');
+    }
+
     return DeletedPersonaacargoactividad;
   }
   catch(e)
   {
-    console.log("Error en eliminar la persona a cargo de la actividad"+e.message)
-    return e.message
+    throw e;
   }
 }
 
