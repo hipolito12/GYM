@@ -67,6 +67,8 @@ import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { UpdateCuotaComponent } from './Components/update-cuota/update-cuota.component';
+import { UsuariosComponent } from './Components/usuarios/usuarios.component';
+import { EmpleadosComponent } from './Components/empleados/empleados.component';
 
 
 
@@ -110,6 +112,8 @@ import { UpdateCuotaComponent } from './Components/update-cuota/update-cuota.com
     AdministradorComponent,
     InformeComponent,
     UpdateCuotaComponent,
+    UsuariosComponent,
+    EmpleadosComponent,
 
   ],
   imports: [

@@ -39,6 +39,8 @@ import { UsuarioAdminGuard } from './Guards/usuario-admin.guard';
 import { ProfesAdminGuard } from './Guards/profes-admin.guard';
 import { InformeComponent } from './Components/informe/informe.component';
 import { UpdateCuotaComponent } from './Components/update-cuota/update-cuota.component';
+import { EmpleadosComponent } from './Components/empleados/empleados.component';
+import { UsuariosComponent } from './Components/usuarios/usuarios.component';
 const routes: Routes = [
   { path: 'home',  component: HomeComponent },
   { path: '', redirectTo: 'home' ,pathMatch: 'full' },
@@ -47,33 +49,56 @@ const routes: Routes = [
   {path: 'nosotros', component: NosotrosComponent},
   {path: 'ubicaciones', component: UbicacionesComponent},
   {path: 'blog' , component: BlogComponent},
+  {path:'imc',component:IMCComponent,canActivate:[UsuarioAdminGuard]},
+  {path: 'ventas', component: VentasComponent, canActivate:[ ProfesoresGuardGuard] },
+  
+//Usuario
+  {path:'usuarios',component:UsuariosComponent,canActivate:[AuthGuard],
+children:[
+  {path: 'user', component: UserComponent,canActivate:[UsuarioAdminGuard]},
   {path: 'pagos' , component: PagosComponent,canActivate: [AuthGuard]},
-  {path: 'user', component: UserComponent, canActivate:[AuthGuard]},
   {path: 'rutinas' , component: RutinasComponent,canActivate: [AuthGuard]},
   {path: 'datos-perfil' , component: DatosPerfilComponent},
   {path:'misRutinas',component:MisRutinasComponent,canActivate: [AuthGuard]},
-  {path:'imc',component:IMCComponent,canActivate:[UsuarioAdminGuard]},
-  {path:'profesores',component:ProfesoresComponent,canActivate:[ ProfesoresGuardGuard]},
-  {path: 'ventas', component: VentasComponent, canActivate:[ ProfesoresGuardGuard] },
-  {path: 'BanUsuario', component: UsuarioBanComponent,canActivate:[ ProfesoresGuardGuard] },
-  {path: 'blogCRUD', component: BlogCRUDComponent,canActivate:[ ProfesAdminGuard] },
-  {path:'actividadDocente',component: ActividadDocenteComponent,canActivate:[ ProfesoresGuardGuard]},
-  {path: "tipoBlog",component: TipoBlogComponent ,canActivate:[ ProfesAdminGuard]},
-  {path: 'ActualizarDatosDocentes', component: ActualizarDatosPorfesoresComponent ,canActivate:[ ProfesoresGuardGuard]},
-  { path: 'rutinasAdd', component: RutinasAddComponent ,canActivate:[ ProfesoresGuardGuard]},
+]},
+
+
+  //profesores
+  {path:'empleados',component:EmpleadosComponent,canActivate:[ ProfesoresGuardGuard],
+  children:[
+    {path:'profesores',component:ProfesoresComponent,canActivate:[ ProfesoresGuardGuard]},
+    {path:'actividadDocente',component: ActividadDocenteComponent,canActivate:[ ProfesoresGuardGuard]},
+    {path: 'blogCRUD', component: BlogCRUDComponent,canActivate:[ ProfesAdminGuard] },
+    {path:'actividadDocente',component: ActividadDocenteComponent,canActivate:[ ProfesoresGuardGuard]},
+    {path: 'ActualizarDatosDocentes', component: ActualizarDatosPorfesoresComponent ,canActivate:[ ProfesoresGuardGuard]},
+    {path: 'BanUsuario', component: UsuarioBanComponent,canActivate:[ ProfesoresGuardGuard] },
+    { path: 'rutinasAdd', component: RutinasAddComponent ,canActivate:[ ProfesoresGuardGuard]},
+    { path: 'rutinasUpdate/:id', component: RutinasUpdateComponent,canActivate:[ ProfesoresGuardGuard] },
+    { path: 'rutinasPerso', component: RutinasPersoComponent,canActivate:[ ProfesoresGuardGuard] },
+    { path: 'rutinasPersoAdd', component: RutinasPersoAddComponent,canActivate:[ ProfesoresGuardGuard] },
+    { path: 'rutinasPersoUpdate/:id', component: RutinasPersoUpdateComponent,canActivate:[ ProfesoresGuardGuard] },
+
+  ]},
+
+
+ //administrador
+  {path:'administrador',component:AdministradorComponent,
+  children:[
+  {path:'informe',component:InformeComponent,canActivate:[AdminGuard]},
+  {path:'CuotaUpdate',component:UpdateCuotaComponent,canActivate:[AdminGuard]},
   { path: 'roles', component: RolComponent ,canActivate:[AdminGuard]},
   { path: 'rolesAdd', component: RolAddComponent,canActivate:[AdminGuard] },  
   { path: 'rolesUpdate/:id', component: RolUpdateComponent,canActivate:[AdminGuard]},
   { path: 'rutinasUpdate/:id', component: RutinasUpdateComponent,canActivate:[ ProfesoresGuardGuard] },
-  { path: 'rutinasPerso', component: RutinasPersoComponent,canActivate:[ ProfesoresGuardGuard] },
-  { path: 'rutinasPersoAdd', component: RutinasPersoAddComponent,canActivate:[ ProfesoresGuardGuard] },
-  { path: 'rutinasPersoUpdate/:id', component: RutinasPersoUpdateComponent,canActivate:[ ProfesoresGuardGuard] },
   { path: 'actividad', component: ActividadComponent,canActivate:[ProfesAdminGuard]},
   { path: 'actividadAdd', component: ActividadAddComponent,canActivate:[ProfesAdminGuard]},
   { path: 'actividadUpdate/:id', component: ActividadUpdateComponent,canActivate:[ProfesAdminGuard] },
-  {path:'administrador',component:AdministradorComponent,canActivate:[AdminGuard]},
-  {path:'informe',component:InformeComponent},
-  {path:'CuotaUpdate',component:UpdateCuotaComponent},
+  {path: "tipoBlog",component: TipoBlogComponent ,canActivate:[ ProfesAdminGuard]},
+  {path: 'blogCRUD', component: BlogCRUDComponent,canActivate:[ ProfesAdminGuard] },
+]},
+ 
+
+
 ];
 
 @NgModule({

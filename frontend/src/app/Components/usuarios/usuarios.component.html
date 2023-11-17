@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sideUserNav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <p class="mx-auto fs-3 mt-2">Bienvenido {{ this.nombre }}</p>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sideUserNav mode="push" style="width: 20%">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/usuarios/pagos">Pagos</a>
+        <a mat-list-item routerLink="/usuarios/misRutinas">Mis Rutina</a>
+        <a mat-list-item routerLink="/usuarios/datos-perfil">Perfil</a>
+        <a mat-list-item routerLink="/usuarios/user">Inscripcion</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+  
+      <div style="height: 88vh !important" class="mx-auto mt-5">
+       
+     <router-outlet></router-outlet>
+
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

@@ -1,24 +1,4 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <button mat-icon-button (click)="sideUserNav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <p class="mx-auto fs-3 mt-2">Bienvenido Profesor {{this.nombre}}</p>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  
-  <mat-sidenav-container>
-    <mat-sidenav #sideUserNav mode="push" style="width: 20%">
-      <mat-nav-list >
-        <a mat-list-item routerLink="/profesores">Pago De Cuota</a>
-        <a mat-list-item routerLink="/tipoBlog">Rutinas</a>
-        <a mat-list-item  routerLink="/actividadDocente">Mi actividad</a>
-        <a mat-list-item  routerLink="/blogCRUD">Blog</a>
-        <a mat-list-item routerLink="/datos-perfil">Perfil</a>
-        <a mat-list-item routerLink="/BanUsuario">Banear usuario</a>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
+
       <div style="height: 88vh !important ;background-color: #202020;" class="mx-auto  " >
         
         
@@ -117,8 +97,7 @@
 
         
   </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+   
   <router-outlet></router-outlet> 
 
 
