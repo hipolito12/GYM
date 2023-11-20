@@ -3,6 +3,7 @@ const cors = require('cors');
 //const logIn = require('./routes/auth')
 const informes=require('./routes/Informe.js')
 const UpdateCuota = require('./routes/Cuota.js');
+const TipoRutinas = require('./routes/TipoRutinas.js');
 
 const app = express();
 
@@ -30,5 +31,6 @@ app.use('/api', require('./routes/rutinasP.js'));
 app.use('/api', require('./routes/actividad.js'));
 app.use('/api',informes);
 app.use('/api',UpdateCuota)
+app.use('/api',TipoRutinas );
 /*servidor*/
 app.listen(3000);

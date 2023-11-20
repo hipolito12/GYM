@@ -1,0 +1,158 @@
+
+<div style="height: 88vh !important ;background-color: #202020;" class="mx-auto  ">
+    <div class="container-fluid">
+      <mat-tab-group>
+        <!-- Carga -->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <i class="bi bi-file-earmark-plus fs-2 mx-3"></i>
+            Cargar
+          </ng-template>
+          <!-- contenido Tabs -->
+          
+          <div class="container-fluid pt-5" style="background-color: #222222;">
+            <div class="row justify-content-center">
+              <div class="col-md-7">
+                <div class="card overflow-hidden">
+                  <div class="card-body">
+                    <h1 class="card-title form-title">Nuevo Tipo de rutina</h1>
+                    <form  (submit)="this.CreateTipoRutina()">
+                      <div class="mb-3">
+                        <label for="nombreTipoPost" class="form-label">Nombre del tipo de rutina:</label>
+                        <input [(ngModel)]="element.NombreTipo"  type="text" class="form-control" id="nombreTipoPost" name="tipo" placeholder="Ingrese el nombre del tipo de rutina" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="descripcionTipoPost" class="form-label">Descripción:</label>
+                        <textarea [(ngModel)]="this.descripcion"  class="form-control" name="descripcion" id="descripcionTipoPost" rows="6" placeholder="Ingrese la descripción del tipo de rutina" required></textarea>
+                      </div>
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+
+          
+          <!-- Fin  Tabs -->
+        </mat-tab>
+        <!-- Tabla -->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <i class="bi bi-gear-fill fs-2 mx-3"></i>
+            Opciones
+          </ng-template>
+          <!-- contenido Tabs -->
+
+          <div class="container">
+            <mat-card>
+             
+              <mat-card-content>
+              
+            <table matSort mat-table [dataSource]="this.dataSource" class="mat-elevation-z8">
+
+              
+          
+              <ng-container matColumnDef="NombreTipo">
+                  <th mat-sort-header mat-header-cell *matHeaderCellDef> Tipo</th>
+                  <td mat-cell *matCellDef="let element">{{element.NombreTipo}}</td>
+                </ng-container>
+          
+                       
+                <ng-container matColumnDef="Acciones" >
+                  <th mat-header-cell *matHeaderCellDef> Acciones</th>
+                  <td mat-cell *matCellDef="let element" >
+                        <!-- botones -->
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#Modificar"  (click)="AbrirLosModales(element.idTipoRutina)">
+                            Modificar
+                          </button>
+                          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminar"  (click)="AbrirLosModales(element.idTipoRutina)">
+                            Eliminar
+                          </button>
+                    </td>
+                </ng-container>
+          
+          
+              <tr mat-header-row *matHeaderRowDef="this.Columnas"></tr>
+              <tr mat-row *matRowDef="let row;columns:this.Columnas"></tr>
+          
+          </table>
+          
+          
+        </mat-card-content>
+        <br>
+        <mat-card-footer>
+        
+            <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+        
+        </mat-card-footer>
+        </mat-card>
+          </div>
+
+
+          <!-- Fin contenido Tabs -->
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+
+
+  <!-- Modificar -->
+<div class="modal fade" id="Modificar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modificación de Del tipo de rutina</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h2>Cambia</h2>
+                <form >
+                    <div class="mb-3">
+                        <label for="nuevoNombreTipoPost" class="form-label">Nuevo Nombre </label>
+                        <input type="text" class="form-control" [(ngModel)]="this.element.NombreTipo" name="tipo" id="nuevoNombreTipo" placeholder=" nuevo nombre ">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nuevaDescripcionTipoPost"   class="form-label">Nueva Descripciónt</label>
+                        <textarea class="form-control" id="nuevaDescripcionTipoPost" rows="3" name="descripcion" [(ngModel)]="this.descripcion"placeholder="nueva descripción "></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary"  data-bs-dismiss="modal"  (click)="this.UpdateTipoRutina()"  >Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Eliminarr -->
+<div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"> eliminacion</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h2>Opciones de  borrado</h2>
+                <ul>
+                    <li>borrar solo este tipo de rutinas</li>
+                     <h3> estas opciones no tiene vuelta atras </h3>
+                </ul>
+
+            </div>  
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="this.DeleteTipoRutina()" >Borrar</button>
+            </div>
+        </div>
+    </div>
+</div>

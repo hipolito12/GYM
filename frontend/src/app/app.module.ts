@@ -69,6 +69,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { UpdateCuotaComponent } from './Components/update-cuota/update-cuota.component';
 import { UsuariosComponent } from './Components/usuarios/usuarios.component';
 import { EmpleadosComponent } from './Components/empleados/empleados.component';
+import { TipoRutinaComponent } from './Components/tipo-rutina/tipo-rutina.component';
+
 
 
 
@@ -114,6 +116,8 @@ import { EmpleadosComponent } from './Components/empleados/empleados.component';
     UpdateCuotaComponent,
     UsuariosComponent,
     EmpleadosComponent,
+    TipoRutinaComponent,
+    
 
   ],
   imports: [

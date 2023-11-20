@@ -95,7 +95,7 @@ model post {
 
 model preciocuota {
   idpreciocuota      Int       @id @default(autoincrement())
-  valor              Decimal   @db.Decimal(9, 3)
+  valor              Float
   fechaActualizacion DateTime? @db.Timestamp(2)
   cuota              cuota[]
 }
@@ -151,6 +151,7 @@ model tipopost {
 model tiporutina {
   idTipoRutina        Int                   @id @default(autoincrement())
   NombreTipo          String                @db.VarChar(45)
+  visible             Boolean?              @default(true)
   rutinagenerica      rutinagenerica[]
   rutinapersonalizada rutinapersonalizada[]
 }

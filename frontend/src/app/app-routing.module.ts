@@ -41,6 +41,7 @@ import { InformeComponent } from './Components/informe/informe.component';
 import { UpdateCuotaComponent } from './Components/update-cuota/update-cuota.component';
 import { EmpleadosComponent } from './Components/empleados/empleados.component';
 import { UsuariosComponent } from './Components/usuarios/usuarios.component';
+import { TipoRutinaComponent } from './Components/tipo-rutina/tipo-rutina.component';
 const routes: Routes = [
   { path: 'home',  component: HomeComponent },
   { path: '', redirectTo: 'home' ,pathMatch: 'full' },
@@ -51,7 +52,7 @@ const routes: Routes = [
   {path: 'blog' , component: BlogComponent},
   {path:'imc',component:IMCComponent,canActivate:[UsuarioAdminGuard]},
   {path: 'ventas', component: VentasComponent, canActivate:[ ProfesoresGuardGuard] },
-  
+  {path: 'trun', component: TipoRutinaComponent },
 //Usuario
   {path:'usuarios',component:UsuariosComponent,canActivate:[AuthGuard],
 children:[
@@ -95,6 +96,7 @@ children:[
   { path: 'actividadUpdate/:id', component: ActividadUpdateComponent,canActivate:[ProfesAdminGuard] },
   {path: "tipoBlog",component: TipoBlogComponent ,canActivate:[ ProfesAdminGuard]},
   {path: 'blogCRUD', component: BlogCRUDComponent,canActivate:[ ProfesAdminGuard] },
+
 ]},
  
 
