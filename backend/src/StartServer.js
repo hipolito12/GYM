@@ -4,6 +4,7 @@ const cors = require('cors');
 const informes=require('./routes/Informe.js')
 const UpdateCuota = require('./routes/Cuota.js');
 const TipoRutinas = require('./routes/TipoRutinas.js');
+const GestionEmpleados = require('./routes/GestionEmpleados.js');
 
 const app = express();
 
@@ -32,5 +33,8 @@ app.use('/api', require('./routes/actividad.js'));
 app.use('/api',informes);
 app.use('/api',UpdateCuota)
 app.use('/api',TipoRutinas );
+app.use('/api',GestionEmpleados );
+
+
 /*servidor*/
 app.listen(3000);

@@ -1,0 +1,240 @@
+
+<div style="height: 88vh !important ;background-color: #202020; " class="mx-auto">
+    <div class="container-fluid">
+      <mat-tab-group>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <i class="bi bi-person-fill-check fs-2 mx-3"></i>
+            Agregar
+          </ng-template>
+          <!-- contenido Tabs -->
+          <mat-card class="p-1 overflow-hidden">
+
+            <div class="row justify-content-center">
+                <div class="col-12 ">
+                  <form >
+                      <div class="mb-3">
+                          <label for="DNI" class="form-label text-light fs-5">DNI</label>
+                          <input type="text" class="form-control" name="DNI" [(ngModel)]="this.empleado.dni" id="DNI" placeholder="DNI">
+                      </div>
+          
+                      <div class="mb-3">
+                          <label for="password" class="form-label text-light fs-5">Contraseña</label>
+                          <input type="text" class="form-control" name="password" [(ngModel)]="this.empleado.password" id="password" placeholder="Contraseña">
+                      </div>
+          
+                      <div class="mb-3">
+                          <label for="nombreCompleto" class="form-label text-light fs-5">Rol</label>
+                          <select class="form-select fs-5 custom-select" id="exampleFormControlSelect1" name="rol" [(ngModel)]="this.empleado.IdRolfk" >
+                              <option default >Seleccione una Opcion</option>
+                          <option *ngFor="let rol of this.roles" value="{{this.rol.idrol}}">{{this.rol.NombreRol}}</option>
+                     </select >
+                      </div>   
+                      <div class="mb-3">
+                          <label for="sexo" class="form-label  text-light fs-5" >Sexo</label>
+                          <select class="form-select" id="sexo" name="sexo"  [(ngModel)]="empleado.sexo" required>
+                            <option value="masculino">Masculino</option>
+                            <option value="femenino">Femenino</option>
+                          </select>
+                        </div>
+                      
+                        <div class="mb-3">
+                          <label for="telefono" class="form-label text-light fs-5">Teléfono</label>
+                          <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="numero de celular" [(ngModel)]="empleado.telefono" required>
+                        </div>
+                      
+                        <div class="mb-3">
+                          <label for="direccion" class="form-label text-light fs-5">Dirección</label>
+                          <input type="text" class="form-control" id="direccion" name="direccion" placeholder="direccion de hogar" [(ngModel)]="empleado.direccion" required>
+                        </div>
+                        <div>
+                        <button type="submit" class="btn btn-primary tect-center ">Agregar Empleado</button>
+                      </div>
+                      </form> 
+                      
+                      
+            
+            
+                    
+                  
+                </div>
+              </div>
+            
+          </mat-card>
+
+  
+          <!-- Fin  Tabs -->
+        </mat-tab>
+        <!-- Arranco  no Permitidos -->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <i class="bi bi-exclamation-octagon-fill fs-2 mx-3"></i>
+            modificar
+          </ng-template>
+          <!-- contenido Tabs -->
+          <div class="container">
+
+          <mat-card>
+              <mat-card-header>
+            <mat-form-field>
+              <input matInput (keyup)="Filterchange($event)" placeholder="Nombre Usuario" />              </mat-form-field>
+          
+              </mat-card-header>
+              <mat-card-content>
+              
+            <table matSort mat-table [dataSource]="this.dataSource" class="mat-elevation-z8">
+
+              
+          
+              <ng-container matColumnDef="nombreCompleto">
+                  <th mat-sort-header mat-header-cell *matHeaderCellDef>Nombre Completo</th>
+                  <td mat-cell *matCellDef="let element">{{element.NombreCompleto}}</td>
+                </ng-container>
+          
+                <ng-container matColumnDef="DNI">
+                  <th mat-sort-header mat-header-cell *matHeaderCellDef>DNI</th>
+                  <td mat-cell *matCellDef="let element">{{element.dni}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="password">
+                  <th mat-sort-header mat-header-cell *matHeaderCellDef> contrasena</th>
+                  <td mat-cell *matCellDef="let element">{{element.password}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="telefono">
+                  <th mat-sort-header mat-header-cell *matHeaderCellDef>telefono</th>
+                  <td mat-cell *matCellDef="let element">{{element.telefono}}</td>
+                </ng-container>
+                
+                
+                <ng-container matColumnDef="email">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> email</th>
+                    <td mat-cell *matCellDef="let element">{{element.email}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="rol">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef>ROL</th>
+                    <td mat-cell *matCellDef="let element">{{element.rol.NombreRol}}</td>
+                  </ng-container>
+            
+            
+                
+                <ng-container matColumnDef="Acciones">
+                  <th mat-header-cell *matHeaderCellDef> Acciones</th>
+                  <td mat-cell *matCellDef="let element">
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#Modificar" (click)="abrirModal(element.dni)">Modificar</button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Elimiar" (click)="abrirModal(element.dni)">Eliminar</button>
+                    
+                  </td>
+                </ng-container>
+          
+          
+              <tr mat-header-row *matHeaderRowDef="this.Columnas"></tr>
+              <tr mat-row *matRowDef="let row;columns:this.Columnas"></tr>
+          
+          </table>
+          
+          
+        </mat-card-content>
+        <br>
+        <mat-card-footer>
+        
+            <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+        
+        </mat-card-footer>
+        </mat-card> 
+
+
+
+          </div>
+          <!-- Fin contenido Tabs -->
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+
+
+
+
+  
+
+
+  <!-- Modificar -->
+<!-- En tu componente HTML -->
+<div class="modal fade" id="Modificar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modificación de Empleado</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h2>Cambiar Información de Empleado</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="nuevoDNI" class="form-label">DNI</label>
+                        <input type="text" class="form-control text-center" [(ngModel)]="this.empleado.dni"name="DNI" id="nuevoDNI"  disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nuevaPassword" class="form-label">Nueva Contraseña</label>
+                        <input type="text" class="form-control" [(ngModel)]="this.empleado.password"   name="password" id="nuevaPassword" placeholder="Nueva Contraseña">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nuevoNombreCompleto" class="form-label">Nuevo Nombre </label>
+                        <input type="text" class="form-control" name="nombreCompleto" [(ngModel)]="this.empleado.NombreCompleto" id="nuevoNombreCompleto" placeholder="Nuevo Nombre Completo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nuevoTelefono" class="form-label">Nuevo Teléfono</label>
+                        <input type="tel" class="form-control" name="telefono" [(ngModel)]="this.empleado.telefono" id="nuevoTelefono" placeholder="Nuevo Teléfono">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nuevoEmail" class="form-label">Nuevo Email</label>
+                        <input type="email" class="form-control" name="email" [(ngModel)]="this.empleado.email" id="nuevoEmail" placeholder="Nuevo Email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nuevoEmail" class="form-label  ">Seleccionar una opcion</label>
+
+                        <select class="form-control fs-5 custom-select" id="exampleFormControlSelect1" name="rol" [(ngModel)]="this.empleado.IdRolfk" >
+                            <option default >Seleccione una Opcion</option>
+                        <option *ngFor="let rol of this.roles" value="{{this.rol.idrol}}">{{this.rol.NombreRol}}</option>
+                   </select >
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="this.ActualizarEmpleado()" >Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Eliminar -->
+<div class="modal fade" id="Elimiar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Opciones de eliminacion</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h2>Opciones de  borrado</h2>
+                <ul>
+                    <li>'borrar este' elimina solo a la persona</li>
+                    <li>'Borrar Personas en actividad' elimina a las actividades donde dan clase los profesores</li>
+                    <h3> estas opciones no tiene vuelta atras </h3>
+                </ul>
+
+            </div>  
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="this.EliminarActividadesEmpleado()" >Borrar Personas en actividad</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="this.EliminarEmpleado()" >Borrar este</button> 
+            </div>
+        </div>
+    </div>
+</div>

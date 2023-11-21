@@ -70,6 +70,7 @@ import { UpdateCuotaComponent } from './Components/update-cuota/update-cuota.com
 import { UsuariosComponent } from './Components/usuarios/usuarios.component';
 import { EmpleadosComponent } from './Components/empleados/empleados.component';
 import { TipoRutinaComponent } from './Components/tipo-rutina/tipo-rutina.component';
+import { GestionDeEmpleadosComponent } from './Components/gestion-de-empleados/gestion-de-empleados.component';
 
 
 
@@ -117,6 +118,7 @@ import { TipoRutinaComponent } from './Components/tipo-rutina/tipo-rutina.compon
     UsuariosComponent,
     EmpleadosComponent,
     TipoRutinaComponent,
+    GestionDeEmpleadosComponent,
     
 
   ],

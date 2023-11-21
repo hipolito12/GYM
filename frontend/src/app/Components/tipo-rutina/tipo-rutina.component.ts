@@ -99,12 +99,8 @@ descripcion:string = '';
   AbrirLosModales(id: any) {
     this.id = id;
     this.element = this.TiposRutinas.find((m) => {return m.idTipoRutina == id})!;
-    console.log(this.element);
   }
 
-  limpiar(){
-    this.element.NombreTipo = '';
-  this.descripcion = '';
-  }
+ 
 
 }
