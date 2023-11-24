@@ -22,6 +22,12 @@ Descripción: (2 a 6 líneas describiendo el negocio)
 
 El objetivo de esta aplicación es proporcionar a los dueños de un gimnasio una plataforma compacta, sencilla de utilizar y visualmente óptima  para realizar los procesos de gestión , que sea integral para todos las acciones de los distintos participantes. La aplicación contará con tres roles de usuario: usuario, profesor y administrador, donde cada uno encontrará un panel de control donde se encontrarán las acciones típicas de un gimnasio pero digitalizadas, para mayorversatilisas. Hallarás acciones complementarias con el objetivo de ayudar al progreso del usuario..
 
+
+
+![der](https://github.com/hipolito12/GYM/assets/84524423/ae026c6f-3e9d-4c44-a311-8ac6e1f4666a)
+
+
+
 Los trabajadores ingresan los productos vendidos en el local.
 
 Los trabajadores y el administrador pueden escribir posts
