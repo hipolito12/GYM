@@ -100,7 +100,15 @@ La aplicación se desarrollará utilizando las siguientes tecnologías:
 
 ## Instalacion
 
-git clone https://github.com/hipolito12/GYM.git
+1. Instalar la herramienta de git:  https://git-scm.com 
+2. instalar un gestor de bases de datos : https://www.mysql.com/downloads/
+3. cargar el archivo “ GYMdbSchema.sql” , proporcionado en la carpeta “ Archivos Relacionados”   
+4. presionar donde desee el proyecto “ shift + click derecho” y presionar “abrir ventana de powershell”
+5. en la terminal ejecutar “git clone https://github.com/hipolito12/GYM.git”
+6. luego instalar las dependencias  del package.json  ejecutando en la terminal “ npm install”
+7. ejecutar comando “ npm run dev ” seguido de “ng serve -o ”para poder ver el proyecto
+8. para mas información de proyecto ejecutar comando ”compodoc  -p tsconfig.doc.json -s”
+
 
 ## Dependencias
 
