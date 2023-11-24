@@ -20,7 +20,7 @@ Descripción: (2 a 6 líneas describiendo el negocio)
 
 *Sistema de gestión de gimnasio*
 
-El sistema permite llevar un mejor control acerca de las ventas dentro del local, registro de usuarios y sus respectivos estados con respecto al control de usuarios y registro de cuotas.
+El objetivo de esta aplicación es proporcionar a los dueños de un gimnasio una plataforma compacta, sencilla de utilizar y visualmente óptima  para realizar los procesos de gestión , que sea integral para todos las acciones de los distintos participantes. La aplicación contará con tres roles de usuario: usuario, profesor y administrador, donde cada uno encontrará un panel de control donde se encontrarán las acciones típicas de un gimnasio pero digitalizadas, para mayorversatilisas. Hallarás acciones complementarias con el objetivo de ayudar al progreso del usuario..
 
 Los trabajadores ingresan los productos vendidos en el local.
 
