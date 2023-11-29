@@ -24,18 +24,18 @@ import { RutinasComponent } from './Components/rutinas/rutinas.component';
 import { AuthGuard } from './Guards/auth.guard';
 import { TokenInterceptorService } from './Services/token-interceptor.service';
 import { DatosPerfilComponent } from './Components/actualizar-datos-usuario/datos-perfil.component';
-import{MatTableModule} from '@angular/material/table';
-import{MatSortModule} from '@angular/material/sort';
-import{MatPaginatorModule} from '@angular/material/paginator';
-import {MatCardModule} from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {NgxPaginationModule} from 'ngx-pagination'
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MisRutinasComponent } from './Components/mis-rutinas/mis-rutinas.component';
 import { IMCComponent } from './Components/imc/imc.component';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { ProfesoresComponent } from './Components/profesores/profesores.component';
 import { VentasComponent } from './Components/ventas/ventas.component';
 import { UsuarioBanComponent } from './Components/usuario-ban/usuario-ban.component';
@@ -52,7 +52,7 @@ import { RutinasAddComponent } from './Components/rutinas-add/rutinas-add.compon
 import { RolComponent } from './Components/rol/rol.component';
 
 import { RolAddComponent } from './Components/rol-add/rol-add.component';
-//import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { RutinasUpdateComponent } from './Components/rutinas-update/rutinas-update.component';
 import { RolUpdateComponent } from './Components/rol-update/rol-update.component';
 import { RutinasPersoComponent } from './Components/rutinas-perso/rutinas-perso.component';
@@ -63,7 +63,7 @@ import { ActividadAddComponent } from './Components/actividad-add/actividad-add.
 import { ActividadUpdateComponent } from './Components/actividad-update/actividad-update.component';
 import { AdministradorComponent } from './Components/administrador/administrador.component';
 import { InformeComponent } from './Components/informe/informe.component';
-import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { UpdateCuotaComponent } from './Components/update-cuota/update-cuota.component';
@@ -71,9 +71,6 @@ import { UsuariosComponent } from './Components/usuarios/usuarios.component';
 import { EmpleadosComponent } from './Components/empleados/empleados.component';
 import { TipoRutinaComponent } from './Components/tipo-rutina/tipo-rutina.component';
 import { GestionDeEmpleadosComponent } from './Components/gestion-de-empleados/gestion-de-empleados.component';
-
-
-
 
 @NgModule({
   declarations: [
@@ -100,8 +97,8 @@ import { GestionDeEmpleadosComponent } from './Components/gestion-de-empleados/g
     ActividadDocenteComponent,
     TipoBlogComponent,
     ActualizarDatosComponent,
-    ActualizarDatosPorfesoresComponent,   
-     RutinasAddComponent,
+    ActualizarDatosPorfesoresComponent,
+    RutinasAddComponent,
     RolComponent,
     RolAddComponent,
     RutinasUpdateComponent,
@@ -119,14 +116,12 @@ import { GestionDeEmpleadosComponent } from './Components/gestion-de-empleados/g
     EmpleadosComponent,
     TipoRutinaComponent,
     GestionDeEmpleadosComponent,
-    
-
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     MatSidenavModule,
     MatListModule,
@@ -146,25 +141,19 @@ import { GestionDeEmpleadosComponent } from './Components/gestion-de-empleados/g
     CKEditorModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    
-    
   ],
 
-  providers: 
-  [
+  providers: [
     AuthGuard,
-  
+
     {
       provide: HTTP_INTERCEPTORS,
-    useClass:TokenInterceptorService,
-    multi:true
-  },
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
 
-  CookieService
-
-
-],
-  bootstrap: [AppComponent]
-
+    CookieService,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

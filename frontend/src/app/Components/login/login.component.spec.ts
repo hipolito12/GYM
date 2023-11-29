@@ -19,7 +19,9 @@ describe('LoginComponent', () => {
 
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
-    loginServiceSpy = TestBed.inject(LoginService) as jasmine.SpyObj<LoginService>;
+    loginServiceSpy = TestBed.inject(
+      LoginService
+    ) as jasmine.SpyObj<LoginService>;
   });
 
   it('should create', () => {
@@ -33,7 +35,9 @@ describe('LoginComponent', () => {
     };
 
     component.user = validUser;
-    loginServiceSpy.Ingresar.and.returnValue(of({ token: 'fakeToken', nombre: 'fakeName', rol: 0 }));
+    loginServiceSpy.Ingresar.and.returnValue(
+      of({ token: 'fakeToken', nombre: 'fakeName', rol: 0 })
+    );
 
     component.ValdaLogin();
 
@@ -52,6 +56,8 @@ describe('LoginComponent', () => {
     component.ValdaLogin();
 
     expect(loginServiceSpy.Ingresar).not.toHaveBeenCalled();
-    expect(window.alert).toHaveBeenCalledWith('El usuario o la contraseña no son válidos. Prueba de nuevo.');
+    expect(window.alert).toHaveBeenCalledWith(
+      'El usuario o la contraseña no son válidos. Prueba de nuevo.'
+    );
   });
 });
