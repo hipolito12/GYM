@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/* import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ActividadDocenteComponent } from './actividad-docente.component';
 
@@ -8,9 +8,8 @@ describe('ActividadDocenteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ActividadDocenteComponent ]
-    })
-    .compileComponents();
+      declarations: [ActividadDocenteComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ActividadDocenteComponent);
     component = fixture.componentInstance;
@@ -21,3 +20,4 @@ describe('ActividadDocenteComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+ */

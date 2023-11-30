@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/* import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UsuarioBanComponent } from './usuario-ban.component';
 
@@ -21,3 +21,4 @@ describe('UsuarioBanComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+ */

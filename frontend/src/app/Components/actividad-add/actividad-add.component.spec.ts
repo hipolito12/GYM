@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/* import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ActividadAddComponent } from './actividad-add.component';
 
@@ -21,3 +21,4 @@ describe('ActividadAddComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+ */

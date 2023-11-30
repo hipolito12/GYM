@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/* import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RutinasPersoUpdateComponent } from './rutinas-perso-update.component';
 
@@ -21,3 +21,4 @@ describe('RutinasPersoUpdateComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+ */

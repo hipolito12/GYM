@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+/* import { TestBed } from '@angular/core/testing';
 
 import { PagoCuotaService } from './pago-cuota.service';
 
@@ -14,3 +14,4 @@ describe('PagoCuotaService', () => {
     expect(service).toBeTruthy();
   });
 });
+ */

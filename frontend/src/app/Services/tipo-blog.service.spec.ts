@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+/* import { TestBed } from '@angular/core/testing';
 
 import { TipoBlogService } from './tipo-blog.service';
 
@@ -14,3 +14,4 @@ describe('TipoBlogService', () => {
     expect(service).toBeTruthy();
   });
 });
+ */

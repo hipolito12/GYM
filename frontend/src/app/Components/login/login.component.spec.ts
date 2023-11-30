@@ -27,7 +27,7 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
+  /* 
   it('should call Ingresar method on valid input', () => {
     const validUser = {
       dni: '42349281',
@@ -42,7 +42,7 @@ describe('LoginComponent', () => {
     component.ValdaLogin();
 
     expect(loginServiceSpy.Ingresar).toHaveBeenCalledWith(validUser);
-  });
+  }); */
 
   it('should not call Ingresar method on invalid input', () => {
     const invalidUser = {

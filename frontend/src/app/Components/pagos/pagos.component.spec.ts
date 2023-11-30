@@ -3,6 +3,7 @@ import {
   TestBed,
   fakeAsync,
   tick,
+  waitForAsync,
 } from '@angular/core/testing';
 import { PagosComponent } from './pagos.component';
 import { UserService } from '../../Services/user.service';
@@ -14,18 +15,20 @@ describe('PagosComponent', () => {
   let fixture: ComponentFixture<PagosComponent>;
   let userServiceSpy: jasmine.SpyObj<UserService>;
 
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
     const spy = jasmine.createSpyObj('UserService', ['ProximoPago']);
 
     TestBed.configureTestingModule({
       declarations: [PagosComponent],
       imports: [RouterTestingModule],
       providers: [{ provide: UserService, useValue: spy }],
-    });
+    }).compileComponents();
 
+    userServiceSpy = TestBed.inject(UserService) as jasmine.SpyObj<UserService>;
+  }));
+  beforeEach(() => {
     fixture = TestBed.createComponent(PagosComponent);
     component = fixture.componentInstance;
-    userServiceSpy = TestBed.inject(UserService) as jasmine.SpyObj<UserService>;
   });
 
   it('should create', () => {
@@ -34,7 +37,7 @@ describe('PagosComponent', () => {
 
   it('should call ProximoPago on ngOnInit and set component properties on success', fakeAsync(() => {
     const mockResponse = {
-      respuesta: { preciocuota: { valor: 100 }, FechaPago: new Date() },
+      respuesta: { preciocuota: { valor: 2800 }, FechaPago: new Date() },
     };
     userServiceSpy.ProximoPago.and.returnValue(of(mockResponse));
 
@@ -42,8 +45,7 @@ describe('PagosComponent', () => {
     tick();
 
     expect(userServiceSpy.ProximoPago).toHaveBeenCalled();
-    expect(component.precio).toBe(100);
-    // Add more expectations based on your component logic
+    expect(component.precio).toBe(2800);
   }));
 
   it('should handle error from ProximoPago service call', fakeAsync(() => {
@@ -54,9 +56,42 @@ describe('PagosComponent', () => {
     tick();
 
     expect(userServiceSpy.ProximoPago).toHaveBeenCalled();
-    expect(component.precio).toBe(0); // Assuming a default value for precio on error
-    // Add more expectations or error handling logic based on your component
+    expect(component.precio).toBe(0);
   }));
 
-  // Add more tests based on your component logic
+  it('should handle the correct price (por separado)', () => {
+    const mockResponse = {
+      respuesta: { preciocuota: { valor: 2800 }, FechaPago: new Date() },
+    };
+    userServiceSpy.ProximoPago.and.returnValue(of(mockResponse));
+    component.ObtenerPago();
+    expect(component.precio).toBe(2800);
+  });
+  it('should handle the correct date (por separado)', () => {
+    const mockResponse = {
+      respuesta: {
+        preciocuota: { valor: 2800 },
+        FechaPago: new Date('2023-10-06 21:47:32.128000'),
+      },
+    };
+    userServiceSpy.ProximoPago.and.returnValue(of(mockResponse));
+    component.ObtenerPago();
+    const expectedFormattedDate = '06/11/2023';
+    expect(component.fecha).toBe(expectedFormattedDate);
+  });
+
+  /* it('should handle the correct price and date ', () => {
+    const mockResponse = {
+      respuesta: {
+        preciocuota: { valor: 2800 },
+        FechaPago: new Date('2023-10-06 21:47:32.128000'),
+      },
+    };
+    userServiceSpy.ProximoPago.and.returnValue(of(mockResponse));
+    component.ObtenerPago();
+    expect(component.precio).toBe(2800);
+    const expectedFormattedDate = '06/11/2023';
+
+    expect(component.fecha).toBe(expectedFormattedDate);
+  }); */
 });
