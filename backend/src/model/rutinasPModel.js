@@ -46,7 +46,7 @@ const searchAllRutinesModel = async () => {
     const rutinas = await prisma.rutinapersonalizada.findMany({
       select: {
         idRutinaPersonalizada: true,
-        PersonaDniFk: { select: { dni: true } },
+        persona: { select: { dni: true } },
         DescripcionRutina: true,
         actividad: { select: { NombreActividad: true } },
         tiporutina: { select: { NombreTipo: true } },
@@ -107,7 +107,7 @@ const UpdateRutina = async (id, updatedData) => {
     const fechaActualizacion = new Date();
     const formattedFechaActualizacion = fechaActualizacion
       .toISOString()
-      .split('T')[0];
+      /*.split('T')[0];*/
     const updatedRutinaP = await prisma.rutinapersonalizada.update({
       where: { idRutinaPersonalizada }, // Usar la variable idRutinaGenerica convertida
       data: {
