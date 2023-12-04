@@ -1,0 +1,36 @@
+<!--en construccion -->
+<div class="container">
+    <div class="container border border-secondary rounded-lg mb-4 mt-4 p-0  my-4">
+      <div class="container-fluid bg-dark text-white py-3">
+        <h1 class="text-center">Rutinas GYM GENERICO</h1>
+      </div>
+      
+      <!-- Formulario -->
+    <div class="container rounded-lg mt-4 py-3 px-4 my-4 ">
+      <h1 class="text-center">Nueva Persona a cargo de actividad</h1>
+    
+      <form (ngSubmit)="postPersonasAcargoActividad()">
+    
+        <div class="form-group">
+          <label for="DniPersonaAcargo">Dni:</label>
+          <input type="text" class="form-control" id="DniPersonaAcargo" name="DniPersonaAcargo" [(ngModel)]="DniPersonaAcargo" placeholder="Ingrese el dni de la persona a cargo" required>
+        </div>
+        <div class="form-group">
+          <label for="idActividadFk">Id actividad:</label>
+          <input type="text" class="form-control" id="idActividadFk" name="idActividadFk" [(ngModel)]="idActividadFk" placeholder="Ingrese el id de la actividad" required>
+        </div>
+    
+          <!-- Botones -->
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary mx-2">Guardar</button>
+          <button type="button" class="btn btn-secondary mx-2" routerLink="/personaacargoactividad">Cancelar</button>
+        </div>
+    
+      </form>
+    </div>
+    
+    </div>
+    </div>
+    
+    
+    

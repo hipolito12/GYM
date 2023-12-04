@@ -1,0 +1,84 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sideUserNav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <p class="mx-auto fs-3 mt-2">Personas a cargo de las actividades</p>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sideUserNav mode="push" style="width: 20%">
+      <mat-nav-list >
+        <a mat-list-item routerLink="/profesores">Pago De Cuota</a>
+        <a mat-list-item routerLink="/actividad">Actividad</a>
+        <a mat-list-item  routerLink="/actividadDocente">Mi actividad</a>
+        <a mat-list-item  routerLink="/blogCRUD">Blog</a>
+        <a mat-list-item routerLink="/ActualizarDatosDocentes">Perfil</a>
+        <a mat-list-item routerLink="/BanUsuario">Banear usuario</a>
+        <a mat-list-item routerLink="/rutinasPerso">Rutinas persona</a>
+        <a mat-list-item routerLink="/personaacargoactividad">Personas a cargo de las actividades</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    
+
+    <div class="container border border-secondary rounded-lg mb-4 mt-4 p-0  my-4">
+      <div class="container-fluid bg-dark text-white py-3">
+        <h1 class="text-center">Personas y Actividades GYM GENERICO</h1>
+        <div class="row">
+          <div class="col-6">
+            <button class="btn btn-secondary" routerLink="/personaacargoactividadAdd">+ Nueva</button>
+          </div>
+          <div class="col-6 text-right">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Buscar dni de la persona a cargo..." #filtroId (keydown.enter)="filtrarPorId()">
+              <div class="input-group-append">
+                <button class="btn btn-dark" type="button" (click)="filtrarPorId()">OK</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container py-3">
+      <label for="elementosPorPagina">Elementos por página:</label>
+      <select id="elementosPorPagina" [(ngModel)]="elementosPorPagina" (change)="cambiarElementosPorPagina()">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+    
+      </select>
+    </div>
+      <div class="container mt-4">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Dni de la persona a cargo de la actividad</th>
+                <th>Id de la actividad</th>
+                <th> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let personaacargoactivida of personaacargoactividad.slice((paginaActual - 1) * elementosPorPagina, paginaActual * elementosPorPagina)">
+                <td>{{ personaacargoactivida.DniPersonaAcargo }}</td>
+                <td>{{ personaacargoactivida.IdActividadFk }}</td>
+                  <td>
+                    <div class="btn-group-vertical">
+                      <button class="btn btn-primary" (click)="capturarPersonaACargoActividad(personaacargoactivida.DniPersonaAcargo)">Modificar</button>
+                      <button class="btn btn-danger" (click)="eliminarPersonaAcargoactividad(personaacargoactivida.DniPersonaAcargo)">Eliminar</button>
+                    </div>
+                  </td>
+                
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="pagination d-flex justify-content-end p-3">
+        <button (click)="paginaAnterior()" [disabled]="paginaActual === 1">Anterior</button>
+        <button (click)="paginaSiguiente()" [disabled]="paginaActual * elementosPorPagina >= personaacargoactividad.length">Siguiente</button>
+      </div>
+
+
+  <router-outlet></router-outlet> 

@@ -61,6 +61,8 @@ import { RutinasPersoUpdateComponent } from './Components/rutinas-perso-update/r
 import { ActividadComponent } from './Components/actividad/actividad.component';
 import { ActividadAddComponent } from './Components/actividad-add/actividad-add.component';
 import { ActividadUpdateComponent } from './Components/actividad-update/actividad-update.component';
+import { personaacargoactividadComponent } from './Components/personaacargoactividad/personaacargoactividad.component';
+import { personaacargoactividadAddComponent } from './Components/personaacargoactividad-add/personaacargoactividad-add.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +100,8 @@ import { ActividadUpdateComponent } from './Components/actividad-update/activida
     ActividadComponent,
     ActividadAddComponent,
     ActividadUpdateComponent,
+    personaacargoactividadComponent,
+    personaacargoactividadAddComponent,
 
   ],
   imports: [
