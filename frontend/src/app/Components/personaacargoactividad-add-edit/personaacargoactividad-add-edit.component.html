@@ -13,7 +13,9 @@
     
         <div class="form-group">
           <label for="DniPersonaAcargo">Dni:</label>
-          <input formControlName="DniPersonaAcargo" type="number" class="form-control" id="DniPersonaAcargo" name="DniPersonaAcargo" [(ngModel)]="DniPersonaAcargo" placeholder="Ingrese el dni de la persona a cargo" required>
+          <span *ngIf="operacion === 'Modificar '" class="form-control">{{ DniPersonaAcargo }}</span>
+          <input *ngIf="operacion === 'Agregar '" formControlName="DniPersonaAcargo" type="number" class="form-control" id="DniPersonaAcargo" name="DniPersonaAcargo" [(ngModel)]="DniPersonaAcargo" placeholder="Ingrese el dni de la persona a cargo" required>
+          <input *ngIf="operacion === 'Modificar '" type="hidden" formControlName="DniPersonaAcargo" [(ngModel)]="DniPersonaAcargo">
         </div>
         <div class="form-group">
           <label for="IdActividadFk">Id actividad:</label>

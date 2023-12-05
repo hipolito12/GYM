@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { PersonaACargoActividad } from 'models/Types.js';
+import Swal from 'sweetalert2';
 
 interface personaacargoactividad {
   DniPersonaAcargo: number;
@@ -78,6 +79,9 @@ export class personaacargoactividadComponent implements OnInit {
         // Realiza la solicitud para actualizar el campo 'activo' a 0
         this.personaacargoactividadService.eliminarPersonaAcargoactividad(DniPersonaAcargo).subscribe(
           () => {
+            Swal.fire({
+              title:'Persona a cargo de la actividad eliminada con éxito'
+            })
             console.log('Persona a cargo de la actividad eliminada con éxito');
             // Actualiza la lista de de las personas a cargo de actividades (se puede volver a llamar a GetAllPersonasACargo o actualizar el arreglo en memoria)
             this.GetAllPersonasACargo();

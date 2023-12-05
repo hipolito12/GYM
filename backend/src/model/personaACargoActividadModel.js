@@ -45,6 +45,7 @@ const CreatePersonaACargoActividad = async (object) => {
 
 
 const UpdatePersonaACargoActividad = async (id, updatedData) => {
+  
   try {
     // Convierte dni a float
     const DniPersonaAcargo = parseFloat(id);

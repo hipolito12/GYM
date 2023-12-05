@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { personaacargoactividadService } from '../../Services/personaacargoactividad.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PersonaACargoActividad } from 'models/Types.js';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-personaacargoactividad-add-edit',
@@ -46,14 +47,15 @@ export class personaacargoactividadAddEditComponent implements OnInit {
   postPersonasAcargoActividad() {
     const nuevaPersonaAcargo: PersonaACargoActividad = {
       DniPersonaAcargo: this.form.value.DniPersonaAcargo,
-      IdActividadFk: this.form.value.idActividadFk,
+      IdActividadFk: this.form.value.IdActividadFk,
     };
-
-    console.log(this.id);
 
     if (this.id !== 0) {
       // Es modificar
+      console.log('Hola');
       this.personaacargoactividadService.updatePersonaAcargo(this.DniPersonaAcargo, nuevaPersonaAcargo).subscribe(() => {
+        console.log(nuevaPersonaAcargo);
+        console.log(this.DniPersonaAcargo);
         this.router.navigate(['/personaacargoactividad']);
       })
     } else {
@@ -61,6 +63,9 @@ export class personaacargoactividadAddEditComponent implements OnInit {
       this.personaacargoactividadService.createPersonaAcargo(nuevaPersonaAcargo).subscribe(
         () => {
           // Se puede manejar la respuesta aquí si es necesario
+          Swal.fire({
+            title:'Persona a cargo de la actividad eliminada con éxito'
+          })
           console.log('Persona a cargo de la actividad creada exitosamente');
   
           // Redirigir al usuario a la página de visualización de las personas a cargo u otra página después de crear la persona a cargo de la actividad

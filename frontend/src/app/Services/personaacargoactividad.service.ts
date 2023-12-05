@@ -17,7 +17,7 @@ export class personaacargoactividadService {
     return this.http.get<PersonaACargoActividad>(`http://localhost:3000/api/getPersonaACargoActividadById/${DniPersonaAcargo}`);
   }
 
-  updatePersonaAcargo(DniPersonaAcargo: number, personaacargoactividad: PersonaACargoActividad): Observable<any> {
+  updatePersonaAcargo(DniPersonaAcargo: number, personaacargoactividad: PersonaACargoActividad): Observable<PersonaACargoActividad> {
     return this.http.patch<PersonaACargoActividad>(`http://localhost:3000/api/updatePersonaACargoActividad/${DniPersonaAcargo}`, personaacargoactividad);
   }
 
