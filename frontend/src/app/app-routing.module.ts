@@ -34,7 +34,7 @@ import { RutinasPersoUpdateComponent } from './Components/rutinas-perso-update/r
 import { RutinasPersoComponent } from './Components/rutinas-perso/rutinas-perso.component';
 import { RutinasUpdateComponent } from './Components/rutinas-update/rutinas-update.component';
 import { ProfesoresGuardGuard } from './profesores-guard.guard';
-import { personaacargoactividadAddComponent } from './Components/personaacargoactividad-add/personaacargoactividad-add.component';
+import { personaacargoactividadAddEditComponent } from './Components/personaacargoactividad-add-edit/personaacargoactividad-add-edit.component';
 const routes: Routes = [
   { path: 'home',  component: HomeComponent },
   { path: '', redirectTo: 'home' ,pathMatch: 'full' },
@@ -68,7 +68,9 @@ const routes: Routes = [
   { path: 'actividadAdd', component: ActividadAddComponent,canActivate:[ ProfesoresGuardGuard] },
   { path: 'actividadUpdate/:id', component: ActividadUpdateComponent,canActivate:[ ProfesoresGuardGuard] },
   { path: 'personaacargoactividad', component: personaacargoactividadComponent,canActivate: [ ProfesoresGuardGuard ]},
-  { path: 'personaacargoactividadAdd', component: personaacargoactividadAddComponent,canActivate: [ ProfesoresGuardGuard ]}
+  { path: 'personaacargoactividadAdd', component: personaacargoactividadAddEditComponent,canActivate: [ ProfesoresGuardGuard ]},
+  { path: 'personaacargoactividadEdit/:id', component: personaacargoactividadAddEditComponent,canActivate: [ ProfesoresGuardGuard ]},
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({

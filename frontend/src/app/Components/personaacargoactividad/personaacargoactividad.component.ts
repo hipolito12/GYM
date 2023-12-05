@@ -10,6 +10,7 @@ import { personaacargoactividadService } from '../../Services/personaacargoactiv
 import { Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { PersonaACargoActividad } from 'models/Types.js';
 
 interface personaacargoactividad {
   DniPersonaAcargo: number;
@@ -22,8 +23,8 @@ interface personaacargoactividad {
   styleUrls: ['./personaacargoactividad.component.css'],
 })
 export class personaacargoactividadComponent implements OnInit {
-  personaacargoactividad: any = [];
-  nombre:string = localStorage.getItem('nombre')!;
+  listPersonasacargoactividad: PersonaACargoActividad[] = [];
+  //nombre:string = localStorage.getItem('nombre')!;
 
   @ViewChild('filtroId', { static: false }) filtroId!: ElementRef;
   elementosPorPagina = 5; // Número de elementos por página
@@ -46,18 +47,19 @@ export class personaacargoactividadComponent implements OnInit {
   filtrarPorId() {
     const idFiltrado = this.filtroId.nativeElement.value;
     if (idFiltrado) {
-      this.personaacargoactividad = this.personaacargoactividad.filter(
-        (personaacargoactividad1: personaacargoactividad) =>
-          personaacargoactividad1.DniPersonaAcargo &&
-          personaacargoactividad1.DniPersonaAcargo.toString() === idFiltrado
+      const listaFiltrada = this.listPersonasacargoactividad.filter(
+        (persona) =>
+          persona.DniPersonaAcargo &&
+          persona.DniPersonaAcargo.toString() === idFiltrado
       );
+      this.listPersonasacargoactividad = listaFiltrada;
     } else {
       this.GetAllPersonasACargo();
     }
   }
   paginaSiguiente() {
     const ultimoElemento = this.paginaActual * this.elementosPorPagina;
-    if (ultimoElemento < this.personaacargoactividad.length) {
+    if (ultimoElemento < this.listPersonasacargoactividad.length) {
       this.paginaActual++;
     }
   }
@@ -65,29 +67,35 @@ export class personaacargoactividadComponent implements OnInit {
     this.paginaActual = 1; // Reinicia la página a 1 cuando cambia el número de elementos por página
   }
 
-  eliminarPersonaAcargoactividad(DniPersonaAcargo: number) {
-    const confirmar = confirm(
-      '¿Estás seguro de que deseas eliminar esta persona a cargo de la actividad?'
-    );
-
-    if (confirmar) {
-      // Realiza la solicitud para actualizar el campo 'activo' a 0
-      this.personaacargoactividadService.updatePersonaAcargo(DniPersonaAcargo, 0).subscribe(
-        () => {
-          console.log('Persona a cargo de la actividad eliminada con éxito');
-          // Actualiza la lista de de las personas a cargo de actividades (se puede volver a llamar a GetAllPersonasACargo o actualizar el arreglo en memoria)
-          this.GetAllPersonasACargo();
-        },
-        (error) => {
-          console.error('Error al eliminar la persona a cargo de la actividad', error);
-        }
+  eliminarPersonaAcargoactividad(DniPersonaAcargo: number | null) {
+    
+    if (DniPersonaAcargo !== null){
+      const confirmar = confirm(
+        '¿Estás seguro de que deseas eliminar esta persona a cargo de la actividad?'
       );
+  
+      if (confirmar) {
+        // Realiza la solicitud para actualizar el campo 'activo' a 0
+        this.personaacargoactividadService.eliminarPersonaAcargoactividad(DniPersonaAcargo).subscribe(
+          () => {
+            console.log('Persona a cargo de la actividad eliminada con éxito');
+            // Actualiza la lista de de las personas a cargo de actividades (se puede volver a llamar a GetAllPersonasACargo o actualizar el arreglo en memoria)
+            this.GetAllPersonasACargo();
+          },
+          (error) => {
+            console.error('Error al eliminar la persona a cargo de la actividad', error);
+          }
+        );
+      }
+    } else {
+      console.log('El DNI de la persona es null');
     }
   }
 
+
   GetAllPersonasACargo() {
-    this.personaacargoactividadService.getPersonasACargo().subscribe((data: any) => {
-      this.personaacargoactividad = data;
+    this.personaacargoactividadService.getPersonasACargo().subscribe((data: personaacargoactividad[]) => {
+      this.listPersonasacargoactividad = data;
     });
   }
   personaacargoactividadSeleccionada: personaacargoactividad | null = null;

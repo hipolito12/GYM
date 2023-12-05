@@ -27,7 +27,7 @@
         <h1 class="text-center">Personas y Actividades GYM GENERICO</h1>
         <div class="row">
           <div class="col-6">
-            <button class="btn btn-secondary" routerLink="/personaacargoactividadAdd">+ Nueva</button>
+            <button type="button" class="btn btn-secondary" routerLink="/personaacargoactividadAdd">+ Nueva</button>
           </div>
           <div class="col-6 text-right">
             <div class="input-group">
@@ -50,21 +50,21 @@
     </div>
       <div class="container mt-4">
         <div class="table-responsive">
-          <table class="table table-bordered table-striped">
+          <table *ngIf="listPersonasacargoactividad.length > 0" class="table table-bordered table-striped">
             <thead>
               <tr>
-                <th>Dni de la persona a cargo de la actividad</th>
-                <th>Id de la actividad</th>
+                <th scope="col">Dni de la persona a cargo de la actividad</th>
+                <th scope="col">Id de la actividad</th>
                 <th> </th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let personaacargoactivida of personaacargoactividad.slice((paginaActual - 1) * elementosPorPagina, paginaActual * elementosPorPagina)">
+              <tr *ngFor="let personaacargoactivida of listPersonasacargoactividad.slice((paginaActual - 1) * elementosPorPagina, paginaActual * elementosPorPagina)">
                 <td>{{ personaacargoactivida.DniPersonaAcargo }}</td>
                 <td>{{ personaacargoactivida.IdActividadFk }}</td>
                   <td>
                     <div class="btn-group-vertical">
-                      <button class="btn btn-primary" (click)="capturarPersonaACargoActividad(personaacargoactivida.DniPersonaAcargo)">Modificar</button>
+                      <button routerLink='/personaacargoactividadEdit/{{ personaacargoactivida.DniPersonaAcargo }}' type="button" class="btn btn-primary">Modificar</button>
                       <button class="btn btn-danger" (click)="eliminarPersonaAcargoactividad(personaacargoactivida.DniPersonaAcargo)">Eliminar</button>
                     </div>
                   </td>
@@ -73,11 +73,12 @@
               
             </tbody>
           </table>
+          <h5 *ngIf="listPersonasacargoactividad.length == 0">No hay personas personas a cargo de actividades que mostrar</h5>
         </div>
       </div>
       <div class="pagination d-flex justify-content-end p-3">
         <button (click)="paginaAnterior()" [disabled]="paginaActual === 1">Anterior</button>
-        <button (click)="paginaSiguiente()" [disabled]="paginaActual * elementosPorPagina >= personaacargoactividad.length">Siguiente</button>
+        <button (click)="paginaSiguiente()" [disabled]="paginaActual * elementosPorPagina >= listPersonasacargoactividad.length">Siguiente</button>
       </div>
 
 

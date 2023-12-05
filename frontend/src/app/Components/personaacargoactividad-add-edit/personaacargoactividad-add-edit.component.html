@@ -7,17 +7,17 @@
       
       <!-- Formulario -->
     <div class="container rounded-lg mt-4 py-3 px-4 my-4 ">
-      <h1 class="text-center">Nueva Persona a cargo de actividad</h1>
+      <h1 class="text-center">{{ operacion }} Persona a cargo de actividad</h1>
     
-      <form (ngSubmit)="postPersonasAcargoActividad()">
+      <form [formGroup]="form" (ngSubmit)="postPersonasAcargoActividad()">
     
         <div class="form-group">
           <label for="DniPersonaAcargo">Dni:</label>
-          <input type="text" class="form-control" id="DniPersonaAcargo" name="DniPersonaAcargo" [(ngModel)]="DniPersonaAcargo" placeholder="Ingrese el dni de la persona a cargo" required>
+          <input formControlName="DniPersonaAcargo" type="number" class="form-control" id="DniPersonaAcargo" name="DniPersonaAcargo" [(ngModel)]="DniPersonaAcargo" placeholder="Ingrese el dni de la persona a cargo" required>
         </div>
         <div class="form-group">
-          <label for="idActividadFk">Id actividad:</label>
-          <input type="text" class="form-control" id="idActividadFk" name="idActividadFk" [(ngModel)]="idActividadFk" placeholder="Ingrese el id de la actividad" required>
+          <label for="IdActividadFk">Id actividad:</label>
+          <input formControlName="IdActividadFk" type="number" class="form-control" id="IdActividadFk" name="IdActividadFk" [(ngModel)]="idActividadFk" placeholder="Ingrese el id de la actividad" required>
         </div>
     
           <!-- Botones -->

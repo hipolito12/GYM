@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -62,7 +62,7 @@ import { ActividadComponent } from './Components/actividad/actividad.component';
 import { ActividadAddComponent } from './Components/actividad-add/actividad-add.component';
 import { ActividadUpdateComponent } from './Components/actividad-update/actividad-update.component';
 import { personaacargoactividadComponent } from './Components/personaacargoactividad/personaacargoactividad.component';
-import { personaacargoactividadAddComponent } from './Components/personaacargoactividad-add/personaacargoactividad-add.component';
+import { personaacargoactividadAddEditComponent } from './Components/personaacargoactividad-add-edit/personaacargoactividad-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -101,12 +101,12 @@ import { personaacargoactividadAddComponent } from './Components/personaacargoac
     ActividadAddComponent,
     ActividadUpdateComponent,
     personaacargoactividadComponent,
-    personaacargoactividadAddComponent,
-
+    personaacargoactividadAddEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
