@@ -79,9 +79,18 @@
               <a class="nav-link" routerLink="/blog">Blog</a>
             </li>
              
+            <ul  class="navbar-nav" *ngIf="this.Actualiza.GUser && this.Actualiza.getrolUsuario==0;">
+              <li class="nav-item text-center">
+                <a class="nav-link" routerLink="/administrador">Panel de Gestion</a>
+              </li>
+              <li class="nav-item text-center">
+                <a class="nav-link" routerLink="/imc">IMC</a>
+              </li>
+              </ul>
+
             <ul  class="navbar-nav" *ngIf="this.Actualiza.GUser && this.Actualiza.getrolUsuario==1;">
               <li class="nav-item text-center">
-                <a class="nav-link" routerLink="/user">Perfil</a>
+                <a class="nav-link" routerLink="/usuarios/user">Perfil</a>
               </li>
               <li class="nav-item text-center">
                   <a class="nav-link" routerLink="/imc">IMC</a>
@@ -90,7 +99,7 @@
 
               <ul  class="navbar-nav" *ngIf="this.Actualiza.GUser &&this.Actualiza.getrolUsuario==2 ; ">
                 <li class="nav-item text-center">
-                  <a class="nav-link" routerLink="/profesores">Menu</a>
+                  <a class="nav-link" routerLink="/empleados/profesores">Menu</a>
                 </li>
                 <li class="nav-item text-center">
                     <a class="nav-link" routerLink="/ventas">Venta</a>

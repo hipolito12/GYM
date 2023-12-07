@@ -1,22 +1,4 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <button mat-icon-button (click)="sideUserNav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <p class="mx-auto fs-3 mt-2">Bienvenido {{this.nombre}}</p>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  
-  <mat-sidenav-container>
-    <mat-sidenav #sideUserNav mode="push" style="width: 20%">
-      <mat-nav-list >
-        <a mat-list-item routerLink="/pagos">Pagos</a>
-        <a mat-list-item routerLink="/misRutinas">Mis Rutinas</a>
-        <a mat-list-item routerLink="/datos-perfil">Perfil</a>
-        <a mat-list-item  routerLink="/user">Inscripcion</a>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
+
 
         
       <!-- Inicio tabs -->
@@ -80,6 +62,5 @@
         
       </mat-tab-group>
     <!--  Fin Tabs -->
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+ 
   <router-outlet></router-outlet> 

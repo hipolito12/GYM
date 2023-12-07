@@ -1,0 +1,52 @@
+<!-- <mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="sideUserNav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <p class="mx-auto fs-3 mt-2">Bienvenido Lord {{this.nombre}}</p>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #sideUserNav mode="push" style="width: 20%">
+        <mat-nav-list>
+            <a mat-list-item routerLink="/administrador">Empleados</a>
+            <a mat-list-item routerLink="/actividad">Actividades</a>
+            <a mat-list-item routerLink="#">Profesores y Actividades</a>
+            <a mat-list-item routerLink="#">Informe</a>
+            <a mat-list-item routerLink="#">Cuota</a>
+            <a mat-list-item routerLink="/blogCRUD">Blog</a>
+            <a mat-list-item routerLink="/tipoBlog">Tipo Blog</a>
+            <a mat-list-item routerLink="/roles">Roles</a>
+
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div style="height: 88vh !important" class="mx-auto mt-5">
+            
+
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<router-outlet></router-outlet> -->
+
+<div style="height: 88vh !important ;background-color: #1A1E21;" class="mx-auto  overflow-hidden " >
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center " style="height: 100vh;">
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-body "  >
+                        <h5 class="card-title fw-bold fs-3 text-center">Precio actual de la cuota</h5>
+                        <h6 class="card-subtitle mb-2 fw-bold fs-5 ">Cuota mensual: {{ this.ValorCuota}}</h6>
+
+                    </div>
+                    <div class="card-footer text-muted d-flex justify-content-center">
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"  (click)="this.mostrarInput()" >
+                        Modificar
+                      </button> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

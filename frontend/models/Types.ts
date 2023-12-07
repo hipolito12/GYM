@@ -98,7 +98,7 @@ export type Actividad = {
   // Modelo 'tipopost'
   export type TipoPost = {
     TipoId: number | null;
-    NombreTIpo: string | null;
+    NombreTipo: string | null;
     visible: boolean | null;
   };
 
@@ -107,6 +107,7 @@ export type Actividad = {
   export type TipoRutina = {
     idTipoRutina: number | null;
     NombreTipo: string | null;
+    visible: boolean | null;
   };
   
   // Modelo 'venta'

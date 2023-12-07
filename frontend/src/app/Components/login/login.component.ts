@@ -31,13 +31,13 @@ export class LoginComponent implements OnInit {
   Redireccionar(rol: number) {
     switch (rol) {
       case 0:
-        this.rout.navigate(['admin']);
+        this.rout.navigate(['administrador']);
         break;
       case 1:
-        this.rout.navigate(['user']);
+        this.rout.navigate(['/usuarios/user']);
         break;
       case 2:
-        this.rout.navigate(['/profesores']);
+        this.rout.navigate(['/empleados/profesores']);
         break;
     }
   }

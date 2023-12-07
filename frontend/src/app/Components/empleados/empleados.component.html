@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sideUserNav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <p class="mx-auto fs-3 mt-2">Bienvenido Profesor {{this.nombre}}</p>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sideUserNav mode="push" style="width: 20%">
+      <mat-nav-list >
+       
+        <a mat-list-item routerLink="/empleados/profesores">Pago De Cuota</a>
+        <a mat-list-item routerLink="/empleados/actividad">Actividad</a>
+        <a mat-list-item  routerLink="/empleados/actividadDocente">Mi actividad</a>
+        <a mat-list-item  routerLink="/empleados/blogCRUD">Blog</a>
+        <a mat-list-item routerLink="/empleados/ActualizarDatosDocentes">Perfil</a>
+        <a mat-list-item routerLink="/empleados/BanUsuario">Banear usuario</a>
+        <a mat-list-item routerLink="/empleados/rutinasPerso">Rutinas persona</a>
+        <a mat-list-item routerLink="/empleados/tipoRutinas">Tipos de rutinas</a>
+
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 88vh !important " class="mx-auto" >
+        <router-outlet></router-outlet> 
+        
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

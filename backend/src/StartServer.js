@@ -1,6 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 //const logIn = require('./routes/auth')
+const informes = require('./routes/Informe.js');
+const UpdateCuota = require('./routes/Cuota.js');
+const TipoRutinas = require('./routes/TipoRutinas.js');
+const GestionEmpleados = require('./routes/GestionEmpleados.js');
 
 const app = express();
 
@@ -26,6 +30,13 @@ app.use('/api', require('./routes/rutinas.js'));
 app.use('/api', require('./routes/Roles.js'));
 app.use('/api', require('./routes/rutinasP.js'));
 app.use('/api', require('./routes/actividad.js'));
+app.use('/api',informes);
+app.use('/api',UpdateCuota);
+app.use('/api',TipoRutinas );
+app.use('/api',GestionEmpleados );
+
+
 app.use('/api', require('./routes/personaACargoActividad.js'));
+
 /*servidor*/
 app.listen(3000);

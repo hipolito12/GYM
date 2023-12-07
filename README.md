@@ -20,7 +20,13 @@ Descripción: (2 a 6 líneas describiendo el negocio)
 
 *Sistema de gestión de gimnasio*
 
-El sistema permite llevar un mejor control acerca de las ventas dentro del local, registro de usuarios y sus respectivos estados con respecto al control de usuarios y registro de cuotas.
+El objetivo de esta aplicación es proporcionar a los dueños de un gimnasio una plataforma compacta, sencilla de utilizar y visualmente óptima  para realizar los procesos de gestión , que sea integral para todos las acciones de los distintos participantes. La aplicación contará con tres roles de usuario: usuario, profesor y administrador, donde cada uno encontrará un panel de control donde se encontrarán las acciones típicas de un gimnasio pero digitalizadas, para mayorversatilisas. Hallarás acciones complementarias con el objetivo de ayudar al progreso del usuario..
+
+
+
+![der](https://github.com/hipolito12/GYM/assets/84524423/ae026c6f-3e9d-4c44-a311-8ac6e1f4666a)
+
+
 
 Los trabajadores ingresan los productos vendidos en el local.
 
@@ -100,7 +106,15 @@ La aplicación se desarrollará utilizando las siguientes tecnologías:
 
 ## Instalacion
 
-git clone https://github.com/hipolito12/GYM.git
+1. Instalar la herramienta de git:  https://git-scm.com 
+2. instalar un gestor de bases de datos : https://www.mysql.com/downloads/
+3. cargar el archivo “ GYMdbSchema.sql” , proporcionado en la carpeta “ Archivos Relacionados”   
+4. presionar donde desee el proyecto “ shift + click derecho” y presionar “abrir ventana de powershell”
+5. en la terminal ejecutar “git clone https://github.com/hipolito12/GYM.git”
+6. luego instalar las dependencias  del package.json  ejecutando en la terminal “ npm install”
+7. ejecutar comando “ npm run dev ” seguido de “ng serve -o ”para poder ver el proyecto
+8. para mas información de proyecto ejecutar comando ”compodoc  -p tsconfig.doc.json -s”
+
 
 ## Dependencias
 

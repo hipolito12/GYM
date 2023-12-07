@@ -21,7 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { PagosComponent } from './Components/pagos/pagos.component';
 import { RutinasComponent } from './Components/rutinas/rutinas.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './Guards/auth.guard';
 import { TokenInterceptorService } from './Services/token-interceptor.service';
 import { DatosPerfilComponent } from './Components/actualizar-datos-usuario/datos-perfil.component';
 import{MatTableModule} from '@angular/material/table';
@@ -61,6 +61,19 @@ import { RutinasPersoUpdateComponent } from './Components/rutinas-perso-update/r
 import { ActividadComponent } from './Components/actividad/actividad.component';
 import { ActividadAddComponent } from './Components/actividad-add/actividad-add.component';
 import { ActividadUpdateComponent } from './Components/actividad-update/actividad-update.component';
+import { AdministradorComponent } from './Components/administrador/administrador.component';
+import { InformeComponent } from './Components/informe/informe.component';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { UpdateCuotaComponent } from './Components/update-cuota/update-cuota.component';
+import { UsuariosComponent } from './Components/usuarios/usuarios.component';
+import { EmpleadosComponent } from './Components/empleados/empleados.component';
+import { TipoRutinaComponent } from './Components/tipo-rutina/tipo-rutina.component';
+import { GestionDeEmpleadosComponent } from './Components/gestion-de-empleados/gestion-de-empleados.component';
+
+
+
 import { personaacargoactividadComponent } from './Components/personaacargoactividad/personaacargoactividad.component';
 import { personaacargoactividadAddEditComponent } from './Components/personaacargoactividad-add-edit/personaacargoactividad-add-edit.component';
 
@@ -89,7 +102,8 @@ import { personaacargoactividadAddEditComponent } from './Components/personaacar
     ActividadDocenteComponent,
     TipoBlogComponent,
     ActualizarDatosComponent,
-    ActualizarDatosPorfesoresComponent,    RutinasAddComponent,
+    ActualizarDatosPorfesoresComponent,   
+     RutinasAddComponent,
     RolComponent,
     RolAddComponent,
     RutinasUpdateComponent,
@@ -101,7 +115,15 @@ import { personaacargoactividadAddEditComponent } from './Components/personaacar
     ActividadAddComponent,
     ActividadUpdateComponent,
     personaacargoactividadComponent,
-    personaacargoactividadAddEditComponent
+    personaacargoactividadAddEditComponent    AdministradorComponent,
+    InformeComponent,
+    UpdateCuotaComponent,
+    UsuariosComponent,
+    EmpleadosComponent,
+    TipoRutinaComponent,
+    GestionDeEmpleadosComponent,
+    
+
   ],
   imports: [
     BrowserModule,
@@ -125,7 +147,10 @@ import { personaacargoactividadAddEditComponent } from './Components/personaacar
     MatTabsModule,
     MatExpansionModule,
     MatSelectModule,
-    CKEditorModule
+    CKEditorModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    
     
   ],
 
