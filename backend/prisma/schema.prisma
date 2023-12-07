@@ -72,7 +72,7 @@ model personaacargoactividad {
   DniPersonaAcargo Float     @id
   IdActividadFk    Int
   actividad        actividad @relation(fields: [IdActividadFk], references: [ActividadId], onDelete: NoAction, onUpdate: NoAction, map: "actividad-PesonaAcargo")
-  persona          persona   @relation(fields: [DniPersonaAcargo], references: [dni], map: "persona-PersonAcargo")
+  persona          persona   @relation(fields: [DniPersonaAcargo], references: [dni], onDelete: Cascade, onUpdate: Restrict, map: "persona-PersonAcargo")
 
   @@index([IdActividadFk], map: "actividad-PesonaAcargo_idx")
 }

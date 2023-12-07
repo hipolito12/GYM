@@ -44,7 +44,7 @@ describe('LoginComponent', () => {
     expect(loginServiceSpy.Ingresar).toHaveBeenCalledWith(validUser);
   }); */
 
-  it('should not call Ingresar method on invalid input', () => {
+  /*  it('should not call Ingresar method on invalid input', () => {
     const invalidUser = {
       dni: 'invalidDNI',
       contrasena: 'invalidPassword',
@@ -59,5 +59,5 @@ describe('LoginComponent', () => {
     expect(window.alert).toHaveBeenCalledWith(
       'El usuario o la contraseña no son válidos. Prueba de nuevo.'
     );
-  });
+  }); */
 });

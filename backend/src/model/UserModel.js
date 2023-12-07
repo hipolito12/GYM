@@ -1,8 +1,7 @@
-const { PrismaClient } = require("@prisma/client");
+const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const ObtenerPago = async (dni) => {
-  
   try {
     let element = await prisma.cuota.findFirstOrThrow({
       where: {
@@ -10,23 +9,68 @@ const ObtenerPago = async (dni) => {
       },
       select: {
         FechaPago: true,
-        preciocuota:{
-          select:{
-            valor:true
-          }
-        }
-      
-      }
+        preciocuota: {
+          select: {
+            valor: true,
+          },
+        },
+      },
     });
-   
- return element;
+
+    return element;
   } catch (e) {
     console.log(`error al buscar pago ${e.message}`);
 
-    return element={preciocuota:{valor:  (await prisma.preciocuota.findFirstOrThrow({select:{valor:true}})).valor}}
-
+    return (element = {
+      preciocuota: {
+        valor: (
+          await prisma.preciocuota.findFirstOrThrow({ select: { valor: true } })
+        ).valor,
+      },
+    });
   }
 };
+
+/* const ObtenerPago = async (dni) => {
+  try {
+    const element = await prisma.cuota.findFirst({
+      where: {
+        DniFK: dni,
+      },
+      select: {
+        FechaPago: true,
+        preciocuota: {
+          select: {
+            valor: true,
+          },
+        },
+      },
+    });
+
+    if (element) {
+      return element;
+    } else {
+      // Si no se encuentra la cuota, puedes realizar otra operación o devolver un valor predeterminado.
+      return {
+        preciocuota: {
+          valor:
+            (await prisma.preciocuota.findFirst({ select: { valor: true } }))
+              ?.valor || 0,
+        },
+      };
+    }
+  } catch (e) {
+    console.log(`error al buscar pago ${e.message}`);
+
+    return (element = {
+      preciocuota: {
+        valor: (
+          await prisma.preciocuota.findFirstOrThrow({ select: { valor: true } })
+        ).valor,
+      },
+    });
+  }
+}; */
 
 const ObtenerPersona = async (dni) => {
   try {
@@ -66,15 +110,13 @@ const ObtenerActividades = async () => {
   try {
     const elements = await prisma.personaacargoactividad.findMany({
       select: {
-      
         actividad: {
           select: {
-            
-            NombreActividad :true,
-            Turno :true,
+            NombreActividad: true,
+            Turno: true,
             Hora_Inicio: true,
-            Hora_Fin : true,
-            ActividadId :true,
+            Hora_Fin: true,
+            ActividadId: true,
           },
         },
         persona: {
@@ -85,86 +127,75 @@ const ObtenerActividades = async () => {
       },
     });
 
-
     return elements;
-    
   } catch (e) {
     console.log(`error al buscar actividades ${e.message}`);
     return e.message;
-
   }
 };
 
-const ObtenerDetalleActividades = async (id) => 
-{
-  try
-  {
+const ObtenerDetalleActividades = async (id) => {
+  try {
     let element = await prisma.actividad.findFirst({
       where: {
         ActividadId: id,
       },
-      select:
-      {
+      select: {
         NombreActividad: true,
         Hora_Inicio: true,
-        Descripcion:true,
-        ActividadId:true,
-        
-      }
+        Descripcion: true,
+        ActividadId: true,
+      },
     });
-    
+
     return element;
-  }
-  catch(e)
-  {
+  } catch (e) {
     console.log(`error al buscar actividades ${e.message}`);
     return e.message;
   }
-}
+};
 
-
-const BuscaCupo =async(idActividad)=>
-{
-  try{
+const BuscaCupo = async (idActividad) => {
+  try {
     let cupo = await prisma.actividad.findFirst({
-      where: { ActividadId: idActividad},
-      select:{Cupo:true}
-    })
-    
-    return cupo
-    
-  }
-  catch(e){console.log(e)
-  return e.message}
-}
+      where: { ActividadId: idActividad },
+      select: { Cupo: true },
+    });
 
-const  ActualizarCupoActividad= async (persona,cupo,actividad) => 
-{ let NuevoCupo=cupo-1
-  try{
+    return cupo;
+  } catch (e) {
+    console.log(e);
+    return e.message;
+  }
+};
+
+const ActualizarCupoActividad = async (persona, cupo, actividad) => {
+  let NuevoCupo = cupo - 1;
+  try {
     await prisma.asistencia.create({
-      data:
-      {DniFK:persona,
-        ActividadFK:actividad, 
-        DiaAsistencia:new Date()
-      }
-    })
+      data: {
+        DniFK: persona,
+        ActividadFK: actividad,
+        DiaAsistencia: new Date(),
+      },
+    });
 
-   await  prisma.actividad.update({
-      where:{ActividadId:actividad},
-      data:{Cupo:NuevoCupo}
-    })
-
+    await prisma.actividad.update({
+      where: { ActividadId: actividad },
+      data: { Cupo: NuevoCupo },
+    });
+  } catch (e) {
+    console.log(e.message);
+    return e.message;
   }
-  catch(e)
-  {
-      console.log(e.message)
-      return e.message
-  }
+};
 
-
-
-
-
-}
-
-module.exports = {ActualizarCupoActividad ,BuscaCupo,ObtenerPago, ActualizarDatosModel, ObtenerPersona, ObtenerActividades ,ObtenerDetalleActividades};
+module.exports = {
+  ActualizarCupoActividad,
+  BuscaCupo,
+  ObtenerPago,
+  ActualizarDatosModel,
+  ObtenerPersona,
+  ObtenerActividades,
+  ObtenerDetalleActividades,
+};

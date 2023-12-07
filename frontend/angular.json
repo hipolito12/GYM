@@ -101,7 +101,16 @@
             ],
             "scripts": []
           }
+        },
+        "e2e": {
+          "builder": "@angular-builders/protractor:protractor",
+          "options": {
+            "protractorConfig": "protractor.conf.js" ,
+            "devServerTarget": "frontend:serve"
+            
+          }
         }
+        
       }
     }
   },
