@@ -20,7 +20,7 @@ const CreatePersonaACargoActividad = async (object) => {
   try {
     console.log(object);
     console.log(object.DniPersonaAcargo);
-    let elements = await prisma.personaacargoactividad.create({
+    let element = await prisma.personaacargoactividad.create({
       data: {
         DniPersonaAcargo: object.DniPersonaAcargo,
         IdActividadFk: object.IdActividadFk,
@@ -36,7 +36,7 @@ const CreatePersonaACargoActividad = async (object) => {
         },
       },
     });
-    return elements;
+    return element;
   } catch (e) {
     console.log(e.message);
     return e.message;

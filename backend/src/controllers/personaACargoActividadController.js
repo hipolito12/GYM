@@ -45,7 +45,7 @@ const deletes = async (req, res) =>
       console.error(e);
       if (e.message === 'Persona a cargo no encontrada') {
         res.status(404).json({ error: 'Persona a cargo de la actividad no encontrada' });
-      } else if (typeof dni !== 'number'  && typeof dni !== 'float') {                  //Falta validar bien
+      } else if (typeof dni !== 'number'  && typeof dni !== 'int') {                  //Falta validar bien
         res.status(403).json({ error: 'El dni de la persona debe ser un número'});
       } else {
         res.status(500).json({ error: 'Error al obtener la persona a cargo de la actividad por dni' });
@@ -71,7 +71,7 @@ const updates = async (req, res) =>
         console.error(e);
         if (e.message === 'Persona a cargo no encontrada') {
           res.status(404).json({ error: 'Persona a cargo de la actividad no encontrada' });
-        } else if (typeof req.params.id !== 'float') {
+        } else if (typeof req.params.id !== 'int') {
           res.status(403).json({ error: 'El dni de la persona debe ser un número'});        //Falta validar bien
         } else {
           res.status(500).json({ error: 'Error al obtener la persona a cargo de la actividad por dni' });
@@ -88,7 +88,7 @@ const getById = async (req, res) => {
       console.error(error);
       if (error.message === 'Persona a cargo no encontrada') {
         res.status(404).json({ error: 'Persona a cargo de la actividad no encontrada' });
-      } else if (typeof dni !== 'float') {
+      } else if (typeof dni !== 'int') {
         res.status(403).json({ error: 'El dni de la persona debe ser un número'});
       } else {
         res.status(500).json({ error: 'Error al obtener la persona a cargo de la actividad por dni' });
