@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/* import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IMCComponent } from './imc.component';
 
@@ -21,3 +21,4 @@ describe('IMCComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+ */

@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/* import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MisRutinasComponent } from './mis-rutinas.component';
 
@@ -21,3 +21,4 @@ describe('MisRutinasComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+ */

@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/* import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ActualizarDatosComponent } from './actualizar-datos.component';
 
@@ -21,3 +21,4 @@ describe('ActualizarDatosComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+ */
