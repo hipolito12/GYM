@@ -13,6 +13,7 @@ export class GestionDeEmpleadosService {
   }
 
   AddEmpleado(empleado:any):Observable<any>{
+    console.log(empleado);
     return this.http.put('http://localhost:3000/api/AddEmpleado',empleado);
   }
 

@@ -10,14 +10,24 @@
           <!-- contenido Tabs -->
           <mat-card class="p-1 overflow-hidden">
 
-            <div class="row justify-content-center">
+            <div class="row justify-content-center ">
                 <div class="col-12 ">
-                  <form >
+                  <form (submit)="AgregarEmpleado()"  >
+
+                    <div class="mb-3">
+                      <label for="nombreCompleto " class="form-label text-light fs-5">Nombre y apellido </label>
+                      <input type="text" class="form-control" name="nombreCompleto" [(ngModel)]="this.empleado.NombreCompleto" id="DNI" placeholder=" Nombre/s Completo">
+                  </div>
+
                       <div class="mb-3">
                           <label for="DNI" class="form-label text-light fs-5">DNI</label>
                           <input type="text" class="form-control" name="DNI" [(ngModel)]="this.empleado.dni" id="DNI" placeholder="DNI">
                       </div>
-          
+                      
+                      <div class="mb-3">
+                        <label for="DNI" class="form-label text-light fs-5">email</label>
+                        <input type="text" class="form-control" name="email" [(ngModel)]="this.empleado.email" id="DNI" placeholder="email en uso">
+                    </div>
                       <div class="mb-3">
                           <label for="password" class="form-label text-light fs-5">Contraseña</label>
                           <input type="text" class="form-control" name="password" [(ngModel)]="this.empleado.password" id="password" placeholder="Contraseña">
@@ -32,7 +42,7 @@
                       </div>   
                       <div class="mb-3">
                           <label for="sexo" class="form-label  text-light fs-5" >Sexo</label>
-                          <select class="form-select" id="sexo" name="sexo"  [(ngModel)]="empleado.sexo" required>
+                          <select class="form-select" id="sexo" name="sexo"  [(ngModel)]="this.empleado.sexo" required>
                             <option value="masculino">Masculino</option>
                             <option value="femenino">Femenino</option>
                           </select>
@@ -174,7 +184,7 @@
                 <form>
                     <div class="mb-3">
                         <label for="nuevoDNI" class="form-label">DNI</label>
-                        <input type="text" class="form-control text-center" [(ngModel)]="this.empleado.dni"name="DNI" id="nuevoDNI"  disabled>
+                        <input type="text" class="form-control text-center" [(ngModel)]="this.empleado.dni"name="DNI" id="nuevoDNI" disabled >
                     </div>
                     <div class="mb-3">
                         <label for="nuevaPassword" class="form-label">Nueva Contraseña</label>

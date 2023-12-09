@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   Redireccionar(rol: number) {
     switch (rol) {
       case 0:
-        this.rout.navigate(['administrador']);
+        this.rout.navigate(['administrador/gestionEmpleados']);
         break;
       case 1:
         this.rout.navigate(['/usuarios/user']);

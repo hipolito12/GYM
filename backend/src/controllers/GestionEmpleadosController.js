@@ -14,6 +14,7 @@ const GetAll= async (req, res) => {
 
 const NuevoEmpleado = async (req, res) => {
     try{
+        
         const newEmpleado = await AddEmpleado(req.body);
         return res.status(200).json(newEmpleado);
     }

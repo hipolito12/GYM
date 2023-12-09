@@ -43,14 +43,15 @@ const AddEmpleado = async (data) => {
     try {
         const newEmpleado = await prisma.persona.create({
             data: {
-                dni:data.dni,
-                IdRolfk:data.IdRolfk,
+                dni: Number.parseInt(data.dni) ,
+                IdRolfk: Number.parseInt(data.IdRolfk),
                 email:data.email,
                 password:data.password,
                 NombreCompleto:data.NombreCompleto,
                 sexo:data.sexo,
                 telefono:data.telefono,
                 direccion:data.direccion,
+                estado:true
             }
 
         });
