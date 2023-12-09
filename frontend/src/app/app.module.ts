@@ -115,7 +115,7 @@ import { personaacargoactividadAddEditComponent } from './Components/personaacar
     ActividadAddComponent,
     ActividadUpdateComponent,
     personaacargoactividadComponent,
-    personaacargoactividadAddEditComponent    AdministradorComponent,
+    personaacargoactividadAddEditComponent    ,AdministradorComponent,
     InformeComponent,
     UpdateCuotaComponent,
     UsuariosComponent,
