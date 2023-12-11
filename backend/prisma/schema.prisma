@@ -39,12 +39,11 @@ model cuota {
   DniFK        Int
   FechaPago    DateTime    @db.Timestamp(6)
   precioActual Int
-  persona      persona     @relation(fields: [DniFK], references: [dni], onDelete: NoAction, onUpdate: NoAction, map: "cuota-persona")
+  persona      persona     @relation(fields: [DniFK], references: [dni], map: "cuota-persona")
   preciocuota  preciocuota @relation(fields: [precioActual], references: [idpreciocuota], onUpdate: Restrict, map: "cuota-preciocuota")
 
   @@index([DniFK], map: "cuota-persona_idx")
   @@index([precioActual], map: "cuota-preciocuota_idx")
-  @@index([DniFK], map: "venta-persona_idx")
 }
 
 model persona {
@@ -73,7 +72,7 @@ model personaacargoactividad {
   DniPersonaAcargo Int       @id
   IdActividadFk    Int
   actividad        actividad @relation(fields: [IdActividadFk], references: [ActividadId], onDelete: NoAction, onUpdate: NoAction, map: "actividad-PesonaAcargo")
-  persona          persona   @relation(fields: [DniPersonaAcargo], references: [dni], onDelete: NoAction, onUpdate: NoAction, map: "persona-PersonAcargo")
+  persona          persona   @relation(fields: [DniPersonaAcargo], references: [dni], onDelete: Cascade, onUpdate: Restrict, map: "persona-PersonAcargo")
 
   @@index([IdActividadFk], map: "actividad-PesonaAcargo_idx")
 }
@@ -87,7 +86,7 @@ model post {
   imagen     String?   @db.VarChar(1000)
   fecha      DateTime? @db.Date
   visible    Boolean?  @default(true)
-  persona    persona   @relation(fields: [DniAutor], references: [dni], onDelete: NoAction, onUpdate: NoAction, map: "post-autor")
+  persona    persona   @relation(fields: [DniAutor], references: [dni], map: "post-autor")
   tipopost   tipopost  @relation(fields: [TipoPostFk], references: [TipoId], map: "post-tipo")
 
   @@index([DniAutor], map: "post-autor_idx")
@@ -134,12 +133,12 @@ model rutinapersonalizada {
   fechaActualizacion    DateTime?  @db.DateTime(5)
   activo                Boolean?   @default(true)
   actividad             actividad  @relation(fields: [IdActividadfk], references: [ActividadId], onDelete: NoAction, onUpdate: NoAction, map: "rutinaPersonalizada-Actividad")
+  persona               persona    @relation(fields: [PersonaDniFk], references: [dni], map: "rutinaPersonalizada-persona")
   tiporutina            tiporutina @relation(fields: [TipoRutinaFk], references: [idTipoRutina], map: "rutinaPersonalizada-tipo")
-  persona               persona    @relation(fields: [PersonaDniFk], references: [dni], onDelete: NoAction, onUpdate: NoAction, map: "rutinaPersonalizada-persona")
 
   @@index([IdActividadfk], map: "rutinaPersonalizada-Actividad_idx")
   @@index([TipoRutinaFk], map: "rutinaPersonalizada-tipo_idx")
-  @@index([PersonaDniFk], map: "rutnapersonalizada-persona_idx")
+  @@index([PersonaDniFk], map: "rutinaPersonalizada-persona_idx")
 }
 
 model tipopost {
@@ -158,13 +157,13 @@ model tiporutina {
 }
 
 model venta {
-  CodVenta       Int     @id @default(autoincrement())
+  CodVenta       Int       @id @default(autoincrement())
   TrabajadorIDni Int
-  NombeProducto  String  @db.VarChar(45)
+  NombeProducto  String    @db.VarChar(45)
   precio         Float
   cantidad       Int
   FechaVenta     DateTime? @db.DateTime(0)
-  persona        persona   @relation(fields: [TrabajadorIDni], references: [dni], onDelete: NoAction, onUpdate: NoAction, map: "venta-persona")
+  persona        persona   @relation(fields: [TrabajadorIDni], references: [dni], map: "venta-persona")
 
   @@index([TrabajadorIDni], map: "venta-persona_idx")
 }
