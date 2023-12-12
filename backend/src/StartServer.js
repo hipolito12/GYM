@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const PORT = require('./config.js');
 //const logIn = require('./routes/auth')
 const informes = require('./routes/Informe.js');
 const UpdateCuota = require('./routes/Cuota.js');

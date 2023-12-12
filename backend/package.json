@@ -12,7 +12,8 @@
   "version": "1.0.0",
   "main": "StartServer.js",
   "scripts": {
-    "dev": "nodemon src/StartServer.js"
+    "dev": "nodemon src/StartServer.js",
+    "start": "node src/StartServer.js"
   },
   "keywords": [],
   "author": "",
